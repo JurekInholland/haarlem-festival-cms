@@ -1,0 +1,33 @@
+CREATE TABLE `festival_info` (
+	`start_date` DATETIME NULL DEFAULT NULL,
+	`end_date` DATETIME NULL DEFAULT NULL
+)
+ENGINE=InnoDB
+;
+
+CREATE TABLE `events` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`title` VARCHAR(100) NOT NULL,
+	`description` TEXT NOT NULL,
+	`start_time` DATETIME NOT NULL,
+	`end_time` DATETIME NOT NULL,
+	`location` VARCHAR(200) NOT NULL,
+	`category` TINYINT(4) NOT NULL DEFAULT '0',
+	PRIMARY KEY (`id`)
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+;
+
+CREATE TABLE `cms_users` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`username` VARCHAR(50) NOT NULL,
+	`email` VARCHAR(100) NOT NULL,
+	`password` VARCHAR(200) NOT NULL,
+	`role` TINYINT(4) NOT NULL DEFAULT '0',
+	`registration_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	PRIMARY KEY (`id`)
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+;
