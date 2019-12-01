@@ -1,6 +1,13 @@
 <?php
 abstract class Controller {
     
+
+
+    public static function redirect($path) {
+        return header("Location: /{$path}");
+    }
+
+
     // 'View a view'... 
     public static function view(string $viewName, array $data = []) {
         

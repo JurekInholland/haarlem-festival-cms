@@ -15,7 +15,6 @@ CREATE TABLE `events` (
 	`category` TINYINT(4) NOT NULL DEFAULT '0',
 	PRIMARY KEY (`id`)
 )
-COLLATE='latin1_swedish_ci'
 ENGINE=InnoDB
 ;
 
@@ -28,6 +27,5 @@ CREATE TABLE `cms_users` (
 	`registration_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 	PRIMARY KEY (`id`)
 )
-COLLATE='latin1_swedish_ci'
 ENGINE=InnoDB
 ;

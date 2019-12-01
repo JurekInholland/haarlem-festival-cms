@@ -16,12 +16,19 @@
     padding: .5rem;
 
     margin: 0;
-    min-width: 435px;    
+    /* min-width: 465px; */
+
+    display: flex;
+    flex-flow: column; 
+    justify-content: space-between; 
 }
+
 
 .event-info {
     display: flex;
     margin: 0;
+    /* align-self: flex-end;
+    justify-self: flex-end; */
 }
 
 .event-info li {
@@ -75,7 +82,7 @@
 
     <section class="event">
         <h2>Event name</h2>
-        <p>event description asdfe</p>
+        <p>event description asdfeasdasdafsdsgsdg.sd sdg sdgsdgsgdsgsdgsd gsdsd gsdgsd sd gsdgs asdasdasdadasdasdasdasdasdasdasd</p>
 
         <ul class="event-info">
             <li>29.07.2020</li>

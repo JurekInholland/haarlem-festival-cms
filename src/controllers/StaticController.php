@@ -23,4 +23,15 @@ class StaticController extends Controller {
     public function dance() {
         return $this->view("placeholder", ["headline" => "Dance", "content" => "dance content..."]);
     }
+
+
+    public function test() {
+        $string = "Event Page";
+        $slug = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $string)));
+        echo $slug;
+    }
+
+
+    
+
 }

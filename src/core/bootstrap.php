@@ -26,17 +26,11 @@ spl_autoload_register(function ($class) {
 
 // App::bind("query", new Queries());
 
-$config = parse_ini_file("../src/config.ini", true);
+$config = parse_ini_file("../src/config/config.ini", true);
 App::bind("db", new QueryBuilder(
     Connection::make($config)
 ));
 
 
-// require_once "../src/controllers/IndexController.php";
-
-
-$greeting = "ASD";
-
-function sayGreeting() {
-    var_dump("helloooo");
-}
+// Static festival data like start and end dates. This could be stored in database as well..
+App::bind("festival", parse_ini_file("../src/config/festival.ini", true));
