@@ -7,7 +7,11 @@
     /haarlem-food/restaurants
     /haarlem-food/restaurant/restaurant-slug
 
+- relationship between location and category?
+
 ## general project structure/ github
+- can we partially use js? Sorting/Filtering
+
 - mvc(a) structure?
 - have to use their sql server?
 - code quality (bracket style, newline count, static typing)

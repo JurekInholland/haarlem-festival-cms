@@ -8,7 +8,8 @@ class EventController extends Controller {
         // Pass array of FestivalEvents to view
         $params = [
             "select" => ["*"],
-            "from" => "events"
+            "from" => "events",
+            "orderBy" => "start_time"
         ];
 
         // Maybe move to Adapter..

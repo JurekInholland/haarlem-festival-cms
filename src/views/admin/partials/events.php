@@ -43,7 +43,9 @@
     font-size: 1.25rem;
     line-height: 1.25rem;
 }
-
+.category {
+    font-family: Rockwell, Georgia;
+}
 /* a, a:hover {
     text-decoration: none;
     color: unset;
