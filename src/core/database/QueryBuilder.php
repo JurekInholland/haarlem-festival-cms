@@ -4,9 +4,6 @@ class QueryBuilder {
 
     protected $pdo;
 
-
-
-
     // Pass the pdo instance to the query builder
     public function __construct(PDO $pdo) {
         // Include query functions

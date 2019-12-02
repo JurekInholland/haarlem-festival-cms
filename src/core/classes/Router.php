@@ -1,11 +1,12 @@
 <?php
 class Router {
+
     // Register routes specifically for GET or POST requests
-    // $routes is a nested array to differentiate between them
     protected $routes = [
         "GET" => [],
         "POST" => []
     ];
+
     // Handle GET requests
     public function get(string $uri, string $controller) {
         $this->routes["GET"][$uri] = $controller;
@@ -14,17 +15,23 @@ class Router {
     public function post(string $uri, string $controller) {
         $this->routes["POST"][$uri] = $controller;
     }
+
     public static function load(string $file) {
         
         // Create an instance of Router within static method
         $router = new static;
+
         // Require the given file
         require $file;
+
         // Return the created instance of Router
         return $router;
     }
+
+
     // If a route matches a given uri, load the respective controller
     public function direct(string $uri, string $requestType) {
+        
         // Check if the given uri is a key in the requestType (GET or POST) array of routes
         if (array_key_exists($uri, $this->routes[$requestType])) {
             return $this->callMethod(
@@ -33,22 +40,20 @@ class Router {
                 ...explode("@", $this->routes[$requestType][$uri])
             );
         }
-        // throw new Exception("No route defined for this uri");
-        // $_SESSION["error"] = "Undefined Route";
-        // $_GET["error"] = "route not found";
-        $currenturl = $_SERVER['REQUEST_URI'] ;
+        // Throw exception if no route was found
         throw new Exception("Router direct error");
-        echo "ROUTES:";
-        var_dump($this->routes);
+
     }
+
+    
     // Call given method of given controller
-    protected function callMethod($controller, $action) {
+    protected function callMethod($controller, $method) {
         $controller = new $controller;
-        if (method_exists($controller, $action)) {
+        if (method_exists($controller, $method)) {
             // Return a controller instance and call indicated method
-            return $controller->$action();
+            return $controller->$method();
         } else {
-            throw new Exception("Controller doesnt respond to action");
+            throw new Exception("Controller doesnt contain method");
         }
     }
 }

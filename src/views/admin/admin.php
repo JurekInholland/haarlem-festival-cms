@@ -1,4 +1,4 @@
-<?php require "partials/sidebar.php"; ?>
+    <?php require "partials/sidebar.php"; ?>
     
     <div id="content">
 

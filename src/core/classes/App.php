@@ -1,5 +1,6 @@
 <?php
-// PHP Injection controller
+// PHP Injection controller / DI container
+
 // Container that holds vital information
 class App {
     protected static $items = [];

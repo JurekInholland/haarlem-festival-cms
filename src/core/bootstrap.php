@@ -24,9 +24,12 @@ spl_autoload_register(function ($class) {
     }
 });
 
-// App::bind("query", new Queries());
+// Set correct time zone
+date_default_timezone_set('Europe/Amsterdam');
 
 $config = parse_ini_file("../src/config/config.ini", true);
+
+
 App::bind("db", new QueryBuilder(
     Connection::make($config)
 ));

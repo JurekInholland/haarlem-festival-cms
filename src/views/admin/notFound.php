@@ -5,8 +5,8 @@
     <?php require "partials/sidebar-toggle.php"; ?>
     
 
-    <h1>Festival Events</h1>
+    <h1>Edit Event</h1>
 
-    <?php require "partials/events.php"; ?>
+    <h2>Event not found!</h2>
     </div>
 </div>

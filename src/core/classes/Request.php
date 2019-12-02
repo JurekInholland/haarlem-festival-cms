@@ -15,7 +15,7 @@ class Request {
         return $_SERVER["REQUEST_METHOD"]; 
     }
 
-
+    // Return uri parameters after the first /
     public static function uriParams() {
         $uri = trim(parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH), "/");
         $uriArray = explode('/', $uri);

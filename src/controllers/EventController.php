@@ -11,36 +11,51 @@ class EventController extends Controller {
             "from" => "events"
         ];
 
-
         // Maybe move to Adapter..
         $events = App::get("db")->select($params);
         $res = [];
 
         foreach ($events as $value) {
-            $event = FestivalEventAdapter::fromDb($value);
+            $event = new FestivalEvent($value);
             array_push($res, $event);
         }
 
-        // die(var_dump($res));
+        return self::view("admin/events", ["events" => $res]);
 
-        // echo "DATE:<br>";
+    }
 
-        // echo $res[0]->getDate();
+    public static function newEvent() {
+        $event = new FestivalEvent([]);
 
-        // TODO: come back
-        return Controller::view("admin/events", ["events" => $res]);
+        $days = FestivalEventAdapter::festivalDays();
+        $locations = App::get("festival")["location"];
+        $event_types = App::get("festival")["event_type"];
+
+        $template_vars = [
+            "event" => $event,
+            "festival_days" => $days,
+            "locations" => $locations, 
+            "event_types" => $event_types
+        ];
+
+        return self::view("admin/editEvent", $template_vars);
 
     }
 
     public static function editEvent() {
         $uriParams = Request::uriParams();
-        $slug = $uriParams[1];
-        echo "EDIT URI LSLUG: " . $slug;
+        $slug = "";
+
+        if (array_key_exists(1, $uriParams)) {
+            $slug = $uriParams[1];
+        }
+
         $event = FestivalEventAdapter::fromSlug($slug);
 
         // If an event matching the given slug was found
-        if (!$event) {
-            return Controller::view("404");
+        // die(var_dump($event));
+        if (!$event->hasData()) {
+            return self::view("admin/notFound");
         }
         $days = FestivalEventAdapter::festivalDays();
         $locations = App::get("festival")["location"];
@@ -70,14 +85,7 @@ class EventController extends Controller {
 
         $event->storeSelf();
 
-        die(var_dump($event));
-        // get form data
-        // Parse, validate
-        // create new FestivalEvent model from form data
-        // update db
-    }
-
-    public function delEvent() {
+        $this->redirect("admin");
 
     }
 }

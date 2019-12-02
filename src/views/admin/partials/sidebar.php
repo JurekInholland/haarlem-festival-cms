@@ -10,10 +10,13 @@
 
         <ul>
             <li><a href="/admin/create">Create event</a></li>
-            <li><a href="/admin/edit">Edit event</a></li>
-            <li><a href="/create">New restaurant</a></li>
-            <li><a href="">Create event</a></li>
-            <li><a href="">Create event</a></li>
+            <li><a href="/admin/events">Edit event</a></li>
+            <!-- <li><a href="/create">New restaurant</a></li> -->
+            <li><a href="">Create Restaurant</a></li>
+            <li><a href="">Edit Restaurant</a></li>
+            <li><a href="/admin/settings">Festival settings</a></li>
+            <li><a href="/admin/statistics">View statistics</a></li>
+
         </ul>
 
     </nav>

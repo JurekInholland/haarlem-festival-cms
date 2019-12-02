@@ -7,9 +7,8 @@ class FestivalEventAdapter {
     // Takes event information from forms and returns a FestivalEvent model
     public static function fromForms(array $post) {
         
-        $dates = FestivalEventAdapter::parseDates($post);
-
-        $price = FestivalEventAdapter::parsePrice($post);
+        $dates = self::parseDates($post);
+        $price = self::parsePrice($post);
 
         $eventData = [
             "title" => $post["title"],
@@ -25,6 +24,33 @@ class FestivalEventAdapter {
         return $event;
     }
 
+    // public static function fromDb(array $eventInfo) {
+    //     $event = new FestivalEvent($eventInfo);
+    //     return $event;
+    // }
+
+    public static function fromSlug($slug) {
+
+        $params = [
+            "select" => ["*"],
+            "from" => "events",
+            "where" => "slug",
+            "operator" => "LIKE",
+            "target" => $slug
+        ];
+
+        $res = App::get("db")->select($params);
+        
+        // die(var_dump($res));
+        if (array_key_exists(0, $res)) {
+            $event = new FestivalEvent($res[0]);
+
+        } else {
+            $event = new FestivalEvent([]);
+        }
+
+        return $event;
+    }
 
     private static function parseDates(array $post) {
         $days = FestivalEventAdapter::festivalDays();
@@ -50,30 +76,6 @@ class FestivalEventAdapter {
         $price = str_replace("€", "", $post["price"]);
         return floatval($price);
     }
-
-
-    public static function fromDb(array $eventInfo) {
-        $event = new FestivalEvent($eventInfo);
-        // die(var_dump($event));
-        return $event;
-    }
-
-    public static function fromSlug($slug) {
-        // .. TODO implement
-
-        $params = [
-            "select" => ["*"],
-            "from" => "events",
-            "where" => "slug",
-            "operator" => "LIKE",
-            "target" => $slug
-        ];
-
-        $res = App::get("db")->select($params);
-        $event = new FestivalEvent($res[0]);
-        return $event;
-    }
-
 
 
     public static function festivalDays() {

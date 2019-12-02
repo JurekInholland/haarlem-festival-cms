@@ -5,8 +5,8 @@
     <?php require "partials/sidebar-toggle.php"; ?>
     
 
-    <h1>Festival Events</h1>
+    <h1>Festival settings</h1>
 
-    <?php require "partials/events.php"; ?>
+    <?php require "partials/settings.php"; ?>
     </div>
 </div>
