@@ -1,28 +1,110 @@
 <?php
 
+// Adapter to create FestivalEvents either from form or from database information
 class FestivalEventAdapter {
 
-    public function fromForms($post) {
-        // ... TODO implement
+    
+    // Takes event information from forms and returns a FestivalEvent model
+    public static function fromForms(array $post) {
+        
+        $dates = FestivalEventAdapter::parseDates($post);
 
-        return new FestivalEvent($post);
+        $price = FestivalEventAdapter::parsePrice($post);
+
+        $eventData = [
+            "title" => $post["title"],
+            "description" => $post["description"],
+            "category" => $post["category"],
+            "start_time" => $dates["start"],
+            "end_time" => $dates["end"],
+            "price" => $price,
+            "location" => $post["location"], 
+        ];
+
+        $event =  new FestivalEvent($eventData);
+        return $event;
     }
 
 
-    public function fromDb($slug) {
+    private static function parseDates(array $post) {
+        $days = FestivalEventAdapter::festivalDays();
+
+        $startDate = new DateTime($days[$post["day"]]["date"]->format("Y-m-d"));
+        $endDate = new DateTime($days[$post["day"]]["date"]->format("Y-m-d"));
+
+        $startTime = explode(":", $post["start_time"]);
+        $endTime = explode(":", $post["end_time"]);
+
+        $startDate->setTime($startTime[0], $startTime[1]);
+        $endDate->setTime($endTime[0], $endTime[1]);
+
+        return [
+            "start" => $startDate->format("Y-m-d H:i:s"),
+            "end" => $endDate->format("Y-m-d H:i:s")
+        ];
+
+    }
+    
+
+    private function parsePrice(array $post) {
+        $price = str_replace("€", "", $post["price"]);
+        return floatval($price);
+    }
+
+
+    public static function fromDb(array $eventInfo) {
+        $event = new FestivalEvent($eventInfo);
+        // die(var_dump($event));
+        return $event;
+    }
+
+    public static function fromSlug($slug) {
         // .. TODO implement
 
         $params = [
             "select" => ["*"],
             "from" => "events",
             "where" => "slug",
+            "operator" => "LIKE",
             "target" => $slug
         ];
 
         $res = App::get("db")->select($params);
-        $event = new FestivalEvent($res);
-
-        var_dump($event);
+        $event = new FestivalEvent($res[0]);
         return $event;
+    }
+
+
+
+    public static function festivalDays() {
+        
+        // Get start and end date from festival config
+        $info = App::get("festival");
+        
+        $start = new DateTime($info["start_date"]);
+        $end = new DateTime($info["end_date"]);
+        
+        // A bit of a hack: Set the time > zero to also include the last day..
+        $end->setTime(0,0,1); 
+
+        // iterable DatePeriod
+        $period = new DatePeriod(
+            $start,
+            new DateInterval('P1D'),
+            $end
+        );
+
+        $result = [];
+
+        foreach ($period as $idx => $date) {
+
+            $string = "{$date->format('l')}, {$date->format('d.m.Y')}";
+
+            $result[$idx] = [
+                "string" => $string,
+                "date" => $date
+            ];        
+        }
+        return $result;
     }
 }

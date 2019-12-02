@@ -30,19 +30,15 @@ class AdminController extends Controller {
                 return $this->view("admin");
                 break;
             
+
+            case "events":
+                return EventController::index();
+
             case "":
                 return $this->view("admin");
 
             case "event":
-                $slug = $uriParams[1];
-                $adapter = new FestivalEventAdapter();
-                $event = $adapter->fromDb($slug);
-
-                if ($event) {
-                    return $this->view("admin/newEvent");
-                } else {
-                    return $this->view("404");
-                }
+                return EventController::editEvent();
 
             default:
                 echo "DEFAULT";
@@ -61,7 +57,10 @@ class AdminController extends Controller {
         
         // If submit button was pressed
         } else {
-            $this->parseFormInput($_POST);
+            // $this->parseFormInput($_POST);
+            $event = FestivalEventAdapter::fromForms($_POST);
+            echo "EVENT<br>";
+            // die(var_dump($event));
         }
     }
 
@@ -96,7 +95,7 @@ function parseFormInput($post) {
         "location" => $post["location"],    
     ];
 
-    echo $event->getCategory();
+    // echo $event->getCategory();
 
     $event->store($eventA);
 

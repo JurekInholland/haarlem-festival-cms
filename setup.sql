@@ -1,3 +1,36 @@
+-- Festival Setup
+
+-- Event Categories
+CREATE TABLE `event_categories` (
+	`id` INT(11) NOT NULL,
+	`category` VARCHAR(50) NOT NULL,
+	PRIMARY KEY (`id`)
+)
+COLLATE 'utf8_bin'
+ENGINE=InnoDB
+;
+
+INSERT INTO `event_categories` (`id`, `category`) VALUES (0, 'Haarlem Jazz');
+INSERT INTO `event_categories` (`id`, `category`) VALUES (1, 'Haarlem Dance');
+INSERT INTO `event_categories` (`id`, `category`) VALUES (2, 'Haarlem Food');
+INSERT INTO `event_categories` (`id`, `category`) VALUES (3, 'Haarlem Historic');
+
+-- Event locations
+CREATE TABLE `event_locations` (
+	`id` INT(11) NOT NULL,
+	`location` VARCHAR(100) NOT NULL,
+	PRIMARY KEY (`id`)
+)
+COLLATE 'utf8_bin'
+ENGINE=InnoDB
+;
+
+INSERT INTO `event_locations` (`id`, `location`) VALUES (0, 'Patronaat, Main Hall');
+INSERT INTO `event_locations` (`id`, `location`) VALUES (1, 'Patronaat, Second Hall');
+INSERT INTO `event_locations` (`id`, `location`) VALUES (2, 'Patronaat, Third Hall');
+INSERT INTO `event_locations` (`id`, `location`) VALUES (3, 'Grote Markt');
+
+
 CREATE TABLE `festival_info` (
 	`start_date` DATETIME NULL DEFAULT NULL,
 	`end_date` DATETIME NULL DEFAULT NULL
@@ -17,6 +50,13 @@ CREATE TABLE `events` (
 )
 ENGINE=InnoDB
 ;
+
+INSERT INTO `events` (`id`, `title`, `description`, `start_time`, `end_time`, `location`, `category`, `price`, `slug`) VALUES (3, 'Jonna Frazer', 'Jonna Fraser is a Dutch rapper of Surinamese descent. He\r\nhas a broad Dutch hop-style that varies from gangster tap to sultry soul.', '2020-06-26 21:00:00', '2020-06-26 22:00:00', '1', 0, 15.5, 'jonna-frazer');
+INSERT INTO `events` (`id`, `title`, `description`, `start_time`, `end_time`, `location`, `category`, `price`, `slug`) VALUES (8, 'Hardwell', 'Robbert van de Corput, known professionally as Hardwell, is a Dutch DJ, record producer and remixer from Breda, North Brabant. Hardwell was voted the world\'s number one DJ on DJ Mag in 2013 and again in 2014. He was ranked at number three in the top 100 DJs 2018 poll by DJ Mag.', '2020-06-26 22:00:00', '2020-06-26 00:00:00', '4', 1, 25, 'hardwell');
+INSERT INTO `events` (`id`, `title`, `description`, `start_time`, `end_time`, `location`, `category`, `price`, `slug`) VALUES (9, 'Gare du Nord', 'Gare du Nord is a Dutch-Belgian jazz band, originally\r\nconsisting of Doc (Ferdi Lancee) and Inca (Barend Fransen). Doc played\r\nguitar and Inca played saxophone.', '2020-06-27 18:00:00', '2020-06-27 19:00:00', '0', 0, 5, 'gare-du-nord');
+INSERT INTO `events` (`id`, `title`, `description`, `start_time`, `end_time`, `location`, `category`, `price`, `slug`) VALUES (10, 'Ratatouille', 'Het succesvolle restaurant aan het spaarne in haarlem van chef kok Jozua Jaring is â€“ net als ratatouille â€“ een mix van de Franse keuken in de realiteit van vandaag met uitmuntende prijs-kwaliteitverhouding in een laagdrempelige omgeving. Zo zijn we in 2013 gestart in de Lange Veerstraat en zo gaan we na de verhuizing in 2015...', '2020-06-27 22:00:00', '2020-06-27 00:00:00', '4', 2, 10, 'ratatouille');
+
+
 
 CREATE TABLE `cms_users` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,

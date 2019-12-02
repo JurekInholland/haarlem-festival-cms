@@ -1,6 +1,6 @@
 <?php
 
-$router->get("", "IndexController@index");
+$router->get("", "StaticController@index");
 $router->get("admin", "AdminController@index");
 
 
@@ -13,4 +13,13 @@ $router->get("food", "StaticController@food");
 $router->get("dance", "StaticController@dance");
 
 
-$router->post("eventSubmit", "AdminController@submit");
+
+// $router->post("eventSubmit", "AdminController@submit");
+$router->post("eventSubmit", "EventController@submitEvent");
+
+
+
+
+//////////////
+$router->get("events", "EventController@index");
+$router->get("event", "EventController@editEvent");

@@ -5,6 +5,8 @@ class QueryBuilder {
     protected $pdo;
 
 
+
+
     // Pass the pdo instance to the query builder
     public function __construct(PDO $pdo) {
         // Include query functions
@@ -12,12 +14,22 @@ class QueryBuilder {
     }
 
     // Abstraction method for sql select
-    public function select($params) {
+    public function select($customOptions) {
         
         // Check if parameters contain needed parameters
-        if (!$params["select"] || !$params["from"]) {
+        if (!$customOptions["select"] || !$customOptions["from"]) {
             die("Select method missing parameters. Caller: " . debug_backtrace()[1]['function']);
         }
+        $default = [
+            "where" => "",
+            "target" => "",
+            "orderBy" => "",
+            "into" => "",
+            "operator" => ""
+        ];
+
+        $params = array_merge($default, $customOptions);
+
         try {
             // Unpack array of parameters
             // Since $params["select] is an array as well, convert to string here

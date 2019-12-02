@@ -7,6 +7,9 @@
 class StaticController extends Controller {
 
 
+    public function index() {
+        return $this->view("placeholder", ["headline" => "Homepage", "content" => "index content..."]);
+    }
 
     public function culture() {
         return $this->view("placeholder", ["headline" => "Culture", "content" => "culture content..."]);
@@ -26,9 +29,7 @@ class StaticController extends Controller {
 
 
     public function test() {
-        $string = "Event Page";
-        $slug = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $string)));
-        echo $slug;
+        
     }
 
 

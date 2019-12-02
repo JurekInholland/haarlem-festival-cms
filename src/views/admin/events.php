@@ -45,6 +45,10 @@
     line-height: 1.25rem;
 }
 
+a, a:hover {
+    text-decoration: none;
+    color: unset;
+}
 /* @media screen and (min-width: 930px) {
     .event-grid {
         grid-template-columns: 1fr 1fr;
@@ -56,75 +60,20 @@
 
 <section class="event-grid">
 
-    <section class="event">
-        <h2>Event name</h2>
-        <p>event description asdfe</p>
+    <?php foreach ($events as $key => $event) : ?>
 
-        <ul class="event-info">
-            <li>29.07.2020</li>
-            <li>18:00-19:00</li>
-            <li>| Patronaat, Third Hall</li>
-            <li class="category jazz">Category</li>
-        </ul>
-    </section>
+        <a href="/event/<?= $event->getSlug(); ?>">
+            <section class="event">
+                <h2><?= $event->getTitle(); ?></h2>
+                <p><?= $event->getDescription(); ?></p>
+                <ul class="event-info">
+                    <li><?= $event->getDate(); ?></li>
+                    <li style="font-weight: bold;"><?= $event->getStartTime(); ?> - <?= $event->getEndTime(); ?></li>
+                    <li> | <?= $event->getLocation(); ?></li>
+                    <li style="color: <?= $event->getColor(); ?>" class="category"><?= $event->getCategory(); ?></li>
+                </ul>
+            </section>
+        </a>
+    <?php endforeach; ?>
 
-    <section class="event">
-        <h2>Event name</h2>
-        <p>event description asdfe</p>
-
-        <ul class="event-info">
-            <li>29.07.2020</li>
-            <li>18:00-19:00</li>
-            <li>| Patronaat, Third Hall</li>
-            <li class="category jazz">Category</li>
-        </ul>
-    </section>
-
-    <section class="event">
-        <h2>Event name</h2>
-        <p>event description asdfeasdasdafsdsgsdg.sd sdg sdgsdgsgdsgsdgsd gsdsd gsdgsd sd gsdgs asdasdasdadasdasdasdasdasdasdasd</p>
-
-        <ul class="event-info">
-            <li>29.07.2020</li>
-            <li>18:00-19:00</li>
-            <li>| Patronaat, Third Hall</li>
-            <li class="category jazz">Category</li>
-        </ul>
-    </section>
-
-    <section class="event">
-        <h2>Event name</h2>
-        <p>event description asdfe</p>
-
-        <ul class="event-info">
-            <li>29.07.2020</li>
-            <li>18:00-19:00</li>
-            <li>| Patronaat, Third Hall</li>
-            <li class="category jazz">Category</li>
-        </ul>
-    </section>
-    
-    <section class="event">
-        <h2>Event name</h2>
-        <p>event description asdfe</p>
-
-        <ul class="event-info">
-            <li>29.07.2020</li>
-            <li>18:00-19:00</li>
-            <li>| Patronaat, Third Hall</li>
-            <li class="category jazz">Category</li>
-        </ul>
-    </section>
-    
-    <section class="event">
-        <h2>Event name</h2>
-        <p>event description asdfe</p>
-
-        <ul class="event-info">
-            <li>29.07.2020</li>
-            <li>18:00-19:00</li>
-            <li>| Patronaat, Third Hall</li>
-            <li class="category jazz">Category</li>
-        </ul>
-    </section>
 </section>

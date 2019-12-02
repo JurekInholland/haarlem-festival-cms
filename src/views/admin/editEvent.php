@@ -170,28 +170,28 @@ input[type=time] {
 }
 
 </style>
-
 <section class="wrapper">
     
     <form action="/eventSubmit" method="POST">
         <section class="input0">
             <label for="descr" >Event description</label>
-            <textarea name="description">textarea</textarea>
+            <textarea name="description"><?php echo $event->getDescription(); ?></textarea>
         </section>
         
         <section class="input1">
             <label for="event_title">Event Title</label>
-            <input name="title" type="text">
+            <input name="title" type="text" value="<?= $event->getTitle(); ?>">
         </section>
 
         <section class="input2">
             <label for="input2">Event Type</label>
             <!-- <input name="input2" type="text"> -->
-            <select name="category" id="">
+            <select name="category" id="" value="<?= $event->getCategoryId(); ?>">
                 <?php foreach ($event_types as $key => $type) : 
                 ?>
+                    <?php if($key == $event->getCategoryId()) {$selected = "selected";} else {$selected = "";} ?>
 
-                    <option value="<?= $key; ?>"><?= $type ?></option>
+                    <option <?= $selected; ?> value="<?= $key; ?>"><?= $type ?></option>
                     
                 <?php endforeach; ?>
             </select>
@@ -201,11 +201,13 @@ input[type=time] {
             <label for="input3">Date</label>
 
             <select name="day" id="">
+            
             <?php foreach ($festival_days as $key => $day) : 
             ?>
 
-                <option value="<?= $key; ?>"><?= $day["string"] ?></option>
-                
+                <?php if($day["string"] == $event->getDateString()) {$selected = "selected";} else {$selected = "";} ?>
+
+                <option <?= $selected; ?> value="<?= $key; ?>"><?= $day["string"] ?></option>
             <?php endforeach; ?>
 
             </select>
@@ -216,15 +218,15 @@ input[type=time] {
             <label for="event_start_time">From</label>
             <label for="event_end_time">To</label>
 
-            <input type="time" name="start_time" id="time" value="18:30">            
-            <input type="time" name="end_time" value="21:00">
+            <input type="time" name="start_time" id="time" value="<?= $event->getStartTime(); ?>">            
+            <input type="time" name="end_time" value="<?= $event->getEndTime(); ?>">
         </section>
 
         
 
         <section class="input6">
             <label for="input6">Ticket Price</label>
-            <input step="1" class="input-1" value="12.50" name="price"/>
+            <input step="1" class="input-1" value="<?= $event->getPrice(); ?>" name="price"/>
         </section>
 
         <section class="input7">
@@ -232,8 +234,9 @@ input[type=time] {
             <select name="location" id="">
                 <?php foreach ($locations as $key => $location) : 
                 ?>
+                    <?php if($key == $event->getLocationId()) {$selected = "selected";} else {$selected = "";} ?>
 
-                    <option value="<?= $key; ?>"><?= $location ?></option>
+                    <option <?= $selected; ?> value="<?= $key; ?>"><?= $location ?></option>
                     
                 <?php endforeach; ?>
             </select>
