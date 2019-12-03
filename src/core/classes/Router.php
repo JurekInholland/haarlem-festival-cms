@@ -41,6 +41,7 @@ class Router {
             );
         }
         // Throw exception if no route was found
+        return StaticController::notFound();
         throw new Exception("Router direct error");
 
     }

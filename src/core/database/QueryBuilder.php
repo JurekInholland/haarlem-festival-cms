@@ -14,10 +14,11 @@ class QueryBuilder {
     public function select($customOptions) {
         
         // Check if parameters contain needed parameters
-        if (!$customOptions["select"] || !$customOptions["from"]) {
-            die("Select method missing parameters. Caller: " . debug_backtrace()[1]['function']);
+        if (!$customOptions["from"]) {
+            die("Select method missing parameter ´from´. Caller: " . debug_backtrace()[1]['function']);
         }
         $default = [
+            "select" => ["*"],
             "where" => "",
             "target" => "",
             "orderBy" => "",
@@ -32,13 +33,11 @@ class QueryBuilder {
             // Since $params["select] is an array as well, convert to string here
             $select = implode(", ", $params["select"]);
             $from = $params["from"];
-
-            $where = $params["where"]?: "";
-            $target = $params["target"]?: "";
-            $orderBy = $params["orderBy"]?: "";
-            $into = $params["into"]?: "";
+            $where = $params["where"];
+            $target = $params["target"];
+            $orderBy = $params["orderBy"];
+            $into = $params["into"];
             $operator = $params["operator"]?: "=";
-
 
             $order = "";
             $whereClause = "";
@@ -58,15 +57,14 @@ class QueryBuilder {
                 $whereClause,
                 $order
             );
-            // die($sql);
             // Array containing actual parameter
             $parameter = [$where => $target];
             
             return $this->fetch($sql, $parameter, $into);
+
         } catch (Exception $e) {
             die("SELECT ARGUMENTS FAILED");
         }
-        
     }
 
     public function insertUpdate(string $table, array $parameters) {
@@ -81,7 +79,6 @@ class QueryBuilder {
         );
         return $this->execute($sql, $parameters);
     }
-
 
 
     private function fetch(string $sql, array $parameters, string $className="") {
@@ -100,6 +97,7 @@ class QueryBuilder {
         }        
     }
 
+    
     private function execute(string $sql, array $parameters) {
         try {
             $statement = $this->pdo->prepare($sql);

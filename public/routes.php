@@ -16,3 +16,7 @@ $router->get("admin", "AdminController@index");
 $router->get("events", "EventController@index");
 $router->get("event", "EventController@editEvent");
 $router->post("eventSubmit", "EventController@submitEvent");
+
+$router->get("404", "StaticController@notFound");
+////////////// Haarlem Jazz
+// $router->get("test", "TestController@index");

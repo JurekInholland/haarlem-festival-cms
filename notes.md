@@ -34,3 +34,28 @@ cache in session?
 - cms_users
 - shopping cart
     - many-to-many relationship?
+
+
+## links inspiration
+https://getbootstrap.com/docs/4.3/examples/checkout/
+
+## Models needed
+CmsUser
+DanceArtist
+DanceVenue
+
+FoodRestaurant
+RestaurantMenu? what was feedback during design pres.
+
+DanceEvent
+FoodEvent
+JazzEvent
+
+ShoppingCart
+CartItem
+
+Festival? global info like start, end date
+///////
+abdul: shopping cart?
+hamza: check, compare
+stephen: explain database model, festival days, css grid

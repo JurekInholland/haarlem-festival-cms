@@ -41,20 +41,29 @@ h3 {
 
 <hr>
 <h3>Categories</h3>
-    <?php foreach ($categories as $key => $category):?>
+    <div class="form-group" id="categories">
+        <?php foreach ($categories as $key => $category):?>
 
-        <input name="<?= $key; ?>" type="text" value="<?= $category["category"]; ?>">
-        
+        <div class="input-group">
+            <input name="new_category<?= $key; ?>" type="text" value="<?= $category["category"]; ?>">
+            
+            <label for="color">#</label>
+            <input name="color<?= $key; ?>" class="color" style="background-color: #<?= $category["color"]; ?>" name="<?= $key; ?>" type="text" value="<?= $category["color"]; ?>">
+            <!-- <input type="button" value="Delete"> -->
+            <button type="button" onclick="myFunction(<?= $key; ?>)">Click me</button>
+            <br>
+        </div>
+
+        <?php endforeach; ?>
+
+        <!-- <input name="new_category<?= $key+1; ?>" type="text" value="">
         <label for="color">#</label>
-        <input name="color" class="color" style="background-color: #<?= $category["color"]; ?>" name="<?= $key; ?>" type="text" value="<?= $category["color"]; ?>">
-        <input type="button" value="Delete">
-        <br>
-    <?php endforeach; ?>
+        <input name="color" class="color" name="new_color" type="text" value="">
+        <input type="button" value="Add"> -->
+        </div>
+        <button type="button" onclick="addCategory()">Add</button>
 
-    <input name="new_category" type="text" value="">
-    <label for="color">#</label>
-    <input name="color" class="color" name="new_color" type="text" value="">
-    <input type="button" value="Add">
+    
 <hr>
 <h3>Festival Dates</h3>
 
@@ -66,6 +75,31 @@ h3 {
 <hr>
 <input type="submit" name="confirm">
 </form>
+
+<script>
+
+    function myFunction(a) {
+        // return 100;
+        console.log(a);
+        console.log("myfunc");
+        var eles = document.getElementsByName("new_category" + a);
+
+        eles[0].parentNode.remove();
+
+        console.log(eles);
+    }
+
+    function addCategory() {
+        var node = document.createElement("input");
+
+        var categories = document.getElementById("categories");
+
+        console.log(categories.childNodes.length);
+
+        document.getElementById("categories").appendChild(node);
+    }
+
+</script>
 <!-- <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
 Collapse
 </a>

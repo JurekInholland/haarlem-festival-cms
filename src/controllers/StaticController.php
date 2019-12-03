@@ -7,8 +7,14 @@
 class StaticController extends Controller {
 
 
+    protected static function head() {
+        return "head";
+    }
+
     public function index() {
-        return $this->view("placeholder", ["headline" => "Homepage", "content" => "index content..."]);
+
+        return $this->view("homepage/index");
+        // return $this->view("placeholder", ["headline" => "Homepage", "content" => "index content..."]);
     }
 
     public function culture() {
@@ -29,7 +35,13 @@ class StaticController extends Controller {
 
 
     public function test() {
-        
+        // self::testView();
+
+        return self::view("partials/table");
+    }
+
+    public static function notFound() {
+        return self::view("placeholder", ["headline" => "404", "content" => "page not found"]);
     }
 
 

@@ -2,33 +2,17 @@ html {
     background-color: #aeaeae;
 }
 
+button:focus {outline:0;}
+
+
 body {
     /* max-width: 1280px; */
     margin: 0 auto;
-    
+    background-color: white;
+    font-family: Arial; 
+    min-width: 470px;
 }
 
-.main-nav {
-    flex-direction: row;
-    /* width: 100%; */
-    align-items: center;
-    border-bottom: 1px solid black;
-    min-width: 615px;
-    max-height: 65px;
-    padding: 0 1rem;
-}
-
-.logo {
-    height: 65px;
-    width: 65px;
-    /* justify-self: center; */
-    align-self: center;
-}
-
-.logo img {
-    width: 100%;
-    height: 100%;
-}
 
 
 i {
@@ -38,65 +22,5 @@ i {
     background-size: contain;
 }
 
-.cart-icon {
-    background-image: url("../img/shopping-cart.svg");
 
-}
-
-.calendar-icon {
-    background-image: url("../img/calendar.png");
-
-}
-
-
-.admin-icon {
-
-    background-image: url("../img/user.svg");
-
-}
-
-.main-nav  ul{
-    list-style: none;
-    display: flex;
-    padding: 0;
-    margin: 0;
-
-    align-items: center;
-
-}
-.main-nav ul main li {
-    font-family: Rockwell, Georgia;
-    color: black;
-    /* padding: 1rem; */
-    padding: 0 1rem;
-    border-right: 1px solid black;
-    margin: 0;
-
-}
-
-
-.main-nav ul main li:last-child {
-    border-right: none;
-}
-
-.main-nav ul main {
-    max-width: 70%;
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
-
-}
-
-.main-nav  ul li {
-    /* margin of right navigation buttons */
-    margin: 0 .5rem;
-}
-
-main a {
-    color: black;
-    font-size: 1.33rem;
-    font-weight: bold;
-}
-main a:hover {
-    color: black;
-}
+/* NAVIGATION */
