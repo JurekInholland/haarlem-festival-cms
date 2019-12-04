@@ -1,6 +1,20 @@
 <?php
 $params = Request::uriParams();
-$category = Request::uri();
+$cate = Request::uri();
+
+$color = "#323232";
+
+// var_dump($category);
+
+// foreach ($category as $key => $cat) {
+//     var_dump($cat);
+//     if ($cat["slug"] == $cate) {
+//         $color = "#" . $cat["color"];
+//     } else {
+//         // echo "SLUG: " . $cat . "<br>";
+//         // echo $cate . "<br>";
+//     }
+// }
 
 // Only display breadcrumbs if necessary
 if (count($params) <= 0) {
@@ -47,8 +61,8 @@ $url = "";
 
 </style>
 
-<div class="breadcrumbs">
-<a class="home_icon" href="/"></a><span> / </span><a href="/<?= $category; ?>"><?= ucfirst($category); ?></a>
+<div class="breadcrumbs" style="background-color: <?= $color; ?>">
+<a class="home_icon" href="/"></a><span> / </span><a href="/<?= $cate; ?>"><?= ucfirst($cate); ?></a>
 <?php foreach ($params as $key => $param) :
     if (count($params) < 1) {
     break;
@@ -57,7 +71,7 @@ $url = "";
 ?>
      
      <span> / </span>
-     <a href="/<?= $category . $url; ?>"><?= ucfirst($param); ?></a> 
+     <a href="/<?= $cate . $url; ?>"><?= ucfirst($param); ?></a> 
 <?php endforeach; ?>
 </div>
 

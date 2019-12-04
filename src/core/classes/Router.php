@@ -51,6 +51,7 @@ class Router {
     protected function callMethod($controller, $method) {
         $controller = new $controller;
         if (method_exists($controller, $method)) {
+            
             // Return a controller instance and call indicated method
             return $controller->$method();
         } else {

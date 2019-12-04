@@ -12,6 +12,8 @@ class QueryBuilder {
 
     // Abstraction method for sql select
     public function select($customOptions) {
+        $start = microtime(true);
+        // Execute the query
         
         // Check if parameters contain needed parameters
         if (!$customOptions["from"]) {
@@ -43,7 +45,7 @@ class QueryBuilder {
             $whereClause = "";
 
             if ($orderBy) {
-                $order = "ORDER BY " . $orderBy;
+                $order = "ORDER BY {$orderBy}";
             }
             if ($where) {
                 // create a placeholder string like 'WHERE username LIKE :username'
@@ -51,7 +53,7 @@ class QueryBuilder {
             }
             $sql = sprintf(
                 // There must be a better way of doing this....
-                "SELECT %s FROM %s %s %s LIMIT 1000",
+                "SELECT SQL_NO_CACHE %s FROM %s %s %s LIMIT 1000",
                 $select,
                 $from,
                 $whereClause,
@@ -60,7 +62,12 @@ class QueryBuilder {
             // Array containing actual parameter
             $parameter = [$where => $target];
             
-            return $this->fetch($sql, $parameter, $into);
+            $res = $this->fetch($sql, $parameter, $into);
+            
+            $time = microtime(true) - $start;
+            Logger::debug("Query {$sql} took {$time} ms.");
+            
+            return $res;
 
         } catch (Exception $e) {
             die("SELECT ARGUMENTS FAILED");

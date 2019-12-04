@@ -70,6 +70,7 @@ $categories = App::get("db")->select($params);
     width: 100%;
     display: flex;
     justify-content: space-evenly;
+    padding-bottom: 0px;
 }
 
 
@@ -120,10 +121,11 @@ a.active {
         align-items: center;
         margin-top: -250px;
         transition: margin .5s ease;
+        padding-bottom: 15px;
     }
 
     .nav_links li {
-        margin-top: 15px;
+        margin-top: 3px;
     }
 
     .hNav {

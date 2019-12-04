@@ -41,7 +41,7 @@ class StaticController extends Controller {
     }
 
     public static function notFound() {
-        return self::view("placeholder", ["headline" => "404", "content" => "page not found"]);
+        return self::view("404");
     }
 
 

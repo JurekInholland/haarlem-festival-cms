@@ -8,6 +8,8 @@
     align-items: center;
     background-image: url("/img/festival.jpg");
     background-size: cover;
+    background-position: center;
+    /* overflow: hidden; */
 }
 .circle {
     border-radius: 50%;
@@ -21,6 +23,8 @@
     justify-content: center;
     font-family: Rockwell, Georgia;
     font-weight: bold;
+    min-height: 300px;
+    min-width: 300px;
 }
 
 #main_headline {
