@@ -59,3 +59,5 @@ Festival? global info like start, end date
 abdul: shopping cart?
 hamza: check, compare
 stephen: explain database model, festival days, css grid
+///////////////////
+cache page settins ; file? redis?

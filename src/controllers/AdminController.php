@@ -2,9 +2,28 @@
 
 class AdminController extends Controller {
 
-    public function index() {
 
+    public function create() {
+        return EventController::newEvent();
+    }
+
+    public function events($para = "") {
+        return EventController::index();
+    }
+
+    public function event($slug = "") {
+        return EventController::edit($slug);
+    }
+
+
+    public function index() {
+        return EventController::index();
+    }
+
+
+    public function oldindex() {
         $uriParams = Request::uriParams();
+        die(var_dump($uriParams));
         if (!array_key_exists(0, $uriParams)) {
             return EventController::index();
         }

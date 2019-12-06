@@ -12,7 +12,7 @@ class FestivalEvent {
     protected $slug;
     protected $has_data = false;
 
-    public function __construct($eventData)
+    public function __construct(array $eventData)
     {
 
         if (isset($eventData["title"])) {

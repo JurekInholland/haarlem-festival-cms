@@ -43,6 +43,29 @@ class EventController extends Controller {
 
     }
 
+    public static function edit($slug="") {
+        $event = FestivalEventAdapter::fromSlug($slug);
+
+        // If an event matching the given slug was found
+        // die(var_dump($event));
+        if (!$event->hasData()) {
+            return self::view("admin/notFound");
+        }
+        $days = FestivalEventAdapter::festivalDays();
+        $locations = App::get("festival")["location"];
+        $event_types = App::get("festival")["event_type"];
+
+
+        $template_vars = [
+            "event" => $event,
+            "festival_days" => $days,
+            "locations" => $locations, 
+            "event_types" => $event_types
+        ];
+
+        return Controller::view("admin/editEvent", $template_vars);
+    }
+
     public static function editEvent() {
         $uriParams = Request::uriParams();
         $slug = "";
@@ -50,6 +73,8 @@ class EventController extends Controller {
         if (array_key_exists(1, $uriParams)) {
             $slug = $uriParams[1];
         }
+
+        
 
         $event = FestivalEventAdapter::fromSlug($slug);
 

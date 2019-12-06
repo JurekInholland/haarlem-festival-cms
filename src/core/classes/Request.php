@@ -1,14 +1,25 @@
 <?php
+
 // Fetch information about a browser request
+
 class Request {
     
+    // Return an array of uri components 
+    public static function uriComponents() {
+        $uri = trim(parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH), "/");
+        
+        if (!$res = explode('/', $uri, 3)) {
+            $res = [];
+        }
+        return $res;
+    }
+
     // Return a request's uri
     public static function uri() {
         $uri = trim(parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH), "/");
         $uriArray = explode('/', $uri);
         return $uriArray[0];
     }
-    
     
     // Return a request's method (get, post..)
     public static function method() {
