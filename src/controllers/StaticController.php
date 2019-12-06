@@ -36,8 +36,10 @@ class StaticController extends Controller {
 
     public function test() {
         // self::testView();
+        $fs = new FestivalService();
+        $festival = $fs::getFestival();
 
-        return self::view("partials/table");
+        // return self::view("partials/table");
     }
 
     public static function notFound() {

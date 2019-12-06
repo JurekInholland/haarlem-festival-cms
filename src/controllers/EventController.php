@@ -28,7 +28,7 @@ class EventController extends Controller {
     public static function newEvent() {
         $event = new FestivalEvent([]);
 
-        $days = FestivalEventAdapter::festivalDays();
+        $days = App::get("festival")->festivalDays();
         $locations = App::get("festival")["location"];
         $event_types = App::get("festival")["event_type"];
 

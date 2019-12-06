@@ -1,15 +1,8 @@
 <?php
 
-$params = [
-    "select" => ["id", "category", "color", "slug"],
-    "from" => "event_categories"
-];
+
 $uri = Request::uri();
-$categories = App::get("db")->select($params);
-
-
-
-
+$categories = App::get("festival")->getCategories();
 
 ?>
 
@@ -174,7 +167,7 @@ a.active {
                     }
                 ?>
 
-                <li><a <?= $active; ?> href="/<?= $category["slug"]; ?>"><?= $category["category"]; ?></a></li>
+                <li><a <?= $active; ?> href="/<?= $category["slug"]; ?>"><?= $category["name"]; ?></a></li>
 
                 <?php endforeach; ?>
 

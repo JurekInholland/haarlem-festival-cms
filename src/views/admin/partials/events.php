@@ -64,7 +64,9 @@
 
 <section class="event-grid">
 
-    <?php foreach ($events as $key => $event) : ?>
+    <?php foreach ($events as $key => $event) :
+    // TODO $category = App:getCurrentCategory
+    ?>
 
         <a class="event_section" href="/admin/event/<?= $event->getSlug(); ?>">
             <section class="event">

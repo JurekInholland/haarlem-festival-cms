@@ -7,9 +7,20 @@ require "../src/core/bootstrap.php";
 
 $routes = [
     "GET" => [
+
+        // Jurek
         "admin" => "AdminController",
+
+        // Stephen
         "jazz" => "JazzController",
-        "" => "StaticController"
+
+        "food" => "FoodController",
+
+        "dance" => "DanceController",
+
+        "" => "StaticController",
+
+        "test" => "StaticController"
 
     ]
 ];

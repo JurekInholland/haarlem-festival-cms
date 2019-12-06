@@ -58,18 +58,18 @@ class FestivalEvent {
 
     public function getLocation() {
 
-        $locations = App::get("festival")["location"];
-        return $locations[$this->location];
+        // $locations = App::get("festival")["location"];
+        return $this->location;
     }
 
     public function getLocationId() {
         return $this->location;
     }
 
-    public function getCategory() {
-        $types = App::get("festival")["event_type"];
-        return $types[$this->category];
-    }
+    // public function getCategory() {
+    //     $types = App::get("festival")->getCategories();
+    //     return $types[$this->category];
+    // }
 
     public function getCategoryId() {
         return $this->category;
@@ -78,10 +78,10 @@ class FestivalEvent {
         return $this->price;
     }
 
-    public function getColor() {
-        $colors = App::get("festival")["color"];
-        return $colors[$this->category];
-    }
+    // public function getColor() {
+    //     $colors = App::get("festival")["color"];
+    //     return $colors[$this->category];
+    // }
 
     public function getSlug() {
         return $this->slug;

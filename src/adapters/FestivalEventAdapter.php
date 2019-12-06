@@ -78,35 +78,4 @@ class FestivalEventAdapter {
     }
 
 
-    public static function festivalDays() {
-        
-        // Get start and end date from festival config
-        $info = App::get("festival");
-        
-        $start = new DateTime($info["start_date"]);
-        $end = new DateTime($info["end_date"]);
-        
-        // A bit of a hack: Set the time > zero to also include the last day..
-        $end->setTime(0,0,1); 
-
-        // iterable DatePeriod
-        $period = new DatePeriod(
-            $start,
-            new DateInterval('P1D'),
-            $end
-        );
-
-        $result = [];
-
-        foreach ($period as $idx => $date) {
-
-            $string = "{$date->format('l')}, {$date->format('d.m.Y')}";
-
-            $result[$idx] = [
-                "string" => $string,
-                "date" => $date
-            ];        
-        }
-        return $result;
-    }
 }
