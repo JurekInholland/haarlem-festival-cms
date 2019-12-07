@@ -1,5 +1,26 @@
 -- Festival Setup
 
+-- NEW EVENTS
+CREATE TABLE `new_events` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `description` text NULL,
+  `start_date` datetime NOT NULL,
+  `end_date` datetime NOT NULL,
+  `location` varchar(200) NOT NULL DEFAULT '',
+  `category` tinyint(4) NOT NULL DEFAULT '0',
+  `price` double DEFAULT 0,
+  `artist` varchar(100) NOT NULL,
+  `subject` int(11) NULL,
+  `slug` varchar(100) NOT NULL,
+  
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `slug` (`slug`)
+
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+
 -- Event Categories
 CREATE TABLE `event_categories` (
 	`id` INT(11) NOT NULL,
@@ -71,3 +92,4 @@ CREATE TABLE `cms_users` (
 )
 ENGINE=InnoDB
 ;
+
