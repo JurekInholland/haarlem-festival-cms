@@ -65,6 +65,7 @@
 <section class="event-grid">
 
     <?php foreach ($events as $key => $event) :
+    die(var_dump($event));
     // TODO $category = App:getCurrentCategory
     ?>
 

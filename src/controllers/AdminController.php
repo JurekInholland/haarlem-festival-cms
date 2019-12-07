@@ -3,12 +3,52 @@
 class AdminController extends Controller {
 
 
-    public function create() {
-        return EventController::newEvent();
+    public function setup() {
+        echo "SETUP";
     }
 
+    public function create() {
+
+        $event = new GeneralEvent([]);
+        // return EventController::newEvent();
+        $days = App::get("festival")->festivalDays();
+        
+        $locations = ["loc1", "loc2"];
+
+        $event_types = App::get("festival")->getCategories();
+
+        $template_vars = [
+            "event" => $event,
+            "days" => $days,
+            "locations" => $locations,
+            "event_types" => $event_types
+        ];
+
+        return self::view("admin/partials/newEditEvent", $template_vars);
+    }
+
+    // public static function newEvent() {
+    //     $event = new FestivalEvent([]);
+
+    //     $days = App::get("festival")->festivalDays();
+    //     $locations = App::get("festival")["location"];
+    //     $event_types = App::get("festival")["event_type"];
+
+    //     $template_vars = [
+    //         "event" => $event,
+    //         "festival_days" => $days,
+    //         "locations" => $locations, 
+    //         "event_types" => $event_types
+    //     ];
+
+    //     return self::view("admin/editEvent", $template_vars);
+
+    // }
+
     public function events($para = "") {
-        return EventController::index();
+       $events = EventService::getAll();
+       return self::view("admin/events", ["events" => $events]);
+
     }
 
     public function event($slug = "") {
@@ -17,7 +57,8 @@ class AdminController extends Controller {
 
 
     public function index() {
-        return EventController::index();
+        $events = EventService::getAll();
+        return self::view("admin/events", ["events" => $events]);
     }
 
 

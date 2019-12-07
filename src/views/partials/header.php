@@ -3,7 +3,7 @@
 
 $uri = Request::uri();
 $categories = App::get("festival")->getCategories();
-
+// die(var_dump($categories));
 ?>
 
 <style>
@@ -160,14 +160,14 @@ a.active {
             <ul class="nav_links">
 
                 <?php foreach ($categories as $key => $category) :
-                    if ($category["slug"] == $uri) {
-                        $active = "class='active' style='background-color: #{$category["color"]};'";
+                    if ($category->getSlug() == $uri) {
+                        $active = "class='active' style='background-color: #{$category->getColor()};'";
                     } else {
                         $active = "";
                     }
                 ?>
 
-                <li><a <?= $active; ?> href="/<?= $category["slug"]; ?>"><?= $category["name"]; ?></a></li>
+                <li><a <?= $active; ?> href="/<?= $category->getSlug(); ?>"><?= $category->getName(); ?></a></li>
 
                 <?php endforeach; ?>
 

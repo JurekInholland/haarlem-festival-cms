@@ -14,11 +14,11 @@ class FestivalService {
 
         $categories = [];
         foreach ($festivalInfo as $categoryInfo) {
-            $category = [
+            $category = new FestivalCategory([
                 "name" => $categoryInfo["category"],
                 "color" => $categoryInfo["color"],
                 "slug" => $categoryInfo["slug"]
-            ];
+            ]);
             array_push($categories, $category);
         }
 

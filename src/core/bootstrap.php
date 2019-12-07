@@ -44,3 +44,4 @@ $fest = new FestivalService();
 $festival = $fest->getFestival();
 // die(var_dump($festival));
 App::bind("festival", $fest->getFestival());
+
