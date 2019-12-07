@@ -10,8 +10,8 @@ $categories = App::get("festival")->getCategories();
 /* NAVIGATION */
 
 .logo {
-    height: 60px;
-    width: 60px;
+    height: 64px;
+    width: 64px;
     /* justify-self: center; */
     align-self: center;
     margin-left: .5rem;
@@ -32,6 +32,7 @@ $categories = App::get("festival")->getCategories();
 
 .hNav {
     border-bottom: 1px solid black;
+    border
 }
 
 .hNav, .hNav ul {
@@ -47,8 +48,8 @@ $categories = App::get("festival")->getCategories();
 }
 
 .icon_nav li {
-    width: 35px;
-    height: 35px;
+    width: 36px;
+    height: 36px;
     background-size: contain;
     margin-right: .65rem;
 }
@@ -148,6 +149,7 @@ a.active {
     margin-top: 10px;
     transition: margin .5s ease;
 }
+
 
 </style>
 

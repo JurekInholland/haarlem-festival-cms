@@ -1,8 +1,7 @@
 
 <style>
 .index {
-    width: 100vw;
-    height: calc(100vh - 61px);
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,8 +13,8 @@
 .circle {
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.55);
-    width: calc(100vmin - 75px);
-    height: calc(100vmin - 75px);
+    width: calc(100vmin - 125px);
+    height: calc(100vmin - 125px);
     margin: 0 auto;
     display: flex;
     flex-flow: column;

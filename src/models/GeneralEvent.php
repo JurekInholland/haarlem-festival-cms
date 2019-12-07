@@ -13,16 +13,30 @@ class GeneralEvent {
 
     public function __construct($eventData)
     {
-        $this->startDate = $eventData["start_date"];
-        $this->endDate = $eventData["end_date"];
-        $this->location = $eventData["location"];
-        $this->category = $eventData["category"];
-        $this->price = $eventData["price"];
-        $this->artist = $eventData["artist"];
-        $this->subject = $eventData["subject"];
-        $this->slug = $eventData["slug"];
+        $properties = ["startDate", "endDate", "location", "locationDetail", "actor", "slots", "price", "description"];
 
-        $this->description = $eventData["description"];
+        foreach($properties as $property) {
+
+            if (isset($eventData[$property])) {
+                $this->$property = $eventData[$property];
+            } else {
+                echo "property not set {$property}";
+            }
+        }
+
+        // try {
+        //     $this->startDate = $eventData["start_date"];
+        //     $this->endDate = $eventData["end_date"];
+        //     $this->location = $eventData["location"];
+        //     $this->category = $eventData["category"];
+        //     $this->price = $eventData["price"];
+        //     $this->artist = $eventData["artist"];
+        //     $this->subject = $eventData["subject"];
+        //     $this->slug = $eventData["slug"];
+    
+        //     $this->description = $eventData["description"];
+        // } catch () {}
+        
     }
 
 
@@ -57,5 +71,11 @@ class GeneralEvent {
     public function getSubject() {
         return $this->subject;
     }
+
+    public function getPrice() {
+        return $this->price;
+    }
+
+
 
 }

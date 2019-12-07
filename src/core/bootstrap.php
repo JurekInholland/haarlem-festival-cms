@@ -40,8 +40,9 @@ App::bind("db", new QueryBuilder(
 // Static festival data like start and end dates. This could be stored in database as well..
 // App::bind("festival", parse_ini_file("../src/config/festival.ini", true));
 
-$fest = new FestivalService();
-$festival = $fest->getFestival();
-// die(var_dump($festival));
-App::bind("festival", $fest->getFestival());
+// Store generic festival information in DI container.
+// In real life, this would then be stored in memory with redis or memcached.
+// We don't do it here since it is not mentioned at all in the requirements.
+$festivalService = new FestivalService();
+App::bind("festival", $festivalService->getFestival());
 

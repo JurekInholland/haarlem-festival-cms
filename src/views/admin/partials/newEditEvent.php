@@ -188,8 +188,9 @@ input[type=time] {
         <section class="input3">
             <label for="input3">Date</label>
             <select name="day">
-                <?php foreach ($festival_days as $key => $day) : ?>
-
+                <?php foreach ($festival_days as $key => $day) :
+                                        die(var_dump($day));
+                                        ?>
                     <?php if($day["string"] == $event->getDateString()) {$selected = "selected";} else {$selected = "";} ?>
 
                     <option <?= $selected; ?> value="<?= $key; ?>"><?= $day["string"] ?></option>

@@ -18,6 +18,7 @@ abstract class Controller {
         require "../src/views/partials/head.php";
         require "../src/views/partials/header.php";
         require "../src/views/partials/breadcrumbs.php";
+        require "../src/views/partials/pageContent.php";
 
         // Require the requested view
         require "../src/views/{$viewName}.php";
