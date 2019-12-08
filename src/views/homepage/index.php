@@ -5,7 +5,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("/img/festival.jpg");
+    background-image: linear-gradient(to right top, #169bd5, #d64332, #f59f17);
+    /* background-image: url("/img/festival.jpg"); */
     background-size: cover;
     background-position: center;
     /* overflow: hidden; */

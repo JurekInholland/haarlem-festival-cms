@@ -7,7 +7,7 @@ class Festival {
     protected $startDate;
     protected $endDate;
     protected $categories;
-
+    protected $locations;
 
     public function __construct($properties)
     {
@@ -15,6 +15,11 @@ class Festival {
         $this->startDate = $properties["start_date"];
         $this->endDate = $properties["end_date"];
         $this->categories = $properties["categories"];
+        $this->locations = $properties["locations"];
+    }
+
+    public function getLocations() {
+        return $this->locations;
     }
 
     public function getCategories() {

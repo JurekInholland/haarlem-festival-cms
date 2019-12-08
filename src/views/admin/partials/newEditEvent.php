@@ -1,3 +1,8 @@
+<?php
+// die(var_dump($festival_days));
+
+?>
+
 <script src="/js/cleave.js"></script>
 
 <style>
@@ -23,6 +28,7 @@ input, textarea {
 
 form {
     display: grid;
+    grid-auto-columns: 1fr;
     grid-template-areas:
         'left left right1'
         'left left right2'
@@ -161,7 +167,7 @@ input[type=time] {
 </style>
 <section class="wrapper">
     
-    <form action="/eventSubmit" method="POST">
+    <form action="/admin/submit" method="POST">
         <section class="input0">
             <label for="descr" >Event description</label>
             <textarea name="description"><?php echo $event->getDescription(); ?></textarea>
@@ -169,7 +175,7 @@ input[type=time] {
         
         <section class="input1">
             <label for="event_artist">Artist</label>
-            <input name="title" type="text" value="<?= $event->getArtist(); ?>">
+            <input name="artist" type="text" value="<?= $event->getArtist(); ?>">
         </section>
 
         <section class="input2">
@@ -189,8 +195,7 @@ input[type=time] {
             <label for="input3">Date</label>
             <select name="day">
                 <?php foreach ($festival_days as $key => $day) :
-                                        die(var_dump($day));
-                                        ?>
+                ?>
                     <?php if($day["string"] == $event->getDateString()) {$selected = "selected";} else {$selected = "";} ?>
 
                     <option <?= $selected; ?> value="<?= $key; ?>"><?= $day["string"] ?></option>
@@ -220,7 +225,7 @@ input[type=time] {
                 ?>
                     <?php if($key == $event->getLocationId()) {$selected = "selected";} else {$selected = "";} ?>
 
-                    <option <?= $selected; ?> value="<?= $key; ?>"><?= $location ?></option>
+                    <option <?= $selected; ?> value="<?= $location->getId(); ?>"><?= $location->toString() ?></option>
                     
                 <?php endforeach; ?>
             </select>

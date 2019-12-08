@@ -18,10 +18,21 @@ $routes = [
 
         "dance" => "DanceController",
 
+        // Homepage
         "" => "StaticController",
 
-        "test" => "StaticController"
+        "api" => "ApiController",
 
+        // Static pages
+        "parking" => "StaticController",
+        "house-rules" => "StaticController",
+        "faq" => "StaticController",
+
+        "test" => "StaticController",
+    ],
+
+    "POST" => [
+        "admin" => "AdminController"
     ]
 ];
 

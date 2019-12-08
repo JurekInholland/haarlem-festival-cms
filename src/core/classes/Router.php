@@ -60,7 +60,9 @@ class Router {
                 $parameter = $uriComponents[2];
             }
 
-            if (method_exists($controller, $method)) {
+            
+
+            if (is_callable(array($controller, $method))) {
                 return $this->callMethod($controller, $method, $parameter);
             }
         }

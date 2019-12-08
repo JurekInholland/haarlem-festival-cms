@@ -1,14 +1,11 @@
 <style>
 
 footer {
-
     background-color: brown;
     display: flex;
     flex-wrap: wrap;
     padding: .75rem;
     padding-bottom: 3rem;
-    /* display: grid; */
-    /* grid-template-columns: repeat(auto-fit, 250px); */
 }
 
 
@@ -77,6 +74,7 @@ footer form {
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
+    margin: 0;
     /* max-width: 420px; */
 }
 

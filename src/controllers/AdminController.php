@@ -13,18 +13,28 @@ class AdminController extends Controller {
         // return EventController::newEvent();
         $days = App::get("festival")->festivalDays();
         
-        $locations = ["loc1", "loc2"];
+        $locations = App::get("festival")->getLocations();
 
         $event_types = App::get("festival")->getCategories();
 
         $template_vars = [
             "event" => $event,
-            "days" => $days,
+            "festival_days" => $days,
             "locations" => $locations,
             "event_types" => $event_types
         ];
-
         return self::view("admin/partials/newEditEvent", $template_vars);
+    }
+
+    public function submit() {
+
+        if (isset($_POST["cancel"])) {
+            self::redirect("admin");
+        }
+
+        $event = EventService::fromPost($_POST);
+
+        die(var_dump($event));
     }
 
     // public static function newEvent() {

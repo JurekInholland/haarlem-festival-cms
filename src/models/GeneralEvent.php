@@ -5,40 +5,33 @@ class GeneralEvent {
     protected $startDate;
     protected $endDate;
     protected $location;
-    protected $locationDetail;
-    protected $actor;
+    // protected $locationDetail;
+    protected $artist;
     protected $slots;
     protected $price;
     protected $description;
+    
+    protected $category;
 
     public function __construct($eventData)
     {
-        $properties = ["startDate", "endDate", "location", "locationDetail", "actor", "slots", "price", "description"];
+        
+        $properties = ["startDate", "endDate", "location", "locationDetail", "artist", "slots", "price", "description", "category"];
 
         foreach($properties as $property) {
 
             if (isset($eventData[$property])) {
                 $this->$property = $eventData[$property];
             } else {
-                echo "property not set {$property}";
+                $this->$property = "";
             }
-        }
-
-        // try {
-        //     $this->startDate = $eventData["start_date"];
-        //     $this->endDate = $eventData["end_date"];
-        //     $this->location = $eventData["location"];
-        //     $this->category = $eventData["category"];
-        //     $this->price = $eventData["price"];
-        //     $this->artist = $eventData["artist"];
-        //     $this->subject = $eventData["subject"];
-        //     $this->slug = $eventData["slug"];
-    
-        //     $this->description = $eventData["description"];
-        // } catch () {}
-        
+        }        
     }
 
+    public function getLocationId() {
+        return 1;
+        return $this->location->getId();
+    }
 
     public function getStartTime() {
         return $this->startDate;
@@ -76,6 +69,9 @@ class GeneralEvent {
         return $this->price;
     }
 
+    public function getDateString() {
+        return $this->startDate;
+    }
 
 
 }

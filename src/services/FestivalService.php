@@ -12,6 +12,8 @@ class FestivalService {
 
         $festivalInfo = App::get("db")->select($params);
 
+        $locations = self::getLocations();
+
         $categories = [];
         foreach ($festivalInfo as $categoryInfo) {
             $category = new FestivalCategory([
@@ -24,9 +26,27 @@ class FestivalService {
 
         $festivalInfo = ["start_date" => $festivalInfo[0]["start_date"],
                          "end_date" => $festivalInfo[0]["end_date"],
-                         "categories" => $categories];
+                         "categories" => $categories,
+                         "locations" => $locations
+                        ];
 
         $festival = new Festival($festivalInfo);
         return $festival;
+    }
+
+    private static function getLocations() {
+        $params = [
+            "select" => ["*"],
+            "from" => "cms_locations"
+        ];
+
+        $locations = App::get("db")->select($params);
+
+        $result = [];
+        foreach ($locations as $key => $location) {
+            $eventLocation = new EventLocation($location);
+            array_push($result, $eventLocation);
+        }
+        return $result;
     }
 }

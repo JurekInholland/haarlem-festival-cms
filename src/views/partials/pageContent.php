@@ -1,7 +1,7 @@
 
 <style>
 .page_content {
-    height: calc(100vh - 65px);
+    min-height: calc(100vh - 65px - 48px);
 }
 
 </style>

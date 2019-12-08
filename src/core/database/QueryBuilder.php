@@ -96,7 +96,7 @@ class QueryBuilder {
                 // Fetch into that class
                 $result = $statement->fetchAll(PDO::FETCH_CLASS, $className);
             } else {
-                $result = $statement->fetchAll();
+                $result = $statement->fetchAll(PDO::FETCH_ASSOC);
             }
             return $result;
         } catch (PDOException $e){

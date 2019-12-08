@@ -13,7 +13,23 @@ class StaticController extends Controller {
 
     public function index() {
 
-        return $this->view("homepage/index");
+        switch (Request::uri()) {
+            case "":
+                return $this->view("homepage/index");
+
+            case "parking":
+                echo "Parking";
+                break;
+            
+            case "house-rules":
+                echo "House rules";
+                break;
+            
+            case "faq":
+                echo "faq";
+                break;  
+        }
+
         // return $this->view("placeholder", ["headline" => "Homepage", "content" => "index content..."]);
     }
 
