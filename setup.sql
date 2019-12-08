@@ -93,3 +93,15 @@ CREATE TABLE `cms_users` (
 ENGINE=InnoDB
 ;
 
+
+
+-- Debug locations
+INSERT INTO `cms_locations` (`id`, `name`, `address`, `category`)
+VALUES
+	(1, 'Patronaat', 'Main Hall', 0),
+	(2, 'Patronaat', 'Second Hall', 0),
+	(3, 'Grote Markt', '', 0),
+	(4, 'Ratatouille', 'Spaarne 96, 2011 CL Haarlem, Nederland', 1),
+	(5, 'Restaurant ML', 'Kleine Houtstraat 70, 2011 DR Haarlem, Nederland', 1),
+	(6, 'Club Stalker', 'Kromme Elleboogsteeg 20, 2011 TS Haarlem', 2),
+	(7, 'Caprera Openluchttheater ', 'Hoge Duin en Daalseweg 2, 2061 AG Bloemendaal', 2);
