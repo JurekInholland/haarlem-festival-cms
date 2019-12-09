@@ -1,29 +1,49 @@
 <?php
 
-class ApiController {
+class ApiController extends Controller {
     
     // Work in progress
 
     public function index() {
-        echo "API INDEX";
+        return self::view("api/index");
     }
 
     public function locations() {
         
-        $test = [
-            "entry1" => [
-                "prop1" => "1",
-                "prop2" => "2"
-            ],
-
-            "entry1" => [
-                "prop1" => "1",
-                "prop2" => "2"
-            ],
-        ];
-
-        $locations = App::get("festival")->getLocations();
+        $locations = FestivalService::getLocations();
         self::serveJson((array)$locations);
+    }
+
+    public function events() {
+        $events = EventService::getAll();
+        self::serveJson($events);
+    }
+
+    public function days() {
+        $days = App::get("festival")->festivalDays();
+        self::serveJson($days);
+    }
+
+    public function event($slug) {
+        echo "SLUG: " . $slug;
+        var_dump($_GET);
+    }
+
+    public function categories() {
+        $categories = App::get("festival")->getCategories();
+        self::serveJson($categories);
+        return;
+        $result = [];
+
+        foreach ($categories as $category) {
+            $result["category_{$category->getId()}"] = [
+                "name" => $category->getName(),
+                "slug" => $category->getSlug(),
+                "color" => $category->getColor(),
+                "id" => $category->getId()
+            ];
+        }
+        self::serveJson($result);
     }
 
 

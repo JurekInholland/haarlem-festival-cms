@@ -37,23 +37,10 @@ class AdminController extends Controller {
         die(var_dump($event));
     }
 
-    // public static function newEvent() {
-    //     $event = new FestivalEvent([]);
+    public function locTest() {
+        return self::view("admin/partials/editLocation");
 
-    //     $days = App::get("festival")->festivalDays();
-    //     $locations = App::get("festival")["location"];
-    //     $event_types = App::get("festival")["event_type"];
-
-    //     $template_vars = [
-    //         "event" => $event,
-    //         "festival_days" => $days,
-    //         "locations" => $locations, 
-    //         "event_types" => $event_types
-    //     ];
-
-    //     return self::view("admin/editEvent", $template_vars);
-
-    // }
+    }
 
     public function events($para = "") {
        $events = EventService::getAll();
@@ -68,6 +55,7 @@ class AdminController extends Controller {
 
     public function index() {
         $events = EventService::getAll();
+
         return self::view("admin/events", ["events" => $events]);
     }
 

@@ -102,9 +102,9 @@ footer form input:last-of-type {
     <section>
         <h3>Useful links</h3>
         <ul class="vertical">
-            <li><a href="">Parking</a></li>
-            <li><a href="">House Rules</a></li>	
-            <li><a href="">FAQ</a></li>
+            <li><a href="/parking">Parking</a></li>
+            <li><a href="/house-rules">House Rules</a></li>	
+            <li><a href="/faq">FAQ</a></li>
         </ul>
     </section>
 

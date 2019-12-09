@@ -1,17 +1,17 @@
 <?php
 
 class EventLocation {
-    protected $id;
-    protected $name;
-    protected $address;
+    public $id;
+    public $name;
+    public $address;
+    public $category;
 
     public function __construct($properties)
     {
-        $this->properties = $properties;
-
         $this->id = $properties["id"];
         $this->name = $properties["name"];
         $this->address = $properties["address"];
+        $this->category = $properties["category"];
     }
 
     public function getId() {

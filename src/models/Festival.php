@@ -15,7 +15,7 @@ class Festival {
         $this->startDate = $properties["start_date"];
         $this->endDate = $properties["end_date"];
         $this->categories = $properties["categories"];
-        $this->locations = $properties["locations"];
+        // $this->locations = $properties["locations"];
     }
 
     public function getLocations() {
@@ -50,6 +50,7 @@ class Festival {
             $string = "{$date->format('l')}, {$date->format('d.m.Y')}";
 
             $result[$idx] = [
+                "index" => $idx,
                 "string" => $string,
                 "date" => $date
             ];        

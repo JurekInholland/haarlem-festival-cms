@@ -5,7 +5,7 @@ class EventService {
     // Return an Event based on user input post data 
     public static function fromPost($post) {
 
-        $location = new EventLocation($post)
+        // $location = new EventLocation($post)
 
         $eventData = [
             "artist" => $post["artist"],
@@ -44,7 +44,7 @@ class EventService {
         $params = [
             "select" => ["*"],
             "from" => "new_events",
-            "orderBy" => "start_date"
+            "orderBy" => "startDate"
         ];
 
         $events = App::get("db")->select($params);
@@ -78,5 +78,20 @@ class EventService {
         }
 
         return $event;
+    }
+
+
+    public static function store(GeneralEvent $event) {
+        $eventInfo = [
+            "title" => $event->title,
+            "description" => $event->description, 
+            "category" => $event->category, 
+            "start_time" => $event->start_time, 
+            "end_time" => $event->end_time, 
+            "price" => $event->price, 
+            "location" => $event->location, 
+            "slug" => $event->slug, 
+        ];
+        App::get("db")->insertUpdate("events", $eventInfo);
     }
 }

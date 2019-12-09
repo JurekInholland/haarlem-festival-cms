@@ -65,18 +65,17 @@
 <section class="event-grid">
 
     <?php foreach ($events as $key => $event) :
-    die(var_dump($event));
     // TODO $category = App:getCurrentCategory
     ?>
 
         <a class="event_section" href="/admin/event/<?= $event->getSlug(); ?>">
             <section class="event">
-                <h2><?= $event->getTitle(); ?></h2>
+                <h2><?= $event->getArtist(); ?></h2>
                 <p><?= $event->getDescription(); ?></p>
                 <ul class="event-info">
-                    <li><?= $event->getDate(); ?></li>
+                    <li><?= $event->getDateString(); ?></li>
                     <li style="font-weight: bold;"><?= $event->getStartTime(); ?> - <?= $event->getEndTime(); ?></li>
-                    <li> | <?= $event->getLocation(); ?></li>
+                    <!-- <li><?= $event->getLocation(); ?></li> -->
                     <li style="color: <?= $event->getColor(); ?>" class="category"><?= $event->getCategory(); ?></li>
                 </ul>
             </section>

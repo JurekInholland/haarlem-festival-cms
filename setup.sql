@@ -96,7 +96,7 @@ ENGINE=InnoDB
 
 
 -- Debug locations
-INSERT INTO `cms_locations` (`id`, `name`, `address`, `category`)
+INSERT INTO `event_locations` (`id`, `name`, `address`, `category`)
 VALUES
 	(1, 'Patronaat', 'Main Hall', 0),
 	(2, 'Patronaat', 'Second Hall', 0),

@@ -25,7 +25,9 @@ class GeneralEvent {
             } else {
                 $this->$property = "";
             }
-        }        
+        }
+
+        $this->slug = self::createSlug($this->artist);
     }
 
     public function getLocationId() {
@@ -33,12 +35,21 @@ class GeneralEvent {
         return $this->location->getId();
     }
 
+    public function getLocation() {
+        // return 1;
+        die(var_dump($this->location));
+        return $this->location;
+    }
+
     public function getStartTime() {
-        return $this->startDate;
+        // die(var_dump($this->startDate));
+        $date = new DateTime($this->startDate);
+        return $date->format('H:i');
     }
 
     public function getEndTime() {
-        return $this->endDate;
+        $date = new DateTime($this->endDate);
+        return $date->format('H:i');
     }
 
     public function getCategoryId() {
@@ -53,8 +64,17 @@ class GeneralEvent {
         return $this->artist;
     }
 
+    
+
     public function getCategory() {
-        return $this->category;
+        $categories = App::get("festival")->getCategories();
+        // die(var_dump($categories[$this->category]));
+        return $categories[$this->category]->getName();
+    }
+
+    public function getColor() {
+        $categories = App::get("festival")->getCategories();
+        return $categories[$this->category]->getColor();
     }
 
     public function getSlug() {
@@ -73,5 +93,8 @@ class GeneralEvent {
         return $this->startDate;
     }
 
-
+    private static function createSlug($str, $delimiter = '-'){
+        $slug = strtolower(trim(preg_replace('/[\s-]+/', $delimiter, preg_replace('/[^A-Za-z0-9-]+/', $delimiter, preg_replace('/[&]/', 'and', preg_replace('/[\']/', '', iconv('UTF-8', 'ASCII//TRANSLIT', $str))))), $delimiter));
+        return $slug;
+    }
 }
