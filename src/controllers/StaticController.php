@@ -12,7 +12,6 @@ class StaticController extends Controller {
     }
 
     public function index() {
-
         switch (Request::uri()) {
             case "":
                 return $this->view("homepage/index");
@@ -27,7 +26,8 @@ class StaticController extends Controller {
             
             case "faq":
                 echo "faq";
-                break;  
+                break;
+
         }
     }
 

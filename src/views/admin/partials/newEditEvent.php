@@ -225,15 +225,7 @@ input[type=time] {
             <?php
             require "../src/views/admin/partials/editLocation.php";
             ?>
-            <!-- <select name="location" >
-                <?php foreach ($locations as $key => $location) : 
-                ?>
-                    <?php if($key == $event->getLocationId()) {$selected = "selected";} else {$selected = "";} ?>
 
-                    <option <?= $selected; ?> value="<?= $location->getId(); ?>"><?= $location->toString() ?></option>
-                    
-                <?php endforeach; ?>
-            </select> -->
 
         </section>
 

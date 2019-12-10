@@ -6,14 +6,16 @@
     
 
     <?php 
-    if($event->hasData()) {
+    if($event->artist) {
         $headline = "Edit Event";
     } else {
         $headline = "New Event";
     }
     ?>
+
+    
     <h1><?= $headline; ?></h1>
 
-    <?php require "partials/editEvent.php"; ?>
+    <?php require "partials/newEditEvent.php"; ?>
     </div>
 </div>

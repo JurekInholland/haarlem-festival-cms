@@ -23,7 +23,7 @@ class AdminController extends Controller {
             "locations" => $locations,
             "event_types" => $event_types
         ];
-        return self::view("admin/partials/newEditEvent", $template_vars);
+        return self::view("admin/editEvent", $template_vars);
     }
 
     public function submit() {
@@ -57,7 +57,7 @@ class AdminController extends Controller {
                     "locations" => $event->getLocaions(),
                     "event_types" => $event->getValidCategories()
                 ];
-                return self::view("admin/partials/newEditEvent", $template_vars);    
+                return self::view("admin/editEvent", $template_vars);    
             } else {
                 return self::view("admin/notFound");
             }

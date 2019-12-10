@@ -133,8 +133,8 @@ a.active {
 
     .icon_nav {
         display: flex;
-    margin-top: .67rem;
-    margin-right: 1rem;
+        margin-top: .67rem;
+        margin-right: 1rem;
     }
 }
 
@@ -153,15 +153,18 @@ a.active {
 
 </style>
 
+
+<script src="/js/navigation.js" type="module"></script>
+
 <body>
     <header>
 
         <nav class="hNav">
         
             <a class="logo_link" href="/"><img class="logo" src="/img/logo-square.png" alt=""></a>
-            <ul class="nav_links">
+            <ul class="nav_links" id="navigation">
 
-                <?php foreach ($categories as $key => $category) :
+                <!-- <?php foreach ($categories as $key => $category) :
                     if ($category->getSlug() == $uri) {
                         $active = "class='active' style='background-color: #{$category->getColor()};'";
                     } else {
@@ -171,7 +174,7 @@ a.active {
 
                 <li><a <?= $active; ?> href="/<?= $category->getSlug(); ?>"><?= $category->getName(); ?></a></li>
 
-                <?php endforeach; ?>
+                <?php endforeach; ?> -->
 
                 <!-- <li><a class="active" href="/jazz">Haarlem Jazz</a></li>
                 <li><a href="/food">Haarlem Food</a></li>

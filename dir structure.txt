@@ -10,7 +10,7 @@
 │   ├── index.php             # Main entrypoint
 │   └── routes.php            # Map routes to controller methods
 ├── src                       # All php files that should not be directly accessible by the user
-│   ├── adapters              # Adapters take form or database information and return Models
+│   ├── services              # Services interact with Models
 │   │    └── ...
 │   ├── controllers           # Controllers use Models to render Views
 │   │    └── ...

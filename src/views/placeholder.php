@@ -1,5 +1,7 @@
-<h1><?=$headline;?></h1>
+<section class="main">
+    <h1><?=$headline;?></h1>
 
-<hr>
+    <hr>
 
-<p><?=$content;?></p>
+    <p><?=$content;?></p>
+</section>

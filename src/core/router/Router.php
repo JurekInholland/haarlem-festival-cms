@@ -32,7 +32,7 @@ class Router {
         if (array_key_exists($uriComponents[0], $this->routes[$requestType])) {
             
             // Default values
-            $controller = "IndexController";
+            $controller = "StaticController";
             $method = "index";
             $parameter = "";
 

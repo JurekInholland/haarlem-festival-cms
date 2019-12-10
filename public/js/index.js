@@ -4,7 +4,7 @@ import {getLocations, makeRequest} from "./haarlem-festival.js";
 
 // console.log(haarlem());
 
-async function lello() {
+async function locationTable() {
     let url = "/api/locations";
     let result = await makeRequest("GET", url);
     
@@ -20,18 +20,29 @@ async function lello() {
         var cols = ["id", "name", "address", "category"]
 
         for (var col in cols) {
-            console.log(col);
+            
             let td = document.createElement("td");
             row.appendChild(td);
-
-            let inpt = document.createElement("input");
-            inpt.setAttribute("type", "text");
-            inpt.setAttribute("value", result[i][cols[col]]);
-            td.appendChild(inpt);
+            if (col == 0) {
+                // let inpt = document.createElement("p");
+                td.appendChild(document.createTextNode(result[i][cols[col]]))
+            }
+            else {
+                let inpt = document.createElement("input");
+                inpt.setAttribute("type", "text");
+                inpt.setAttribute("value", result[i][cols[col]]);
+                td.appendChild(inpt);
+            }
+            
+            
             // td.appendChild(document.createTextNode(result[i][cols[col]]))
         }
-
-
+        let td = document.createElement("td");
+        let btn = document.createElement("button");
+        btn.setAttribute("value", "asd");
+        btn.innerHTML = "Delete";
+        td.appendChild(btn);
+        row.appendChild(td);
         // for (var j in result[i]) {
         //     console.log("J: " + result[i][j]);
         // }
@@ -40,7 +51,7 @@ async function lello() {
 }
 
 
-lello();
+locationTable();
 // loc.forEach(process);
 
 function process(item) {

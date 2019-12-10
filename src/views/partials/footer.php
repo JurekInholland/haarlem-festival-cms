@@ -90,9 +90,12 @@ footer form input:last-of-type {
 
 </style>
 
+<script src="/js/footer.js" type="module"></script>
+
+
 </section>
 
-<footer>
+<footer id="footer">
 
 
     <section>

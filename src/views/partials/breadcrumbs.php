@@ -17,7 +17,7 @@ $color = "#323232";
 // }
 
 // Only display breadcrumbs if necessary
-if (count($params) <= 0) {
+if ($cate == "") {
     return;
 }
 
@@ -34,7 +34,7 @@ $url = "";
 }
 
 .breadcrumbs a:last-of-type {
-    color: #cdcdcd;
+    color: #ededed;
 }
 
 .breadcrumbs a:last-of-type:hover {
@@ -61,7 +61,11 @@ $url = "";
 
 </style>
 
-<div class="breadcrumbs" style="background-color: <?= $color; ?>">
+
+<script src="/js/breadcrumbs.js" type="module"></script>
+
+
+<div id="breadcrumbs" class="breadcrumbs" style="background-color: <?= $color; ?>">
 <a class="home_icon" href="/"></a><span> / </span><a href="/<?= $cate; ?>"><?= ucfirst($cate); ?></a>
 <?php foreach ($params as $key => $param) :
     if (count($params) < 1) {
