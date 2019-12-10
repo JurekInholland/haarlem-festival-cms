@@ -2,21 +2,21 @@
 
 class GeneralEvent {
 
-    protected $startDate;
-    protected $endDate;
-    protected $location;
-    // protected $locationDetail;
-    protected $artist;
-    protected $slots;
-    protected $price;
-    protected $description;
+    public $id;
+    public $startDate;
+    public $endDate;
+    public $location;
+    public $artist;
+    public $slots;
+    public $price;
+    public $description;
     
-    protected $category;
+    public $category;
 
     public function __construct($eventData)
     {
         
-        $properties = ["startDate", "endDate", "location", "locationDetail", "artist", "slots", "price", "description", "category"];
+        $properties = ["id", "startDate", "endDate", "location", "locationDetail", "artist", "slots", "price", "description", "category"];
 
         foreach($properties as $property) {
 
@@ -37,12 +37,11 @@ class GeneralEvent {
 
     public function getLocation() {
         // return 1;
-        die(var_dump($this->location));
+        // die(var_dump($this->location));
         return $this->location;
     }
 
     public function getStartTime() {
-        // die(var_dump($this->startDate));
         $date = new DateTime($this->startDate);
         return $date->format('H:i');
     }
@@ -68,7 +67,6 @@ class GeneralEvent {
 
     public function getCategory() {
         $categories = App::get("festival")->getCategories();
-        // die(var_dump($categories[$this->category]));
         return $categories[$this->category]->getName();
     }
 
@@ -93,8 +91,22 @@ class GeneralEvent {
         return $this->startDate;
     }
 
+    public static function getValidDays() {
+        return App::get("festival")->festivalDays();
+    }
+
+    public static function getLocaions() {
+        return App::get("festival")->getLocations();
+    }
+
+    public static function getValidCategories() {
+        return App::get("festival")->getCategories();
+    }
+
+
     private static function createSlug($str, $delimiter = '-'){
         $slug = strtolower(trim(preg_replace('/[\s-]+/', $delimiter, preg_replace('/[^A-Za-z0-9-]+/', $delimiter, preg_replace('/[&]/', 'and', preg_replace('/[\']/', '', iconv('UTF-8', 'ASCII//TRANSLIT', $str))))), $delimiter));
         return $slug;
     }
+    
 }

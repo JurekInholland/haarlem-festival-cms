@@ -75,7 +75,7 @@
                 <ul class="event-info">
                     <li><?= $event->getDateString(); ?></li>
                     <li style="font-weight: bold;"><?= $event->getStartTime(); ?> - <?= $event->getEndTime(); ?></li>
-                    <!-- <li><?= $event->getLocation(); ?></li> -->
+                    <li><?= $event->getLocation(); ?></li>
                     <li style="color: <?= $event->getColor(); ?>" class="category"><?= $event->getCategory(); ?></li>
                 </ul>
             </section>

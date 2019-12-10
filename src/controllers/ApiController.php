@@ -25,8 +25,13 @@ class ApiController extends Controller {
     }
 
     public function event($slug) {
-        echo "SLUG: " . $slug;
-        var_dump($_GET);
+        $event = EventService::fromSlug($slug);
+        if ($event->artist) {
+            self::serveJson((array)$event);
+        } else {
+            http_response_code(404);
+            echo "Event {$slug} not found.";
+        }
     }
 
     public function categories() {

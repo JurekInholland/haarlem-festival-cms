@@ -1,7 +1,7 @@
 <?php
 // PHP Injection controller / DI container
 
-// Container that holds vital information
+// Storage container following singleton pattern
 class App {
     protected static $items = [];
     

@@ -14,16 +14,21 @@ spl_autoload_register(function ($class) {
     } else if (is_file('../src/models/' . $class . '.php')) {
         include_once '../src/models/' . $class . '.php';
 
-    } else if (is_file('../src/adapters/' . $class . '.php')) {
-        include_once '../src/adapters/' . $class . '.php';
+    // } else if (is_file('../src/adapters/' . $class . '.php')) {
+    //     include_once '../src/adapters/' . $class . '.php';
 
     } else if (is_file('../src/services/' . $class . '.php')) {
         include_once '../src/services/' . $class . '.php';
 
     } else if (is_file('../src/core/database/' . $class . '.php')) {
         include_once '../src/core/database/' . $class . '.php';
+
+    } else if (is_file('../src/core/router/' . $class . '.php')) {
+        include_once '../src/core/router/' . $class . '.php';
     }
 });
+
+include_once '../src/core/router/routes.php';
 
 // Set correct time zone
 date_default_timezone_set('Europe/Amsterdam');
@@ -36,9 +41,6 @@ App::bind("db", new QueryBuilder(
     Connection::make($config)
 ));
 
-
-// Static festival data like start and end dates. This could be stored in database as well..
-// App::bind("festival", parse_ini_file("../src/config/festival.ini", true));
 
 // Store generic festival information in DI container.
 // In real life, this would then be stored in memory with redis or memcached.

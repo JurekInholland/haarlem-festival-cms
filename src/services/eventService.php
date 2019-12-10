@@ -69,7 +69,6 @@ class EventService {
 
         $res = App::get("db")->select($params);
         
-        // die(var_dump($res));
         if (array_key_exists(0, $res)) {
             $event = new GeneralEvent($res[0]);
 
@@ -83,15 +82,15 @@ class EventService {
 
     public static function store(GeneralEvent $event) {
         $eventInfo = [
-            "title" => $event->title,
+            "artist" => $event->artist,
             "description" => $event->description, 
             "category" => $event->category, 
-            "start_time" => $event->start_time, 
-            "end_time" => $event->end_time, 
+            "startDate" => $event->startDate->format("Y-m-d H:i:s"), 
+            "endDate" => $event->endDate->format("Y-m-d H:i:s"), 
             "price" => $event->price, 
             "location" => $event->location, 
             "slug" => $event->slug, 
         ];
-        App::get("db")->insertUpdate("events", $eventInfo);
+        App::get("db")->insertUpdate("new_events", $eventInfo);
     }
 }

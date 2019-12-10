@@ -174,11 +174,6 @@ input[type=time] {
         </section>
         
         <section class="input1">
-            <label for="event_artist">Artist</label>
-            <input name="artist" type="text" value="<?= $event->getArtist(); ?>">
-        </section>
-
-        <section class="input2">
             <label for="category">Event Type</label>
             <select name="category"  value="<?= $event->getCategoryId(); ?>">
                 <?php foreach ($event_types as $key => $type) : 
@@ -190,6 +185,13 @@ input[type=time] {
                 <?php endforeach; ?>
             </select>
         </section>
+
+        <section class="input2">
+            <label for="event_artist">Artist</label>
+            <input name="artist" type="text" value="<?= $event->getArtist(); ?>">
+        </section>
+
+        
 
         <section class="input3">
             <label for="input3">Date</label>

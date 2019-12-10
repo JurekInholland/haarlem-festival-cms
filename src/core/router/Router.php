@@ -22,18 +22,6 @@ class Router {
         $this->routes["POST"][$uri] = $controller;
     }
 
-    public static function load(string $file) {
-        
-        // Create an instance of Router within static method
-        $router = new static;
-
-        // Require the given file
-        require $file;
-
-        // Return the created instance of Router
-        return $router;
-    }
-
 
     public function newDirect(array $uriComponents, string $requestType) {
 

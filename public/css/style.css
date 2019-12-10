@@ -4,7 +4,6 @@ html {
 
 button:focus {outline:0;}
 
-
 body {
     /* max-width: 1280px; */
     margin: 0 auto;
@@ -13,8 +12,6 @@ body {
     min-width: 470px;
     min-height: 500px;
 }
-
-
 
 i {
     width: 30px;
