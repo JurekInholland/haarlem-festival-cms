@@ -11,10 +11,6 @@
     display: none;
 }
 
-.wrapper {
-    /* margin-top: 2rem; */
-    /* margin: 1rem; */
-}
 
 textarea {
     max-height: 100vh;

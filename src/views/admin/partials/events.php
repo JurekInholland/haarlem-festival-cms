@@ -21,6 +21,7 @@
     display: flex;
     flex-flow: column; 
     justify-content: space-between; 
+    z-index: 10;
 }
 
 

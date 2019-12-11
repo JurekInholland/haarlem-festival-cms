@@ -78,6 +78,11 @@ footer form {
     /* max-width: 420px; */
 }
 
+footer form input[type=text] {
+    border: none;
+    border-radius: 3px;
+}
+
 footer form input:last-of-type {
     margin-left: 10px;
     width: 46%;

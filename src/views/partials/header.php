@@ -74,6 +74,7 @@ $categories = App::get("festival")->getCategories();
     font-size: 1.5rem;
     font-family: Rockwell, Georgia;
     padding: 5px 15px;
+    border-radius: 2px;
 }
 
 ul {

@@ -6,9 +6,17 @@
 table input[type=text] {
     width: 100%;
 }
+
+#search {
+    position: absolute;
+    top: 125px;
+    right: 8px;
+}
 </style>
 
 <script src="/js/index.js" type="module"></script>
+
+<input type="text" name="" id="search">
 
 
 <form action="">
@@ -19,8 +27,8 @@ table input[type=text] {
     <tr id="headRow">
 
         <th scope="col">#</th>
-        <th scope="col">Name</th>
         <th scope="col">Location</th>
+        <th scope="col">Address</th>
         <th scope="col">Category</th>
         <th scope="col">Delete</th>
 
