@@ -10,6 +10,13 @@ class QueryBuilder {
         $this->pdo = $pdo;
     }
 
+
+    public function query($sql) {
+
+        $res = $this->fetch($sql);
+        return $res;
+    }
+
     // Abstraction method for sql select
     public function select($customOptions) {
         $start = microtime(true);
@@ -88,7 +95,7 @@ class QueryBuilder {
     }
 
 
-    private function fetch(string $sql, array $parameters, string $className="") {
+    private function fetch(string $sql, array $parameters=[], string $className="") {
         try {
             $statement = $this->execute($sql, $parameters);
             // If an optional class name has been passed..

@@ -54,7 +54,7 @@ class Router {
                 return $this->callMethod($controller, $method, $parameter);
             }
         }
-        // If no matching controller + method were found
+        // If no matching controller + method were found, show 404 page
         return StaticController::notFound();
     }
 

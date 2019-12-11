@@ -27,6 +27,10 @@ class StaticController extends Controller {
             case "faq":
                 echo "faq";
                 break;
+            
+            case "test":
+                $res = App::get("db")->query("SELECT * FROM new_events");
+                var_dump($res);
 
         }
     }
