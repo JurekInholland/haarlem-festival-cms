@@ -23,7 +23,7 @@ $categories = App::get("festival")->getCategories();
 }
 
 .calendar-icon {
-    background-image: url("/img/calendar.png");
+    background-image: url("/img/calendar.svg");
 }
 
 .admin-icon {
@@ -162,7 +162,7 @@ a.active {
 
         <nav class="hNav">
         
-            <a class="logo_link" href="/"><img class="logo" src="/img/logo-square.png" alt=""></a>
+            <a class="logo_link" href="/"><img class="logo" src="/img/logo.svg" alt=""></a>
             <ul class="nav_links" id="navigation">
 
                 <!-- <?php foreach ($categories as $key => $category) :

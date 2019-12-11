@@ -39,12 +39,20 @@
     color: #C32039;
 }
 
+#festival_logo {
+    width: 65%;
+    height: auto;
+    background-color: transparent;
+    margin: 0 auto;
+}
 
 </style>
 
 <section class="index">
 <figure class="circle">
-<h1 id="main_headline">Welcome to Haarlem festival!</h1>
+<h1 id="main_headline">Welcome to</h1>
+
+<img src="/img/logo-transparent.svg" alt="" id="festival_logo">
 
 <h3 id="second_headline">Countdown to main event</h3>
 

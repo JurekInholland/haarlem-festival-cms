@@ -52,7 +52,7 @@ h3 {
 }
 
 
-.hamburger {
+#sidebarCollapse {
     align-self: flex-start;
     padding: 10px 0;
 }
