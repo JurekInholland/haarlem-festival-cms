@@ -38,3 +38,14 @@ Partly based on: https://stackoverflow.com/a/5864000
      User       cms_users
      Event      cms_event
      Festival   festival_info, event_categories
+
+# Docker commands
+
+- start stack  
+`docker-compose up --build`
+
+- stop stack  
+`docker-compose down`
+
+- initial database setup:  
+`docker-compose exec mysql sh -c "mysql -uroot -prootpw testDb < ./setup.sql"`

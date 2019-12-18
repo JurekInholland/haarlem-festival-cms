@@ -94,6 +94,7 @@ class FestivalEvent {
  
     public function storeSelf() {
 
+
         $eventInfo = [
             "title" => $this->title,
             "description" => $this->description, 
@@ -104,6 +105,7 @@ class FestivalEvent {
             "location" => $this->location, 
             "slug" => $this->slug, 
         ];
+
         App::get("db")->insertUpdate("events", $eventInfo);
     }
 

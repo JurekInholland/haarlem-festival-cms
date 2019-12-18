@@ -5,14 +5,9 @@ class FestivalService {
 
 
     public static function getFestival() {
-        $params = [
-            "select" => ["*"],
-            "from" => "event_categories, festival_info"
-        ];
 
-        $festivalInfo = App::get("db")->select($params);
-
-        // $locations = self::getLocations();
+        $sql = "SELECT * FROM event_categories, festival_info";
+        $festivalInfo = App::get("db")->query($sql);
 
         $categories = [];
         foreach ($festivalInfo as $categoryInfo) {
@@ -37,12 +32,9 @@ class FestivalService {
 
 
     public static function getLocations() {
-        $params = [
-            "select" => ["*"],
-            "from" => "event_locations"
-        ];
+        $sql = "SELECT * FROM event_locations";
 
-        $locations = App::get("db")->select($params);
+        $locations = App::get("db")->query($sql);
 
         $result = [];
         foreach ($locations as $key => $location) {

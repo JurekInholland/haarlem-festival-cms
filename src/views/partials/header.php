@@ -30,10 +30,7 @@ $categories = App::get("festival")->getCategories();
     background-image: url("/img/user.svg");
 }
 
-.hNav {
-    border-bottom: 1px solid black;
-    border
-}
+
 
 .hNav, .hNav ul {
     display: flex;

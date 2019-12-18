@@ -3,13 +3,7 @@
 // Controller for static pages like contact, about etc. as well as placeholders
 // during development
 
-
 class StaticController extends Controller {
-
-
-    protected static function head() {
-        return "head";
-    }
 
     public function index() {
         switch (Request::uri()) {
@@ -29,9 +23,16 @@ class StaticController extends Controller {
                 break;
             
             case "test":
-                $res = App::get("db")->query("SELECT * FROM new_events");
-                var_dump($res);
+                $eventInfo = [
+                    "title" =>"title",
+                    "description" => "desc", 
+                    "category" => "cat", 
+                ];
 
+                $res = "'".implode("', '", array_keys($eventInfo))."'";
+
+
+                // $res = App::get("db")->arrayKeysToList($eventInfo);
         }
     }
 

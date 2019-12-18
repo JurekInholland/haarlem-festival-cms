@@ -41,13 +41,10 @@ class EventService {
 
 
     public static function getAll() {
-        $params = [
-            "select" => ["*"],
-            "from" => "new_events",
-            "orderBy" => "startDate"
-        ];
 
-        $events = App::get("db")->select($params);
+        $sql = "SELECT * FROM events ORDER BY id";
+        $events = App::get("db")->query($sql);
+
         $eventList = [];
 
         foreach ($events as $value) {
@@ -59,15 +56,11 @@ class EventService {
 
     public static function fromSlug($slug) {
 
-        $params = [
-            "select" => ["*"],
-            "from" => "new_events",
-            "where" => "slug",
-            "operator" => "LIKE",
-            "target" => $slug
-        ];
 
-        $res = App::get("db")->select($params);
+        $sql = "SELECT * FROM new_events WHERE slug LIKE :slug";
+        $para = [":slug" => $slug];
+        $res = App::get("db")->query($sql, $para);
+
         
         if (array_key_exists(0, $res)) {
             $event = new GeneralEvent($res[0]);

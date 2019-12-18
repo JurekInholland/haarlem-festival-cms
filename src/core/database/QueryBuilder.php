@@ -4,83 +4,34 @@ class QueryBuilder {
 
     protected $pdo;
 
-    // Pass the pdo instance to the query builder
+    // Pass pdo instance to the query builder
     public function __construct(PDO $pdo) {
         // Include query functions
         $this->pdo = $pdo;
     }
 
 
-    public function query($sql) {
+    // Query SQL using prepared statements
+    // https://www.php.net/manual/en/pdo.prepared-statements.php
+    public function query($sql, $parameters=[], $clsName="") {
 
-        $res = $this->fetch($sql);
+        $start = microtime(true);
+
+        $res = "";
+        if (substr( $sql, 0, 6 ) === "SELECT") {
+            $res = $this->fetch($sql, $parameters, $clsName);
+
+        } else {
+            $this->execute($sql, $parameters);
+        }
+
+        $time = microtime(true) - $start;
+        Logger::debug("Query {$sql} took {$time} ms.");
         return $res;
     }
 
-    // Abstraction method for sql select
-    public function select($customOptions) {
-        $start = microtime(true);
-        // Execute the query
-        
-        // Check if parameters contain needed parameters
-        if (!$customOptions["from"]) {
-            die("Select method missing parameter ´from´. Caller: " . debug_backtrace()[1]['function']);
-        }
-        $default = [
-            "select" => ["*"],
-            "where" => "",
-            "target" => "",
-            "orderBy" => "",
-            "into" => "",
-            "operator" => ""
-        ];
 
-        $params = array_merge($default, $customOptions);
-
-        try {
-            // Unpack array of parameters
-            // Since $params["select] is an array as well, convert to string here
-            $select = implode(", ", $params["select"]);
-            $from = $params["from"];
-            $where = $params["where"];
-            $target = $params["target"];
-            $orderBy = $params["orderBy"];
-            $into = $params["into"];
-            $operator = $params["operator"]?: "=";
-
-            $order = "";
-            $whereClause = "";
-
-            if ($orderBy) {
-                $order = "ORDER BY {$orderBy}";
-            }
-            if ($where) {
-                // create a placeholder string like 'WHERE username LIKE :username'
-                $whereClause = sprintf("WHERE %s %s :%s", $where, $operator, $where);
-            }
-            $sql = sprintf(
-                // There must be a better way of doing this....
-                "SELECT SQL_NO_CACHE %s FROM %s %s %s LIMIT 1000",
-                $select,
-                $from,
-                $whereClause,
-                $order
-            );
-            // Array containing actual parameter
-            $parameter = [$where => $target];
-            
-            $res = $this->fetch($sql, $parameter, $into);
-            
-            $time = microtime(true) - $start;
-            Logger::debug("Query {$sql} took {$time} ms.");
-            
-            return $res;
-
-        } catch (Exception $e) {
-            die("SELECT ARGUMENTS FAILED");
-        }
-    }
-
+    // Insert given array of values into given table
     public function insertUpdate(string $table, array $parameters) {
         $sql = sprintf(
             "INSERT INTO %s (%s) VALUES (%s) ON DUPLICATE KEY UPDATE %s",
@@ -125,7 +76,7 @@ class QueryBuilder {
 
     // Return a string of comma deliminated array keys with placeholders like
     // foo=:foo, bar=:bar... 
-    private function arrayKeysToList(array $arr) {
+    public function arrayKeysToList(array $arr) {
         // From https://stackoverflow.com/a/26945321
         $output = "";
         foreach ($arr as $key => $value) {

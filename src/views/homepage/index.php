@@ -28,7 +28,9 @@
 }
 
 #main_headline {
-    color: #F59F17;
+    /* color: #F59F17; */
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #second_headline {
