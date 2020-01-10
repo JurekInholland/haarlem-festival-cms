@@ -90,4 +90,23 @@ class AdminController extends Controller {
     public function statistics() {
         return self::view("admin/statistics");
     }
+
+
+    public function pages($page = "") {
+       
+
+       if ($page) {
+           $staticPage = PagesService::getPageBySlug($page);
+
+            if ($staticPage) {
+                return self::view("admin/editPage", ["page" => $staticPage[0]]);
+            } else {
+                return self::view("placeholder", ["headline" => "This page does not exist."]);
+            }
+
+       }
+
+       $pages = PagesService::getPages();
+       return self::view("admin/pages", ["pages" => $pages]);
+    }
 }

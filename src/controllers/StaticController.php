@@ -5,6 +5,14 @@
 
 class StaticController extends Controller {
 
+
+    // TODO: Implement
+    public function indexNew() {
+        // get array of static pages
+        // if Request::uri() is in static pages
+        // view placeholder page with replaced values
+    }
+
     public function index() {
         switch (Request::uri()) {
             case "":
