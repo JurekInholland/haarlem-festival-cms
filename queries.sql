@@ -19,6 +19,15 @@ CREATE TABLE `new_events` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
+-- Static pages
+CREATE TABLE `static_pages` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`slug` VARCHAR(50) NULL DEFAULT NULL,
+	`headline` VARCHAR(50) NULL DEFAULT NULL,
+	`content` TEXT NULL,
+	`edited` DATETIME NULL DEFAULT NULL,
+	PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 -- Event Categories
