@@ -28,3 +28,10 @@ CMS categories needed:
 - make reservation
 - list of generated invoices
 - Static pages
+
+Documents
+Invoice, Ticket, Reservation
+
+# Generating Invoices
+invoice contains at least: name of client, number of client, address of client, phone number, emailaddress, subtotal amount (per
+line item), total amount, value added tax (VAT – 21% or 9%, depending on product), payment due date, invoice date.
