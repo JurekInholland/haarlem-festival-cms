@@ -6,7 +6,7 @@
     
 
     <?php 
-    if($event->artist) {
+    if($event->id) {
         $headline = "Edit Event";
     } else {
         $headline = "New Event";

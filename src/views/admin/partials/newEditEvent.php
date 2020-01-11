@@ -13,7 +13,7 @@
 
 
 textarea {
-    max-height: 100vh;
+    /* max-height: 100vh; */
     min-height: 480px;
 }
 
@@ -33,7 +33,7 @@ form {
         'left left right6'
         'left left right7'
         'left left right8';
-    grid-gap: 15px;
+    grid-gap: 1rem;
     align-items: start;
     margin-bottom: 2rem;
     width: 100%;
@@ -45,8 +45,10 @@ form {
 
 form textarea {
     /* margin-top: 1.5rem; */
+    display: block;
     grid-area: left;
-    height: calc(100vh - 260px);
+    min-height: 95%;
+    /* height: calc(100vh - 260px); */
     width: 100%;
 }
 
@@ -65,6 +67,7 @@ form input[type=submit] {
 
 .input0 {
     grid-area: left;
+    height: 100%;
 }
 
 .input1 {

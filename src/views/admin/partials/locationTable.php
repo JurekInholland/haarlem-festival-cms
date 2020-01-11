@@ -8,18 +8,20 @@ table input[type=text] {
 }
 
 #search {
-    position: absolute;
-    top: 125px;
-    right: 8px;
+    position: relative;
+    top: -92px;
+    right: -.5rem;
+    float: right;
+    width: 25%;
+    min-width: 250px;
 }
 </style>
 
-<script src="/js/index.js" type="module"></script>
 
 <input type="text" name="" id="search">
 
 
-<form action="">
+<form action="/admin/locationsubmit">
 
 <table class="table" id="loc_table">
 
@@ -41,7 +43,9 @@ table input[type=text] {
 
 
 </table>
-<button>Add Location</button>
+<button id="addBtn" onclick="lolFunction()" type="button">Add Location</button>
 
 <input type="submit" name="" id="">
 </form>
+
+<script src="/js/index.js" type="module"></script>

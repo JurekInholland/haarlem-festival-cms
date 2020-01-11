@@ -4,8 +4,8 @@
     display: grid;
     width: 100%;
     grid-template-rows: 1fr;
-  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));;
-  grid-auto-flow: row;
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));;
+    grid-auto-flow: row;
     grid-gap: 1rem;
     max-width: 100%;
     min-width: 530px;

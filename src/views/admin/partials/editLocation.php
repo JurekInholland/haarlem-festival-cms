@@ -10,8 +10,10 @@
 
 <select name="location" id="location">
 </select>
-
+<label for="location">Location</label>
 <input type="text" name="location" id="new_location" class="hidden">
+
+<label for="address">Address</label>
 <input type="text" name="address" id="new_address" class="hidden">
 
 
@@ -42,7 +44,6 @@ window.onload = function() {
 function createOption(value, name) {
 
     var option = document.createElement("option");
-
     option.value = value;
     option.innerHTML = name;
     return option;
