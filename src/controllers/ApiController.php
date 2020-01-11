@@ -8,6 +8,16 @@ class ApiController extends Controller {
         return self::view("api/index");
     }
 
+    // Generate and store api key
+    public function generate() {
+        if (Request::method() == "POST") {
+            $key = generateUuid(32);
+            echo "API KEY: " . $key;
+            return;
+        }
+        return self::redirect("api");
+    }
+
     public function locations() {
         
         $locations = FestivalService::getLocations();

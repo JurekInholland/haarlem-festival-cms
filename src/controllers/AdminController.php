@@ -3,6 +3,11 @@
 class AdminController extends Controller {
 
 
+    public function index() {
+        $events = EventService::getAll();
+        return self::view("admin/events", ["events" => $events]);
+    }
+
     public function setup() {
         echo "SETUP";
 
@@ -37,6 +42,29 @@ class AdminController extends Controller {
         return self::redirect("admin");
     }
 
+    public function users($username) {
+        // Display list of users if no username was passed
+        if ($username == "") {
+
+
+            if (isset($_GET["q"])) {
+                $users = UserService::listUsers($_GET["q"]);
+            } else {
+                $users = UserService::getAll();
+
+            }
+
+            self::view("admin/userList", ["users" => $users]);
+
+
+
+        } else {
+
+            // if user exists:
+            self::view("admin/userProfile", ["user" => $username]);
+        }
+    }
+
     public function locTest() {
         return self::view("admin/partials/editLocation");
     }
@@ -52,7 +80,7 @@ class AdminController extends Controller {
         
         } else {
             $event = EventService::fromSlug($para);
-            if ($event->artist) {
+            if ($event->id) {
                 $template_vars = [
                     "event" => $event,
                     "festival_days" => $event->getValidDays(),
@@ -73,11 +101,7 @@ class AdminController extends Controller {
 
 
 
-    public function index() {
-        $events = EventService::getAll();
-
-        return self::view("admin/events", ["events" => $events]);
-    }
+    
 
 
 

@@ -57,7 +57,7 @@ class EventService {
     public static function fromSlug($slug) {
 
 
-        $sql = "SELECT * FROM new_events WHERE slug LIKE :slug";
+        $sql = "SELECT * FROM events WHERE slug LIKE :slug";
         $para = [":slug" => $slug];
         $res = App::get("db")->query($sql, $para);
 

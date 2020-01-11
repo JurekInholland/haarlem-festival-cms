@@ -18,15 +18,20 @@ $routes = [
 
         "api" => "ApiController",
 
+        "auth" => "AuthController",
+
         // Static pages
         "parking" => "StaticController",
         "house-rules" => "StaticController",
         "faq" => "StaticController",
 
         "test" => "StaticController",
+        "register" => "StaticController"
     ],
 
     "POST" => [
-        "admin" => "AdminController"
+        "admin" => "AdminController",
+        "api" => "ApiController",
+        "auth" => "AuthController"
     ]
 ];

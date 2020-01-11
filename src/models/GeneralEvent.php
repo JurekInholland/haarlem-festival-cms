@@ -16,7 +16,7 @@ class GeneralEvent {
     public function __construct($eventData)
     {
         
-        $properties = ["id", "startDate", "endDate", "location", "locationDetail", "artist", "slots", "price", "description", "category"];
+        $properties = ["id", "startDate", "endDate", "location", "locationDetail", "artist", "slots", "price", "description", "category", "slug"];
 
         foreach($properties as $property) {
 
@@ -27,7 +27,7 @@ class GeneralEvent {
             }
         }
 
-        $this->slug = self::createSlug($this->artist);
+        // $this->slug = self::createSlug($this->artist);
     }
 
     public function getLocationId() {

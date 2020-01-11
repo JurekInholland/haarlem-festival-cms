@@ -15,6 +15,11 @@ class StaticController extends Controller {
 
     public function index() {
         switch (Request::uri()) {
+
+
+            // case "register":
+            //     return $this->view("partials/register");
+
             case "":
                 return $this->view("homepage/index");
 
