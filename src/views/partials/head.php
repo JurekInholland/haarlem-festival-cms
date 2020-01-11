@@ -1,4 +1,7 @@
 <head>
+
+<meta name="viewport" content="width=device-width, initial-scale=2.0">
+
 <meta http-equiv="content-type" content="text/html; charset=utf-8"></meta>
 
 <!-- Reset CSS -->
@@ -17,6 +20,12 @@
 
 <!-- Rockwell -->
 <link href="//db.onlinewebfonts.com/c/4aa3e37e571255737e5e6d4e9d9770a5?family=Rockwell" rel="stylesheet" type="text/css"/>
+
+<?php
+if (is_file($customHead)) {
+    require($customHead);
+}
+?>
 </head>
 
 

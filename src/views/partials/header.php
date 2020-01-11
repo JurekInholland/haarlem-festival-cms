@@ -4,6 +4,9 @@
 $uri = Request::uri();
 $categories = App::get("festival")->getCategories();
 // die(var_dump($categories));
+
+
+
 ?>
 
 <style>
@@ -30,6 +33,13 @@ $categories = App::get("festival")->getCategories();
     background-image: url("/img/user.svg");
 }
 
+.login-icon {
+    background-image: url("/img/login.svg");
+}
+
+.logout-icon {
+    background-image: url("/img/logout.svg");
+}
 
 
 .hNav, .hNav ul {
@@ -111,7 +121,7 @@ a.active {
     .nav_links {
         flex-flow: column;
         align-items: center;
-        margin-top: -250px;
+        margin-top: -255px;
         transition: margin .5s ease;
         padding-bottom: 15px;
     }
@@ -122,6 +132,7 @@ a.active {
 
     .hNav {
         justify-content: space-between;
+        flex-flow: row wrap;
         /* align-items: start; */
     }
     
@@ -133,6 +144,9 @@ a.active {
         display: flex;
         margin-top: .67rem;
         margin-right: 1rem;
+        position: absolute;
+        right: 1;
+        top: 1;
     }
 }
 
@@ -144,7 +158,7 @@ a.active {
 
 
 .menu_active {
-    margin-top: 10px;
+    margin-top: -.5rem;
     transition: margin .5s ease;
 }
 
@@ -179,9 +193,21 @@ a.active {
                 <li><a href="/dance">Haarlem Dance</a></li> -->
             </ul>
             <ul class="icon_nav">
-                <li class="cart-icon"><a href="/cart"></a></li>
+                <li class="cart-icon"><a href="/cart" data-toggle="tooltip" title="Shopping Cart"></a></li>
                 <li class="calendar-icon"><a href="/calendar"></a></li>
-                <li class="admin-icon"><a href="/admin"></a></li>
+
+                <?php
+
+                if (App::get("user")->isLoggedIn()) {
+                    echo '<li class="admin-icon"><a href="/admin"></a></li>';
+                    echo '<li class="logout-icon"><a href="/auth/logout"></a></li>';
+                } else {
+                    // echo '<li class="login-icon"><a href="/auth/login"></a></li>';
+                    echo '<li class="login-icon"><a href="#" id="modal_toggle" data-toggle="modal" data-target="#login_modal"></a></li>';
+                    
+                }
+                ?>
+
                 <li id="toggle_nav"><button id="nav_burger" class="hamburger hamburger--collapse" type="button">
             <span class="hamburger-box">
                 <span class="hamburger-inner"></span>

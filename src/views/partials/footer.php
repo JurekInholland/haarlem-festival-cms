@@ -52,7 +52,7 @@ footer section .horizontal {
 .vertical {
     /* list-style-type: disc;
     list-style-position: inside; */
-    height: 100%;
+    /* height: 100%; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;

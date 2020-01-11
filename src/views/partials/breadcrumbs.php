@@ -26,7 +26,7 @@ $url = "";
 
 <style>
 .breadcrumbs {
-    width: 100%;
+    /* width: 100%; */
     background-color: #169BD5;
     padding: .5rem;
     display: flex;

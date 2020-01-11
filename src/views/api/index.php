@@ -26,3 +26,6 @@
 
 <p>These private endpoints require additional authentication:</p>
 <li><a href="/api/users">/api/users</a></li>
+
+
+<?php require "generateapikey.php"; // TODO: check if user is logged in ?>
