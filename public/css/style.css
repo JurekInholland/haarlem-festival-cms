@@ -7,9 +7,10 @@ button:focus {outline:0;}
 body {
     /* max-width: 1280px; */
     margin: 0 auto;
+    width: 100%;
     background-color: white;
     font-family: Arial; 
-    min-width: 470px;
+    /* min-width: 470px; */
     min-height: 500px;
 }
 
@@ -27,11 +28,53 @@ i {
     margin: .66rem;
 }
 
-.main h1 {
+h1 {
+    font-size: 2rem;
+}
 
-    font-family: Rockwell, Georgia;
-    
+.main h1 {
+    font-family: Rockwell, Georgia;   
+}
+
+table {
+    width: 100%;
+}
+
+tr {
+    padding: 10px;
+}
+
+th {
+    padding: 10px 10px;
 }
 
 
+select {
+    height: 35px;
+}
 /* NAVIGATION */
+
+.modal form {
+    display: flex;
+    flex-flow: column;
+
+}
+
+label:not(:first-of-type) {
+    margin-top: 1rem;
+}
+
+input[type="submit"] {
+    margin-top: 1rem;
+}
+/* 
+.modal form input:first-of-type, .modal form input:last-of-type {
+    margin-bottom: 1rem;
+} */
+
+
+form label {
+    font-weight: bold;
+    font-size: .85rem;
+    margin-bottom: .1rem;
+}
