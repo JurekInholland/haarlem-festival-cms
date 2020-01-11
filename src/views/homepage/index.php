@@ -38,7 +38,9 @@
 }
 
 #demo {
-    color: #C32039;
+    color: #169BD5;
+    font-size: 1.25rem;
+    /* color: #C32039; */
 }
 
 #festival_logo {
@@ -54,7 +56,7 @@
 <figure class="circle">
 <h1 id="main_headline">Welcome to</h1>
 
-<img src="/img/logo-transparent.svg" alt="" id="festival_logo">
+<img src="/img/logo.svg" alt="" id="festival_logo">
 
 <h3 id="second_headline">Countdown to main event</h3>
 
