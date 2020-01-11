@@ -123,7 +123,11 @@ a.active {
         align-items: center;
         margin-top: -255px;
         transition: margin .5s ease;
-        padding-bottom: 15px;
+
+    }
+
+    .nav_links a {
+        padding-bottom: 1rem;
     }
 
     .nav_links li {

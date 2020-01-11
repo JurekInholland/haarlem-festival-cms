@@ -46,7 +46,11 @@ $(document).ready(function() {
 
 
 $("#login_toggle").click(function() {
-    $('#login_modal').modal('show');
+    $('#register_modal').modal('hide');
+    
+    setTimeout(() => {
+      $('#login_modal').modal('show');
+    }, 400);
   });
   
 
@@ -98,7 +102,7 @@ $("#login_toggle").click(function() {
       </form>
       <section class="create_account">
 
-        <p>Dont have an account yet? <a href="#" data-dismiss="modal" id="register_toggle">Create one</a>.</p>
+        <p>Dont have an account yet? <a href="#"  id="register_toggle">Create one</a>.</p>
         
       </section>
     
