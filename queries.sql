@@ -18,6 +18,20 @@ CREATE TABLE `new_events` (
 
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- Tickets
+CREATE TABLE `tickets` (
+	`ticket_id` CHAR(24) NOT NULL,
+	`user_id` INT(11) NOT NULL,
+	`event_id` INT(11) NOT NULL,
+	`amount` INT(11) NOT NULL,
+	`paid` TINYINT(4) NULL DEFAULT '0',
+	`scanned` TINYINT(4) NULL DEFAULT '0',
+	`order_date` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+	`paid_date` DATETIME NULL DEFAULT NULL,
+	PRIMARY KEY (`ticket_id`)
+)
+ENGINE=InnoDB
+;
 
 -- Static pages
 CREATE TABLE `static_pages` (
