@@ -6,15 +6,15 @@ class AdminController extends Controller {
 
     public function __construct()
     {
-        if (App::get("user")->getRole() < 1) {
-            require "../src/views/partials/head.php";
+        // if (App::get("user")->getRole() < 1) {
+        //     require "../src/views/partials/head.php";
 
-            require "../src/views/homepage/loginModal.php";
-            require "../src/views/homepage/registerModal.php";
+        //     require "../src/views/homepage/loginModal.php";
+        //     require "../src/views/homepage/registerModal.php";
 
-            require "../src/views/partials/header.php";
-            require "../src/views/partials/pageContent.php";
-        }
+        //     require "../src/views/partials/header.php";
+        //     require "../src/views/partials/pageContent.php";
+        // }
     }
 
     

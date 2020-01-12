@@ -34,7 +34,8 @@ class PdfService {
         </style>
         <img src="{$qr}" alt="">
         <br>
-        <span>  Ticket Id: dsf8sd97fd</span>
+        <span>  Ticket Id: dsf8sd97fd</span><br>
+        <span>  Requested by: Admin</span>
         EOD;
 
         // Print text using writeHTMLCell()
@@ -43,8 +44,8 @@ class PdfService {
         $html = <<<EOD
         <h1>Haarlem Festival Ticket</h1>
         <h3>Event: Gare du Nord</h3>
-        <p>Restaurant ML</p>
-        <p>Kleine Houtstraat 70, 2011 DR Haarlem, Nederland</p>
+        <p>Restaurant ML<br>Kleine Houtstraat 70, 2011 DR Haarlem, Nederland</p>
+        <h2>26.06.2020 22:00</h2>
         EOD;
         $pdf->writeHTMLCell(0, 0, '10', '10', $html);
 

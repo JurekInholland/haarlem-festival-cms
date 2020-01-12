@@ -36,7 +36,6 @@ class UserService {
             "password" => "",
             "email" => "",
             "registration_date" => "",
-            "loggedIn" => false
         ];
         return new User($guestUser);
     }
