@@ -19,11 +19,12 @@ function generateUuid($length=6) {
 
 
 
-function displayMessage(string $title, string $content) {
-
-    $title = $head;
-    
-
-    require "../views/modals/confirmModal.php";
+// Use google charts API to generate QR Codes
+// https://developers.google.com/chart/infographics/docs/qr_codes
+function generateQrcode($data) {
+    $size = "500x500";
+    // $logo = getenv('HTTP_HOST') . "/img/logo.svg";
+    $qrcode = ('https://chart.googleapis.com/chart?cht=qr&chld=H|1&chs='.$size.'&chl='.urlencode($data));
+    return $qrcode;
 
 }

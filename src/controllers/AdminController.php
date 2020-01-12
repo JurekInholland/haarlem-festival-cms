@@ -172,4 +172,11 @@ class AdminController extends Controller {
        $pages = PagesService::getPages();
        return self::view("admin/pages", ["pages" => $pages]);
     }
+
+
+    public function tickets() {
+        $pdf = PdfService::createPdf("hji");
+        ob_end_clean();
+        $pdf->Output('example_001.pdf', 'I');
+    }
 }

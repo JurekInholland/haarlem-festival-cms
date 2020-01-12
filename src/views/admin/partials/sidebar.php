@@ -5,7 +5,7 @@
     <nav id="sidebar">
         <div class="sidebar-header">
             <h3>Haarlem Festival</h3>
-            <p>Loggin in as <span style="font-weight: bold;">user</span></p>
+            <p>Logged in as <a href="/admin/users/<?=App::get("user")->getName();?>"><?=App::get("user")->getName();?></a></p>
         </div>
 
         <ul>

@@ -1,6 +1,5 @@
 <?php
 
-
 if (isset($_GET["delete"])) {
     $modaldata = ["title" => "Confirm deletion",
     "content" => "Are you sure you want to delete {$user->getName()}?",
