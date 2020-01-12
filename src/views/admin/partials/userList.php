@@ -22,6 +22,23 @@
     background-repeat: no-repeat;
     margin-right: -5px;
 }
+
+
+.icon {
+    background-size: contain;
+    display: block;
+    width: 25px;
+    height: 25px;
+}
+
+.delete-icon {
+    background-image: url("/img/delete.svg")
+}
+
+.edit-icon {
+    background-image: url("/img/edit.svg")
+
+}
 </style>
 
 
@@ -65,11 +82,16 @@
             <td> <a href="/admin/users/<?= $user->name; ?>"> <?= $user->name; ?> </a></td>
             <td><?= $user->email; ?></td>
             <td><?= $user->getRoleReadable(); ?></td>
-            <td>edit</td>
-            <td>delete</td>
+            <td><a href="/admin/users/<?= $user->name; ?>" class="icon edit-icon"></a></td>
+            <td><a href="/admin/users/<?= $user->name; ?>?delete=true" class="icon delete-icon"></a></td>
     
         </tr>
         <?php endforeach; ?>
     </tbody>
 
 </table>
+
+<?php
+if (App::get("user")->getRole() >= 2) {
+    
+}

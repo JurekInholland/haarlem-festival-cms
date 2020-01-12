@@ -3,6 +3,22 @@
 class AdminController extends Controller {
 
 
+
+    public function __construct()
+    {
+        if (App::get("user")->getRole() < 1) {
+            require "../src/views/partials/head.php";
+
+            require "../src/views/homepage/loginModal.php";
+            require "../src/views/homepage/registerModal.php";
+
+            require "../src/views/partials/header.php";
+            require "../src/views/partials/pageContent.php";
+        }
+    }
+
+    
+
     public function index() {
         $events = EventService::getAll();
         return self::view("admin/events", ["events" => $events]);
@@ -43,6 +59,10 @@ class AdminController extends Controller {
     }
 
     public function users($username) {
+
+        
+
+
         // Display list of users if no username was passed
         if ($username == "") {
 
@@ -54,16 +74,35 @@ class AdminController extends Controller {
 
             }
 
-            self::view("admin/userList", ["users" => $users]);
+            return self::view("admin/userList", ["users" => $users]);
 
 
 
         } else {
 
-            // if user exists:
-            self::view("admin/userProfile", ["user" => $username]);
+            $user = UserService::getUserByName($username);
+            
+            if (isset($_GET["delete"])) {
+                if (App::get("user")->getRole() >= 1) {
+                    // echo "DEL";
+                   
+                    return self::view("admin/userProfile", ["user" => $user]);
+                } else {
+                    echo "cannot del";
+                }
+                
+
+                return;
+            } else {
+
+                
+                return self::view("admin/userProfile", ["user" => $user]);
+            }
+
+            
         }
     }
+
 
     public function locTest() {
         return self::view("admin/partials/editLocation");

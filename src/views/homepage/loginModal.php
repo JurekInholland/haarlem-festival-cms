@@ -107,7 +107,7 @@ $("#login_toggle").click(function() {
       </section>
     
       </div>
-
+    </div>
     </div>
   </div>
 </div>

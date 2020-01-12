@@ -2,10 +2,10 @@
 - dynamic login
 - logout, remove session, delete cache
 - register with CAPTCHA
-- check email exists
+    - check email exists
 - password reset through email confirmation link
 - user can edit his info (route /admin/profile)
-- user has role (user, admin, superadmin)
+    - user has role (user, admin, superadmin)
 - Admin can create edit and delete users
 - user can have role of client or volunteer
 
@@ -13,11 +13,11 @@
 -  search query on ‘name’, ‘emailaddress’, ‘registration date’ 
 - prevent spam
 
-# Information pages
+    # Information pages
 
-# API
-- implement auth system
-- generate api key
+    # API
+    - implement auth system
+    - generate api key
 
 
 CMS categories needed:

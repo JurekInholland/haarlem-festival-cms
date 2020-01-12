@@ -105,6 +105,7 @@ $("#register_toggle").click(function() {
       </section>
     
       </div>
+    </div>
 
     </div>
   </div>

@@ -3,6 +3,17 @@
 class UserService {
 
 
+    public function getUserByName(string $name) {
+        $sql = "SELECT * FROM cms_users WHERE username LIKE :username";
+        $params = [":username" => $name];
+
+        $userdata = App::get("db")->query($sql, $params);
+        $user = new User($userdata[0]);
+        // die(var_dump($userdata));
+
+        return $user;
+    }
+
     public function getCurrentUser() {
         if (isset($_COOKIE["haarlemfestival"])) {
             $sql = "SELECT cms_login_tokens.user_id as id, cms_users.*
@@ -152,14 +163,24 @@ class UserService {
 
     public static function listUsers(string $searchstring="") {
 
+        // if ($searchstring == "") {
+        //     return self::getAll();
+        // }
         $sql = "SELECT * FROM cms_users WHERE username LIKE :searchstring
                 OR email LIKE :searchstring OR registration_date LIKE :searchstring";
         
-        $params = [":searchstring" => $searchstring];
+        $params = [":searchstring" => "%{$searchstring}%"];
 
         $users = App::get("db")->query($sql, $params);
 
-        return $users;
+        $models = [];
+
+        foreach ($users as $user) {
+            $usermodel = new User($user);
+            array_push($models, $usermodel);
+        }
+
+        return $models;
     }
 
 }

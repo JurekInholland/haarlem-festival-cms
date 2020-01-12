@@ -65,7 +65,7 @@ label:not(:first-of-type) {
 }
 
 .modal input[type="submit"] {
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
 }
 /* 
 .modal form input:first-of-type, .modal form input:last-of-type {

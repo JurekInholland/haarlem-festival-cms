@@ -122,7 +122,7 @@ label {
 }
 
 form {
-    margin: 20px auto;
+    margin: 20px 0px;
     /* width: 420px; */
 }
 .form-row {

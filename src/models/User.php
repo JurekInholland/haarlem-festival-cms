@@ -1,6 +1,7 @@
 <?php
 
 class User {
+    
     public $name;
     public $id;
     public $email;
@@ -15,7 +16,7 @@ class User {
 
     public function __construct($properties)
     {
-        // die(var_dump($properties));
+        // extract properties array
         extract($properties);
 
         $this->id = $id;
@@ -24,7 +25,10 @@ class User {
         $this->role = $role;
         $this->password = $password;
         $this->registrationDate = $registration_date;
-        $this->loggedIn = $loggedIn;
+        
+        if (isset($loggedIn)) {
+            $this->loggedIn = true;
+        }
     }
 
 
@@ -48,8 +52,16 @@ class User {
         return $this->password;
     }
 
+    public function getRole() {
+        return (int)$this->role;
+    }
+
     public function getRoleReadable() {
         return $this->roleNames[$this->role];
+    }
+
+    public function getRoleNames() {
+        return $this->roleNames;
     }
 
     public function hashPassword($password) {
