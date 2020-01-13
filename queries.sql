@@ -18,6 +18,25 @@ CREATE TABLE `new_events` (
 
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- final events table
+CREATE TABLE `festival_events` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`type` INT(11) NOT NULL,
+	`start_date` DATETIME NULL DEFAULT NULL,
+	`end_date` DATETIME NULL DEFAULT NULL,
+	`address` VARCHAR(100) NULL DEFAULT NULL,
+	`location_detail` VARCHAR(100) NULL DEFAULT NULL,
+	`name` VARCHAR(100) NOT NULL,
+	`tickets` INT(11) NULL DEFAULT NULL,
+	`price` DOUBLE NULL DEFAULT NULL,
+	`description` TEXT NULL,
+	`rating` INT(11) NULL DEFAULT NULL,
+	`image` VARCHAR(100) NULL DEFAULT NULL,
+	PRIMARY KEY (`id`)
+)
+ENGINE=InnoDB;
+
+
 -- Tickets
 CREATE TABLE `tickets` (
 	`ticket_id` CHAR(24) NOT NULL,
