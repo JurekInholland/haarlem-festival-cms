@@ -24,11 +24,25 @@ class AdminController extends Controller {
         return self::view("admin/events", ["events" => $events]);
     }
 
+
+    public function tests() {
+        $events = EventService::getNew();
+        // die(var_dump($events));
+        var_dump($events[0]->getCategory());
+    }
+
     public function setup() {
         echo "SETUP";
 
 
         $userArray = App::get("db")->query("SELECT * FROM users");
+    }
+
+
+    public function newedit() {
+        $events = EventService::getNew();
+        $events[0]->setCategoryId(2);
+        return self::view("admin/newEditEvent", ["event" => $events[0]]);
     }
 
     public function create() {

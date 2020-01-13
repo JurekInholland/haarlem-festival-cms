@@ -12,6 +12,8 @@ class PdfService {
 
     }
 
+
+
     public static function createPdf($htmlContent) {
         require_once("../src/modules/tcpdf/tcpdf.php");
 
@@ -27,28 +29,34 @@ class PdfService {
         $qr = generateQrcode("https://google.com");
         // Set some content to print
         $qrHtml = <<<EOD
-        <style>
-            img {
-                width: 175px;
-            }
-        </style>
-        <img src="{$qr}" alt="">
+        <img style="width: 175px;" src="{$qr}" alt="">
         <br>
-        <span>  Ticket Id: dsf8sd97fd</span><br>
-        <span>  Requested by: Admin</span>
+        <span>  Ticket Id: dsf8sd97fdf7d9s3</span><br>
+        <span>  Requested by: Admin</span><br>
         EOD;
 
         // Print text using writeHTMLCell()
-        $pdf->writeHTMLCell(0, 0, '130', '10', $qrHtml);
+        $pdf->writeHTMLCell(0, 0, '140', '10', $qrHtml);
         
         $html = <<<EOD
         <h1>Haarlem Festival Ticket</h1>
         <h3>Event: Gare du Nord</h3>
-        <p>Restaurant ML<br>Kleine Houtstraat 70, 2011 DR Haarlem, Nederland</p>
-        <h2>26.06.2020 22:00</h2>
+        <h5>Restaurant ML<br>Kleine Houtstraat 70, 2011 DR Haarlem, Nederland</h5>
+        <h2>Tuseday, 26.06.2020 22:00</h2>
+        <h4>General Admission</h4>
+        <span>Ordered by: Jurek <br>
+        bought on: 17.05.2020 <br>
+        <div style="border-bottom: 1px dashed black;"></div>
         EOD;
+
+
         $pdf->writeHTMLCell(0, 0, '10', '10', $html);
 
+        // $pdf->writeHTMLCell(0, 0, '10', '100', $html);
+
+        // $pdf->writeHTMLCell(0, 0, '10', '200', $html);
+        // $pdf->writeHTMLCell(0, 0, '10', '300', $html);
+        // $pdf->writeHTMLCell(0, 0, '10', '400', $html);
         // The '@' character is used to indicate that follows an image data stream and not an image file name
 
         // ---------------------------------------------------------

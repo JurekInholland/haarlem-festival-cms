@@ -31,8 +31,8 @@ form {
         'left left right3'
         'left left right4'
         'left left right6'
-        'left left right7'
-        'left left right8';
+        'left3 left3 right7'
+        'left3 left3 right8';
     grid-gap: 1rem;
     align-items: start;
     margin-bottom: 2rem;

@@ -11,7 +11,6 @@ class Festival {
 
     public function __construct($properties)
     {
-        // $this->properties = $properties;
         $this->startDate = $properties["start_date"];
         $this->endDate = $properties["end_date"];
         $this->categories = $properties["categories"];
@@ -24,6 +23,16 @@ class Festival {
 
     public function getCategories() {
         return $this->categories;
+    }
+
+
+    public function getCategoryNames() {
+        $names = [];
+        foreach ($this->categories as $category) {
+            array_push($names, $category->getName());
+        }
+        return $names;
+        ;
     }
 
     public function festivalDays() {

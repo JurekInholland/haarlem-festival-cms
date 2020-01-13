@@ -2,7 +2,8 @@
 
 class EventService {
 
-    // Return an Event based on user input post data 
+    // Return an Event based on user input post data
+    // TODO: Refactor
     public static function fromPost($post) {
 
         // $location = new EventLocation($post)
@@ -38,6 +39,20 @@ class EventService {
 
 
     public static function fromSelect() {}
+
+    public static function getNew() {
+    
+        $sql = "SELECT * FROM festival_events ORDER BY id";
+        $events = App::get("db")->query($sql);
+
+        $eventList = [];
+
+        foreach ($events as $eventdata) {
+            $event = new FestivalEvent($eventdata);
+            array_push($eventList, $event);
+        }
+        return $eventList;
+    }
 
 
     public static function getAll() {
