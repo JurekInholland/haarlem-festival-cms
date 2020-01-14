@@ -60,7 +60,7 @@ select {
 
 }
 
-label:not(:first-of-type) {
+.modal label:not(:first-of-type) {
     margin-top: 1rem;
 }
 

@@ -193,4 +193,14 @@ class AdminController extends Controller {
         ob_end_clean();
         $pdf->Output('example_001.pdf', 'I');
     }
+
+    public function invoice() {
+        $pdf = PdfService::createInvoice([0 => ["name" => "Tiesto", "quantity" => "2", "cost" => "15", "total" => "30"],
+                                          1 => ["name" => "foodstuff", "quantity" => "1", "cost" => "5", "total" => "5"],
+                                          2 => ["name" => "nochwas", "quantity" => "6", "cost" => "5", "total" => "30"]
+        
+        ]);
+        ob_end_clean();
+        $pdf->Output('Invoice.pdf', 'I');
+    }
 }
