@@ -46,7 +46,7 @@ class Ticket {
 
         $hostname = getenv('HTTP_HOST');
 
-        $ticketUrl = "{$hostname}/ticket/{$this->getId()}";
+        $ticketUrl = "http://{$hostname}/admin/ticket/{$this->getId()}";
 
         $qrcode = ('https://chart.googleapis.com/chart?cht=qr&chld=H|1&chs='.$size.'&chl='.urlencode($ticketUrl));
         return $qrcode;
