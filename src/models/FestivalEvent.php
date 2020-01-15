@@ -38,6 +38,9 @@ class FestivalEvent {
         return $this->id;
     }
 
+    public function getStartDate() {
+        return $this->start_date;
+    }
 
     public function getCategory() {
         $types = App::get("festival")->getCategories();

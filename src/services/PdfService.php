@@ -12,6 +12,64 @@ class PdfService {
 
     }
 
+    public static function genTickets(array $tickets) {
+        $pdf = self::setupPdf();
+
+        foreach ($tickets as $key => $ticket) {
+
+            // 3 tickets fit on a single A4 page. Every third iteration, add a new page
+            if ($key % 3 == 0) {
+                $pdf->AddPage();
+            }
+
+            // Store Y position before writing ticket text block
+            $y = $pdf->GetY();
+            $ticketHtml = self::generateTicketHtml($ticket);
+            $pdf->writeHTMLCell(0, 0, '', '', $ticketHtml, 0, 1, false, false, 'L', true);
+            
+            // Reset Y position to align QR code vertically
+            $pdf->SetY($y);
+            $qrHtml = self::generateQrHtml($ticket);
+            $pdf->writeHTMLCell(0, 0, '140', '', $qrHtml, 0, 1, false, false, 'L', true);
+
+        }
+        
+        return $pdf;
+
+    }
+
+    private static function generateQrHtml(Ticket $ticket) {
+        $qr = generateQrcode($ticket->getId());
+        $currentUser = App::get("user")->getName();
+
+        $html = <<<EOD
+        <h1> </h1>
+        <br>
+        <img style="width: 175px;" src="{$qr}" alt="">
+        <span>  Ticket Id: {$ticket->getId()}</span><br>
+        <span>  Requested by: {$currentUser}</span><br>
+        
+        EOD;
+     
+        return $html;
+    }
+
+
+    private static function generateTicketHtml(Ticket $ticket) {
+        $html = <<<EOD
+        <br>
+        <h1>Haarlem Festival Ticket</h1>
+        <h3>Event: {$ticket->getEventName()}</h3>
+        <h5>{$ticket->getEventAddress()}, {$ticket->getEventLocation()}</h5>
+        <h2>{$ticket->getEventDate()}</h2>
+        <h4>General Admission</h4>
+        <span>Ordered by: {$ticket->getUsername()} <br>
+        Bought on: {$ticket->getOrderDateReadable()}
+        </span><h4> </h4>
+        <div style="border-bottom: 1px dashed black;"></div>
+        EOD;
+        return $html;
+    }
 
     private static function setupPdf() {
 
@@ -23,7 +81,6 @@ class PdfService {
         $pdf->SetPrintHeader(false);
         $pdf->SetPrintFooter(false);
 
-        $pdf->AddPage();
         return $pdf;
 
     }

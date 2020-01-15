@@ -49,3 +49,6 @@ Partly based on: https://stackoverflow.com/a/5864000
 
 - initial database setup:  
 `docker-compose exec mysql sh -c "mysql -uroot -prootpw testDb < ./setup.sql"`
+
+- run composer install in docker container:
+`docker run --rm --interactive --tty  --volume ${PWD}:/app composer install`

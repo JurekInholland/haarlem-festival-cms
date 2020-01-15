@@ -19,6 +19,7 @@
             <li><a href="/admin/statistics">View statistics</a></li>
             <li><a href="/api">Public API</a></li>
             <li><a href="/admin/users">Users</a></li>
+            <li><a href="/admin/tickets">Tickets</a></li>
 
         </ul>
 

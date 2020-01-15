@@ -1,5 +1,9 @@
 <?php
 
+// Load composer autoloader
+require '../vendor/autoload.php';
+
+
 // Autoload classes
 spl_autoload_register(function ($class) {
     if (is_file('../src/controllers/' . $class . '.php')) {

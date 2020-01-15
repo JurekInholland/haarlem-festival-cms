@@ -34,9 +34,7 @@ footer section a {
 }
 
 footer section input[type=text] {
-    /* max-width: 70%; */
     width: 100%;
-    /* margin-right: 10px; */
 }
 
 footer section .horizontal {

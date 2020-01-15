@@ -188,10 +188,77 @@ class AdminController extends Controller {
     }
 
 
-    public function tickets() {
-        $pdf = PdfService::createPdf("hji");
+    public function ticketlist() {
+        $tickets = TicketService::getAll();
+        return self::view("admin/ticketList", ["tickets" => $tickets]);
+
+    }
+
+    public function ticket() {
+        $tickets = TicketService::getUserTickets("jurek");
+
+        $pdf = PdfService::genTickets($tickets);
         ob_end_clean();
         $pdf->Output('example_001.pdf', 'I');
+
+    }
+
+    public function tickets() {
+
+        $tickets = TicketService::getAll();
+        $ticketdata = [];
+
+        // Export settings are checked via GET
+        if (isset($_GET["submit"])) {
+            $columns = [];
+            // Extract desired columns
+            foreach ($_GET as $param => $value) {
+                if ($param == "type") {
+                    $type = $value;
+                } else if ($param != "submit") {
+                    array_push($columns, $param);
+                }
+            }
+
+            // Extract desired ticket data
+            foreach ($tickets as $ticket) {
+                $data = $ticket->getData();
+                $wanted = [];
+
+                foreach ($columns as $column) {
+                    // array_push($wanted, $data[$column]);
+                    $wanted[$column] = $data[$column];
+
+                }
+                array_push($ticketdata, $wanted);
+            }
+            // die(var_dump($ticketdata));
+            if ($type == "csv") {
+                $csv = array2csv($ticketdata);
+
+                header("Content-type: application/csv");
+                header("Content-Disposition: attachment; filename=tickets.csv");
+                echo $csv;
+            } else if ($type == "excel") {
+
+                // die(var_dump($ticketdata));
+                header("Content-Disposition: attachment; filename=\"tickets.xlsx\"");
+                header("Content-Type: application/download");
+                SpreadsheetService::make($ticketdata);
+            }
+            return;
+            
+            
+        }
+
+        // Manual payment update is done via POST
+        foreach ($_POST as $id => $button) {
+            var_dump($id);
+            TicketService::setPaid($id);
+        }
+
+        $tickets = TicketService::getAll();
+        return self::view("admin/ticketList", ["tickets" => $tickets]);
     }
 
     public function invoice() {
