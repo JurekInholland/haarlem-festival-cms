@@ -53,6 +53,9 @@ class StaticController extends Controller {
         return self::view("404");
     }
 
+    public static function notAuthorized() {
+        return self::view("admin/partials/noPermissions");
+    }
 
     
 

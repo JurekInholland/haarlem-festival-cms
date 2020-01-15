@@ -36,21 +36,32 @@ class Router {
             $method = "index";
             $parameter = "";
 
+            // Set Controller based on first part of uri components
             if ($uriComponents[0] != "") {
                 $controller = $this->routes[$requestType][$uriComponents[0]];
             }
 
+            // Set method based on second part of uri components
             if (isset($uriComponents[1])) {
                 $method = $uriComponents[1];
             }
 
+            // Set parameter based on third part of uri components
             if (isset($uriComponents[2])) {
                 $parameter = $uriComponents[2];
             }
 
-            
+            // Call method of Controller, if exists and is public
             if (is_callable(array($controller, $method))) {
-                return $this->callMethod($controller, $method, $parameter);
+                try {
+                    $this->callMethod($controller, $method, $parameter);
+                
+                // If NotAuthorized exception is thrown in Controller constructor,
+                // display not authorized page
+                } catch (NotAuthorized $e) {
+                    return StaticController::notAuthorized();
+                }
+                return;
             }
         }
         // If no matching controller + method were found, show 404 page
