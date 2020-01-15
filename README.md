@@ -51,7 +51,7 @@ Partly based on: https://stackoverflow.com/a/5864000
 `docker run --rm --interactive --tty --volume ${PWD}:/app composer install --ignore-platform-reqs`
 
 - initial database setup:  
-`docker-compose exec mysql sh -c "mysql -uroot -prootpw haarlemDb < ./setup.sql"`
+`docker-compose exec mysql sh -c "mysql -uroot -prootpw haarlemdb < ./setup.sql"`
 
 
 
@@ -60,7 +60,7 @@ Partly based on: https://stackoverflow.com/a/5864000
 Make sure to have git and docker installed.
 
 - clone repo  
-`git clone https://github.com/JurekInholland/haarlem-festival-cms.git && cd haarlem-festival`
+`git clone https://github.com/JurekInholland/haarlem-festival-cms.git && cd haarlem-festival-cms`
 
 - Run the aforementioned docker commands.
 

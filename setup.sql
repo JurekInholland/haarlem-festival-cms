@@ -1,5 +1,5 @@
-DROP TABLE `event_categories`;
-DROP TABLE `festival_info`;
+DROP TABLE IF EXISTS `event_categories`;
+DROP TABLE IF EXISTS `festival_info`;
 
 CREATE TABLE `event_categories` (
 	`id` INT(11) NOT NULL,
