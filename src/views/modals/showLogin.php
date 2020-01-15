@@ -1,6 +1,5 @@
 <script>
     $(document).ready(function() {
-        console.log("LELFAS");
 
         history.back(1);
     });

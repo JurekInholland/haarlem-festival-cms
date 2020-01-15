@@ -3,22 +3,17 @@
 class AdminController extends Controller {
 
 
-
-    public function __construct()
-    {
-        // if (App::get("user")->getRole() < 1) {
-        //     require "../src/views/partials/head.php";
-
-        //     require "../src/views/homepage/loginModal.php";
-        //     require "../src/views/homepage/registerModal.php";
-
-        //     require "../src/views/partials/header.php";
-        //     require "../src/views/partials/pageContent.php";
-        // }
+    // Authentication is handled in the constructor to only have to do it once.
+    // If the user's role is not at least Administrator, throw a custom exception
+    // that is caught in Router. Instead of calling a method of this class,
+    // A page is shown that informs the user of their insufficient permissions.
+    public function __construct() {
+        if (App::get("user")->getRole() < 1) {
+            throw new NotAuthorized();
+        }
     }
 
-    
-
+    // Route /admin/
     public function index() {
         $events = EventService::getAll();
         return self::view("admin/events", ["events" => $events]);
@@ -33,8 +28,6 @@ class AdminController extends Controller {
 
     public function setup() {
         echo "SETUP";
-
-
         $userArray = App::get("db")->query("SELECT * FROM users");
     }
 
@@ -45,6 +38,7 @@ class AdminController extends Controller {
         return self::view("admin/newEditEvent", ["event" => $events[0]]);
     }
 
+    // TODO: refactor
     public function create() {
 
         $event = new GeneralEvent([]);
@@ -73,9 +67,6 @@ class AdminController extends Controller {
     }
 
     public function users($username) {
-
-        
-
 
         // Display list of users if no username was passed
         if ($username == "") {
@@ -117,6 +108,22 @@ class AdminController extends Controller {
         }
     }
 
+    // TODO: move to profile controller
+    public function submituser($userId) {
+
+        $currentId = App::get("user")->getId();
+        $currentRole = App::get("user")->getRole();
+        // Users can edit their own profile; Administrators can edit every profile
+        if ($userId == $currentId or $currentRole >= 2) {
+            echo "SUCCESS!!!";
+        } else {
+            echo "NO PERM";
+        }
+        echo $userId;
+        echo "submit user";
+        die(var_dump($_POST));
+
+    }
 
     public function locTest() {
         return self::view("admin/partials/editLocation");
@@ -194,27 +201,54 @@ class AdminController extends Controller {
 
     }
 
-    public function ticket() {
-        $tickets = TicketService::getUserTickets("jurek");
+    public function ticket($ticketId) {
+        if ($ticketId) {
+            $ticket = TicketService::getTicketById($ticketId);
+            if ($ticket) {
 
-        $pdf = PdfService::genTickets($tickets);
-        ob_end_clean();
-        $pdf->Output('example_001.pdf', 'I');
+                if (isset($_GET["pdf"])) {
+                    $pdf = PdfService::genTickets($ticket);
+                    ob_end_clean();
+                    return $pdf->Output("ticket_{$ticketId}.pdf", 'I');
+                }
+
+                return self::view("partials/ticket", ["ticket" => $ticket[0]]);
+            }
+        }
+        echo "{$ticketId} was not found.";
 
     }
 
-    public function tickets() {
 
+    public function scan() {
+        return self::view("admin/partials/scan");
+    }
+
+    public function tickets($export) {
         $tickets = TicketService::getAll();
+
+        // If "pdf" has been passed via url parameter, return tickets as .pdf
+        if ($export == "pdf") {
+            $pdf = PdfService::genTickets($tickets);
+            ob_end_clean();
+            $pdf->Output('tickets.pdf', 'I');
+            return;
+
+        }
+        
         $ticketdata = [];
 
         // Export settings are checked via GET
         if (isset($_GET["submit"])) {
+
+            // Extract columns desired by user
             $columns = [];
-            // Extract desired columns
             foreach ($_GET as $param => $value) {
+
+                // type is either csv or excel
                 if ($param == "type") {
                     $type = $value;
+
                 } else if ($param != "submit") {
                     array_push($columns, $param);
                 }
@@ -232,7 +266,6 @@ class AdminController extends Controller {
                 }
                 array_push($ticketdata, $wanted);
             }
-            // die(var_dump($ticketdata));
             if ($type == "csv") {
                 $csv = array2csv($ticketdata);
 
@@ -248,16 +281,13 @@ class AdminController extends Controller {
             }
             return;
             
-            
         }
 
         // Manual payment update is done via POST
         foreach ($_POST as $id => $button) {
-            var_dump($id);
             TicketService::setPaid($id);
         }
 
-        $tickets = TicketService::getAll();
         return self::view("admin/ticketList", ["tickets" => $tickets]);
     }
 

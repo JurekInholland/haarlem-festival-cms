@@ -18,8 +18,8 @@ spl_autoload_register(function ($class) {
     } else if (is_file('../src/models/' . $class . '.php')) {
         include_once '../src/models/' . $class . '.php';
 
-    // } else if (is_file('../src/adapters/' . $class . '.php')) {
-    //     include_once '../src/adapters/' . $class . '.php';
+    } else if (is_file('../src/exceptions/' . $class . '.php')) {
+        include_once '../src/exceptions/' . $class . '.php';
 
     } else if (is_file('../src/services/' . $class . '.php')) {
         include_once '../src/services/' . $class . '.php';

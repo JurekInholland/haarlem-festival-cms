@@ -12,7 +12,7 @@ class TicketService {
 
     // Create ticket and store in db
     public function createTicket(int $userId, int $eventId) {
-
+        $ticketId = generateUuid(24);
     }
 
 
@@ -39,6 +39,16 @@ class TicketService {
         $ticketdata = App::get("db")->query($sql, $params);
         return self::parseTickets($ticketdata);
 
+    }
+
+    public static function getTicketById(string $ticketId) {
+        $sql = "SELECT tickets.*, festival_events.*, cms_users.username FROM tickets JOIN festival_events ON tickets.event_id = festival_events.id
+                JOIN cms_users ON tickets.user_id = cms_users.id
+                WHERE tickets.ticket_id LIKE :ticket_id";
+        $params = [":ticket_id" => $ticketId];
+
+        $ticketdata = App::get("db")->query($sql, $params);
+        return self::parseTickets($ticketdata);
     }
 
     public function getAll() {

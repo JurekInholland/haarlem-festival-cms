@@ -72,11 +72,10 @@ class PdfService {
     }
 
     private static function setupPdf() {
-
-        require_once("../src/modules/tcpdf/tcpdf.php");
         // create new PDF document
         $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
                 
+
         // Disable header and footer border
         $pdf->SetPrintHeader(false);
         $pdf->SetPrintFooter(false);
@@ -88,7 +87,7 @@ class PdfService {
     public static function createInvoice(array $tickets) {
 
         $pdf = self::setupPdf();
-        
+        $pdf->AddPage();
         $tablehtml = "";
         $subtotal = 0;
         $tax = 0;
@@ -134,6 +133,10 @@ class PdfService {
           <tr>
             <td align="left">phone</td>
             <td align="right">+31 23 541 2412</td>
+          </tr>
+          <tr>
+            <td align="left">Customer email</td>
+            <td align="right">contact@haarlem-festival.nl</td>
           </tr>
         </table>
         <br>
@@ -181,7 +184,6 @@ class PdfService {
 
 
     public static function createPdf($htmlContent) {
-        require_once("../src/modules/tcpdf/tcpdf.php");
 
         // create new PDF document
         $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);

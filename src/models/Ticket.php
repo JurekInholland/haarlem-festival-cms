@@ -39,6 +39,20 @@ class Ticket {
         ];
     }
 
+
+    // Use google charts API to generate QR Code
+    // https://developers.google.com/chart/infographics/docs/qr_codes
+    public function getQrcode(string $size="500x500") {
+
+        $hostname = getenv('HTTP_HOST');
+
+        $ticketUrl = "{$hostname}/ticket/{$this->getId()}";
+
+        $qrcode = ('https://chart.googleapis.com/chart?cht=qr&chld=H|1&chs='.$size.'&chl='.urlencode($ticketUrl));
+        return $qrcode;
+    
+    }
+
     public function getAmount() {
         return $this->amount;
     }

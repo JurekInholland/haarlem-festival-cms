@@ -33,7 +33,7 @@
 
 </table>
 
-<p>Tickets that are paid are available as PDF.</p>
+<p>Tickets that are paid are available as <a href="/admin/tickets/pdf">PDF</a>.</p>
 <?php
 
 require "../src/views/admin/partials/exportTickets.php";

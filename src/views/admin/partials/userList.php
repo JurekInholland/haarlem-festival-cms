@@ -20,7 +20,7 @@
     width: 20px;
     height: 20px;
     background-repeat: no-repeat;
-    margin-right: -5px;
+    margin-right: 5px;
 }
 
 
@@ -56,7 +56,7 @@
 <form class="form-inline search" method="GET" action="/admin/users">
   <i class="fas fa-search" aria-hidden="true"></i>
   <input class="form-control" type="text" placeholder="Search"
-    aria-label="Search" name="q">
+    aria-label="Search" name="q" value="<?= $_GET["q"]; ?>">
 </form>
 </section>
 <table class="table">
