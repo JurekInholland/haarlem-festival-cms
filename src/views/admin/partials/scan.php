@@ -5,15 +5,18 @@
   width: 2rem;
   background: url("/img/qr-code.svg") 50% 50% no-repeat;
   background-size: contain;
-  cursor: pointer;
+
+
 }
 
 .qrcode-text-btn > input[type=file] {
   position: absolute;
   overflow: hidden;
-  width: 1px;
-  height: 1px;
+  width: 2rem;
+  height: 2rem;
   opacity: 0;
+
+
 }
 
 .qrcode-text {
@@ -24,11 +27,29 @@
 
 .qrcode-text + .qrcode-text-btn {
   width: 1.7em;
-  margin-left: -1.9rem;
+  /* margin-left: -1.9rem; */
   vertical-align: middle;
 }
 </style>
 
+
+<script>
+function openQRCamera(node) {
+  var reader = new FileReader();
+  reader.onload = function() {
+    node.value = "";
+    qrcode.callback = function(res) {
+      if(res instanceof Error) {
+        alert("No QR code found. Please make sure the QR code is within the camera's frame and try again.");
+      } else {
+        node.parentNode.previousElementSibling.value = res;
+      }
+    };
+    qrcode.decode(reader.result);
+  };
+  reader.readAsDataURL(node.files[0]);
+}
+</script>
 
 <h1>Scan tickets</h1>
 
