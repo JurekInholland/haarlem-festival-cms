@@ -4,8 +4,15 @@ class ApiController extends Controller {
     
     // Work in progress
 
+    // Overview of different api endpoints
     public function index() {
         return self::view("api/index");
+    }
+
+    public function restaurants($action) {
+        
+        $restaurants = RestaurantController::getAll();
+        self::serveJson($restaurants);
     }
 
     // Generate and store api key

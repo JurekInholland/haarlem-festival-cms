@@ -32,6 +32,18 @@ class AdminController extends Controller {
     }
 
 
+    public function restaurants($action) {
+
+        if ($action == "delete") {
+            echo "delete";
+            return;
+        } else if ($action == "edit") {
+            echo "edit";
+            return;
+        }
+        return self::view("admin/restaurants");
+    }
+
     public function newedit() {
         $events = EventService::getNew();
         $events[0]->setCategoryId(2);

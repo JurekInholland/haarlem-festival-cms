@@ -54,14 +54,19 @@ class Router {
             // Call method of Controller, if exists and is public
             if (is_callable(array($controller, $method))) {
                 try {
-                    $this->callMethod($controller, $method, $parameter);
+        
+                    // Avoid calling the view method of the base Controller class
+                    if (strtolower($method) != "view") {
+                        $this->callMethod($controller, $method, $parameter);
+                        return;
+                    }
+
                 
                 // If NotAuthorized exception is thrown in Controller constructor,
                 // display not authorized page
                 } catch (NotAuthorized $e) {
                     return StaticController::notAuthorized();
                 }
-                return;
             }
         }
         // If no matching controller + method were found, show 404 page

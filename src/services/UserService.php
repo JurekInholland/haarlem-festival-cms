@@ -8,10 +8,13 @@ class UserService {
         $params = [":username" => $name];
 
         $userdata = App::get("db")->query($sql, $params);
-        $user = new User($userdata[0]);
+        if (isset($userdata[0])) {
+            $user = new User($userdata[0]);
+            return $user;
+
+        }
         // die(var_dump($userdata));
 
-        return $user;
     }
 
     public function getCurrentUser() {
@@ -24,7 +27,8 @@ class UserService {
 
             $userdata = App::get("db")->query($sql, $params);
 
-            if ($userdata) {
+            // TODO: Verify
+            if (isset($userdata[0])) {
                 $userdata[0]["loggedIn"] = true;
                 return new User($userdata[0]);
             }
@@ -89,10 +93,6 @@ class UserService {
 
     private static function storeLogin(User $user) {
         
-
-        // $sql = "SELECT id FROM cms_users where username LIKE :username";
-        // $params = [":username" => $username];
-        // $id = App::get("db")->query($sql, $params);
         $id = $user->getId();
 
         $crypto = True;
@@ -105,10 +105,7 @@ class UserService {
         $params = [":token" => $hashed_token, ":user_id" => $id];
 
         App::get("db")->query($sql, $params);
-
         setcookie("haarlemfestival", $token, time() + 60 * 60 * 24 * 7, '/', NULL, NULL, TRUE);
-
-
     }
 
     public function logOut() {

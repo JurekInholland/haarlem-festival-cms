@@ -1,7 +1,3 @@
-export default function haarlem() {
-    return "Haarlem";
-}
-
 
 export async function getCurrentColor() {
     let categories = await getCategories();
@@ -22,6 +18,12 @@ export async function getLocations() {
 
 export async function getCategories() {
     let url = "/api/categories";
+    let result = await makeRequest("GET", url);
+    return result;
+}
+
+export async function getRestaurants() {
+    let url = "/api/restaurants";
     let result = await makeRequest("GET", url);
     return result;
 }

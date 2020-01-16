@@ -80,6 +80,19 @@ $("#register_toggle").click(function() {
       <label for="password">Password</label>
       <input class="form-control validate" name="password" type="text" required>
 
+      <label for="password">Password</label>
+      <input class="form-control validate" name="password" type="text" required>
+
+      <label for="password">Password</label>
+      <input class="form-control validate" name="password" type="text" required>
+
+      <label for="password">Password</label>
+      <input class="form-control validate" name="password" type="text" required>
+
+      <label for="password">Password</label>
+      <input class="form-control validate" name="password" type="text" required>
+
+
       <?php
       if ($registerMsg) {
         echo "<p class='alert alert-danger' id='warning2'>{$registerMsg}</p>";

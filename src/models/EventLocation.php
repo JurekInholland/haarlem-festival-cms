@@ -29,8 +29,4 @@ class EventLocation {
     public function toString() {
         return "{$this->name}, {$this->address}";
     }
-
-    
-
-
 }

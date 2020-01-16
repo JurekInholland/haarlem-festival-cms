@@ -20,6 +20,8 @@ $routes = [
 
         "auth" => "AuthController",
 
+        "profile" => "ProfileController",
+
         // Static pages
         "parking" => "StaticController",
         "house-rules" => "StaticController",

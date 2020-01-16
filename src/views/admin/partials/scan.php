@@ -31,24 +31,15 @@
   vertical-align: middle;
 }
 </style>
+<video id="vid"></video>
+<script type="module">
+    let videoElem = document.getElementById("vid");
+    import QrScanner from '/js/qr-scanner-min.js';
+    QrScanner.WORKER_PATH = '/js/qr-scanner-worker-min.js';
+    const qrScanner = new QrScanner(videoElem, result => console.log('decoded qr code:', result));
 
 
-<script>
-function openQRCamera(node) {
-  var reader = new FileReader();
-  reader.onload = function() {
-    node.value = "";
-    qrcode.callback = function(res) {
-      if(res instanceof Error) {
-        alert("No QR code found. Please make sure the QR code is within the camera's frame and try again.");
-      } else {
-        node.parentNode.previousElementSibling.value = res;
-      }
-    };
-    qrcode.decode(reader.result);
-  };
-  reader.readAsDataURL(node.files[0]);
-}
+    // do something with QrScanner
 </script>
 
 <h1>Scan tickets</h1>
