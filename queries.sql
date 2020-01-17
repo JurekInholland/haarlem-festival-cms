@@ -31,7 +31,7 @@ CREATE TABLE `festival_events` (
 	`price` DOUBLE NULL DEFAULT NULL,
 	`description` TEXT NULL,
 	`rating` INT(11) NULL DEFAULT NULL,
-	`image` VARCHAR(100) NULL DEFAULT NULL,
+	`image` CHAR(16) NULL DEFAULT NULL,
 	PRIMARY KEY (`id`)
 )
 ENGINE=InnoDB;
@@ -39,29 +39,29 @@ ENGINE=InnoDB;
 
 -- Tickets
 CREATE TABLE `tickets` (
-	`ticket_id` CHAR(24) NOT NULL,
-	`user_id` INT(11) NOT NULL,
-	`event_id` INT(11) NOT NULL,
-	`amount` INT(11) NOT NULL,
-	`paid` TINYINT(4) NULL DEFAULT '0',
-	`scanned` TINYINT(4) NULL DEFAULT '0',
-	`order_date` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
-	`paid_date` DATETIME NULL DEFAULT NULL,
-	PRIMARY KEY (`ticket_id`)
-)
-ENGINE=InnoDB
-;
+  `ticket_id` char(18) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL DEFAULT '',
+  `user_id` int(11) NOT NULL,
+  `event_id` int(11) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `IS_PAID` tinyint(4) DEFAULT '0',
+  `TICKET_SCANNED` tinyint(4) DEFAULT '0',
+  `order_date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `paid_date` datetime DEFAULT NULL,
+  PRIMARY KEY (`ticket_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Static pages
 CREATE TABLE `static_pages` (
-	`id` INT(11) NOT NULL AUTO_INCREMENT,
-	`slug` VARCHAR(50) NULL DEFAULT NULL,
-	`headline` VARCHAR(50) NULL DEFAULT NULL,
-	`content` TEXT NULL,
-	`edited` DATETIME NULL DEFAULT NULL,
-	PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `slug` varchar(50) NOT NULL DEFAULT '',
+  `headline` varchar(50) DEFAULT NULL,
+  `content` text,
+  `edited` datetime DEFAULT NULL,
+  `menu` int(11) DEFAULT '0',
+  `image` char(16) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `slug` (`slug`)
+) ENGINE=InnoDB;
 
 -- Event Categories
 CREATE TABLE `event_categories` (
