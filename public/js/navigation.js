@@ -8,7 +8,7 @@ async function navLinks() {
     return categories;
 }
 
-async function test() {
+async function loadNav() {
 
 
     let path = window.location.pathname
@@ -31,6 +31,4 @@ async function test() {
 }
 
 
-console.log("Navigation");
-
-test();
+loadNav();
