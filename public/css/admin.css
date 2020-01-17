@@ -8,6 +8,10 @@
     /* align-items: stretch; */
 }
 
+.page_content {
+    background-color: red;
+}
+
 #sidebar {
     min-width: 250px;
     max-width: 250px;
@@ -26,7 +30,8 @@
 ----------------------------------------------------- */
 
 #content {
-    /* overflow: auto; */
+    background-color: red;
+    overflow: auto;
     width: 100%;
     padding: 20px;
     min-height: calc(100vh - 65px - 48px);
@@ -59,6 +64,11 @@ h3 {
 
 button::after {
     border: 1px solid red;
+}
+
+/* google maps info window */
+#bodyContent {
+    font-size: 1rem;
 }
 /* ---------------------------------------------------
     MEDIAQUERIES

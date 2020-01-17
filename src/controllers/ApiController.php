@@ -10,9 +10,29 @@ class ApiController extends Controller {
     }
 
     public function restaurants($action) {
-        
+        // TODO: refactor
         $restaurants = RestaurantController::getAll();
         self::serveJson($restaurants);
+    }
+
+    public function pages() {
+        $pages = PagesService::getPages();
+
+        $pagedata = [];
+
+        foreach ($pages as $page) {
+            $data = [
+                "id" => $page->getId(),
+                "slug" => $page->getSlug(),
+                "content" => $page->getContent(),
+                "headline" => $page->getHeadline(),
+                "edited" => $page->getEdited(),
+                "menu" => $page->getMenu()
+            ];
+
+            array_push($pagedata, $data);
+        }
+        self::serveJson($pagedata);
     }
 
     // Generate and store api key

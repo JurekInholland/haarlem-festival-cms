@@ -2,6 +2,7 @@
 #map {
   height: 400px;  /* The height is 400 pixels */
   width: 100%;  /* The width is the width of the web page */
+  margin-bottom: 1rem;
  }
 </style>
 
@@ -21,7 +22,7 @@
 <div class="tab-content">
   <div class="tab-pane active fade show" id="mapview" role="tabpanel" aria-labelledby="mapview-tab">
 
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWGSiRJWqEGeFYMuqAeItEvVkAdNbRO9I"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWGSiRJWqEGeFYMuqAeItEvVkAdNbRO9I"></script>
 
     <!--The div element for the map -->
     <div id="map"></div>
@@ -29,12 +30,30 @@
 
     <script src="/js/mapsview.js" type="module"></script>
   </div>
-  <div class="tab-pane fade" id="listview" role="tabpanel" aria-labelledby="listview-tab">...</div>
+  <div class="tab-pane fade" id="listview" role="tabpanel" aria-labelledby="listview-tab">
+    <table class="table">
+
+      <thead>
+          <tr id="headRow">
+
+              <th scope="col">#</th>
+              <th scope="col">Restaurant</th>
+              <th scope="col">Address</th>
+              <th scope="col">Food type</th>
+              <th scope="col">Weekdays</th>
+
+          </tr>
+      </thead>
+
+      <tbody id="table_body">
+
+      </tbody>
+    </table>
+  </div>
 </div>
 
-<h2>Add Restaurant</h2>
-<form class="form" action="">
-    <input type="text">
+<form class="form" action="" method="POST">
+    <input type="submit" name="submit" value="Add Restaurant" class="btn btn-primary">
 </form>
 
 <!-- <script async defer

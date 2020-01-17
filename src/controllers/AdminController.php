@@ -2,7 +2,7 @@
 
 class AdminController extends Controller {
 
-
+    
     // Authentication is handled in the constructor to only have to do it once.
     // If the user's role is not at least Administrator, throw a custom exception
     // that is caught in Router. Instead of calling a method of this class,
@@ -11,6 +11,17 @@ class AdminController extends Controller {
         if (App::get("user")->getRole() < 1) {
             throw new NotAuthorized();
         }
+
+    }
+
+    // Override controller's view method to always include admin specific partials
+    public static function view(string $adminView, array $data = []) {
+
+        $data["adminView"] = $adminView;
+        $customHead = "../src/views/admin/partials/head.php";
+        $data["customHead"] = "../src/views/admin/partials/head.php";
+        Controller::view("admin/sidebar", $data);
+
     }
 
     // Route /admin/
@@ -34,7 +45,14 @@ class AdminController extends Controller {
 
 
     public function newedit() {
+
         $events = EventService::getNew();
+
+
+        if (isset($_GET["type"])) {
+            // TODO set event type
+        }
+
         $events[0]->setCategoryId(2);
         return self::view("admin/newEditEvent", ["event" => $events[0]]);
     }
@@ -112,6 +130,9 @@ class AdminController extends Controller {
     // TODO: move to profile controller
     public function submituser($userId) {
 
+        if (isset($_POST["cancel"])) {
+            return self::redirect("admin/users");
+        }
         $currentId = App::get("user")->getId();
         $currentRole = App::get("user")->getRole();
         // Users can edit their own profile; Administrators can edit every profile
@@ -163,13 +184,15 @@ class AdminController extends Controller {
 
 
     
-
+    public function restaurants() {
+        return self::view("admin/restaurants");
+    }
 
 
     public function settings() {
         $event = new GeneralEvent([]);
 
-        return self::view("admin/settings", ["locations" => $event->getLocaions(), "categories" => $event->getValidCategories()]);
+        return self::view("admin/settings", ["locations" => $event->getLocaions(), "categories" => App::get("festival")]);
     }
 
     public function statistics() {
@@ -179,12 +202,13 @@ class AdminController extends Controller {
 
     public function pages($page = "") {
        
-
-       if ($page) {
+        if ($page == "new") {
+            return self::view("admin/editPage", ["page" => new StaticPage([])]);
+        } else if ($page) {
            $staticPage = PagesService::getPageBySlug($page);
 
-            if ($staticPage) {
-                return self::view("admin/editPage", ["page" => $staticPage[0]]);
+            if ($staticPage->getSlug()) {
+                return self::view("admin/editPage", ["page" => $staticPage]);
             } else {
                 return self::view("placeholder", ["headline" => "This page does not exist."]);
             }
@@ -195,6 +219,42 @@ class AdminController extends Controller {
        return self::view("admin/pages", ["pages" => $pages]);
     }
 
+    public function deletePage() {
+        if (isset($_POST["id"])) {
+            PagesService::deletePage($_POST["id"]);
+        }
+        return self::redirect("admin/pages");
+    }
+
+    public function pageSubmit() {
+        $pageInfo = $_POST;
+        if (isset($pageInfo["view"]) && isset($pageInfo["slug"])) {
+            return self::redirect($pageInfo["slug"]);
+
+        } else if (isset($pageInfo["submit"])) {
+            $existingPage = PagesService::getPageBySlug($pageInfo["slug"]);
+            if ($existingPage->getSlug() && $existingPage->getId() != $pageInfo["id"]) {
+                $_SESSION["staticpageerror"] = "Another page with this name already exists.";
+                return self::redirect("admin/pages/{$pageInfo["oldslug"]}");
+
+            }
+
+            PagesService::updatePage($_POST);
+        }
+        return self::redirect("admin/pages");    
+    }
+
+
+    public function createTicket() {
+        return self::view("admin/createTicket");
+    }
+
+    public function submitTicket() {
+        if (isset($_POST["submit"])) {
+            TicketService::createTicket($_POST["user"], $_POST["event"], $_POST["amount"]);
+        }
+        return self::redirect("admin/tickets");
+    }
 
     public function ticketlist() {
         $tickets = TicketService::getAll();
@@ -230,9 +290,9 @@ class AdminController extends Controller {
     public function scanSubmit() {
         $ticket = TicketService::getTicketById($_POST["ticketid"]);
         if (isset($ticket[0])) {
-            echo "ticket found:";
-            die(var_dump($ticket[0]));
-            return;
+
+            TicketService::setScanned($_POST["ticketid"]);
+            return self::view("admin/scanSuccess", ["ticket" => $ticket[0]]);
         }
         echo "NO TICKET FOUND";
     }
@@ -301,6 +361,8 @@ class AdminController extends Controller {
             TicketService::setPaid($id);
         }
 
+
+        // return self::redirect("admin/tickets");
         return self::view("admin/ticketList", ["tickets" => $tickets]);
     }
 

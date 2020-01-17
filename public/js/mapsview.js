@@ -24,9 +24,6 @@ async function processRestaurants(map) {
         latlangs[i] = {name: restaurants[i]["name"], address: restaurants[i]["address"], latlang: latlang};
     }
     return latlangs;
-
-    
-
 }
 
 async function init() {
@@ -65,46 +62,19 @@ async function init() {
         }
           console.log(returnVals);
 })
-    // console.log(restaurants);
 }
 
 function generateInfo(restaurant) {
-    var info = '<div id="content">'+
+    var info = '<div id="infocontent">'+
     `<h1 id="firstHeading" class="firstHeading">${restaurant["name"]}</h1>`+
     `<div id="bodyContent">`+
-    `<p>${restaurant["address"]}`+
+    `<p>${restaurant["address"]}</p>`+
+    `<a href="#">edit</a> | <a href="#">delete</a>`+
     `</div>`+
     `</div>`
     return info;
 }
 
-function initMap() {
-    
-    // Center map on haarlem
-    var haarlem = {lat: 52.3861809, lng: 4.6364396};
-
-    var map = new google.maps.Map(
-        document.getElementById('map'), {zoom: 13, center: haarlem});
-
-        var marker = new google.maps.Marker({position: haarlem, map: map});
-  }
-
-function display(loc, map) {
-    var marker = new google.maps.Marker({position: loc, map: map, title: "lel", animation: google.maps.Animation.DROP, label: "asd"});
-}
-
-function addressToCoords(address, callback, map) {
-    console.log("GEO CODE " + address);
-    geocoder = new google.maps.Geocoder();
-    geocoder.geocode( { 'address': address}, function(results, status) {
-      if (status == 'OK') {
-        callback(results[0].geometry.location, map);
-
-      } else {
-        alert('Geocode was not successful for the following reason: ' + status);
-      }
-    });
-}
 
 (async () => {
     init();

@@ -7,7 +7,6 @@
     align-items: center;
     line-height: 2rem;
     margin-bottom: 1.5rem;
-    /* white-space: nowrap; */
 }
 
 .form .horizontal input[type="radio"]:last-of-type {

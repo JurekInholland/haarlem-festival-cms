@@ -1,7 +1,6 @@
 <?php
 abstract class Controller {
     
-    protected static $htmlHead;
 
     // abstract public static function getHead();
 
@@ -10,20 +9,17 @@ abstract class Controller {
         return header("Location: /{$path}");
     }
 
-
     // Controllers 'view' Views... 
     public static function view(string $viewName, array $data = []) {
-        
+        // die(var_dump($data));
+
         // Extract data array to template variables
         extract($data);
 
-        // Include category specifc html head
-        $customHead = self::$htmlHead;
-        
         require "../src/views/partials/head.php";
 
-        require "../src/views/homepage/loginModal.php";
-        require "../src/views/homepage/registerModal.php";
+        require "../src/views/modals/loginModal.php";
+        require "../src/views/modals/registerModal.php";
 
         require "../src/views/partials/header.php";
         require "../src/views/partials/breadcrumbs.php";

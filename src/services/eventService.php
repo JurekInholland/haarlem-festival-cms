@@ -36,10 +36,21 @@ class EventService {
         return $date;
     }
 
+    public static function getRestaurants() {
+        $sql = "SELECT * FROM festival_events WHERE type = 2";
+        $restaurants = App::get("db")->query($sql);
 
+    }
+
+    // TODO: Implement
+    public function countByType() {
+        $sql = "SELECT type, COUNT(type) FROM festival_events GROUP BY type";
+
+    }
 
     public static function fromSelect() {}
 
+    // TODO: rename
     public static function getNew() {
     
         $sql = "SELECT * FROM festival_events ORDER BY id";

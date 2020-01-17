@@ -21,8 +21,20 @@ class TicketService {
 
 
     // Create ticket and store in db
-    public function createTicket(int $userId, int $eventId) {
-        $ticketId = generateUuid(24);
+    public function createTicket(int $userId, int $eventId, int $amount) {
+        $sql = "INSERT INTO tickets (ticket_id, user_id, event_id, amount, IS_PAID, TICKET_SCANNED, order_date)
+        VALUES (:ticket_id, :user_id, :event_id, :amount, :paid, :scanned, :order_date)";
+        $params = [
+            ":ticket_id" => generateUuid(18),
+            ":user_id" => $userId,
+            ":event_id" => $eventId,
+            ":amount" => $amount,
+            ":paid" => 0,
+            ":scanned" => 0,
+            ":order_date" => date('Y-m-d H:i:s')
+        ];
+
+        App::get("db")->query($sql, $params);
     }
 
 
@@ -54,7 +66,7 @@ class TicketService {
     public static function getTicketById(string $ticketId) {
         $sql = "SELECT tickets.*, festival_events.*, cms_users.username FROM tickets JOIN festival_events ON tickets.event_id = festival_events.id
                 JOIN cms_users ON tickets.user_id = cms_users.id
-                WHERE tickets.ticket_id LIKE :ticket_id";
+                WHERE tickets.ticket_id = :ticket_id";
         $params = [":ticket_id" => $ticketId];
 
         $ticketdata = App::get("db")->query($sql, $params);

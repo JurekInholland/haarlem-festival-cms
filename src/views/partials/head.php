@@ -25,6 +25,7 @@
 if (is_file($customHead)) {
     require($customHead);
 }
+// die(var_dump($customHead));
 ?>
 </head>
 

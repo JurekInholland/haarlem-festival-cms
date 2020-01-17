@@ -14,39 +14,25 @@ class StaticController extends Controller {
     }
 
     public function index() {
+
+        $pages = PagesService::getPages();
+
+        foreach ($pages as $page) {
+            if ($page->getSlug() == Request::uri()) {
+                
+                return self::view("partials/staticPage", ["page" => $page]);
+            }
+        }
+
+
         switch (Request::uri()) {
-
-
-            // case "register":
-            //     return $this->view("partials/register");
 
             case "":
                 return $this->view("homepage/index");
-
-            case "parking":
-                echo "Parking";
-                break;
-            
-            case "house-rules":
-                echo "House rules";
-                break;
-            
-            case "faq":
-                echo "faq";
-                break;
-            
-            case "test":
-                $eventInfo = [
-                    "title" =>"title",
-                    "description" => "desc", 
-                    "category" => "cat", 
-                ];
-
-                $res = "'".implode("', '", array_keys($eventInfo))."'";
-
-
-                // $res = App::get("db")->arrayKeysToList($eventInfo);
         }
+
+        return self::notFound();
+
     }
 
     public static function notFound() {

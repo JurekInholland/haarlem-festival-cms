@@ -1,12 +1,48 @@
-<?php require "partials/sidebar.php"; ?>
-    
-    <div id="content">
 
-    <?php require "partials/sidebar-toggle.php"; ?>
-    
+<style>
+table input[type=text] {
+    width: 100%;
+}
 
-    <h1>Locations</h1>
+#search {
+    position: relative;
+    top: -92px;
+    right: -.5rem;
+    float: right;
+    width: 25%;
+    min-width: 250px;
+}
+</style>
 
-    <?php require "partials/locationTable.php"; ?>
-    </div>
-</div>
+
+<input type="text" name="" id="search">
+
+
+<form action="/admin/locationsubmit">
+
+<table class="table" id="loc_table">
+
+<thead>
+    <tr id="headRow">
+
+        <th scope="col">#</th>
+        <th scope="col">Location</th>
+        <th scope="col">Address</th>
+        <th scope="col">Category</th>
+        <th scope="col">Delete</th>
+
+    </tr>
+</thead>
+
+<tbody id="table_body">
+
+</tbody>
+
+
+</table>
+<button id="addBtn" onclick="lolFunction()" type="button">Add Location</button>
+
+<input type="submit" name="" id="">
+</form>
+
+<script src="/js/index.js" type="module"></script>

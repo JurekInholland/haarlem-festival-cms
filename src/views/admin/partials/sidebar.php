@@ -13,6 +13,7 @@
             <li><a href="/admin/event">Edit event</a></li>
             <!-- <li><a href="/create">New restaurant</a></li> -->
             <li><a href="/admin/location">Edit Locations</a></li>
+            <li><a href="/admin/restaurants">Edit Restaurants</a></li>
             <li><a href="/admin/pages">Edit Static Pages</a></li>
             <!-- <li><a href="">Edit Restaurant</a></li> -->
             <li><a href="/admin/settings">Festival settings</a></li>

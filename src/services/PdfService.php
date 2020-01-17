@@ -30,7 +30,7 @@ class PdfService {
             // Reset Y position to align QR code vertically
             $pdf->SetY($y);
             $qrHtml = self::generateQrHtml($ticket);
-            $pdf->writeHTMLCell(0, 0, '140', '', $qrHtml, 0, 1, false, false, 'L', true);
+            $pdf->writeHTMLCell(0, 0, '130', '', $qrHtml, 0, 1, false, false, 'L', true);
 
         }
         
@@ -39,13 +39,12 @@ class PdfService {
     }
 
     private static function generateQrHtml(Ticket $ticket) {
-        $qr = generateQrcode($ticket->getId());
+        $qr = $ticket->getQrcode();
         $currentUser = App::get("user")->getName();
 
         $html = <<<EOD
-        <h1> </h1>
-        <br>
-        <img style="width: 175px;" src="{$qr}" alt="">
+        <h5> </h5>
+        <img style="width: 200px;" src="{$qr}" alt="">
         <span>  Ticket Id: {$ticket->getId()}</span><br>
         <span>  Requested by: {$currentUser}</span><br>
         
@@ -101,7 +100,7 @@ class PdfService {
                 $color = "#ffffff";
             }
 
-            $subtotal = $subtotal + floatval($ticket["total"]);
+            // $subtotal = $subtotal + floatval($ticket["total"]);
             // $tax = $tax + floatval($ticket["tax"]);
             $total = $subtotal + $tax; 
 

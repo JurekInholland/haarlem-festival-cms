@@ -1,6 +1,3 @@
-<?php
-
-?>
 
 <style>
 table input[type=text] {

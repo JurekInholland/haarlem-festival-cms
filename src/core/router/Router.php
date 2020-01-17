@@ -70,7 +70,7 @@ class Router {
             }
         }
         // If no matching controller + method were found, show 404 page
-        return StaticController::notFound();
+        return StaticController::index();
     }
 
 

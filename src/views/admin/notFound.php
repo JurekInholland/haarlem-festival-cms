@@ -1,12 +1,3 @@
-<?php require "partials/sidebar.php"; ?>
-    
-    <div id="content">
+<h1>Edit Event</h1>
 
-    <?php require "partials/sidebar-toggle.php"; ?>
-    
-
-    <h1>Edit Event</h1>
-
-    <h2>Event not found!</h2>
-    </div>
-</div>
+<h2>Event not found!</h2>

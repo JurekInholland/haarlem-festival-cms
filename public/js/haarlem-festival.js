@@ -16,6 +16,12 @@ export async function getLocations() {
     return result;
 }
 
+export async function getPages() {
+    let url = "/api/pages";
+    let result = await makeRequest("GET", url);
+    return result;
+}
+
 export async function getCategories() {
     let url = "/api/categories";
     let result = await makeRequest("GET", url);

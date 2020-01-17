@@ -1,6 +1,1 @@
-<script src="js/index.php"></script>
-<style>
-body {
-    color: red;
-}
-</style>
+<link rel="stylesheet" href="/css/admin.css">
