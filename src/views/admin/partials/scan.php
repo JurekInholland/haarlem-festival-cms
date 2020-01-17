@@ -1,54 +1,114 @@
 <style>
-.qrcode-text-btn {
-  display: inline-block;
-  height: 2rem;
-  width: 2rem;
-  background: url("/img/qr-code.svg") 50% 50% no-repeat;
-  background-size: contain;
-
-
+#ticketform {
+  display: flex;
+  flex-flow: column;
+  flex-wrap: wrap;
 }
-
-.qrcode-text-btn > input[type=file] {
-  position: absolute;
-  overflow: hidden;
-  width: 2rem;
-  height: 2rem;
-  opacity: 0;
-
-
+#ticketform section {
+  flex-basis: 100%;
+  /* margin: 0 10px; */
+  display: flex;
+  flex-flow: row;
 }
+#ticketid {
+  width: 100%;
+  margin-right: 10px; 
+  max-width: 500px;
 
-.qrcode-text {
-  padding-right: 1.7em;
-  margin-right: 0;
-  vertical-align: middle;
-}
-
-.qrcode-text + .qrcode-text-btn {
-  width: 1.7em;
-  /* margin-left: -1.9rem; */
-  vertical-align: middle;
 }
 </style>
-<video id="vid"></video>
-<script type="module">
-    let videoElem = document.getElementById("vid");
-    import QrScanner from '/js/qr-scanner-min.js';
-    QrScanner.WORKER_PATH = '/js/qr-scanner-worker-min.js';
-    const qrScanner = new QrScanner(videoElem, result => console.log('decoded qr code:', result));
-
-
-    // do something with QrScanner
-</script>
 
 <h1>Scan tickets</h1>
 
-<p>Please scan ticket QR code or enter ticket id manually.</p>
 
-<form action="">
-    <input class="qrcode-text" name="ticketid" type="text" placeholder="Ticket ID">
-    <label class="qrcode-text-btn" for="ticketid">
-        <input type=file accept="image/*" capture=environment onchange="openQRCamera(this);" tabindex=-1>
-    </label>
+<p id="feedback">Please scan ticket QR code or enter ticket id manually.</p>
+
+<form action="/admin/scanSubmit" method="POST" id="ticketform" class="form">
+  <section>
+      <input class="form-control" name="ticketid" type="text" id="ticketid" placeholder="Ticket ID">
+      <input type="submit" name="submit" class="btn btn-primary">
+  </section>
 </form>
+
+<div class="qrscanner" id="scanner">
+</div>
+
+<!-- <script src="/js/qrReader.js"></script> -->
+<script type="text/javascript" src="/js/jsQRScanner/jsqrscanner.nocache.js"></script>
+
+<script type="text/javascript">
+    function onQRCodeScanned(scannedText)
+    {
+      var feedback = document.getElementById("feedback");
+      var scannerParent = document.getElementById("scanner");
+
+      // console.log(scannedText);
+      if (scannedText.startsWith("The request is not allowed")) {
+        feedback.innerHTML = "Please grant the website camera access or enter the ticket id manually.";
+        scannerParent.style="opacity: 0;"
+
+      
+      } else if (scannedText.startsWith("Requested device not found")) {
+        feedback.innerHTML = "Please visit this page on a device that has a camera or enter the ticket id manually."
+       
+
+      } else {
+
+        var ticketId = document.getElementById("ticketid");
+        var form = document.getElementById("ticketform");
+        ticketId.value = scannedText;
+        form.submit();
+      }
+    }
+
+    
+   
+
+    function provideVideoQQ()
+    {
+        return navigator.mediaDevices.enumerateDevices()
+        .then(function(devices) {
+            var exCameras = [];
+            devices.forEach(function(device) {
+            if (device.kind === 'videoinput') {
+              exCameras.push(device.deviceId)
+            }
+         });
+            
+            return Promise.resolve(exCameras);
+        }).then(function(ids){
+            if(ids.length === 0)
+            {
+              return Promise.reject('Could not find a webcam');
+            }
+            
+            return navigator.mediaDevices.getUserMedia({
+                video: {
+                  'optional': [{
+                    'sourceId': ids.length === 1 ? ids[0] : ids[1]//this way QQ browser opens the rear camera
+                    }]
+                }
+            });        
+        });                
+    }
+    
+    //this function will be called when JsQRScanner is ready to use
+    function JsQRScannerReady()
+    {
+        //create a new scanner passing to it a callback function that will be invoked when
+        //the scanner succesfully scan a QR code
+        var jbScanner = new JsQRScanner(onQRCodeScanned);
+        //var jbScanner = new JsQRScanner(onQRCodeScanned, provideVideo);
+        //reduce the size of analyzed image to increase performance on mobile devices
+        jbScanner.setSnapImageMaxSize(300);
+    	var scannerParentElement = document.getElementById("scanner");
+    	if(scannerParentElement)
+    	{
+    	    //append the jbScanner to an existing DOM element
+        jbScanner.appendTo(scannerParentElement);
+        
+        
+    	}        
+    }
+  
+  </script> 

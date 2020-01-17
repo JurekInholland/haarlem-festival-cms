@@ -6,7 +6,7 @@ class AdminController extends Controller {
     // Authentication is handled in the constructor to only have to do it once.
     // If the user's role is not at least Administrator, throw a custom exception
     // that is caught in Router. Instead of calling a method of this class,
-    // A page is shown that informs the user of their insufficient permissions.
+    // a page is shown that informs the user of their insufficient permissions.
     public function __construct() {
         if (App::get("user")->getRole() < 1) {
             throw new NotAuthorized();
@@ -15,8 +15,9 @@ class AdminController extends Controller {
 
     // Route /admin/
     public function index() {
-        $events = EventService::getAll();
-        return self::view("admin/events", ["events" => $events]);
+        //$events = EventService::getAll();
+        return self::view("admin/ticketList");
+	
     }
 
 
@@ -31,18 +32,6 @@ class AdminController extends Controller {
         $userArray = App::get("db")->query("SELECT * FROM users");
     }
 
-
-    public function restaurants($action) {
-
-        if ($action == "delete") {
-            echo "delete";
-            return;
-        } else if ($action == "edit") {
-            echo "edit";
-            return;
-        }
-        return self::view("admin/restaurants");
-    }
 
     public function newedit() {
         $events = EventService::getNew();
@@ -226,14 +215,26 @@ class AdminController extends Controller {
 
                 return self::view("partials/ticket", ["ticket" => $ticket[0]]);
             }
+            // TODO: admin message view instead echo
+            echo "{$ticketId} was not found.";
         }
-        echo "{$ticketId} was not found.";
+        echo "No ticket id given.";
 
     }
 
 
     public function scan() {
-        return self::view("admin/partials/scan");
+        return self::view("admin/scan");
+    }
+
+    public function scanSubmit() {
+        $ticket = TicketService::getTicketById($_POST["ticketid"]);
+        if (isset($ticket[0])) {
+            echo "ticket found:";
+            die(var_dump($ticket[0]));
+            return;
+        }
+        echo "NO TICKET FOUND";
     }
 
     public function tickets($export) {

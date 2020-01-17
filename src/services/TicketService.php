@@ -10,6 +10,16 @@ class TicketService {
         App::get("db")->query($sql, $params);
     }
 
+
+    public function setScanned(string $ticketId) {
+        $sql = "UPDATE tickets SET TICKET_SCANNED=1
+        WHERE ticket_id = :ticket_id";
+
+        $params = [":ticket_id" => $ticketId];
+        App::get("db")->query($sql, $params);
+    }
+
+
     // Create ticket and store in db
     public function createTicket(int $userId, int $eventId) {
         $ticketId = generateUuid(24);
