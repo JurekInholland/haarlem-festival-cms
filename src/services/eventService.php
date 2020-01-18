@@ -51,9 +51,9 @@ class EventService {
     public static function fromSelect() {}
 
     // TODO: rename
-    public static function getNew() {
+    public static function getAll() {
     
-        $sql = "SELECT * FROM festival_events ORDER BY id";
+        $sql = "SELECT * FROM festival_events ORDER BY slug";
         $events = App::get("db")->query($sql);
 
         $eventList = [];
@@ -65,39 +65,23 @@ class EventService {
         return $eventList;
     }
 
-
-    public static function getAll() {
-
-        $sql = "SELECT * FROM events ORDER BY id";
-        $events = App::get("db")->query($sql);
-
-        $eventList = [];
-
-        foreach ($events as $value) {
-            $event = new GeneralEvent($value);
-            array_push($eventList, $event);
-        }
-        return $eventList;
-    }
-
     public static function fromSlug($slug) {
 
 
-        $sql = "SELECT * FROM events WHERE slug LIKE :slug";
+        $sql = "SELECT * FROM festival_events WHERE slug LIKE :slug";
         $para = [":slug" => $slug];
         $res = App::get("db")->query($sql, $para);
 
         
         if (array_key_exists(0, $res)) {
-            $event = new GeneralEvent($res[0]);
+            $event = new FestivalEvent($res[0]);
 
         } else {
-            $event = new GeneralEvent([]);
+            $event = new FestivalEvent([]);
         }
 
         return $event;
     }
-
 
     public static function store(GeneralEvent $event) {
         $eventInfo = [

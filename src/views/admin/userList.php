@@ -24,21 +24,7 @@
 }
 
 
-.icon {
-    background-size: contain;
-    display: block;
-    width: 25px;
-    height: 25px;
-}
 
-.delete-icon {
-    background-image: url("/img/delete.svg")
-}
-
-.edit-icon {
-    background-image: url("/img/edit.svg")
-
-}
 </style>
 
 

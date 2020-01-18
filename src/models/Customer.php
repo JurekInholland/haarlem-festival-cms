@@ -20,13 +20,24 @@ class Customer extends User {
         $this->phone = $phone;
         $this->firstname = $firstname;
         $this->lastname = $lastname;
-        $this->address = $address;
+        $this->address = $customer_address;
     }
 
+    public function getFirstName() {
+        return ucfirst($this->firstname);
+    }
+
+    public function getLastName() {
+        return ucfirst($this->lastname);
+    }
+
+    public function getAddress() {
+        return $this->address;
+    }
+
+    public function getPhone() {
+        return $this->phone;
+    }
     
-    public static function fromUser(User $user) {
-        
-    }
-
 
 }

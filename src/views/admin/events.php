@@ -22,6 +22,7 @@
     flex-flow: column; 
     justify-content: space-between; 
     z-index: 10;
+
 }
 
 
@@ -55,14 +56,21 @@
 
 /* TODO: clean up */
 .event_section, .event_section:hover {
-    padding: .5rem;
+    padding: .75rem;
 
     background-color: white;
     text-decoration: none;
     color: unset;
+
+    border: 1px solid transparent;
+    border-radius: 5px;
 }
 
 </style>
+
+<form method="POST" action="/admin/events">
+
+</form>
 
 <section class="event-grid">
 
@@ -72,10 +80,10 @@
 
         <a class="event_section" href="/admin/event/<?= $event->getSlug(); ?>">
             <section class="event">
-                <h2><?= $event->getArtist(); ?></h2>
+                <h2><?= $event->getName(); ?></h2>
                 <p><?= $event->getDescription(); ?></p>
                 <ul class="event-info">
-                    <li><?= $event->getDateString(); ?></li>
+                    <li><?= $event->getStartDay(); ?></li>
                     <li style="font-weight: bold;"><?= $event->getStartTime(); ?> - <?= $event->getEndTime(); ?></li>
                     <li><?= $event->getLocation(); ?></li>
                     <li style="color: <?= $event->getColor(); ?>" class="category"><?= $event->getCategory(); ?></li>

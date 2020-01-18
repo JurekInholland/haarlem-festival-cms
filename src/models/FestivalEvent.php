@@ -14,11 +14,14 @@ class FestivalEvent {
     protected $description;
     protected $rating;
     protected $image;
+    protected $slug;
 
     public function __construct($eventinfo)
     {
+
+
         $properties = ["id", "type", "start_date", "end_date", "address", "location_detail",
-                       "name", "tickets", "price", "description", "rating", "image"];
+                       "name", "tickets", "price", "description", "rating", "image", "slug"];
 
         foreach($properties as $property) {
             if (isset($eventinfo[$property])) {
@@ -30,6 +33,10 @@ class FestivalEvent {
     }
 
 
+    public function getSlug() {
+        return self::createSlug($this->getName());
+    }
+
     public function getName() {
         return $this->name;
     }
@@ -40,6 +47,26 @@ class FestivalEvent {
 
     public function getStartDate() {
         return $this->start_date;
+    }
+
+    public function getStartDay() {
+        $date = new DateTime($this->start_date);
+        return $date->format('d.m.y');
+    }
+
+    public function getStartTime() {
+        $date = new DateTime($this->start_date);
+        return $date->format('H:i');
+    }
+
+    public function getEndTime() {
+        $date = new DateTime($this->end_date);
+        return $date->format('H:i');
+    }
+
+    public function getColor() {
+        $categories = App::get("festival")->getCategories();
+        return $categories[$this->getCategoryId()]->getColor();
     }
 
     public function getCategory() {
@@ -82,6 +109,10 @@ class FestivalEvent {
         return $this->rating;
     }
 
+    private static function createSlug($str, $delimiter = '-'){
+        $slug = strtolower(trim(preg_replace('/[\s-]+/', $delimiter, preg_replace('/[^A-Za-z0-9-]+/', $delimiter, preg_replace('/[&]/', 'and', preg_replace('/[\']/', '', iconv('UTF-8', 'ASCII//TRANSLIT', $str))))), $delimiter));
+        return $slug;
+    }
 
 }
 

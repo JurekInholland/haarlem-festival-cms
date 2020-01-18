@@ -18,8 +18,7 @@ class AdminController extends Controller {
     public static function view(string $adminView, array $data = []) {
 
         $data["adminView"] = $adminView;
-        $customHead = "../src/views/admin/partials/head.php";
-        $data["customHead"] = "../src/views/admin/partials/head.php";
+        $data["head"] = "../src/views/admin/partials/head.php";
         Controller::view("admin/sidebar", $data);
 
     }
@@ -32,11 +31,11 @@ class AdminController extends Controller {
     }
 
 
-    public function tests() {
-        $events = EventService::getNew();
-        // die(var_dump($events));
-        var_dump($events[0]->getCategory());
-    }
+    // public function tests() {
+    //     $events = EventService::getNew();
+    //     // die(var_dump($events));
+    //     var_dump($events[0]->getCategory());
+    // }
 
     public function setup() {
         echo "SETUP";
@@ -46,7 +45,7 @@ class AdminController extends Controller {
 
     public function newedit() {
 
-        $events = EventService::getNew();
+        $events = EventService::getAll();
 
 
         if (isset($_GET["type"])) {
@@ -58,9 +57,9 @@ class AdminController extends Controller {
     }
 
     // TODO: refactor
-    public function create() {
+    public function create($item) {
 
-        $event = new GeneralEvent([]);
+        $event = new FestivalEvent([]);
         $days = App::get("festival")->festivalDays();
         
         $locations = App::get("festival")->getLocations();
@@ -73,7 +72,7 @@ class AdminController extends Controller {
             "locations" => $locations,
             "event_types" => $event_types
         ];
-        return self::view("admin/editEvent", $template_vars);
+        return self::view("admin/newEditEvent", $template_vars);
     }
 
     public function submit() {
@@ -162,14 +161,14 @@ class AdminController extends Controller {
         
         } else {
             $event = EventService::fromSlug($para);
-            if ($event->id) {
+            if ($event->getId()) {
                 $template_vars = [
                     "event" => $event,
-                    "festival_days" => $event->getValidDays(),
-                    "locations" => $event->getLocaions(),
-                    "event_types" => $event->getValidCategories()
+                    // "festival_days" => $event->getValidDays(),
+                    // "locations" => $event->getLocaions(),
+                    // "event_types" => $event->getValidCategories()
                 ];
-                return self::view("admin/editEvent", $template_vars);    
+                return self::view("admin/newEditEvent", ["event" => $event]);    
             } else {
                 return self::view("admin/notFound");
             }
@@ -364,6 +363,23 @@ class AdminController extends Controller {
 
         // return self::redirect("admin/tickets");
         return self::view("admin/ticketList", ["tickets" => $tickets]);
+    }
+
+
+    public function invoices($invoiceId) {
+
+        if ($invoiceId) {
+            $invoice = InvoiceService::getById($invoiceId);
+            // die(var_dump($invoice));
+
+            $pdf = PdfService::createInvoice($invoice);
+            ob_end_clean();
+            return $pdf->Output("invoice_{$invoiceId}.pdf", 'I');
+        }
+
+        $invoices = InvoiceService::getAll();
+        // die(var_dump($invoices));
+        return self::view("admin/invoiceList", ["invoices" => $invoices]);
     }
 
     public function invoice() {

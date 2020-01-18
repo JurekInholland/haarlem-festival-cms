@@ -12,7 +12,7 @@
 <?php
 
 $users = UserService::getAll();
-$events = EventService::getNew();
+$events = EventService::getAll();
 ?>
 
 <form action="/admin/submitTicket" method="POST" class="form">

@@ -27,19 +27,21 @@ class UserService {
 
             $userdata = App::get("db")->query($sql, $params);
 
+
+
+
             // TODO: Verify
             if (isset($userdata[0])) {
                 $userdata[0]["loggedIn"] = true;
                 return new User($userdata[0]);
             }
         }
+
+        // If cookie is not set, return guest user info
         $guestUser = [
             "username" => "Guest",
             "role" => 0,
             "id" => 0,
-            "password" => "",
-            "email" => "",
-            "registration_date" => "",
         ];
         return new User($guestUser);
     }

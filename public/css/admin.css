@@ -25,6 +25,12 @@
 #sidebar.active {
     margin-left: -250px;
 }
+
+#sidebar hr {
+    margin-top: .33rem;
+    margin-bottom: .33rem;
+    border-top: 1px dashed rgba(255, 255, 255, 0.2)
+}
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
@@ -70,6 +76,31 @@ button::after {
 #bodyContent {
     font-size: 1rem;
 }
+
+
+/* ---------------------------------------------------
+    TABLES
+----------------------------------------------------- */
+
+.table .icon {
+    background-size: contain;
+    display: block;
+    width: 25px;
+    height: 25px;
+}
+
+.delete-icon {
+    background-image: url("/img/delete.svg")
+}
+
+.edit-icon {
+    background-image: url("/img/edit.svg")
+}
+
+.pdf-icon {
+    background-image: url("/img/pdf.svg")
+}
+
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */

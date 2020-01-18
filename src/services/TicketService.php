@@ -74,7 +74,8 @@ class TicketService {
     }
 
     public function getAll() {
-        $sql = "SELECT tickets.*, festival_events.*, cms_users.username FROM tickets JOIN festival_events ON tickets.event_id = festival_events.id
+        $sql = "SELECT tickets.*, festival_events.*, cms_users.username FROM tickets
+                JOIN festival_events ON tickets.event_id = festival_events.id
                 JOIN cms_users ON tickets.user_id = cms_users.id";
         
         $ticketdata = App::get("db")->query($sql);

@@ -11,7 +11,7 @@ class ProfileController extends Controller {
             return self::redirect("profile/show/{$currentUser}");
         }
 
-        // If user is not signed in, display the login modal + custom message
+        // If user is not signed in, display the login modal + session message
         $_SESSION["loginMsg"] = "Please sign in to view your profile";
         require "../src/views/partials/head.php";
         require "../src/views/modals/showLogin.php";

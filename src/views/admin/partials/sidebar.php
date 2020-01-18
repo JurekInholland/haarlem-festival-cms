@@ -9,18 +9,25 @@
         </div>
 
         <ul>
-            <li><a href="/admin/create">Create event</a></li>
-            <li><a href="/admin/event">Edit event</a></li>
+            <li><a href="/admin/create">New Event</a></li>
+            <li><a href="/admin/event">Events</a></li>
             <!-- <li><a href="/create">New restaurant</a></li> -->
-            <li><a href="/admin/location">Edit Locations</a></li>
-            <li><a href="/admin/restaurants">Edit Restaurants</a></li>
-            <li><a href="/admin/pages">Edit Static Pages</a></li>
+            <li><a href="/admin/location">Locations</a></li>
+            <li><a href="/admin/restaurants">Restaurants</a></li>
+            <li><a href="/admin/pages">Pages</a></li>
+            <hr>
             <!-- <li><a href="">Edit Restaurant</a></li> -->
-            <li><a href="/admin/settings">Festival settings</a></li>
-            <li><a href="/admin/statistics">View statistics</a></li>
-            <li><a href="/api">Public API</a></li>
+            <li><a href="/admin/settings">Settings</a></li>
+            <li><a href="/admin/statistics">Statistics</a></li>
             <li><a href="/admin/users">Users</a></li>
+            <li><a href="/api">Public API</a></li>
+            <hr>
             <li><a href="/admin/tickets">Tickets</a></li>
+            <li><a href="/admin/scan">Scan Ticket</a></li>
+            <li><a href="/admin/invoices">Invoices</a></li>
+            <li><a href="/auth/logout">Logout</a></li>
+
+
 
         </ul>
 

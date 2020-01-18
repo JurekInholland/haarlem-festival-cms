@@ -58,7 +58,14 @@ class Ticket {
     }
 
     public function getPrice() {
-        return $this->event->getPrice();
+        return  sprintf('%0.2f', $this->event->getPrice());
+    }
+
+
+    public function getTotalPrice() {
+
+        $total = floatval($this->getAmount()) * floatval($this->getPrice());
+        return  sprintf('%0.2f', $total);
     }
 
     public function getEventSlug() {
@@ -66,6 +73,11 @@ class Ticket {
     }
 
     public function getEventDate() {
+        $date = new DateTime($this->event->getStartDate());
+        return $date->format('d.m.Y H:i');
+    }
+
+    public function getEventDateReadable() {
         $date = new DateTime($this->event->getStartDate());
         return $date->format('l, d.m.Y H:i');
 

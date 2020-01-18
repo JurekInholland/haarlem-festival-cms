@@ -22,7 +22,7 @@
             <td><?= $ticket->getEventName(); ?></td>
             <td><?= $ticket->getUsername(); ?></td>
             <td><?= $ticket->getEventDate(); ?></td>
-            <td><?= $ticket->getPrice(); ?></td>
+            <td>€<?= $ticket->getPrice(); ?></td>
             <td><?= $ticket->isPaidReadable(); ?></td>
             <td><?= $ticket->isScannedReadable(); ?></td>
             <td>

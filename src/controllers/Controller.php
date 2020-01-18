@@ -18,6 +18,10 @@ abstract class Controller {
 
         require "../src/views/partials/head.php";
 
+        if (is_file($head)) {
+            require $head;
+        }
+
         require "../src/views/modals/loginModal.php";
         require "../src/views/modals/registerModal.php";
 

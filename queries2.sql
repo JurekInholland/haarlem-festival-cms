@@ -10,8 +10,14 @@ CREATE TABLE `cms_customer_data` (
   `user_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `firstname` varchar(50) NOT NULL DEFAULT '',
   `lastname` varchar(50) DEFAULT NULL,
-  `address` varchar(100) DEFAULT NULL,
-  `phone` int(11) DEFAULT NULL,
+  `customer_address` varchar(100) DEFAULT NULL,
+  `phone` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`user_id`),
-  UNIQUE KEY `user_id` (`user_id`)
+) ENGINE=InnoDB;
+
+CREATE TABLE `invoices` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `invoice_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
