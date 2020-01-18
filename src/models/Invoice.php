@@ -52,7 +52,7 @@ class Invoice {
     public function getTotalPrice() {
         $total = 0;
         foreach ($this->tickets as $ticket) {
-            $total += $ticket->getPrice();
+            $total += $ticket->getPrice() * $ticket->getAmount();
         }
         return  sprintf('%0.2f', $total);
     }

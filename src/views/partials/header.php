@@ -104,7 +104,7 @@ a.active {
     display: none;
     margin-top: .67rem;
     margin-right: 0;
-    width: 250px;
+    /* width: 250px; */
 }
 
 #toggle_nav {

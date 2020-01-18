@@ -9,7 +9,6 @@
 }
 
 .page_content {
-    background-color: red;
 }
 
 #sidebar {
@@ -27,8 +26,8 @@
 }
 
 #sidebar hr {
-    margin-top: .33rem;
-    margin-bottom: .33rem;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
     border-top: 1px dashed rgba(255, 255, 255, 0.2)
 }
 /* ---------------------------------------------------
@@ -85,8 +84,8 @@ button::after {
 .table .icon {
     background-size: contain;
     display: block;
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
 }
 
 .delete-icon {
@@ -94,11 +93,24 @@ button::after {
 }
 
 .edit-icon {
-    background-image: url("/img/edit.svg")
+    background-image: url("/img/edit.svg");
 }
 
 .pdf-icon {
     background-image: url("/img/pdf.svg")
+}
+
+
+/* ---------------------------------------------------
+    FORMS
+----------------------------------------------------- */
+
+.form .stretch {
+    flex-basis: 100%;
+}
+
+.form section input:not([type='checkbox']):not([type="radio"]), .form se {
+    width: 100%;
 }
 
 /* ---------------------------------------------------

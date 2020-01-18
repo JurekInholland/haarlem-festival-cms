@@ -25,8 +25,8 @@ class AdminController extends Controller {
 
     // Route /admin/
     public function index() {
-        //$events = EventService::getAll();
-        return self::view("admin/ticketList");
+        $events = EventService::getAll();
+        return self::view("admin/events", ["events" => $events]);
 	
     }
 
@@ -297,6 +297,13 @@ class AdminController extends Controller {
     }
 
     public function tickets($export) {
+
+        // Manual payment update is done via POST
+        foreach ($_POST as $id => $button) {
+            TicketService::setPaid($id);
+        }
+
+
         $tickets = TicketService::getAll();
 
         // If "pdf" has been passed via url parameter, return tickets as .pdf
@@ -353,11 +360,6 @@ class AdminController extends Controller {
             }
             return;
             
-        }
-
-        // Manual payment update is done via POST
-        foreach ($_POST as $id => $button) {
-            TicketService::setPaid($id);
         }
 
 

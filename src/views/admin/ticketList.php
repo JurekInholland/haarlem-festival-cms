@@ -1,3 +1,9 @@
+<style>
+.pdf-info {
+    margin-top: 1rem;
+}
+</style>
+
 <table class="table">
     <thead>
         <tr>
@@ -36,7 +42,9 @@
 
 </table>
 
-<p>Tickets that are paid are available as <a href="/admin/tickets/pdf">PDF</a>.</p>
+<a href="/admin/createTicket" class="btn btn-primary">New Ticket</a>
+
+<p class="pdf-info">Tickets that are paid are available as <a href="/admin/tickets/pdf">PDF</a>.</p>
 <?php
 
 require "../src/views/admin/partials/exportTickets.php";

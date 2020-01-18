@@ -20,6 +20,10 @@
   max-width: 500px;
 
 }
+
+#ticketform section input[type="submit"] {
+  width: 150px;
+}
 </style>
 
 <h1>Scan tickets</h1>
@@ -30,7 +34,7 @@
 <form action="/admin/scanSubmit" method="POST" id="ticketform" class="form">
   <section>
       <input class="form-control" name="ticketid" type="text" id="ticketid" placeholder="Ticket ID">
-      <input type="submit" name="btnSubmit" class="btn btn-primary">
+      <input type="submit" name="btnSubmit" class="btn btn-primary scan-submit">
   </section>
 </form>
 

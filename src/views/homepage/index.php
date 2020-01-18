@@ -31,15 +31,20 @@
     /* color: #F59F17; */
     color: black;
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 5vmin;
+    margin-top: .5rem;
 }
 
 #second_headline {
     color: #169BD5;
+    font-size: 4vmin;
+    text-decoration: underline;
+
 }
 
 #demo {
     color: #169BD5;
-    font-size: 1.25rem;
+    font-size: 4vmin;
     /* color: #C32039; */
 }
 

@@ -82,11 +82,10 @@ class UserService {
         $sql = "SELECT * from cms_users WHERE email LIKE :username OR username LIKE :username";
         $params = [":username" => $credentials["username"]];
         $userdata = App::get("db")->query($sql, $params);
-        $user = new User($userdata[0]);
-
-        if ($user->getName() == "") {
+        if (!isset($userdata[0])) {
             return "Username not found.";
         }
+        $user = new User($userdata[0]);
 
         if (password_verify($credentials["password"], $user->getHashedPassword())) {
             

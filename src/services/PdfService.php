@@ -171,9 +171,9 @@ class PdfService {
         foreach ($tickets as $key => $ticket) {
 
             if ($key % 2 == 0) {
-                $color = "#efefef";
-            } else {
                 $color = "#ffffff";
+            } else {
+                $color = "#f3f3f3";
             }
             $tableRow .= <<<EOD
             <tr style="background-color:{$color};">

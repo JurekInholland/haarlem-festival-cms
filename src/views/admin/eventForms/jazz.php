@@ -35,7 +35,7 @@
     min-height: 90px;
 }
 
-.times input {
+#times input {
     width: calc(50% - 5px);
     min-width: 54px;
 }
@@ -60,7 +60,7 @@
     <section >
         <label for="time">Time</label>
 
-        <section name="time" class="times">
+        <section name="time" class="times" id="times">
             <input type="time" name="from">
             <input type="time" name="to">
         </section>

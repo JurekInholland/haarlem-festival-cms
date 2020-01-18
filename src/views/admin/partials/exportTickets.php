@@ -1,5 +1,8 @@
 <style>
-
+.form {
+    display: flex;
+    flex-flow: column;
+}
 .form .horizontal {
     display: flex;
     flex-wrap: wrap;

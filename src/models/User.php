@@ -19,12 +19,12 @@ class User {
         // extract properties array
         extract($properties);
 
-        $this->id = $id;
-        $this->name = $username;
-        $this->email = $email;
-        $this->role = $role;
-        $this->password = $password;
-        $this->registrationDate = $registration_date;
+        $this->id = $id ?? "";
+        $this->name = $username ?? "guest";
+        $this->email = $email ?? "";
+        $this->role = $role ?? "0";
+        $this->password = $password ?? "";
+        $this->registrationDate = $registration_date ?? "";
         
         if (isset($loggedIn)) {
             $this->loggedIn = true;

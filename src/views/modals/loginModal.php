@@ -75,30 +75,30 @@ $("#login_toggle").click(function() {
       </div>
       <div class="modal-body">
       <form action="/auth/loginSubmit" method="post" class="form login">
-      <label for="username">Username or email address</label>
-      <input class="form-control validate" name="username" type="text" required>
-      
-      <label for="password">Password</label>
-      <input class="form-control validate" name="password" type="text" required>
-      <a href="#" class="forgot">Forgot password?</a>
+        <label for="username">Username or email address</label>
+        <input class="form-control validate" name="username" type="text" required>
+        
+        <label for="password">Password</label>
+        <input class="form-control validate" name="password" type="password" required>
+        <a href="#" class="forgot">Forgot password?</a>
 
-      <?php
-      if ($loginmsg) {
-        echo "<p class='alert alert-danger' id='warning2'>{$loginmsg}</p>";
-      }
-      ?>
-      <!-- <p class="alert alert-danger" id="warning2"><?=$loginmsg?></p> -->
-      <input type="submit" name="submit" value="Sign in" class="btn btn-primary">
+        <?php
+        if ($loginmsg) {
+          echo "<p class='alert alert-danger' id='warning2'>{$loginmsg}</p>";
+        }
+        ?>
+        <!-- <p class="alert alert-danger" id="warning2"><?=$loginmsg?></p> -->
+        <input type="submit" name="submit" value="Sign in" class="btn btn-primary">
 
 
-    </div>
-      <div class="modal-footer">
-        <section>
-      <!-- <button type="button" class="btn btn-secondary">Cancel</button> -->
-        </section>
-      
-        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-        <!-- <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button> -->
+      </div>
+        <div class="modal-footer">
+          <section>
+        <!-- <button type="button" class="btn btn-secondary">Cancel</button> -->
+          </section>
+        
+          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+          <!-- <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button> -->
       </form>
       <section class="create_account">
 
