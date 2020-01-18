@@ -1,3 +1,7 @@
+DROP TABLE IF EXISTS new_events, festival_events, tickets, static_pages, event_categories
+event_locations, cms_users, festival_info;
+
+
 -- Festival Setup
 
 -- NEW EVENTS
@@ -16,7 +20,8 @@ CREATE TABLE `new_events` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `slug` (`slug`)
 
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB;
+
 
 -- final events table
 CREATE TABLE `festival_events` (
@@ -33,9 +38,10 @@ CREATE TABLE `festival_events` (
 	`rating` INT(11) NULL DEFAULT NULL,
 	`image` CHAR(16) NULL DEFAULT NULL,
 	PRIMARY KEY (`id`)
-)
-ENGINE=InnoDB;
+) ENGINE=InnoDB;
 
+INSERT INTO festival_events (id, type, start_date, end_date, address, location_detail, name, tickets, price, description, rating, image)
+VALUES (1, 0, )
 
 -- Tickets
 CREATE TABLE `tickets` (
@@ -48,7 +54,7 @@ CREATE TABLE `tickets` (
   `order_date` datetime DEFAULT CURRENT_TIMESTAMP,
   `paid_date` datetime DEFAULT NULL,
   PRIMARY KEY (`ticket_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB;
 
 -- Static pages
 CREATE TABLE `static_pages` (
@@ -68,10 +74,7 @@ CREATE TABLE `event_categories` (
 	`id` INT(11) NOT NULL,
 	`category` VARCHAR(50) NOT NULL,
 	PRIMARY KEY (`id`)
-)
-COLLATE 'utf8_bin'
-ENGINE=InnoDB
-;
+) ENGINE=InnoDB;
 
 INSERT INTO `event_categories` (`id`, `category`) VALUES (0, 'Haarlem Jazz');
 INSERT INTO `event_categories` (`id`, `category`) VALUES (1, 'Haarlem Dance');
@@ -83,15 +86,7 @@ CREATE TABLE `event_locations` (
 	`id` INT(11) NOT NULL,
 	`location` VARCHAR(100) NOT NULL,
 	PRIMARY KEY (`id`)
-)
-COLLATE 'utf8_bin'
-ENGINE=InnoDB
-;
-
-INSERT INTO `event_locations` (`id`, `location`) VALUES (0, 'Patronaat, Main Hall');
-INSERT INTO `event_locations` (`id`, `location`) VALUES (1, 'Patronaat, Second Hall');
-INSERT INTO `event_locations` (`id`, `location`) VALUES (2, 'Patronaat, Third Hall');
-INSERT INTO `event_locations` (`id`, `location`) VALUES (3, 'Grote Markt');
+) ENGINE=InnoDB;
 
 
 CREATE TABLE `festival_info` (
@@ -113,14 +108,6 @@ CREATE TABLE `events` (
 )
 ENGINE=InnoDB
 ;
-
-INSERT INTO `new_events` (`id`, `artist`, `description`, `startDate`, `endDate`, `location`, `category`, `price`, `slug`) VALUES (3, 'Jonna Frazer', 'Jonna Fraser is a Dutch rapper of Surinamese descent. He has a broad Dutch hop-style that varies from gangster tap to sultry soul.', '2020-06-26 21:00:00', '2020-06-26 22:00:00', '1', 0, 15.5, 'jonna-frazer');
-INSERT INTO `new_events` (`id`, `artist`, `description`, `startDate`, `endDate`, `location`, `category`, `price`, `slug`) VALUES (8, 'Hardwell', 'Robbert van de Corput, known professionally as Hardwell, is a Dutch DJ, record producer and remixer from Breda, North Brabant. Hardwell was voted the world\'s number one DJ on DJ Mag in 2013 and again in 2014. He was ranked at number three in the top 100 DJs 2018 poll by DJ Mag.', '2020-06-26 22:00:00', '2020-06-26 00:00:00', '4', 1, 25, 'hardwell');
-INSERT INTO `new_events` (`id`, `artist`, `description`, `startDate`, `endDate`, `location`, `category`, `price`, `slug`) VALUES (9, 'Gare du Nord', 'Gare du Nord is a Dutch-Belgian jazz band, originally consisting of Doc (Ferdi Lancee) and Inca (Barend Fransen). Doc played guitar and Inca played saxophone.', '2020-06-27 18:00:00', '2020-06-27 19:00:00', '0', 0, 5, 'gare-du-nord');
-INSERT INTO `new_events` (`id`, `artist`, `description`, `startDate`, `endDate`, `location`, `category`, `price`, `slug`) VALUES (10, 'Ratatouille', 'Het succesvolle restaurant aan het spaarne in haarlem van chef kok Jozua Jaring is â€“ net als ratatouille â€“ een mix van de Franse keuken in de realiteit van vandaag met uitmuntende prijs-kwaliteitverhouding in een laagdrempelige omgeving. Zo zijn we in 2013 gestart in de Lange Veerstraat en zo gaan we na de verhuizing in 2015...', '2020-06-27 22:00:00', '2020-06-27 00:00:00', '4', 2, 25, 'ratatouille');
-INSERT INTO `new_events` (`id`, `artist`, `description`, `startDate`, `endDate`, `location`, `category`, `price`, `slug`) VALUES (12, 'test', 'example', '2020-06-30 18:30:00', '2020-06-30 21:00:00', '1', 2, 12.5, 'test');
-INSERT INTO `new_events` (`id`, `artist`, `description`, `startDate`, `endDate`, `location`, `category`, `price`, `slug`) VALUES (17, 'Restaurant Fris', 'Fris is gelegen in een rustige woonwijk nabij het Frederikspark te Haarlem.  Bij restaurant Fris staan passie en respect voor het product voorop en dat proef je. Niet al te veel poespas, maar juist pure smaken vanuit de klassieke Franse keuken met spannende invloeden uit Zuidoost-AziÃ«. Vooral smaken die passen bij het....', '2020-06-25 17:00:00', '2020-06-25 19:00:00', '4', 2, 25.33, 'restaurant-fris');
-INSERT INTO `new_events` (`id`, `artist`, `description`, `startDate`, `endDate`, `location`, `category`, `price`, `slug`) VALUES (18, 'TiÃ«sto', 'Tijs Michiel Verwest OON, better known by his stage name TiÃ«sto, is a Dutch DJ and record producer from Breda. He was named "the Greatest DJ of All Time" by Mix magazine in a poll voted by the fans. In 2013, he was voted by DJ Mag readers as the "best DJ of the last 20 years". ', '2020-06-28 21:00:00', '2020-06-28 22:00:00', '4', 1, 50, 'ti-sto');
 
 
 CREATE TABLE `cms_users` (
@@ -147,3 +134,27 @@ VALUES
 	(5, 'Restaurant ML', 'Kleine Houtstraat 70, 2011 DR Haarlem, Nederland', 1),
 	(6, 'Club Stalker', 'Kromme Elleboogsteeg 20, 2011 TS Haarlem', 2),
 	(7, 'Caprera Openluchttheater ', 'Hoge Duin en Daalseweg 2, 2061 AG Bloemendaal', 2);
+
+
+
+
+INSERT INTO `festival_events` (`id`, `type`, `start_date`, `end_date`, `address`, `location_detail`, `name`, `tickets`, `price`, `description`, `rating`, `image`) VALUES
+(1, 0, '2020-08-27 18:00:00', '2020-08-27 19:00:00', 'Patroonaat', 'Main', 'Gumbo Kings', 300, 15, 'The Gumbo Kings are a five-piece band that combines the groove of new orleans with rough delta blues and the melody of soul from ancient Memphis.', NULL, NULL),
+(3, 0, '2020-08-27 19:30:00', '2020-08-27 20:30:00', 'Patroonaat', 'Main', 'Evolve', 300, 15, 'Frederieke kroone brings a new generation of music that gives a spherical and soulful yet rocking live show. Expects an enchanting show with exciting stories with great climax and right arrangement.', NULL, NULL),
+(4, 0, '2020-08-27 21:00:00', '2020-08-27 22:00:00', 'Patronaat', 'Main', 'Ntjam Rosie', 300, 15, 'Dutch-Cameroonian singer/songwriter from Rotterdam, The Netherlands. Her style is a mix of pop music, jazz and soul.', NULL, NULL),
+(5, 0, '2020-08-27 18:00:00', '2020-08-27 19:00:00', 'Patronaat', 'Second', 'Wicked Jazz Sounds', 200, 10, 'The Wicked Jazz sounds is the live band of wicked jazz sounds project; a music platform that brings jazz and dance together. Wicked Jazz Sounds were created in 2002.', NULL, NULL),
+(6, 0, '2020-08-27 19:30:00', '2020-08-27 20:30:00', 'Patronaat', 'Second', 'Tom Thomsom Assemble', 200, 10, 'Tom Thomsom is a Dj and producer from Haarlem. His music has RnB & HipHop tunes.', NULL, NULL),
+(7, 0, '2020-08-27 21:00:00', '2020-08-27 22:00:00', 'Patronaat', 'Second', 'Jonna Frazer', 200, 10, 'Jonna Frazer, is a Dutch rapper of Surinamese descent. he has a broad Dutch hop-style that varies from ganster rap to sultry soul.', NULL, NULL),
+(8, 0, '2020-08-28 18:00:00', '2020-08-28 19:00:00', 'Patronaat', 'Main', 'Fox & The Mayors', 300, 15, 'A band from britain, best known for their solo moment where they show every members skill with their instruments.', NULL, NULL),
+(9, 0, '2020-08-28 19:30:00', '2020-08-28 20:30:00', 'Patronaat', 'Main', 'Uncle Sue', 300, 15, 'Uncle Sue is a seven-member Funk and Soul Band from Haarlem with its own story and swinging bladder section.', NULL, NULL),
+(10, 0, '2020-08-28 21:00:00', '2020-08-28 22:00:00', 'Patronaat', 'Main', 'Chris Allen', 300, 15, 'Kristopher Neil Allen is an American musician, singer and songwriter from Conway, Arkansas, and the winner of the eighth season of American Idol.', NULL, NULL),
+(11, 0, '2020-08-28 18:00:00', '2020-08-28 19:00:00', 'Patronaat', 'Second', 'Myles Sandko', 200, 10, 'Sanko, who grew up in a small town on the coast of Ghana, later emigrated with his family to Great Britain. He sang and rapped as a youngster in Cambridge.', NULL, NULL),
+(12, 0, '2020-08-28 19:30:00', '2020-08-28 20:30:00', 'Patronaat', 'Second', 'Ruis SoundSystem', 200, 10, 'Consist of five members that plays jazz and blues with a mix of modern pop culture music.', NULL, NULL),
+(15, 0, '2020-08-28 21:00:00', '2020-08-28 22:00:00', 'Patronaat', 'Second', 'The Family XL', 200, 10, 'In 2015, Xander Hubrecht decided that he wanted to be on stage again with his own work. He started a project called \"The Family XL\" and performed with it every mont in the Jopenkerk in Haarlem.', NULL, NULL),
+(16, 0, '2020-08-29 18:00:00', '2020-08-29 19:00:00', 'Patronaat', 'Main', 'Gare Du Nord', 300, 15, 'Gare du Nord is a Dutch-Belgian jazz band, originally consisting of Doc (Ferdi Lancee) and Inca (Barend Fransen). Doc played guitar and Inca played saxophone.', NULL, NULL),
+(17, 0, '2020-08-29 19:30:00', '2020-08-29 20:30:00', 'Patronaat', 'Main', 'Rilan & The Bombadiers', 300, 15, 'With a sold out first clubtour, a booming festival season and tracks that have already been featured in a number of big Hollywood productions, (Netflix / HULU / FOX: Shooter, Shut Eye and Rosewood) this band has certainly been keeping busy.', NULL, NULL),
+(18, 0, '2020-08-29 21:00:00', '2020-08-29 22:00:00', 'Patronaat', 'Main', 'Soul Six', 300, 15, 'Soul Six is (Moshe Tamir) from Tel Aviv Israel . One of the mainstays industry of electronic music in Israel & Responsible for many successful events in our country.', NULL, NULL),
+(19, 0, '2020-08-29 18:00:00', '2020-08-29 19:00:00', 'Patronaat', 'Third', 'Han Bennink', 150, 10, 'Drummer and multi-instrumentalist Han Bennink was born in Zaandam near Amsterdam in 1942. His first percussion instrument was a kitchen chair.', NULL, NULL),
+(20, 0, '2020-08-29 19:30:00', '2020-08-29 20:30:00', 'Patronaat', 'Third', 'The Nordanians', 150, 10, 'When Oene van Geel viola, Mark Tuinstra guitar and Niti Ranjan Biswas tabla virtuoso played together for the first time there where immediately fireworks.', NULL, NULL),
+(21, 0, '2020-08-29 21:00:00', '2020-08-29 22:00:00', 'Patronaat', 'Third', 'Lilith Merlot', 150, 10, 'With its first release in two years, the single \"Prepping Men,\" Haarlem-based Lilith Merlot has introduced the audience to her new sound.', NULL, NULL),
+(22, 0, '2020-08-30 15:00:00', '2020-08-30 16:00:00', 'Grote Markt', NULL, 'Ruis Soundsystem', NULL, 0, 'Consist of five members that plays jazz and blues with a mix of modern pop culture music..', NULL, NULL);

@@ -21,12 +21,7 @@
 <!-- Rockwell -->
 <link href="//db.onlinewebfonts.com/c/4aa3e37e571255737e5e6d4e9d9770a5?family=Rockwell" rel="stylesheet" type="text/css"/>
 
-<?php
-if (is_file($customHead)) {
-    require($customHead);
-}
-// die(var_dump($customHead));
-?>
+
 </head>
 
 

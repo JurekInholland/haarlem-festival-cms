@@ -49,7 +49,13 @@ class UserService {
         $params = [":username" => $credentials["username"], 
                    ":email" => $credentials["email"]];
         $userdata = App::get("db")->query($sql, $params);
-        $existingUser = new User($userdata[0]);
+        if (isset($userdata[0])) {
+            $user = $userdata[0];
+        } else {
+            $user = [];
+        }
+
+        $existingUser = new User($user);
 
         // Check if username or email already exist
         if ($credentials["username"] == $existingUser->getName()) {
@@ -58,7 +64,7 @@ class UserService {
             return "This email is already in use.";
         }
 
-        if (strlen($credentials["password"]) > 6 && strlen($credentials["password"]) < 32) {
+        if (strlen($credentials["password"]) >= 5 && strlen($credentials["password"]) <= 32) {
             $credentials["password"] = password_hash($credentials["password"], PASSWORD_BCRYPT);
 
             self::createUser($credentials);
@@ -66,7 +72,7 @@ class UserService {
             // return "Successfully registered!";
 
         }
-        return "Password must be between 6 and 32 characters.";
+        return "Password must be between 5 and 32 characters.";
 
     }
 

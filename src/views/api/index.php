@@ -19,7 +19,8 @@
 <li><a href="/api/categories">/api/categories</a> // Festival Categories</li>
 <li><a href="/api/locations">/api/locations</a></li>
 <li><a href="/api/days">/api/days</a></li>
-<li><a href="/api/locations">/api/locations</a></li>
+<!-- <li><a href="/api/locations">/api/locations</a></li> -->
+<li><a href="/api/pages">/api/pages</a></li>
 </ul>
 
 <hr>
