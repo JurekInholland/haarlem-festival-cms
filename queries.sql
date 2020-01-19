@@ -186,3 +186,14 @@ INSERT INTO `invoices` (`id`, `user_id`, `invoice_date`) VALUES (123, 1, '2020-0
 
 INSERT INTO `tickets` (`ticket_id`, `user_id`, `event_id`, `amount`, `IS_PAID`, `TICKET_SCANNED`, `order_date`, `paid_date`, `invoice_id`) VALUES ('aP8aDAjivJxCanbdLG', 1, 18, 2, 0, 0, '2020-01-18 20:54:38', NULL, 123);
 INSERT INTO `tickets` (`ticket_id`, `user_id`, `event_id`, `amount`, `IS_PAID`, `TICKET_SCANNED`, `order_date`, `paid_date`, `invoice_id`) VALUES ('yAvcCkwSEYO8YyLw2R', 1, 10, 1, 0, 0, '2020-01-18 20:54:32', NULL, 123);
+
+-- Food images
+INSERT INTO `cms_images` (`image_id`, `image_name`) VALUES ('baZuFSLpFE77unSm', 'banner.png');
+INSERT INTO `cms_images` (`image_id`, `image_name`) VALUES ('BF32DgzuB1yUOrbL', 'Mr-mrs-restaurant-Haarlem.jpg');
+INSERT INTO `cms_images` (`image_id`, `image_name`) VALUES ('2YUXsYi53Xm11NqK', 'ratatouile.jpg');
+INSERT INTO `cms_images` (`image_id`, `image_name`) VALUES ('V9QSLDwjnHSoaWGj', 'restaurant-ml.jpg');
+INSERT INTO `cms_images` (`image_id`, `image_name`) VALUES ('jmE8vtwRAtB6txMi', 'restaurant-fris.jpg');
+INSERT INTO `cms_images` (`image_id`, `image_name`) VALUES ('9F1u5TgNP1ONchv7', 'spektakel.jpg');
+INSERT INTO `cms_images` (`image_id`, `image_name`) VALUES ('swIJ7MqHbBhH2GWQ', 'grand-cafe-brinkmann.jpg');
+INSERT INTO `cms_images` (`image_id`, `image_name`) VALUES ('6YR8xNAfXCNkDTL3', 'urban frenchy.jpg');
+INSERT INTO `cms_images` (`image_id`, `image_name`) VALUES ('yLklVCDYxwl4FlG4', 'golden bull.jpg');

@@ -29,7 +29,9 @@ $routes = [
 
         "test" => "StaticController",
         "register" => "StaticController",
-        "tickets" => "TicketController"
+        "tickets" => "TicketController",
+        "cart" => "CartController"
+
     ],
 
     "POST" => [
@@ -37,5 +39,6 @@ $routes = [
         "api" => "ApiController",
         "auth" => "AuthController",
         "food" => "FoodController",
+        "cart" => "CartController"
     ]
 ];

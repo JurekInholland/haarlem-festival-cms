@@ -1,0 +1,19 @@
+.cart_container {
+    margin-top: 53px;
+    margin-bottom: 62px;
+}
+
+.cart_container h4 {
+    margin-left: 0px;
+}
+
+.cart_container form button {
+    margin-top: 46px;
+}
+
+.cart_container .item_quantity {
+    margin-top: 22px;
+    max-width: 64px;
+    height: 19px;
+    text-align: center;
+}
