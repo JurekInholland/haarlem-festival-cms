@@ -12,7 +12,7 @@
 .forgot {
   text-align: end;
   margin-top: .25rem;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
 }
 
 .create_account {
@@ -102,7 +102,7 @@ $("#login_toggle").click(function() {
       </form>
       <section class="create_account">
 
-        <p>Dont have an account yet? <a href="#"  id="register_toggle">Create one</a>.</p>
+        <p>Don't have an account yet? <a href="#"  id="register_toggle">Sign up</a>.</p>
         
       </section>
     

@@ -12,7 +12,7 @@
 .forgot {
   text-align: end;
   margin-top: .25rem;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
 }
 
 .create_account {

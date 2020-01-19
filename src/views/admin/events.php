@@ -4,11 +4,11 @@
     display: grid;
     width: 100%;
     grid-template-rows: 1fr;
-    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));;
     grid-auto-flow: row;
     grid-gap: 1rem;
     max-width: 100%;
-    min-width: 530px;
+    /* min-width: 530px; */
     padding-bottom: 3rem;
     /* max-height: 600px; */
 }

@@ -16,7 +16,7 @@
     max-width: 250px;
     background: #282828;
     color: #fff;
-    transition: all 0.3s;
+    /* transition: all 0.3s; */
     padding-left: .5rem;
     padding: .75rem;
 }
