@@ -51,7 +51,7 @@ Partly based on: https://stackoverflow.com/a/5864000
 `docker run --rm --interactive --tty --volume ${PWD}:/app composer install --ignore-platform-reqs`
 
 - initial database setup:  
-`docker-compose exec mysql sh -c "mysql -uroot -prootpw haarlemdb < ./setup.sql"`
+`docker-compose exec mysql sh -c "mysql -uroot -prootpw haarlemdb < ./queries.sql"`
 
 
 
