@@ -44,8 +44,20 @@
 
 
     <script type="text/javascript">
+        
         $(document).ready(function () {
+        if (document.documentElement.scrollWidth < 500) {
+            document.getElementById("sidebar").style.transition = "all 0";
+
+            $('#sidebar').toggleClass('active');
+            $("#sidebarCollapse").toggleClass("is-active");
+            // $("#sidebarCollapse").addClass("is-active");
+        }
+
+
             $('#sidebarCollapse').on('click', function () {
+                document.getElementById("sidebar").style.transition = "all 0.3s";
+
                 $('#sidebar').toggleClass('active');
                 $("#sidebarCollapse").toggleClass("is-active");
             });
