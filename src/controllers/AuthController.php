@@ -41,6 +41,13 @@ class AuthController extends Controller {
         
     }
 
+    public function forgot() {
+        $_SESSION["loginMsg"] = "We have sent you an email containing a password reset link.";
+        require "../src/views/partials/head.php";
+        require "../src/views/modals/showLogin.php";
+        return;
+    }
+
     public static function login() {
         if (App::get("user")->isLoggedIn()) {
             $_SESSION["loginMsg"] = "You are already logged in, " . App::get("user")->getName();
@@ -57,6 +64,11 @@ class AuthController extends Controller {
 
     public static function loginSubmit() {
         if (isset($_POST["username"])) {
+            die(var_dump($_POST));
+            if (isset($_POST["forgot"])) {
+                $user = UserService::getUserByName($_POST["username"]);
+                $email = $user->getEmail();
+            }
             $_SESSION["loginMsg"] = UserService::logIn($_POST);
             require "../src/views/partials/head.php";
             require "../src/views/modals/showLogin.php";

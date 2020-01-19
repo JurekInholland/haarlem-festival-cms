@@ -9,9 +9,14 @@
   margin: 0 auto;
 } */
 
-.forgot {
+#forgot {
   text-align: end;
-  margin-top: .25rem;
+  /* margin-top: .25rem; */
+  margin-top: 0;
+  margin-bottom: 1rem;
+  border: 0;
+  color: #007bff;
+  background-color: transparent;
   /* margin-bottom: 1rem; */
 }
 
@@ -79,8 +84,10 @@ $("#login_toggle").click(function() {
         <input class="form-control validate" name="username" type="text" required>
         
         <label for="password">Password</label>
-        <input class="form-control validate" name="password" type="password" required>
-        <a href="#" class="forgot">Forgot password?</a>
+        <input class="form-control validate" name="password" type="password">
+
+        <input type="submit" name="forgot" value="Forgot password?" id="forgot">
+        <!-- <a href="/auth/forgot" class="forgot">Forgot password?</a> -->
 
         <?php
         if ($loginmsg) {

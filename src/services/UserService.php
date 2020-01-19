@@ -83,8 +83,9 @@ class UserService {
     }
 
     public static function logIn(array $credentials) {
-        $sql = "SELECT *, cms_customer_data.* from cms_users WHERE email LIKE :username OR username LIKE :username
-                LEFT JOIN cms_customer_data ON cms_users.id=cms_customer_data.user_id";
+        $sql = "SELECT *, cms_customer_data.* from cms_users
+                LEFT JOIN cms_customer_data ON cms_users.id=cms_customer_data.user_id
+                WHERE email LIKE :username OR username LIKE :username";
         $params = [":username" => $credentials["username"]];
         $userdata = App::get("db")->query($sql, $params);
         if (!isset($userdata[0])) {
