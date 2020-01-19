@@ -10,6 +10,11 @@ class User {
     private $password;
     private $apikey;
 
+    private $firstname;
+    private $lastname;
+    private $address;
+    private $phone;
+
     protected $roleNames = [0 => "User", 1 => "Administrator", 2 => "Superadministrator"];
     protected $loggedIn = false;
 
@@ -26,6 +31,12 @@ class User {
         $this->password = $password ?? "";
         $this->registrationDate = $registration_date ?? "";
         
+        $this->firstname = $firstname ?? "";
+        $this->lastname = $lastname ?? "";
+        $this->address = $customer_address ?? "";
+        $this->phone = $phone ?? "";
+
+
         if (isset($loggedIn)) {
             $this->loggedIn = true;
         }
@@ -79,4 +90,17 @@ class User {
     }
 
 
+    // Customer data
+    public function getFirstname() {
+        return $this->firstname;
+    }
+    public function getLastname() {
+        return $this->lastname;
+    }
+    public function getAddress() {
+        return $this->address;
+    }
+    public function getPhone() {
+        return $this->phone;
+    }
 }

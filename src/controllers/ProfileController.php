@@ -30,9 +30,10 @@ class ProfileController extends Controller {
         $user = UserService::getUserByName($username);
         if ($user) {
             if ($user->getId() == $currentUser->getId() or $currentUser->getRole() > 0) {
-                return self::view("profile/viewProfile", ["user" => $user]);
-                // die(var_dump($user));
+                return self::view("profile/viewProfile", ["user" => $user, "tickets" => TicketService::getUserTickets($user->getName()), "invoices" => InvoiceService::getByUserId($user->getId())]);
             }
+
+
             echo "Not permitted to view this profile.";
             return;
 
@@ -40,9 +41,10 @@ class ProfileController extends Controller {
         echo "User not found";        
     }
 
+
     public function edit($username) {
-        echo "USER: " . $user;
-        $user = UserService::getUserByName($user);
+        echo "USER: " . $username;
+        $user = UserService::getUserByName($username);
         var_dump($user);
 
         

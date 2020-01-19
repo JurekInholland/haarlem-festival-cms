@@ -33,7 +33,16 @@
   margin-top: 1rem;
 }
 
+.g-recaptcha {
+  margin: 0 auto;
+  margin-top: 1rem;
+}
+
 </style>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+
 <script>
 $(document).ready(function() {
   <?php
@@ -68,7 +77,7 @@ $("#register_toggle").click(function() {
         </button>
       </div>
       <div class="modal-body">
-      <form action="/auth/registerSubmit" method="post" class="form login">
+      <form action="/auth/registerSubmit" method="POST" class="form login">
       <label for="username">Username</label>
       <input class="form-control validate" name="username" type="text" required>
 
@@ -91,6 +100,10 @@ $("#register_toggle").click(function() {
 
       <label for="password">Password</label>
       <input class="form-control validate" name="password" type="text" required> -->
+
+      <!-- Google reCaptcha -->
+
+      <div class="g-recaptcha"  data-sitekey="6LfHxNAUAAAAAA_ULbzn1fTc2cpO2FcI0pyAHsX0"></div>
 
 
       <?php

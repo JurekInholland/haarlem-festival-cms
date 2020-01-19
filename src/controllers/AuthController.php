@@ -13,7 +13,14 @@ class AuthController extends Controller {
     public static function registerSubmit() {
 
         if (isset($_POST["username"])) {
-            $_SESSION["registerMsg"] = UserService::register($_POST);
+
+            if (self::verifyRecaptcha()) {
+                $_SESSION["registerMsg"] = UserService::register($_POST);
+            } else {
+                $_SESSION["registerMsg"] = "Captcha was not solved.";
+            }
+
+            
 
             // If registration was not successful, show register modal again
             if ($_SESSION["registerMsg"]) {
@@ -56,5 +63,31 @@ class AuthController extends Controller {
             return;
         }
         return self::redirect("");
+    }
+
+    private static function verifyRecaptcha() {
+        // https://gist.github.com/jonathanstark/dfb30bdfb522318fc819
+        $post_data = http_build_query(
+            array(
+                // TODO load from config
+                'secret' => "6LfHxNAUAAAAAOGuhSHB9b6azsOe7i_PFG8lLUg9",
+                'response' => $_POST['g-recaptcha-response'],
+                'remoteip' => $_SERVER['REMOTE_ADDR']
+            )
+        );
+        $opts = array('http' =>
+            array(
+                'method'  => 'POST',
+                'header'  => 'Content-type: application/x-www-form-urlencoded',
+                'content' => $post_data
+            )
+        );
+        $context  = stream_context_create($opts);
+        $response = file_get_contents('https://www.google.com/recaptcha/api/siteverify', false, $context);
+        $result = json_decode($response);
+        if (!$result->success) {
+            return false;
+        }
+        return true;
     }
 }

@@ -30,6 +30,23 @@ class InvoiceService {
 
     } 
 
+    public function getByUserId($id) {
+        $sql = "SELECT invoices.id AS invoice_id, cms_customer_data.*, invoices.*, tickets.*, cms_users.*, festival_events.* FROM invoices
+        JOIN tickets ON invoices.id = tickets.invoice_id
+        JOIN cms_customer_data ON invoices.user_id = cms_customer_data.user_id
+        JOIN festival_events ON tickets.event_id = festival_events.id
+        JOIN cms_users ON invoices.user_id = cms_users.id
+        WHERE invoices.user_id = :id";
+
+        $params = [":id" => $id];
+        $ticketdata = App::get("db")->query($sql, $params);
+
+        if (isset($ticketdata[0])) {
+            $invoices = self::createInvoices($ticketdata);
+            return $invoices;
+        }
+    }
+
     public static function getById($id) {
         $sql = "SELECT invoices.id AS invoice_id, cms_customer_data.*, invoices.*, tickets.*, cms_users.*, festival_events.* FROM invoices
         JOIN tickets ON invoices.id = tickets.invoice_id

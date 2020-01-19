@@ -28,12 +28,14 @@ $routes = [
         "faq" => "StaticController",
 
         "test" => "StaticController",
-        "register" => "StaticController"
+        "register" => "StaticController",
+        "tickets" => "TicketController"
     ],
 
     "POST" => [
         "admin" => "AdminController",
         "api" => "ApiController",
-        "auth" => "AuthController"
+        "auth" => "AuthController",
+        "food" => "FoodController",
     ]
 ];

@@ -4,7 +4,10 @@ class UserService {
 
 
     public function getUserByName(string $name) {
-        $sql = "SELECT * FROM cms_users WHERE username LIKE :username";
+        $sql = "SELECT cms_users.*, cms_customer_data.* FROM cms_users
+                LEFT JOIN cms_customer_data ON cms_users.id = cms_customer_data.user_id
+                WHERE username LIKE :username";
+        
         $params = [":username" => $name];
 
         $userdata = App::get("db")->query($sql, $params);
@@ -19,8 +22,9 @@ class UserService {
 
     public function getCurrentUser() {
         if (isset($_COOKIE["haarlemfestival"])) {
-            $sql = "SELECT cms_login_tokens.user_id as id, cms_users.*
+            $sql = "SELECT cms_login_tokens.user_id as id, cms_users.*, cms_customer_data.*
                     FROM cms_login_tokens JOIN cms_users ON cms_login_tokens.user_id = cms_users.id
+                    LEFT JOIN cms_customer_data ON cms_users.id = cms_customer_data.user_id
                     WHERE cms_login_tokens.token = :token";
             
             $params = [":token" => sha1($_COOKIE["haarlemfestival"])];
@@ -79,7 +83,8 @@ class UserService {
     }
 
     public static function logIn(array $credentials) {
-        $sql = "SELECT * from cms_users WHERE email LIKE :username OR username LIKE :username";
+        $sql = "SELECT *, cms_customer_data.* from cms_users WHERE email LIKE :username OR username LIKE :username
+                LEFT JOIN cms_customer_data ON cms_users.id=cms_customer_data.user_id";
         $params = [":username" => $credentials["username"]];
         $userdata = App::get("db")->query($sql, $params);
         if (!isset($userdata[0])) {
