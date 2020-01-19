@@ -27,7 +27,7 @@
                 </figure>
                 <h3><?= $restaurant->name; ?></h3>
                 <h4><?= $restaurant->description; ?></h4>
-                <img class="ratings" src="/img/restaurant_img/<?= $restaurant->rating; ?>"/>
+                <img class="ratings" src="/img/<?= $restaurant->rating; ?>.png"/>
             </section>
         </a>
         <?php }?>

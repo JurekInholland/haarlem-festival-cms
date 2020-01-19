@@ -1,0 +1,255 @@
+body {
+    background-color: #efefef;
+}
+
+.reservation {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex: 1 1 300px;
+}
+.reservation-form textarea {
+    height: 100%;
+}
+
+.pay {
+    margin: 0 auto;
+    padding-left: 1rem;
+}
+
+.pay .btn {
+    width: 150px;
+    margin-bottom: 2rem;
+}
+
+.containers {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+    width: 100%;
+}
+
+.reservation_top {
+    flex-basis: 100%;
+}
+.container_reservation {
+    margin-top: -1rem;
+}
+.reservation label {
+    margin-top: 1rem;
+}
+
+.summary_container {
+    border: 1px solid black;
+    background-color: white;
+    /* max-width: 500px; */
+
+}
+
+.summary {
+    font-size: 22px;
+    margin: 0 .5rem;
+}
+
+
+.summary .row {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid black;
+}
+
+
+.summary .row .col-xs {
+    flex-basis: 50%;
+}
+
+.summary p {
+    color: black;
+}
+
+.summary .top_line {
+    display: none;
+}
+
+
+
+.summary .vl {
+    border-left: 1px solid black;
+    position: absolute;
+    height: 600px;
+    margin-left: 185px;
+}
+.summary hr {
+    margin: 119px 0 0 0px;
+    width: 100%;
+    border-top: 1px solid;
+}
+
+.container_details, .reservation {
+    margin: 1rem;
+}
+
+.row {
+    margin-bottom: 1rem;
+}
+.restaurant_details .cotainer-fluid {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: 1200px;
+    overflow: hidden;
+}
+
+.col-xs {
+    margin-bottom: .5rem;
+}
+
+.top {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    /* justify-content: center; */
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.top .info {
+    margin-right: 1rem;
+}
+
+.top a {
+    height: 100%;
+}
+
+.btn {
+    background-color: #F59F17;
+    color: white;
+    /* flex-basis: 100%; */
+}
+
+.restaurant_image, .row-container {
+    max-width: 1200px;
+}
+
+.restaurant_image img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.flex-container {
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.flex-container .product {
+    flex: 1 1 25%;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: space-between;
+
+    background-color: white;
+    border: 1px solid #F59F17;
+    border-radius: 5px;
+
+    margin: 1rem;
+    height: 100%;
+}
+
+.product h3, .product h4 {
+    margin: .25rem 1rem;
+}
+
+.ratings {
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+.flex-container a {
+    color: black;
+    max-width: 450px;
+    height: 320px;
+    margin: 1rem;
+}
+
+.restaurant-img {
+
+}
+
+.restaurantImg {
+  max-height: 100%;
+  width: 100%;
+  object-fit: cover;
+
+}
+
+.img_wrapper {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    overflow: hidden;
+    /* width: 400px;
+    height: 235px; */
+
+}
+
+.dropdown {
+    display: flex;
+    flex-basis: 100%;
+    justify-content: flex-end;
+    align-items: center;
+    height: 60px;
+    margin-right: 1rem;
+}
+
+.dropdown select {
+    max-width: 250px;
+    min-width: 125px;
+    /* position: relative;
+    top: 5;
+    right: 5;
+    float: right; */
+}
+
+@media screen and (min-width: 768px) {
+    .reservation {
+        justify-content: center;
+    }
+    .containers {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-around;
+        flex: 1 50%;
+        
+        max-width: 1300px;
+        /* margin: 0 auto; */
+    }
+    .reservation_top, .pay {
+        max-width: 1300px;
+        padding-left: 1rem;
+    }
+
+    .container_reservation {
+        flex-basis: 50%;
+        max-width: 48%;
+    }
+
+    .summary_container {
+        /* width: ; */
+        flex-basis: 50%;
+        max-width: 48%;
+    }
+    .requests {
+        height: 540px;
+    }
+
+    .form-group {
+        margin-bottom: 0;
+    }
+
+}

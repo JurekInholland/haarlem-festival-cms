@@ -25,7 +25,7 @@
             <div class="col-xs col-md">Price</div>
             <div class="col-xs col-md">€<?php echo $restaurant->getPrice(); ?></div>
             <div class="col-xs col-md">
-              <img class="ratings" src="/img/restaurant_img/<?php echo $restaurant->rating; ?>"/>
+              <img class="ratings" src="/img/<?php echo $restaurant->rating; ?>.png"/>
             </div>
           </div>
 
