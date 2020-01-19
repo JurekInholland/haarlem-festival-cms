@@ -26,6 +26,7 @@
             <li><a href="/admin/scan">Scan Ticket</a></li>
             <li><a href="/admin/invoices">Invoices</a></li>
             <li><a href="/auth/logout">Logout</a></li>
+            <li><a href="/payment/make">Payment</a></li>
 
 
 

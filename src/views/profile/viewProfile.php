@@ -50,5 +50,10 @@
     <input type="text" name="" readonly class="form-control-plaintext" value="Jurek">
 </section>
 
-
 </form>
+
+<h1><?=$user->getName()?>'s Tickets</h1>
+
+
+
+<h1><?=$user->getName()?>'s Invoices</h1>

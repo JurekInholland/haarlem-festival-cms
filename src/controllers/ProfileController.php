@@ -8,7 +8,7 @@ class ProfileController extends Controller {
         // Redirect user to view their profile
         $currentUser = App::get("user")->getName();
         if ($currentUser != "Guest") {
-            return self::redirect("profile/show/{$currentUser}");
+            return self::redirect("users/profile/{$currentUser}");
         }
 
         // If user is not signed in, display the login modal + session message
@@ -23,7 +23,7 @@ class ProfileController extends Controller {
 
         if (!$username) {
             if ($currentUser != "Guest") {
-                return self::redirect("users/profile/{$currentUser}");
+                return self::redirect("users/profile/{$currentUser->getName()}");
             }
         }
 

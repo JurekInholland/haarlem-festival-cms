@@ -37,3 +37,31 @@ invoice contains at least: name of client, number of client, address of client, 
 line item), total amount, value added tax (VAT – 21% or 9%, depending on product), payment due date, invoice date.
 
 https://stackoverflow.com/a/38850273
+
+
+---
+# Sending emails
+- confirm register
+- forgot password
+- distribute tickets
+- confirm change profile
+
+# user profile
+- my invoices
+- my tickets
+
+# events
+- finalize forms
+- form validation client/server
+- image upload (processing)
+
+# static pages
+- improve style
+
+# cronjob
+
+# Register CAPTCHA
+
+# User role: client, volunteer
+
+# Add to readme: Dependencies, external APIs 
