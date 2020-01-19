@@ -65,9 +65,13 @@ class AuthController extends Controller {
     public static function loginSubmit() {
         if (isset($_POST["username"])) {
             die(var_dump($_POST));
+
+            // Forgot password was clicked
             if (isset($_POST["forgot"])) {
                 $user = UserService::getUserByName($_POST["username"]);
                 $email = $user->getEmail();
+                
+
             }
             $_SESSION["loginMsg"] = UserService::logIn($_POST);
             require "../src/views/partials/head.php";
