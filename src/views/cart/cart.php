@@ -1,3 +1,15 @@
+
+<style>
+#total_price {
+    
+}
+
+b {
+    width: 70%;
+    text-align: right;
+}
+</style>
+
 <div class="container cart_container">
     <div class="row">
         <div class="col-md-4 order-md-2 mb-4">
@@ -14,7 +26,9 @@
                             <li class="list-group-item d-flex justify-content-between lh-condensed">
                                 <div>
                                     <h6 class="my-0"><?= $item->itemName; ?></h6>
-                                    <span class="text-muted item_price">€<?= $item->itemPrice; ?></span>
+                                    <span class="text-muted item_price"><?= $item->itemPrice; ?></span>
+                                    <button onclick="add(<?= $item->itemPrice; ?>)" class="btn btn-outline-dark">+</button>
+                                    <button onclick="deprecate(<?= $item->itemPrice; ?>)" class="btn btn-outline-dark">--</button>
                                 </div>
                             <?php
                                 if ($item->type != 1) { $counter++; //hide quantity input field  ?> 
@@ -27,7 +41,7 @@
 
                 <li class="list-group-item d-flex justify-content-between">
                     <span>Total Price</span>
-                    <strong id="total_price">€<?= $total; ?></strong>
+                    <b>€</b><strong id="total_price"><?= $total; ?></strong>
                 </li>
             </ul>
         </div> <!-- end of cart summary -->

@@ -8,7 +8,7 @@ class CartService {
             "itemId" => $purchaseItems->itemId,
             "quantity" => $purchaseItems->itemQuantity
         ];
-       App::get("db")->insertUpdate("purchases", $purchaseData);
+       App::get("db")->insertUpdate("Purchases", $purchaseData);
     }
     
 }

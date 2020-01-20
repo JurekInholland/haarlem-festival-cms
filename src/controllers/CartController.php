@@ -2,7 +2,7 @@
 
 class CartController extends Controller {   
     
-     // Override controller's view method to always include admin specific partials
+     // Override controller's view method to always include cart specific partials
      public static function view(string $viewName, array $data = []) {
 
         $data["head"] = "../src/views/cart/head.php";
