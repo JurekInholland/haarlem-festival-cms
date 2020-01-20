@@ -34,7 +34,7 @@ $user = App::get("user");
                                     <h6 class="my-0"><?= $item->itemName; ?></h6>
                                     <span class="text-muted item_price"><?= $item->itemPrice; ?></span>
                                     <button onclick="add(<?=$key?>)" class="btn btn-outline-dark">+</button>
-                                    <input type="number" onchange="calculateTotal()" value="<?=$item->quantity?>" class="quantity">
+                                    <input type="number" min="0" max="10" onchange="calculateTotal()" value="<?=$item->quantity?>" class="quantity">
                                     <button onclick="deprecate(<?=$key?>)" class="btn btn-outline-dark">--</button>
                                     <button onclick="gCookie()"></button>
                                 </div>

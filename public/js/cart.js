@@ -1,13 +1,18 @@
 function add(idx) {
     let quantities = document.getElementsByClassName("quantity");
-    quantities[idx].value = parseInt(quantities[idx].value) + 1;
-    calculateTotal();
+    if (parseInt(quantities[idx].value) < 10) {
+        quantities[idx].value = parseInt(quantities[idx].value) + 1;
+        calculateTotal();    
+    } 
 }
 
 function deprecate(idx) {
     let quantities = document.getElementsByClassName("quantity");
-    quantities[idx].value = parseInt(quantities[idx].value) - 1;
-    calculateTotal();
+    if (quantities[idx].value >= 1) {
+        quantities[idx].value = parseInt(quantities[idx].value) - 1;
+        calculateTotal();
+    
+    }
 }
 
 function updateCookie() {
