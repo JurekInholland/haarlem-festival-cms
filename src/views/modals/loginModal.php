@@ -86,7 +86,7 @@ $("#login_toggle").click(function() {
         <label for="password">Password</label>
         <input class="form-control validate" name="password" type="password">
 
-        <input type="submit" name="forgot" value="Forgot password?" id="forgot">
+        <input type="button" onclick="this.form.submit();" name="forgot" value="Forgot password?" id="forgot">
         <!-- <a href="/auth/forgot" class="forgot">Forgot password?</a> -->
 
         <?php
@@ -95,7 +95,7 @@ $("#login_toggle").click(function() {
         }
         ?>
         <!-- <p class="alert alert-danger" id="warning2"><?=$loginmsg?></p> -->
-        <input type="submit" name="submit" value="Sign in" class="btn btn-primary">
+        <input type="submit" name="submitbtn" value="Sign in" class="btn btn-primary">
 
 
       </div>

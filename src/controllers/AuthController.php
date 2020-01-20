@@ -64,19 +64,36 @@ class AuthController extends Controller {
 
     public static function loginSubmit() {
         if (isset($_POST["username"])) {
-            die(var_dump($_POST));
 
             // Forgot password was clicked
-            if (isset($_POST["forgot"])) {
-                $user = UserService::getUserByName($_POST["username"]);
-                $email = $user->getEmail();
-                
+            if (isset($_POST["submitbtn"])) {
 
+                $_SESSION["loginMsg"] = UserService::logIn($_POST);
+                if (isset($_SESSION["loginMsg"])) {
+                    require "../src/views/partials/head.php";
+                    require "../src/views/modals/showLogin.php";
+                    return;
+                }
+
+            // Forgot password
+            } else {
+
+                $user = UserService::getUserByName($_POST["username"]);
+                if ($user) {
+                    $email = $user->getEmail();
+                    $_SESSION["loginMsg"] = "We sent you an email with instructions on how to regain access to your account.";
+
+                } else {
+                    $_SESSION["loginMsg"] = "No valid email for this username found.";
+
+                }
+
+                require "../src/views/partials/head.php";
+                require "../src/views/modals/showLogin.php";
+                return;
+                
             }
-            $_SESSION["loginMsg"] = UserService::logIn($_POST);
-            require "../src/views/partials/head.php";
-            require "../src/views/modals/showLogin.php";
-            return;
+
         }
         return self::redirect("");
     }

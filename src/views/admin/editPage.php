@@ -40,7 +40,7 @@
 
 <form action="/admin/pageSubmit" method="POST" class="form">
     <input type="hidden" name="id" value="<?= $page->getId() ?>">
-    <input type="hidden" name="oldslug" value="<?=end(Request::uriComponents())?>">
+    <input type="hidden" name="oldslug" value="<?=$page->getSlug()?>">
     <label for="slug">Slug</label>
     <input class="form-control" type="text" name="slug" value="<?= $page->getSlug(); ?>">
 
