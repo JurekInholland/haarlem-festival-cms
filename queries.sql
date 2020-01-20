@@ -30,7 +30,7 @@ CREATE TABLE `tickets` (
   `TICKET_SCANNED` tinyint(4) DEFAULT '0',
   `order_date` datetime DEFAULT CURRENT_TIMESTAMP,
   `paid_date` datetime DEFAULT NULL,
-  `invoice_id` int(11) NULL DEFAULT NULL,
+  `invoice_id` VARCHAR(8) NULL DEFAULT NULL,
   PRIMARY KEY (`ticket_id`)
 ) ENGINE=InnoDB;
 
