@@ -1,14 +1,11 @@
-<!-- <?php require "partials/banner.php"; ?> -->
+<?php require "partials/banner.php"; ?>
     
     <div class="container_details">
       <div class="top">
-          <section class="info">
-            <h1><?php echo $restaurant->name; ?></h1>
-            <h3><?php echo $restaurant->description;  ?></h3>
-            <p>A reservation fee of €10,- per person is required in order to make a reservation</p>
-          </section>
-
-          <a href="/food/reservation/<?php echo str_replace(" ","-", $restaurant->name) ?>"><button type="button" class="btn btn-lg">Make Reservation</button></a>
+          <h1><?php echo $restaurant->name; ?></h1>
+          <h3><?php echo $restaurant->description;  ?></h3>
+          <p>A reservation fee of €10,- per person is required in order to make a reservation</p>
+          <a href="http://localhost/food/reservation/<?php echo str_replace(" ","-", $restaurant->name) ?>"><button type="button" class="btn btn-lg">Make Reservation</button></a>
       </div>
 
       <div class="restaurant_details">
@@ -16,7 +13,7 @@
           <img src="/image_uploads/<?php echo $restaurant->image ?>"/>
         </div>
 
-        <div class="row-container">
+        <div class="container-fluid">
           <div class="row">
             <div class="col-xs col-md">First Session:</div>
             <div class="col-xs col-md"><?php echo $restaurant->firstSession();  ?></div>

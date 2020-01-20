@@ -1,16 +1,11 @@
-<!-- <?php require "partials/banner.php"; ?> -->
+<?php require "partials/banner.php"; ?>
 
-<section class="reservation">
 
-<div class="reservation_top">
-      
+    <div class="reservation_top">
         <h3>Make a reservation</h3>
         <p>A reservation fee of €10,- per person is required in order to make a reservation</p>
     </div>
 
-    <section class="containers">
-
-    
     <div class="summary_container">
       <h3>Reservation Details</h3>
       <div class="summary">
@@ -54,7 +49,7 @@
 
     <div class="container_reservation">
       <div id="reservation_form">
-          <form name="reservation" action="http://localhost/food/book/<?php echo str_replace(" ","-", $restaurant->name) ?>" method="post">
+          <form name="reservation" action="/food/book/<?php echo str_replace(" ","-", $restaurant->name) ?>" method="post">
               <div class="form-row">
                   <div class="col">
                       <label>Date</label>
@@ -123,19 +118,13 @@
               <hr>
               <div class="form-group">
                   <label>Special Requests</label>
-                  <textarea class="form-control requests" name="txtRequests" id="request_id"onchange="displaySummary()"></textarea>
+                  <textarea class="form-control" name="txtRequests" rows="4" id="request_id"onchange="displaySummary()"></textarea>
               </div>
-
+              <hr class="bottom_line">
+              <button type="submit" class="btn">Pay</button>
+            </form>
       </div>
 
     </div>
-    </section>
-
-
     
-</section>
-<hr class="bottom_line">
-<section class="pay">
-<button type="submit" class="btn">Pay</button>
-            </form>
-</section>
+    
