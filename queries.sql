@@ -197,7 +197,7 @@ INSERT INTO `cms_users` (`id`, `username`, `email`, `password`, `role`, `registr
 
 INSERT INTO `cms_customer_data` (`user_id`, `firstname`, `lastname`, `customer_address`, `phone`) VALUES (1, 'Jurek', 'Baumann', 'Donkere Spaarne 44, 2e', '123123123');
 
-INSERT INTO `festival_info` (`start_date`, `end_date`) VALUES ('2020-06-26 08:00:00', '2020-06-29 22:00:00');
+INSERT INTO `festival_info` (`start_date`, `end_date`) VALUES ('2020-08-26 08:00:00', '2020-08-30 22:00:00');
 
 INSERT INTO `invoices` (`id`, `user_id`, `invoice_date`) VALUES (123, 1, '2020-01-18 19:49:53');
 
@@ -218,32 +218,32 @@ INSERT INTO `tickets` (`ticket_id`, `user_id`, `event_id`, `amount`, `IS_PAID`, 
 
 INSERT INTO `festival_events`(`type`,`end_date`, `start_date`, `address`, `location_detail`, `name`, `tickets`, `price`, `description`, `image`) 
 values 
-(1,'2020-07-28 00:00:00', '2020-07-27 00:00:00',  'pass', 'pass', 'Haarlem festival Dance Pass (Whole Day + Night)', 3000, 75, '+ Valid for the entire select day +Access to all conference tracks (Beats, Green,Sound Lab, etc).',null),
-(1,'2020-07-27 23:30:00', '2020-07-27 22:00:00',  'Club Stalker', 'Club', 'Tiesto', 200, 60, '+Get access to this concert',null),
-(1,'2020-07-27 23:30:00', '2020-07-27 22:00:00',  'XO the Club', 'Club', 'Armin van Buuren', 200, 60, '+Get access to this concert',null),
-(1,'2020-07-27 23:30:00', '2020-07-27 22:00:00',  'Club Ruis', 'Club', 'Martin Garrix', 200, 60, '+Get access to this concert',null),
-(1,'2020-07-29 00:00:00', '2020-07-28 00:00:00',  'pass', 'pass', 'Haarlem festival Dance Pass (Whole Day + Night)', 3000, 75, '+ Valid for the entire select day +Access to all conference tracks (Beats, Green,Sound Lab, etc).',null),
-(1,'2020-07-28 02:00:00', '2020-07-27 20:00:00',  'lichtfabrik', 'Back2Back', 'Nick Romero/ Afrojack', 1500, 75, '+Get access to this concert',null),
-(1,'2020-07-28 00:30:00', '2020-07-27 23:00:00',  'Jopenkerk', 'Club', 'Hardwell', 300, 60, '+Get access to this concert',null),
-(1,'2020-07-28 23:00:00', '2020-07-28 14:00:00',  'Caprera Openluchttheater ', 'Back2Back', 'Harwell / Martin Garrix / Armin van Buuren', 2000, 110, 'Enjoy',null),
-(1,'2020-07-28 23:30:00', '2020-07-28 22:00:00',  'Jopenkerk ', 'Club', 'Afrojack', 300, 60, '+Get access to this concert',null),
-(1,'2020-07-30 00:00:00', '2020-07-29 00:00:00',  'pass', 'pass', 'Haarlem festival Dance Pass (Whole Day + Night)', 3000, 75, '+ Valid for the entire select day +Access to all conference tracks (Beats, Green,Sound Lab, etc).',null),
-(1,'2020-07-29 01:30:00', '2020-07-28 21:00:00',  'Lichtfabriek ', 'TiëstoWorld', 'Tiësto', 1500, 75, '+Get access to this concert',null),
-(1,'2020-07-29 00:30:00', '2020-07-28 23:00:00',  'Club Stalker ', 'Club', 'Nicky Romero', 200, 60, '+Get access to this concert',null),
-(1,'2020-07-29 23:00:00', '2020-07-29 14:00:00',  'Caprera Openluchttheater', 'Back2Back', 'Afrojack / Tiësto / Nicky Romero', 2000, 110, 'Enjoy',null),
-(1,'2020-07-29 20:30:00', '2020-07-29 19:00:00',  'Jopenkerk', 'Club', 'Armin van Buuren', 300, 60, '+Get access to this concert',null),
-(1,'2020-07-29 22:30:00', '2020-07-29 21:00:00',  'XO the Club', 'Club', 'Hardwell', 1500, 90, '+Get access to this concert',null),
-(1,'2020-07-29 19:30:00', '2020-07-29 18:00:00',  'Club Stalker', 'Club', 'Martin Garrix', 200, 60, '+Get access to this concert',null);
+(1,'2020-08-28 00:00:00', '2020-08-27 00:00:00',  'pass', 'pass', 'Haarlem festival Dance Pass (Whole Day + Night)', 3000, 75, '+ Valid for the entire select day +Access to all conference tracks (Beats, Green,Sound Lab, etc).',null),
+(1,'2020-08-27 23:30:00', '2020-08-27 22:00:00',  'Club Stalker', 'Club', 'Tiesto', 200, 60, '+Get access to this concert',null),
+(1,'2020-08-27 23:30:00', '2020-08-27 22:00:00',  'XO the Club', 'Club', 'Armin van Buuren', 200, 60, '+Get access to this concert',null),
+(1,'2020-08-27 23:30:00', '2020-08-27 22:00:00',  'Club Ruis', 'Club', 'Martin Garrix', 200, 60, '+Get access to this concert',null),
+(1,'2020-08-29 00:00:00', '2020-08-28 00:00:00',  'pass', 'pass', 'Haarlem festival Dance Pass (Whole Day + Night)', 3000, 75, '+ Valid for the entire select day +Access to all conference tracks (Beats, Green,Sound Lab, etc).',null),
+(1,'2020-08-28 02:00:00', '2020-08-27 20:00:00',  'lichtfabrik', 'Back2Back', 'Nick Romero/ Afrojack', 1500, 75, '+Get access to this concert',null),
+(1,'2020-08-28 00:30:00', '2020-08-27 23:00:00',  'Jopenkerk', 'Club', 'Hardwell', 300, 60, '+Get access to this concert',null),
+(1,'2020-08-28 23:00:00', '2020-08-28 14:00:00',  'Caprera Openluchttheater ', 'Back2Back', 'Harwell / Martin Garrix / Armin van Buuren', 2000, 110, 'Enjoy',null),
+(1,'2020-08-28 23:30:00', '2020-08-28 22:00:00',  'Jopenkerk ', 'Club', 'Afrojack', 300, 60, '+Get access to this concert',null),
+(1,'2020-08-30 00:00:00', '2020-08-29 00:00:00',  'pass', 'pass', 'Haarlem festival Dance Pass (Whole Day + Night)', 3000, 75, '+ Valid for the entire select day +Access to all conference tracks (Beats, Green,Sound Lab, etc).',null),
+(1,'2020-08-29 01:30:00', '2020-08-28 21:00:00',  'Lichtfabriek ', 'TiëstoWorld', 'Tiësto', 1500, 75, '+Get access to this concert',null),
+(1,'2020-08-29 00:30:00', '2020-08-28 23:00:00',  'Club Stalker ', 'Club', 'Nicky Romero', 200, 60, '+Get access to this concert',null),
+(1,'2020-08-29 23:00:00', '2020-08-29 14:00:00',  'Caprera Openluchttheater', 'Back2Back', 'Afrojack / Tiësto / Nicky Romero', 2000, 110, 'Enjoy',null),
+(1,'2020-08-29 20:30:00', '2020-08-29 19:00:00',  'Jopenkerk', 'Club', 'Armin van Buuren', 300, 60, '+Get access to this concert',null),
+(1,'2020-08-29 22:30:00', '2020-08-29 21:00:00',  'XO the Club', 'Club', 'Hardwell', 1500, 90, '+Get access to this concert',null),
+(1,'2020-08-29 19:30:00', '2020-08-29 18:00:00',  'Club Stalker', 'Club', 'Martin Garrix', 200, 60, '+Get access to this concert',null);
 
 -- FOOD EVENTS
 INSERT INTO `festival_events` (`type`, `start_date`, `end_date`, `address`, `location_detail`, `name`, `tickets`, `price`, `description`, `rating`, `image`, `slug`)
 VALUES 
-(2, '2020-08-25 18:00:00', '2020-08-25 18:00:00', 'Lange Veerstraat 4, 2011 DB Haarlem, Nederland', '3', 'Restaurant Mr. & Mrs.', 40, 45, 'Dutch, fish and seafood, European', 4, 'BF32DgzuB1yUOrbL.jpg', 'restaurant-mr-and-mrs'),
-(2, '2020-08-25 18:00:00', '2020-08-25 18:00:00', 'Spaarne 96, 2011 CL Haarlem, Nederland', '3', 'Ratatouille', 52, 45, 'French, fish and seafood, European', 4, '2YUXsYi53Xm11NqK.jpg', "ratatouille"),
-(2, '2020-08-25 18:00:00', '2020-08-25 18:00:00', 'Kleine Houtstraat 70, 2011 DR Haarlem, Nederland', '2', 'Restaurant ML', 60, 45, 'Dutch, fish and seafood, European', 4, 'V9QSLDwjnHSoaWGj.jpg', "restaurant-ml"),
-(2, '2020-08-25 18:00:00', '2020-08-25 18:00:00', 'Twijnderslaan 7, 2012 BG Haarlem, Nederland', '3', 'Restaurant Fris', 45, 45, 'Dutch, French, European', 4, 'jmE8vtwRAtB6txMi.jpg', "restaurant-fris"),
-(2, '2020-08-25 18:00:00', '2020-08-25 18:00:00', 'Spekstraat 4, 2011 HM Haarlem, Nederland', '3', 'Specktakel', 36, 35, 'Europees, Internationaal, Aziatisch', 3, '9F1u5TgNP1ONchv7.jpg', "specktakel"),
-(2, '2020-08-25 18:00:00', '2020-08-25 18:00:00', 'Grote Markt 13, 2011 RC Haarlem, Nederland', '3', 'Grand Cafe Brinkman', 100, 35, 'Dutch, European, Modern', 3, 'swIJ7MqHbBhH2GWQ.jpg', "grand-cafe-brinkman"),
-(2, '2020-08-25 18:00:00', '2020-08-25 18:00:00', 'Oude Groenmarkt 10-12, 2011 HL Haarlem, Nederland', '3', 'Urban Frenchy Bistro Toujours', 48, 35, 'Dutch, fish and seafood, European', 3, '6YR8xNAfXCNkDTL3.jpg', "urban-frenchy-bistro-toujours"),
-(2, '2020-08-25 18:00:00', '2020-08-25 18:00:00', 'Zijlstraat 39, 2011 TK Haarlem, Nederland', '3', 'The Golden Bull', 60, 35, 'Steakhouse, Argentinian, European', 3, 'yLklVCDYxwl4FlG4.jpg', "the-golden-bull"),
-(2, '2020-08-25 18:00:00', '2020-08-25 18:00:00', 'Kleine Houtstraat 70, 2011 DR Haarlem, Nederland', '2', 'Restaurant Speck', 45, 35, 'Europees, Internationaal, Aziatisch', 3, 'V9QSLDwjnHSoaWGj.jpg', "restaurant-speck");
+(2, '2020-08-27 18:00:00', '2020-08-30 18:00:00', 'Lange Veerstraat 4, 2011 DB Haarlem, Nederland', '3', 'Restaurant Mr. & Mrs.', 40, 45, 'Dutch, fish and seafood, European', 4, 'BF32DgzuB1yUOrbL.jpg', 'restaurant-mr-and-mrs'),
+(2, '2020-08-27 18:00:00', '2020-08-30 18:00:00', 'Spaarne 96, 2011 CL Haarlem, Nederland', '3', 'Ratatouille', 52, 45, 'French, fish and seafood, European', 4, '2YUXsYi53Xm11NqK.jpg', "ratatouille"),
+(2, '2020-08-27 18:00:00', '2020-08-30 18:00:00', 'Kleine Houtstraat 70, 2011 DR Haarlem, Nederland', '2', 'Restaurant ML', 60, 45, 'Dutch, fish and seafood, European', 4, 'V9QSLDwjnHSoaWGj.jpg', "restaurant-ml"),
+(2, '2020-08-27 18:00:00', '2020-08-30 18:00:00', 'Twijnderslaan 7, 2012 BG Haarlem, Nederland', '3', 'Restaurant Fris', 45, 45, 'Dutch, French, European', 4, 'jmE8vtwRAtB6txMi.jpg', "restaurant-fris"),
+(2, '2020-08-27 18:00:00', '2020-08-30 18:00:00', 'Spekstraat 4, 2011 HM Haarlem, Nederland', '3', 'Specktakel', 36, 35, 'Europees, Internationaal, Aziatisch', 3, '9F1u5TgNP1ONchv7.jpg', "specktakel"),
+(2, '2020-08-27 18:00:00', '2020-08-30 18:00:00', 'Grote Markt 13, 2011 RC Haarlem, Nederland', '3', 'Grand Cafe Brinkman', 100, 35, 'Dutch, European, Modern', 3, 'swIJ7MqHbBhH2GWQ.jpg', "grand-cafe-brinkman"),
+(2, '2020-08-27 18:00:00', '2020-08-30 18:00:00', 'Oude Groenmarkt 10-12, 2011 HL Haarlem, Nederland', '3', 'Urban Frenchy Bistro Toujours', 48, 35, 'Dutch, fish and seafood, European', 3, '6YR8xNAfXCNkDTL3.jpg', "urban-frenchy-bistro-toujours"),
+(2, '2020-08-27 18:00:00', '2020-08-30 18:00:00', 'Zijlstraat 39, 2011 TK Haarlem, Nederland', '3', 'The Golden Bull', 60, 35, 'Steakhouse, Argentinian, European', 3, 'yLklVCDYxwl4FlG4.jpg', "the-golden-bull"),
+(2, '2020-08-27 18:00:00', '2020-08-30 18:00:00', 'Kleine Houtstraat 70, 2011 DR Haarlem, Nederland', '2', 'Restaurant Speck', 45, 35, 'Europees, Internationaal, Aziatisch', 3, 'V9QSLDwjnHSoaWGj.jpg', "restaurant-speck");
