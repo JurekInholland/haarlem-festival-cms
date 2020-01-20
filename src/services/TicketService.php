@@ -2,6 +2,15 @@
 
 class TicketService {
 
+    public function setPaidInvoice(string $invoiceId) {
+        $sql = "UPDATE tickets SET IS_PAID=1
+        WHERE invoice_id = :invoice_id";
+
+        $params = [":invoice_id" => $invoiceId];
+        App::get("db")->query($sql, $params);
+
+    }
+
     public function setPaid(string $ticketId) {
         $sql = "UPDATE tickets SET IS_PAID=1
         WHERE ticket_id = :ticket_id";

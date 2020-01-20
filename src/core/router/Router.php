@@ -66,6 +66,8 @@ class Router {
                 // display not authorized page
                 } catch (NotAuthorized $e) {
                     return StaticController::notAuthorized();
+                } catch (NotLoggedIn $e) {
+                    return StaticController::notLoggedIn();
                 }
             }
         }

@@ -2,6 +2,15 @@
 
 class CartController extends Controller {   
     
+
+    public function __construct()
+    {
+        if (App::get("user")->getName() == "Guest") {
+            throw new NotLoggedIn();
+        }
+    }
+
+
      // Override controller's view method to always include cart specific partials
      public static function view(string $viewName, array $data = []) {
 
@@ -37,8 +46,9 @@ class CartController extends Controller {
         $invoiceId = generateUuid(6);
 
         $total = CartService::createTickets($invoiceId);
-        return PaymentService::createPayment($total, $invoiceId);
-        
+        PaymentService::createPayment($total, $invoiceId);
+        CartService::deleteCookie();
+        return;
         
         $itemQuantity = $_POST["itemQuantity"]; // retrieve item quantities
         $quantity = explode(" ",$itemQuantity); //convert item quantities to array values

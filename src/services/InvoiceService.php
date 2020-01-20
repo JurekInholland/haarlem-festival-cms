@@ -8,12 +8,12 @@ class InvoiceService {
     // WHERE username LIKE :username";
 
 
-    public static function generate($invoiceId) {
+    public static function generate(string $userId, string $invoiceId) {
 
-        $userId = App::get("user")->getId();
         $sql = "INSERT INTO invoices (`id`, `user_id`, invoice_date)
-        VALUES (:id, :user_id, :invoice_date)";
-        $params = [":id" => $invoiceId, ":user_id" => $userId, ":invoice_date" => date('Y-m-d H:i:s')];
+        VALUES (:id, :userid, :invoice_date)";
+        $params = [":id" => $invoiceId, ":userid" => $userId, ":invoice_date" => date('Y-m-d H:i:s')];
+        App::get("db")->query($sql, $params);
     }
 
     public static function getInvoiceTickets(User $user) {
@@ -39,7 +39,7 @@ class InvoiceService {
     public function getByUserId($id) {
         $sql = "SELECT invoices.id AS invoice_id, cms_customer_data.*, invoices.*, tickets.*, cms_users.*, festival_events.* FROM invoices
         JOIN tickets ON invoices.id = tickets.invoice_id
-        JOIN cms_customer_data ON invoices.user_id = cms_customer_data.user_id
+        LEFT JOIN cms_customer_data ON invoices.user_id = cms_customer_data.user_id
         JOIN festival_events ON tickets.event_id = festival_events.id
         JOIN cms_users ON invoices.user_id = cms_users.id
         WHERE invoices.user_id = :id";
@@ -56,7 +56,7 @@ class InvoiceService {
     public static function getById($id) {
         $sql = "SELECT invoices.id AS invoice_id, cms_customer_data.*, invoices.*, tickets.*, cms_users.*, festival_events.* FROM invoices
         JOIN tickets ON invoices.id = tickets.invoice_id
-        JOIN cms_customer_data ON invoices.user_id = cms_customer_data.user_id
+        LEFT JOIN cms_customer_data ON invoices.user_id = cms_customer_data.user_id
         JOIN festival_events ON tickets.event_id = festival_events.id
         JOIN cms_users ON invoices.user_id = cms_users.id
         WHERE invoices.id = :id";
@@ -75,15 +75,15 @@ class InvoiceService {
         // Get all tickets and users of all invoices
         $sql = "SELECT invoices.id AS invoice_id, invoices.*, cms_customer_data.*, tickets.*, cms_users.*, festival_events.* FROM invoices
         JOIN tickets ON invoices.id = tickets.invoice_id
-        JOIN cms_customer_data ON invoices.user_id = cms_customer_data.user_id
+        LEFT JOIN cms_customer_data ON invoices.user_id = cms_customer_data.user_id
         JOIN festival_events ON tickets.event_id = festival_events.id
         JOIN cms_users ON invoices.user_id = cms_users.id";
         
         $ticketdata = App::get("db")->query($sql);
-        // die(var_dump($ticketdata));
 
-        if (isset($ticketdata[0])) {
+        if (isset($ticketdata)) {
             $invoices = self::createInvoices($ticketdata);
+            return $invoices;
         }
         return $invoices ?? [];
 

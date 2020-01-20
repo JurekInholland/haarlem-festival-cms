@@ -7,12 +7,13 @@ class PaymentController extends Controller {
 
             // Verify and store new payment status
             $payment = PaymentService::getPayment($_POST["id"]);
-            $paymentInfo = ["id" => $payment->metadata->order_id, "status" => $payment->status];
+            $paymentInfo = ["id" => $payment->metadata->order_id, "status" => $payment->status, "invoice_id" => $payment->metadata->invoiceid];
             PaymentService::storeStatus($paymentInfo);
             
             // If the order was successfully paid, generate invoice
             if ($payment->isPaid() && !$payment->hasRefunds() && !$payment->hasChargebacks()) {
-                InvoiceService::generate($payment->metadata->user_id, $payment->metdata->invoice_id);
+                InvoiceService::generate($payment->metadata->userid, $payment->metadata->invoiceid);
+                TicketService::setPaidInvoice($payment->metadata->invoiceid);
             }
         }
 

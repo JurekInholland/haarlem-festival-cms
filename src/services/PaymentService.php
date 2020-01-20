@@ -31,11 +31,12 @@ class PaymentService {
     }
 
     public static function storeStatus(array $order) {
-        $sql = "INSERT INTO payments (payment_id, `status`)
-        VALUES (:payment_id, :status)
-        ON DUPLICATE KEY UPDATE payment_id=VALUES(payment_id), status=VALUES(status)";
+        $sql = "INSERT INTO payments (payment_id, `status`, invoice_id)
+        VALUES (:payment_id, :status, :invoice_id)
+        ON DUPLICATE KEY UPDATE payment_id=VALUES(payment_id), status=VALUES(status),
+        invoice_id=VALUES(invoice_id)";
         
-        $params = [":payment_id" => $order["id"], ":status" => $order["status"]];
+        $params = [":payment_id" => $order["id"], ":status" => $order["status"], ":invoice_id" => $order["invoice_id"]];
         App::get("db")->query($sql, $params);
 
     }
@@ -56,13 +57,14 @@ class PaymentService {
             "webhookUrl" => "https://jbaumann.nl/payment/webhook",
             "metadata" => [
                 "order_id" => $orderId,
-                "user_id" => $userId,
-                "invoice_id" => $invoiceId
+                "userid" => $userId,
+                "invoiceid" => $invoiceId,
             ],
         ]);
         $paymentInfo = ["id" => $orderId, "status" => $payment->status, "invoice_id" => $invoiceId];
         self::storeStatus($paymentInfo);
 
+        // die(var_dump($payment->metadata));
         return header("Location: " . $payment->getCheckoutUrl(), true, 303);
     }
 

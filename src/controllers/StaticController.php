@@ -43,6 +43,9 @@ class StaticController extends Controller {
         return self::view("admin/partials/noPermissions");
     }
 
+    public static function notLoggedIn() {
+        return self::view("partials/notlogged");
+    }
     
 
 }
