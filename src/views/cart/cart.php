@@ -9,6 +9,13 @@
 .quantity {
     max-width: 40px;
 }
+form {
+    /* margin-top: -1rem; */
+}
+
+.list-group.mb-3 {
+    margin-top: 2.1rem;   
+}
 
 </style>
 
@@ -36,7 +43,6 @@ $user = App::get("user");
                                     <button onclick="add(<?=$key?>)" class="btn btn-outline-dark">+</button>
                                     <input type="number" min="0" max="10" onchange="calculateTotal()" value="<?=$item->quantity?>" class="quantity">
                                     <button onclick="deprecate(<?=$key?>)" class="btn btn-outline-dark">--</button>
-                                    <button onclick="gCookie()"></button>
                                 </div>
                             <?php
                                 if ($item->type != 1) { $counter++; //hide quantity input field  ?> 
