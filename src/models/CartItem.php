@@ -9,9 +9,8 @@ class CartItem {
     public $quantity;
     public $reservationData;
     
-    public function __construct($properties)
+    public function __construct($itemID, $type, $itemName, $itemPrice, $quantity, $reservationData)
     {
-        extract($properties);
         $this->itemID = $itemID;
         $this->type = $type;
         $this->itemName = $itemName;

@@ -192,4 +192,15 @@ class UserService {
         return $models;
     }
 
+    public function setCustomerData(array $data) {
+        extract($data);
+        $sql = "INSERT INTO cms_customer_data (user_id, firstname, lastname, customer_address, phone)
+        VALUES (:userid, :firstname, :lastname, :customer_address, :phone)
+        ON DUPLICATE KEY UPDATE firstname=VALUES(firstname), lastname=VALUES(lastname),
+        customer_address=VALUES(customer_address), phone=VALUES(phone)";
+        
+        $params = [":userid" => (int)$userid, ":firstname" => $firstname, ":lastname" => $lastname, ":customer_address" => $address, ":phone" => $phone];
+        // die(var_dump($params));
+        App::get("db")->query($sql, $params);
+    }
 }

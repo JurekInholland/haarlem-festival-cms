@@ -141,7 +141,7 @@
           <?php if ($event->getAddress() == "Grote Markt" ): ?>
             <button class="btn btn-primary ordBtn" > FREE EVENT </button>
           <?php elseif ($event->getAddress() == "Patronaat"): ?>
-            <a href ="jazz/order/<?= $event->getId()?>">
+            <a href ="/jazz/order/<?= $event->getId()?>">
               <button class="btn btn-primary ordBtn" > Buy Now </button>
             </a>
           <?php endif;?>

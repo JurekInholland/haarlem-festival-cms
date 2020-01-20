@@ -70,25 +70,11 @@ class JazzController extends Controller {
             $eventobj->getType(),
             $eventobj->getBand(),
             $eventobj->getPrice(),
-            1
+            1,
+            NULL
         );
-        
-
-        //var_dump($ticketInfo);
-        //setcookie("cart", serialize($ticketInfo), time() +(86400*30), "/");
-        
-        //$data = unserialize($_COOKIE['eventData']);
-        //print_r($data);
-        if(isset($_COOKIE["cart"])) { // check if cart has been set yet
-            $cartData = unserialize($_COOKIE['cart']); // retrieve cart items from existing cookie
-            array_push($cartData, $ticketInfo); // add new cart item to list of cart items
-
-            setcookie("cart",serialize($cartData),time() + (86400 * 30), "/"); // update cart cookie
-        }
-        else {
-            $cartData = array($ticketInfo); // create new cart data array to store new cart items 
-            setcookie("cart",serialize($cartData),time() + (86400 * 30), "/"); // create cart cookie
-        }
+       
+        CartService::add($ticketInfo);
         return self::redirect("cart");
 
     }

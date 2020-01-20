@@ -1,14 +1,20 @@
 
 <style>
+    strong {
+        margin-top: .75rem;
+    }
 #total_price {
     
 }
-
-b {
-    width: 70%;
-    text-align: right;
+.quantity {
+    max-width: 40px;
 }
+
 </style>
+
+<?php
+$user = App::get("user");
+?>
 
 <div class="container cart_container">
     <div class="row">
@@ -22,13 +28,15 @@ b {
                     if (count($itemsData) == 0) { echo "Shopping cart is empty. Please select a ticket / reservation"; }
                     else {
                         $counter = 0;
-                        foreach ($itemsData as $item) { ?>
+                        foreach ($itemsData as $key => $item) { ?>
                             <li class="list-group-item d-flex justify-content-between lh-condensed">
                                 <div>
                                     <h6 class="my-0"><?= $item->itemName; ?></h6>
                                     <span class="text-muted item_price"><?= $item->itemPrice; ?></span>
-                                    <button onclick="add(<?= $item->itemPrice; ?>)" class="btn btn-outline-dark">+</button>
-                                    <button onclick="deprecate(<?= $item->itemPrice; ?>)" class="btn btn-outline-dark">--</button>
+                                    <button onclick="add(<?=$key?>)" class="btn btn-outline-dark">+</button>
+                                    <input type="number" onchange="calculateTotal()" value="<?=$item->quantity?>" class="quantity">
+                                    <button onclick="deprecate(<?=$key?>)" class="btn btn-outline-dark">--</button>
+                                    <button onclick="gCookie()"></button>
                                 </div>
                             <?php
                                 if ($item->type != 1) { $counter++; //hide quantity input field  ?> 
@@ -40,54 +48,46 @@ b {
             <?php   } ?>
 
                 <li class="list-group-item d-flex justify-content-between">
-                    <span>Total Price</span>
-                    <b>€</b><strong id="total_price"><?= $total; ?></strong>
+                    <span>Total Price<br>excluding VAT</span>
+                    <strong id="total_price">€<?= $total; ?></strong>
                 </li>
             </ul>
         </div> <!-- end of cart summary -->
 
         <div class="col-md-8 order-md-1">
             <h4 class="mb-3">Personal Information</h4>
-            <form class="needs-validation" method="post" action="/cart/purchase">
+            <form class="needs-validation" method="POST" action="/cart/purchase">
+                <input type="hidden" name="userid" value="<?=$user->getId()?>">
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="firstName">First name</label>
-                        <input type="text" class="form-control">
+                        <input name="firstname" value="<?=$user->getFirstname()?>" type="text" class="form-control">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="lastName">Last name</label>
-                        <input type="text" class="form-control">
+                        <input name="lastname" type="text" class="form-control">
                     </div>
                 </div>
 
                 <div class="mb-3">
                     <label for="address">Address</label>
-                    <input type="text" class="form-control">
+                    <input name="address" value="<?=$user->getAddress()?>" type="text" class="form-control">
                 </div>
                 
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="firstName">Post Code</label>
-                        <input type="text" class="form-control">
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="lastName">City</label>
-                        <input type="text" class="form-control">
-                    </div>
-                </div>
+               
 
                 <div class="mb-3">
                     <label for="email">Email <span class="text-muted"></span></label>
-                    <input type="email" class="form-control">
+                    <input name="email" value="<?=$user->getEmail()?>" type="email" class="form-control">
                 </div>
 
                 <div class="mb-3">
-                    <label for="email">Phone Number <span class="text-muted"></span></label>
-                    <input type="text" class="form-control">
+                    <label for="phone">Phone Number <span class="text-muted"></span></label>
+                    <input name="phone" value="<?=$user->getPhone()?>" type="text" class="form-control">
                 </div>
 
                 <hr class="mb-4">
-                <h4 class="mb-3">Payment</h4>
+                <!-- <h4 class="mb-3">Payment</h4>
                 <div class="d-block my-3">
                     <div class="custom-control custom-radio">
                         <input id="debit" name="paymentMethod" type="radio" class="custom-control-input">
@@ -97,10 +97,10 @@ b {
                         <input id="credit" name="paymentMethod" type="radio" class="custom-control-input">
                         <label class="custom-control-label" for="credit">Credit card</label>
                     </div>
-                </div>
-                <input type="hidden" id="itemQuantity" name="itemQuantity" value="">
-                <input type="hidden" id="totalPrice" name="totalPrice" value="">
-                <button onclick="getQuantity()" class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+                </div> -->
+                <!-- <input type="hidden" id="itemQuantity" name="itemQuantity" value="">
+                <input type="hidden" id="totalPrice" name="totalPrice" value=""> -->
+                <button onclick="calculateTotal()" class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
             </form>
         </div>
 

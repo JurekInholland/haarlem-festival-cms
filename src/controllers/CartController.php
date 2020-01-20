@@ -44,7 +44,10 @@ class CartController extends Controller {
 
     public static function purchase() { // purchase items in shopping cart method
         $invoiceId = generateUuid(6);
-
+        // die(var_dump($_POST));
+        if ($_POST) {
+            UserService::setCustomerData($_POST);
+        }
         $total = CartService::createTickets($invoiceId);
         PaymentService::createPayment($total, $invoiceId);
         CartService::deleteCookie();

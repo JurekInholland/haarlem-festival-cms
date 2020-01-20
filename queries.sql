@@ -1,5 +1,5 @@
 DROP TABLE IF EXISTS new_events, festival_events, tickets, static_pages, event_categories,
-event_locations, cms_users, cms_login_tokens, festival_info, cms_customer_data, invoices, restaurants;
+event_locations, cms_users, cms_login_tokens, festival_info, cms_customer_data, invoices, restaurants, payments;
 
 
 CREATE TABLE `festival_events` (
@@ -30,8 +30,17 @@ CREATE TABLE `tickets` (
   `TICKET_SCANNED` tinyint(4) DEFAULT '0',
   `order_date` datetime DEFAULT CURRENT_TIMESTAMP,
   `paid_date` datetime DEFAULT NULL,
-  `invoice_id` VARCHAR(8) NULL DEFAULT NULL,
+  `invoice_id` varchar(8) DEFAULT NULL,
   PRIMARY KEY (`ticket_id`)
+) ENGINE=InnoDB;
+
+CREATE TABLE `payments` (
+  `payment_id` varchar(100) NOT NULL,
+  `status` varchar(100) DEFAULT NULL,
+  `last_edited` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `invoice_id` char(8) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`payment_id`)
 ) ENGINE=InnoDB;
 
 -- Static pages
@@ -101,8 +110,8 @@ CREATE TABLE `cms_customer_data` (
 ) ENGINE=InnoDB;
 
 CREATE TABLE `invoices` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) DEFAULT NULL,
+  `id` char(8) NOT NULL DEFAULT '',
+  `user_id` int(11) NOT NULL,
   `invoice_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
