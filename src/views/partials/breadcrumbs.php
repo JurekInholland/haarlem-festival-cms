@@ -1,23 +1,17 @@
 <?php
 $params = Request::uriParams();
-$cate = Request::uri();
 
+$uri = Request::uri();
 $color = "#323232";
+$categories = App::get("festival")->getCategories();
 
-// var_dump($category);
+foreach ($categories as $category) {
+    if ($category->getSlug() == Request::uri()) {
+        $color = $category->getColor();
+    }
+}
 
-// foreach ($category as $key => $cat) {
-//     var_dump($cat);
-//     if ($cat["slug"] == $cate) {
-//         $color = "#" . $cat["color"];
-//     } else {
-//         // echo "SLUG: " . $cat . "<br>";
-//         // echo $cate . "<br>";
-//     }
-// }
-
-// Only display breadcrumbs if necessary
-if ($cate == "") {
+if ($uri == "") {
     return;
 }
 
@@ -62,11 +56,11 @@ $url = "";
 </style>
 
 
-<script src="/js/breadcrumbs.js" type="module"></script>
+<!-- <script src="/js/breadcrumbs.js" type="module"></script> -->
 
 
 <div id="breadcrumbs" class="breadcrumbs" style="background-color: <?= $color; ?>">
-<a class="home_icon" href="/"></a><span> / </span><a href="/<?= $cate; ?>"><?= ucfirst($cate); ?></a>
+<a class="home_icon" href="/"></a><span> / </span><a href="/<?= $uri; ?>"><?= ucfirst($uri); ?></a>
 <?php foreach ($params as $key => $param) :
     if (count($params) < 1) {
     break;
@@ -75,7 +69,7 @@ $url = "";
 ?>
      
      <span> / </span>
-     <a href="/<?= $cate . $url; ?>"><?= ucfirst($param); ?></a> 
+     <a href="/<?= $uri . $url; ?>"><?= ucfirst($param); ?></a> 
 <?php endforeach; ?>
 </div>
 
