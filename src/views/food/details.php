@@ -5,7 +5,7 @@
           <h1><?php echo $restaurant->name; ?></h1>
           <h3><?php echo $restaurant->description;  ?></h3>
           <p>A reservation fee of €10,- per person is required in order to make a reservation</p>
-          <a href="http://localhost/food/reservation/<?php echo str_replace(" ","-", $restaurant->name) ?>"><button type="button" class="btn btn-lg">Make Reservation</button></a>
+          <a href="/food/reservation/<?php echo str_replace(" ","-", $restaurant->name) ?>"><button type="button" class="btn btn-lg">Make Reservation</button></a>
       </div>
 
       <div class="restaurant_details">
