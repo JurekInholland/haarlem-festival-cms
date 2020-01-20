@@ -49,6 +49,11 @@ class FestivalEvent {
         return $this->start_date;
     }
 
+    public function getDayReadable() {
+        $date = new DateTime($this->start_date);
+        return $date->format('l, d.m.Y');
+    }
+
     public function getStartDay() {
         $date = new DateTime($this->start_date);
         return $date->format('d.m.y');

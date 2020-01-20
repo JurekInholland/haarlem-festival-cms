@@ -5,9 +5,10 @@
 }
 </style>
 <?php
+$festival = App::get("festival");
+$categories = $festival->getCategories();
 
-$categories = App::get("festival")->getCategories();
-// die(var_dump($categories));
+$festival_days = $festival->festivalDays();
 
 
 // Selected event category depends on passed event unless user changes it

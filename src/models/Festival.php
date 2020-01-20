@@ -56,11 +56,10 @@ class Festival {
 
         foreach ($period as $idx => $date) {
 
-            $string = "{$date->format('l')}, {$date->format('d.m.Y')}";
 
             $result[$idx] = [
                 "index" => $idx,
-                "string" => $string,
+                "string" => "{$date->format('l, d.m.Y')}",
                 "date" => $date
             ];        
         }

@@ -45,7 +45,7 @@
 
 <h1>Dance event</h1>
 
-<form action="" class="form">
+<form action="" class="form" id="event_form">
 
     <section>
         <label for="name">Artist</label>

@@ -45,7 +45,7 @@
 
 <h1>Jazz event</h1>
 
-<form action="" class="form">
+<form action="" class="form" id="event_form">
 
     <section>
         <label for="name">Band</label>
@@ -54,17 +54,29 @@
 
     <section>
         <label for="date">Date</label>
-        <select name="date" ></select>
+        <select name="date" >
+            <?php foreach ($festival_days as $key => $day) : ?>
+                <?php if($day["string"] == $event->getDayReadable()) {$selected = "selected";} else {$selected = "";} ?>
+
+                <option <?= $selected; ?> value="<?= $key; ?>"><?= $day["string"] ?></option>
+            
+            <?php endforeach; ?>
+</select>
+        </select>
     </section>
 
-    <section >
-        <label for="time">Time</label>
 
-        <section name="time" class="times" id="times">
-            <input type="time" name="from">
-            <input type="time" name="to">
+        <section class="times" id="times">
+            <section>
+                <label for="time">Time</label>
+                <input type="time" name="from" value="<?=$event->getStartTime()?>">
+            </section>
+
+            <section>
+                <label for="time">Time</label>
+                <input type="time" name="from" value="<?=$event->getStartTime()?>">  
+            </section>
         </section>
-    </section>
 
     <section>
         <label for="address">Address</label>

@@ -1,5 +1,5 @@
 <style>
-.form {
+#event_form {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -8,76 +8,83 @@
     margin-right: -15px;
 }
 
-.form input, .form select {
+#event_form input, #event_form select {
     min-width: 250px;
 }
-.form input[type="submit"] {
+#event_form input[type="submit"] {
     width: calc(50% - 10px);
     min-width: 125px;
 }
 
-.form section {
+#event_form section {
     flex:1 1 33%;
     display: flex;
     flex-direction: column;
     padding: 10px 15px;
+    overflow: hidden;
 }
-.form .times{
+#event_form .times{
     display: flex;
     flex-direction: row;
+    align-items: center;
     flex-wrap: wrap;
-    padding: 0;
-    flex: auto;
+    /* padding: 10px 15px;
+    flex: auto; */
     justify-content: space-between;
 }
 
-.form .stretch {
+#event_form .stretch {
     flex-basis: 100%;
 }
-.form textarea {
+#event_form textarea {
     min-height: 90px;
 }
 
 .times input {
-    width: calc(33% - 5px);
+    flex-basis: 45%;
+    /* width: calc(33% - 5px); */
     min-width: 54px;
 }
 
-.form-control {
+#event_form-control {
     min-height: 36px;
 }
 
-.form .buttons {
+#event_form .buttons {
     flex-direction: row;
     justify-content: space-between;
 }
 
+#event_form input {
+    width: unset;
+}
 </style>
 
 
 <h1>Food event</h1>
 
-<form action="" class="form">
+<form action="" class="form" id="event_form">
 
     <section>
         <label for="name">Restaurant</label>
         <input class="form-control" name="name" type="text" value="<?=$event->getName();?>">
     </section>
 
-    <section>
+    <!-- <section>
         <label for="date">Date</label>
         <select class="form-control" name="date" ></select>
-    </section>
+    </section> -->
 
-    <section >
-        <label for="time">Session duration start</label>
-
-        <section name="time" class="times">
+        <section>
+            <label for="time">Session duration start</label>
             <input class="form-control" type="time" name="from">
-            <input class="form-control" type="time" name="to">
-            <input type="time" name="to">
         </section>
-    </section>
+
+        <section class="times">
+            <input class="form-control" type="time" name="to">
+            <input class="form-control" type="time" name="to">
+        </section>
+
 
     <section>
         <label for="address">Address</label>
