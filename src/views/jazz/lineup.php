@@ -95,17 +95,17 @@
 </style>
 <head>
 <!-- bootstrap-->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
 </head>
 <!-- title of the page -->
 <h1 class= "page-title"> Jazz Line-Up </h1>
 <!-- the navigation -->
 <nav class = "jazznav">
     <ul class = "navlist">
-        <a href ="jazz/events/27"><li class = "jazzdate">Thursday </li></a>
-        <a href ="jazz/events/28"><li class = "jazzdate"> Friday </li ></a>
-        <a href ="jazz/events/29"><li class = "jazzdate"> Saturday </li></a>
-        <a href ="jazz/Sundayevents"><li class = "jazzdate"> Sunday </li></a>
+        <a href ="/jazz/events/thursday"><li class = "jazzdate">Thursday </li></a>
+        <a href ="/jazz/events/friday"><li class = "jazzdate"> Friday </li ></a>
+        <a href ="/jazz/events/saturday"><li class = "jazzdate"> Saturday </li></a>
+        <a href ="/jazz/Sundayevents"><li class = "jazzdate"> Sunday </li></a>
     </ul>
 </nav>
 

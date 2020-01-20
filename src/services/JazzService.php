@@ -5,7 +5,7 @@ class JazzService {
     //to show all tickets for jazz
     public static function getAll()
     {
-        $sql = "SELECT * FROM festival_events WHERE 'type' = 0";
+        $sql = "SELECT * FROM festival_events WHERE `type` = 0";
 
         //$params = [":category" => "0"];
 
@@ -41,6 +41,10 @@ class JazzService {
     //database method to gather specific ticket with a date.
     public static function getAllJazzPerDate($date)
     {
+        $dates = ["thursday" => "27", "friday" => "28", "saturday" => "29"];
+        if (array_key_exists($date, $dates)) {
+            $date = $dates[$date];
+        }
         //$date = 27;
         //date is passed on to be recived when a method is called.
         $sql = "SELECT * FROM festival_events WHERE start_date >= '2020-08-".$date." 18:00:00' AND start_date <= '2020-08-".$date." 22:00:00' AND 'type' = 0";

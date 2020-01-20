@@ -21,7 +21,12 @@ class JazzController extends Controller {
     //to show jazz per date selected from the navigation bar.
     public static function events($date) {
 
-        $eventobj = JazzService::getAllJazzPerDate($date);
+        if ($date != "") {
+            $eventobj = JazzService::getAllJazzPerDate($date);
+        } else {
+            $eventobj = JazzService::getAll();
+        }
+        
 
         //to check per date, need to pass on day.
         //$eventobj = JazzService::getAllJazzPerDate();
