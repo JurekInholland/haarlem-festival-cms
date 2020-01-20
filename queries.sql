@@ -125,6 +125,18 @@ CREATE TABLE `restaurants` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
+CREATE TABLE IF `reservations` (
+  `reservationID` int(11) NOT NULL AUTO_INCREMENT,
+  `restaurantID` int(11) NOT NULL,
+  `reservation_date` date NOT NULL,
+  `reservation_time` time NOT NULL,
+  `adults` int(11) NOT NULL,
+  `children` int(11) NOT NULL,
+  `allergies` varchar(200) NOT NULL,
+  `requests` text NOT NULL,
+  `DateCreated` timestamp NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`reservationID`)
+) ENGINE=InnoDB;
 
 INSERT INTO `event_categories` (`id`, `category`, `color`, `slug`)
 VALUES
