@@ -39,12 +39,17 @@ class FoodController extends Controller {
         $resName = str_replace("-"," ","$restaurantName"); // remove "-" from restaurant name
         $restaurant = RestaurantService::getRestaurant($resName); // get specific restaurant
         
+
+
         $reservation = array( 
-            $restaurant->id, $_POST["txtDate"], $_POST["txtTime"], $_POST["txtAdults"], $_POST["txtChildren"], 
+            $restaurant->getID(), $_POST["txtDate"], $_POST["txtTime"], $_POST["txtAdults"], $_POST["txtChildren"], 
+            $restaurant->getID(), $_POST["txtDate"], $_POST["txtTime"], $_POST["txtAdults"], $_POST["txtChildren"], 
             $_POST["txtAllergies"], $_POST["txtRequests"]
         ); // reservation data
-        
-        $cartItem = array($restaurant->id, $restaurant->type, $restaurant->name, $reservationPrice, 1, $reservation); // cart item data
+
+
+
+        $cartItem = array($restaurant->getID(), $restaurant->getType(), $restaurant->getName(), $reservationPrice, 1, $reservation); // cart item data
 
         CartService::add($cartItem);
 

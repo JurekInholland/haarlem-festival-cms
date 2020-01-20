@@ -51,33 +51,7 @@ class CartController extends Controller {
         $total = CartService::createTickets($invoiceId);
         PaymentService::createPayment($total, $invoiceId);
         CartService::deleteCookie();
-        return;
-        
-        $itemQuantity = $_POST["itemQuantity"]; // retrieve item quantities
-        $quantity = explode(" ",$itemQuantity); //convert item quantities to array values
-        $newTotalPrice = 0; // need new total price because item quantity value could've has changed
-        $counter = 1;
 
-        if(isset($_COOKIE["cart"])) { // check if cart exists            
-            $purchaseData = unserialize($_COOKIE['cart']); // store cart items in array
-            die(var_dump($purchaseData));
-            foreach ($purchaseData as $itemData) { // loop through cart items
-                CartService::purchase(new PurchaseItem(1, $itemData[0], $quantity[$counter])); // insert items to purchase table
-
-                if ($itemData[1] == 2) { // check if item is a reservation
-                   RestaurantService::book($itemData[5]);  // book reservation
-                }
-
-                $price = $itemData[3] * $quantity[$counter];
-                $newTotalPrice += $price;
-                $counter++;
-            }
-
-            setcookie("cart", "", time()-3600); // delete cookie
-        } else {
-            // echo "Shopping cart is empty. Please select a ticket / reservation";
-        }
-        return self::redirect("food"); // redirect to payment environment 
     }
 
 }

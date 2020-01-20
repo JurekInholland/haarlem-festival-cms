@@ -12,12 +12,13 @@
   /*display: grid;
   grid-template-columns: auto auto auto auto;*/
     /*flex*/
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    flex: 1 1 30%;    
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  flex: 30%;    
   grid-gap: 20px;
   /*padding:400px;*/
+  
 }
 .box
 {
@@ -53,44 +54,76 @@
   font-size: 20px;
 }
 /************navigation******************/
-.jazznav
+@media only screen and (min-width: 770px)
 {
-  text-align:center;
+  .jazznav
+  {
+    text-align:center;
+  }
+  .navlist
+  {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    padding: 50px;
+  }
+  .jazzdate
+  {
+    display: inline;
+    background-color: white;
+    border: 1px solid #888;
+    padding: 20px 150px;
+    font-size: 20px;
+    text-decoration: none;
+  }
 }
-.navlist
-{
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  padding: 50px;
-}
-.jazzdate
-{
-  display: inline;
-  background-color: white;
-  border: 1px solid #888;
-  padding: 20px 150px;
-  font-size: 20px;
-  text-decoration: none;
-}
-
 .ticket-box
 {
-  background-image: url('..//.//img/116391.jpg');
+  background-image: url('/img/116391.jpg');
   background-repeat: no-repeat;
-  position: sticky;
+  background-attachment: fixed;
 }
 .class-header
 {
   font-style: bold;
   font-size: 20px;
+  border: 1px solid #888;
 }
 
 .card-text-center
 {
   background: white;
   margin: 20px;
+}
+@media only screen and (max-width: 768px)
+{
+
+  .navlist
+  {
+    /*
+    text-align: center;
+    flex-flow: column;
+    align-items: center;
+    font-size: 10px;
+    transition: margin .5s ease;
+    */
+    list-style-type: none;
+    background-color: #f1f1f1;
+    border: 1px solid #555;
+  }
+  .navlist-link
+  {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+  .jazzdate
+  {
+    text-align: center;
+    border-bottom: 1px solid #555;
+  }
 }
 </style>
 <head>
@@ -102,10 +135,10 @@
 <!-- the navigation -->
 <nav class = "jazznav">
     <ul class = "navlist">
-        <a href ="/jazz/events/thursday"><li class = "jazzdate">Thursday </li></a>
-        <a href ="/jazz/events/friday"><li class = "jazzdate"> Friday </li ></a>
-        <a href ="/jazz/events/saturday"><li class = "jazzdate"> Saturday </li></a>
-        <a href ="/jazz/Sundayevents"><li class = "jazzdate"> Sunday </li></a>
+        <a class="navlist-link" href ="/jazz/events/thursday"><li class = "jazzdate">Thursday </li></a>
+        <a class="navlist-link" href ="/jazz/events/friday"><li class = "jazzdate"> Friday </li ></a>
+        <a class="navlist-link" href ="/jazz/events/saturday"><li class = "jazzdate"> Saturday </li></a>
+        <a class="navlist-link" href ="/jazz/Sundayevents"><li class = "jazzdate"> Sunday </li></a>
     </ul>
 </nav>
 

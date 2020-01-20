@@ -19,6 +19,7 @@ class CartService {
 
     }
 
+    
     public static function remove(int $index) {
         if (isset($_COOKIE["cart"])) {
             $cartData = json_decode($_COOKIE['cart'], true);
@@ -34,9 +35,10 @@ class CartService {
             $userId = App::get("user")->getId();
             $total = 0;
             foreach ($cartData as $item) {
+
                 $totalprice = floatval($item[3]) * $item[4];
                 $total += $totalprice;
-                
+
                 // if event id is food at 9% vat
                 if ($item[1] == 2) {
                     $total += $totalprice * 0.09;
@@ -45,7 +47,7 @@ class CartService {
                 } else {
                     $total += $totalprice * 0.21;
                 }
-                $ticket = TicketService::createTicket($userId, $item[0], $item[4], $invoiceId);
+                TicketService::createTicket($userId, $item[0], $item[4], $invoiceId);
             }
             return $total;
         }        
@@ -57,14 +59,4 @@ class CartService {
 
     public static function changeAmount(string $itemId) {}
 
-
-    public static function purchase(PurchaseItem $purchaseItems) {
-        $purchaseData = [
-            "userId" => $purchaseItems->userId,
-            "itemId" => $purchaseItems->itemId,
-            "quantity" => $purchaseItems->itemQuantity
-        ];
-       App::get("db")->insertUpdate("Purchases", $purchaseData);
-    }
-    
 }

@@ -1,3 +1,4 @@
+  
 <?php require "partials/banner.php"; ?>
     
     <div class="dropdown">
@@ -22,14 +23,13 @@
     
     <article class="flex-container">
         <?php foreach ($restaurants as $key => $restaurant) { ?>
-        <a href="food/details/<?= str_replace(" ","-", $restaurant->name) ?>">
+        <a href="food/details/<?= str_replace(" ","-", $restaurant->getName()) ?>">
             <section class="product">
-                <img class="restaurantImg" src="/image_uploads/<?= $restaurant->image ?>" />
-                <h3><?= $restaurant->name; ?></h3>
-                <h4><?= $restaurant->description; ?></h4>
-                <img class="ratings" src="/img/<?= $restaurant->rating; ?>.png"/>
+                <img class="restaurantImg" src="/image_uploads/<?= $restaurant->getImage() ?>" />
+                <h3><?= $restaurant->getName(); ?></h3>
+                <h4><?= $restaurant->getDescription(); ?></h4>
+                <img class="ratings" src="/img/<?= $restaurant->getRating() ?>.png"/>
             </section>
         </a>
         <?php }?>
     </article>
-

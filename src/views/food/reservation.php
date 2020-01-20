@@ -15,7 +15,7 @@
 
           <div class="row">
             <div class="col-xs col-md"><p>Restaurant</p></div>
-            <div class="col-xs col-md"><p><?php echo $restaurant->name ?></p></div>
+            <div class="col-xs col-md"><p><?php echo $restaurant->getName() ?></p></div>
           </div>
           <div class="row">
             <div class="col-xs col-md"><p>Date</p></div>
@@ -49,7 +49,7 @@
 
     <div class="container_reservation">
       <div id="reservation_form">
-          <form name="reservation" action="/food/book/<?php echo str_replace(" ","-", $restaurant->name) ?>" method="post">
+          <form name="reservation" action="/food/book/<?php echo str_replace(" ","-", $restaurant->getName()) ?>" method="post">
               <div class="form-row">
                   <div class="col">
                       <label>Date</label>

@@ -15,7 +15,6 @@ class Restaurant {
     public $price;
     public $address;
     
-    // $description stores food_type; $location_detail stores sessions; $tickets stores nr_of_seats
     
     public function __construct($restaurantData)
     {
@@ -30,6 +29,35 @@ class Restaurant {
             }
         }
     }
+    
+    public function getID() {
+        return $this->id;
+    }
+    public function getType() {
+        return $this->type;
+    }
+    public function getName() {
+        return $this->name;
+    }
+    public function getDescription() {
+        return $this->description;
+    }
+    public function getImage() {
+        return $this->image;
+    }
+    public function getRating() {
+        return $this->rating;
+    }
+    public function getLocationDetail() {
+        return $this->location_detail;
+    }
+    public function getTickets() {
+        return $this->tickets;
+    }
+    public function getAddress() {
+        return $this->address;
+    }
+
 
     public function duration() // method for calculating duration of a session
     {

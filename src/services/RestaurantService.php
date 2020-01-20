@@ -26,6 +26,7 @@ class RestaurantService {
     }
 
     public static function book(array $reservation) {
+
         $reservationDetails = [
             "restaurantID" => $reservation[0],
             "reservation_date" => $reservation[1], 
