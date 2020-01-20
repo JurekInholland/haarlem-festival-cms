@@ -28,11 +28,11 @@ class PaymentService {
     }
 
     public static function storeStatus(array $order) {
-        $sql = "INSERT INTO payments (payment_id, `status`, invoice_id)
-        VALUES (:payment_id, :status, :invoice_id)
+        $sql = "INSERT INTO payments (payment_id, `status`)
+        VALUES (:payment_id, :status)
         ON DUPLICATE KEY UPDATE payment_id=VALUES(payment_id), status=VALUES(status)";
         
-        $params = [":payment_id" => $order["id"], ":status" => $order["status"], ":invoice_id" => $order["invoice_id"]];
+        $params = [":payment_id" => $order["id"], ":status" => $order["status"]];
         App::get("db")->query($sql, $params);
 
     }
