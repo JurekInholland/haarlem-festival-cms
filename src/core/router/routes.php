@@ -30,7 +30,8 @@ $routes = [
         "test" => "StaticController",
         "register" => "StaticController",
         "tickets" => "TicketController",
-        "cart" => "CartController"
+        "cart" => "CartController",
+        "payment" => "PaymentController"
 
     ],
 
@@ -39,6 +40,7 @@ $routes = [
         "api" => "ApiController",
         "auth" => "AuthController",
         "food" => "FoodController",
-        "cart" => "CartController"
+        "cart" => "CartController",
+        "payment" => "PaymentController",
     ]
 ];

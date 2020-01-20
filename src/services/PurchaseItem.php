@@ -1,6 +1,6 @@
 <?php
 
-class PurchaseITem {
+class PurchaseItem {
 
     public $userId;
     public $itemId;

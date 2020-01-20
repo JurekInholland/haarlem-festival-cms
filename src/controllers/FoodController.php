@@ -45,17 +45,9 @@ class FoodController extends Controller {
         ); // reservation data
         
         $cartItem = array($restaurant->id, $restaurant->type, $restaurant->name, $reservationPrice, 1, $reservation); // cart item data
-        
-        if(isset($_COOKIE["cart"])) { // check if cart has been set yet
-            $cartData = unserialize($_COOKIE['cart']); // retrieve cart items from existing cookie
-            array_push($cartData, $cartItem); // add new cart item to list of cart items
 
-            setcookie("cart",serialize($cartData),time() + (86400 * 30), "/"); // update cart cookie
-        }
-        else {
-            $cartData = array($cartItem); // create new cart data array to store new cart items 
-            setcookie("cart",serialize($cartData),time() + (86400 * 30), "/"); // create cart cookie
-        }
+        CartService::add($cartItem);
+
 
         return self::redirect("cart"); // go to cart page
     }

@@ -61,6 +61,8 @@ class DanceService {
         $result = App::get("db")->query($sql); 
         $row = ($result[0]);
         $eventProperties=array();
+        $eventProperties['id']=$row['id'];
+        $eventProperties['type']=$row['type'];
         $eventProperties['artist']=$row['name'];
         $eventProperties['venue']=$row['address'];
         $eventProperties['session']=$row['location_detail'];

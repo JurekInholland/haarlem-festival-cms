@@ -8,7 +8,13 @@ class InvoiceService {
     // WHERE username LIKE :username";
 
 
-    public static function generate() {}
+    public static function generate($invoiceId) {
+
+        $userId = App::get("user")->getId();
+        $sql = "INSERT INTO invoices (`id`, `user_id`, invoice_date)
+        VALUES (:id, :user_id, :invoice_date)";
+        $params = [":id" => $invoiceId, ":user_id" => $userId, ":invoice_date" => date('Y-m-d H:i:s')];
+    }
 
     public static function getInvoiceTickets(User $user) {
 

@@ -11,12 +11,16 @@ class CartController extends Controller {
     }
 
     public static function index() {
+        
+        $cartData = json_decode($_COOKIE['cart'], JSON_PRETTY_PRINT); // store cart items in array
+        // die(var_dump($cartData));
 
         if(!isset($_COOKIE["cart"])) { // if cart doesn't exist then set default values
             $totalPrice = 0;
             $itemsData = array();
         } else { // if cart contains items
-            $cartData = unserialize($_COOKIE['cart']); // store cart items in array
+            $cartData = json_decode($_COOKIE['cart']); // store cart items in array
+
             $totalPrice = 0;
 
             foreach ($cartData as $itemData) { // loop through cart items
@@ -26,12 +30,16 @@ class CartController extends Controller {
                 $totalPrice += $price; // calculate total price
             }
         }
-
         return self::view("cart/cart", ["itemsData" => $itemsData, "total" => $totalPrice]);
     }
 
     public static function purchase() { // purchase items in shopping cart method
-       
+        $invoiceId = generateUuid(6);
+
+        $total = CartService::createTickets($invoiceId);
+        return PaymentService::createPayment($total, $invoiceId);
+        
+        
         $itemQuantity = $_POST["itemQuantity"]; // retrieve item quantities
         $quantity = explode(" ",$itemQuantity); //convert item quantities to array values
         $newTotalPrice = 0; // need new total price because item quantity value could've has changed
@@ -39,7 +47,7 @@ class CartController extends Controller {
 
         if(isset($_COOKIE["cart"])) { // check if cart exists            
             $purchaseData = unserialize($_COOKIE['cart']); // store cart items in array
-            
+            die(var_dump($purchaseData));
             foreach ($purchaseData as $itemData) { // loop through cart items
                 CartService::purchase(new PurchaseItem(1, $itemData[0], $quantity[$counter])); // insert items to purchase table
 

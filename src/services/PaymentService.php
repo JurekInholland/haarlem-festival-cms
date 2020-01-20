@@ -28,18 +28,18 @@ class PaymentService {
     }
 
     public static function storeStatus(array $order) {
-        $sql = "INSERT INTO payments (payment_id, `status`)
-        VALUES (:payment_id, :status)
+        $sql = "INSERT INTO payments (payment_id, `status`, invoice_id)
+        VALUES (:payment_id, :status, :invoice_id)
         ON DUPLICATE KEY UPDATE payment_id=VALUES(payment_id), status=VALUES(status)";
         
-        $params = [":payment_id" => $order["id"], ":status" => $order["status"]];
+        $params = [":payment_id" => $order["id"], ":status" => $order["status"], ":invoice_id" => $order["invoice_id"]];
         App::get("db")->query($sql, $params);
 
     }
 
-    public function createPayment(float $price) {
+    public function createPayment(float $price, string $invoiceId) {
         $orderId = time();
-
+        $userId = App::get("user")->getId();
         // Convert passed float to string with two decimal places
         $value = sprintf('%0.2f', $price);
 
@@ -53,9 +53,11 @@ class PaymentService {
             "webhookUrl" => "https://jbaumann.nl/payment/webhook",
             "metadata" => [
                 "order_id" => $orderId,
+                "user_id" => $userId,
+                "invoice_id" => $invoiceId
             ],
         ]);
-        $paymentInfo = ["id" => $orderId, "status" => $payment->status];
+        $paymentInfo = ["id" => $orderId, "status" => $payment->status, "invoice_id" => $invoiceId];
         self::storeStatus($paymentInfo);
 
         return header("Location: " . $payment->getCheckoutUrl(), true, 303);

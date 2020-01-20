@@ -14,7 +14,7 @@ CREATE TABLE `festival_events` (
     `price` DOUBLE NULL DEFAULT NULL,
     `description` TEXT NULL,
     `rating` INT(11) NULL DEFAULT NULL,
-    `image` CHAR(16) NULL DEFAULT NULL,
+    `image` VARCHAR(25) NULL DEFAULT NULL,
     `slug` VARCHAR(100) DEFAULT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
@@ -188,15 +188,15 @@ INSERT INTO `tickets` (`ticket_id`, `user_id`, `event_id`, `amount`, `IS_PAID`, 
 INSERT INTO `tickets` (`ticket_id`, `user_id`, `event_id`, `amount`, `IS_PAID`, `TICKET_SCANNED`, `order_date`, `paid_date`, `invoice_id`) VALUES ('yAvcCkwSEYO8YyLw2R', 1, 10, 1, 0, 0, '2020-01-18 20:54:32', NULL, 123);
 
 -- Food images
-INSERT INTO `cms_images` (`image_id`, `image_name`) VALUES ('baZuFSLpFE77unSm', 'banner.png');
-INSERT INTO `cms_images` (`image_id`, `image_name`) VALUES ('BF32DgzuB1yUOrbL', 'Mr-mrs-restaurant-Haarlem.jpg');
-INSERT INTO `cms_images` (`image_id`, `image_name`) VALUES ('2YUXsYi53Xm11NqK', 'ratatouile.jpg');
-INSERT INTO `cms_images` (`image_id`, `image_name`) VALUES ('V9QSLDwjnHSoaWGj', 'restaurant-ml.jpg');
-INSERT INTO `cms_images` (`image_id`, `image_name`) VALUES ('jmE8vtwRAtB6txMi', 'restaurant-fris.jpg');
-INSERT INTO `cms_images` (`image_id`, `image_name`) VALUES ('9F1u5TgNP1ONchv7', 'spektakel.jpg');
-INSERT INTO `cms_images` (`image_id`, `image_name`) VALUES ('swIJ7MqHbBhH2GWQ', 'grand-cafe-brinkmann.jpg');
-INSERT INTO `cms_images` (`image_id`, `image_name`) VALUES ('6YR8xNAfXCNkDTL3', 'urban frenchy.jpg');
-INSERT INTO `cms_images` (`image_id`, `image_name`) VALUES ('yLklVCDYxwl4FlG4', 'golden bull.jpg');
+-- INSERT INTO `cms_images` (`image_id`, `image_name`) VALUES ('baZuFSLpFE77unSm', 'banner.png');
+-- INSERT INTO `cms_images` (`image_id`, `image_name`) VALUES ('BF32DgzuB1yUOrbL', 'Mr-mrs-restaurant-Haarlem.jpg');
+-- INSERT INTO `cms_images` (`image_id`, `image_name`) VALUES ('2YUXsYi53Xm11NqK', 'ratatouile.jpg');
+-- INSERT INTO `cms_images` (`image_id`, `image_name`) VALUES ('V9QSLDwjnHSoaWGj', 'restaurant-ml.jpg');
+-- INSERT INTO `cms_images` (`image_id`, `image_name`) VALUES ('jmE8vtwRAtB6txMi', 'restaurant-fris.jpg');
+-- INSERT INTO `cms_images` (`image_id`, `image_name`) VALUES ('9F1u5TgNP1ONchv7', 'spektakel.jpg');
+-- INSERT INTO `cms_images` (`image_id`, `image_name`) VALUES ('swIJ7MqHbBhH2GWQ', 'grand-cafe-brinkmann.jpg');
+-- INSERT INTO `cms_images` (`image_id`, `image_name`) VALUES ('6YR8xNAfXCNkDTL3', 'urban frenchy.jpg');
+-- INSERT INTO `cms_images` (`image_id`, `image_name`) VALUES ('yLklVCDYxwl4FlG4', 'golden bull.jpg');
 
 
 INSERT INTO `festival_events`(`type`,`end_date`, `start_date`, `address`, `location_detail`, `name`, `tickets`, `price`, `description`, `image`) 
@@ -221,12 +221,12 @@ values
 -- FOOD EVENTS
 INSERT INTO `festival_events` (`type`, `start_date`, `end_date`, `address`, `location_detail`, `name`, `tickets`, `price`, `description`, `rating`, `image`, `slug`)
 VALUES 
-(2, '2020-08-25 18:00:00', '2020-08-25 18:00:00', 'Lange Veerstraat 4, 2011 DB Haarlem, Nederland', '3', 'Restaurant Mr. & Mrs.', 40, 45, 'Dutch, fish and seafood, European', 4, 'BF32DgzuB1yUOrbL.jpg', 'restaurant-mr-and-mrs');
-(2, '2020-08-25 18:00:00', '2020-08-25 18:00:00', 'Spaarne 96, 2011 CL Haarlem, Nederland', '3', 'Ratatouille', 52, 45, 'French, fish and seafood, European', 4, '2YUXsYi53Xm11NqK.jpg', "ratatouille");
-(2, '2020-08-25 18:00:00', '2020-08-25 18:00:00', 'Kleine Houtstraat 70, 2011 DR Haarlem, Nederland', '2', 'Restaurant ML', 60, 45, 'Dutch, fish and seafood, European', 4, 'V9QSLDwjnHSoaWGj.jpg', "restaurant-ml");
-(2, '2020-08-25 18:00:00', '2020-08-25 18:00:00', 'Twijnderslaan 7, 2012 BG Haarlem, Nederland', '3', 'Restaurant Fris', 45, 45, 'Dutch, French, European', 4, 'jmE8vtwRAtB6txMi.jpg', "restaurant-fris");
-(2, '2020-08-25 18:00:00', '2020-08-25 18:00:00', 'Spekstraat 4, 2011 HM Haarlem, Nederland', '3', 'Specktakel', 36, 35, 'Europees, Internationaal, Aziatisch', 3, '9F1u5TgNP1ONchv7.jpg', "specktakel");
-(2, '2020-08-25 18:00:00', '2020-08-25 18:00:00', 'Grote Markt 13, 2011 RC Haarlem, Nederland', '3', 'Grand Cafe Brinkman', 100, 35, 'Dutch, European, Modern', 3, 'swIJ7MqHbBhH2GWQ.jpg', "grand-cafe-brinkman");
-(2, '2020-08-25 18:00:00', '2020-08-25 18:00:00', 'Oude Groenmarkt 10-12, 2011 HL Haarlem, Nederland', '3', 'Urban Frenchy Bistro Toujours', 48, 35, 'Dutch, fish and seafood, European', 3, '6YR8xNAfXCNkDTL3.jpg', "urban-frenchy-bistro-toujours");
-(2, '2020-08-25 18:00:00', '2020-08-25 18:00:00', 'Zijlstraat 39, 2011 TK Haarlem, Nederland', '3', 'The Golden Bull', 60, 35, 'Steakhouse, Argentinian, European', 3, 'yLklVCDYxwl4FlG4.jpg', "the-golden-bull");
+(2, '2020-08-25 18:00:00', '2020-08-25 18:00:00', 'Lange Veerstraat 4, 2011 DB Haarlem, Nederland', '3', 'Restaurant Mr. & Mrs.', 40, 45, 'Dutch, fish and seafood, European', 4, 'BF32DgzuB1yUOrbL.jpg', 'restaurant-mr-and-mrs'),
+(2, '2020-08-25 18:00:00', '2020-08-25 18:00:00', 'Spaarne 96, 2011 CL Haarlem, Nederland', '3', 'Ratatouille', 52, 45, 'French, fish and seafood, European', 4, '2YUXsYi53Xm11NqK.jpg', "ratatouille"),
+(2, '2020-08-25 18:00:00', '2020-08-25 18:00:00', 'Kleine Houtstraat 70, 2011 DR Haarlem, Nederland', '2', 'Restaurant ML', 60, 45, 'Dutch, fish and seafood, European', 4, 'V9QSLDwjnHSoaWGj.jpg', "restaurant-ml"),
+(2, '2020-08-25 18:00:00', '2020-08-25 18:00:00', 'Twijnderslaan 7, 2012 BG Haarlem, Nederland', '3', 'Restaurant Fris', 45, 45, 'Dutch, French, European', 4, 'jmE8vtwRAtB6txMi.jpg', "restaurant-fris"),
+(2, '2020-08-25 18:00:00', '2020-08-25 18:00:00', 'Spekstraat 4, 2011 HM Haarlem, Nederland', '3', 'Specktakel', 36, 35, 'Europees, Internationaal, Aziatisch', 3, '9F1u5TgNP1ONchv7.jpg', "specktakel"),
+(2, '2020-08-25 18:00:00', '2020-08-25 18:00:00', 'Grote Markt 13, 2011 RC Haarlem, Nederland', '3', 'Grand Cafe Brinkman', 100, 35, 'Dutch, European, Modern', 3, 'swIJ7MqHbBhH2GWQ.jpg', "grand-cafe-brinkman"),
+(2, '2020-08-25 18:00:00', '2020-08-25 18:00:00', 'Oude Groenmarkt 10-12, 2011 HL Haarlem, Nederland', '3', 'Urban Frenchy Bistro Toujours', 48, 35, 'Dutch, fish and seafood, European', 3, '6YR8xNAfXCNkDTL3.jpg', "urban-frenchy-bistro-toujours"),
+(2, '2020-08-25 18:00:00', '2020-08-25 18:00:00', 'Zijlstraat 39, 2011 TK Haarlem, Nederland', '3', 'The Golden Bull', 60, 35, 'Steakhouse, Argentinian, European', 3, 'yLklVCDYxwl4FlG4.jpg', "the-golden-bull"),
 (2, '2020-08-25 18:00:00', '2020-08-25 18:00:00', 'Kleine Houtstraat 70, 2011 DR Haarlem, Nederland', '2', 'Restaurant Speck', 45, 35, 'Europees, Internationaal, Aziatisch', 3, 'V9QSLDwjnHSoaWGj.jpg', "restaurant-speck");
