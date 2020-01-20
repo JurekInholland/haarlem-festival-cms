@@ -54,16 +54,16 @@
     <div class="container-fluid">
     <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
-                      <a class="nav-link danceDays"  href="http://localhost:6789/dance" role="tab" aria-controls="AllDays" aria-selected="false">All days</a>
+                      <a class="nav-link danceDays"  href="/dance" role="tab" aria-controls="AllDays" aria-selected="false">All days</a>
                     </li>
                     <li class="nav-item ">
-                      <a class="nav-link danceDays"  href="http://localhost:6789/dance/perdate/27" role="tab" aria-controls="THU" aria-selected="false">THU 27 AUG</a>
+                      <a class="nav-link danceDays"  href="/dance/perdate/27" role="tab" aria-controls="THU" aria-selected="false">THU 27 AUG</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link danceDays" href="http://localhost:6789/dance/perdate/28" role="tab" aria-controls="FRI" aria-selected="false">FRI 28 AUG</a>
+                      <a class="nav-link danceDays" href="/dance/perdate/28" role="tab" aria-controls="FRI" aria-selected="false">FRI 28 AUG</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link danceDays"  href="http://localhost:6789/dance/perdate/29" role="tab" aria-controls="SAT" aria-selected="false">SAT 29 AUG</a>
+                      <a class="nav-link danceDays"  href="/dance/perdate/29" role="tab" aria-controls="SAT" aria-selected="false">SAT 29 AUG</a>
                     </li>
             </ul>
     <div class="row">
@@ -87,7 +87,7 @@
                             </p>
                         </div>
                         <div class="buy-butt text-right"> 
-                                <a href= "http://localhost:6789/dance/order/<?= $event->getId();?>" class="btn btn-danger">Get Ticket </a>
+                                <a href= "/dance/order/<?= $event->getId();?>" class="btn btn-danger">Get Ticket </a>
                         </div>
                     </div>
                 </div>
