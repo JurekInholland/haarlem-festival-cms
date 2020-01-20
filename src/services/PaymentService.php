@@ -24,7 +24,10 @@ class PaymentService {
         $sql = "SELECT status FROM payments WHERE payment_id=:payment_id LIMIT 1";
         $params = [":payment_id" => $orderId];
         $status = App::get("db")->query($sql, $params);
-        return $status[0]["status"];
+        if (isset($status[0])) {
+            return $status[0]["status"];
+        }
+        return "unknown";
     }
 
     public static function storeStatus(array $order) {
