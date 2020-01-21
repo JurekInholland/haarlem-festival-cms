@@ -21,6 +21,7 @@
             <!-- <li><a href="/admin/statistics">Statistics</a></li> -->
             <li><a href="/admin/users">Users</a></li>
             <li><a href="/api">Public API</a></li>
+            <li><a href="/users/profile">My Profile</a></li>
             <hr>
             <li><a href="/admin/tickets">Tickets</a></li>
             <li><a href="/admin/scan">Scan Ticket</a></li>

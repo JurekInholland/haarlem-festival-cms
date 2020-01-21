@@ -81,7 +81,7 @@ $("#login_toggle").click(function() {
       <div class="modal-body">
       <form action="/auth/loginSubmit" method="post" class="form login">
         <label for="username">Username or email address</label>
-        <input class="form-control validate" name="username" type="text" required>
+        <input class="form-control validate" required name="username" type="text">
         
         <label for="password">Password</label>
         <input class="form-control validate" name="password" type="password">

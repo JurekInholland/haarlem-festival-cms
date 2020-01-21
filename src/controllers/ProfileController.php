@@ -18,6 +18,29 @@ class ProfileController extends Controller {
         return;
     }
 
+    public function submit() {
+        return; // TODO: fix
+        $userdata = [];
+        $customerdata = [];
+        foreach ($_POST as $key => $value) {
+            if ($value != "" && $key != "username" && $key != "email" && $key != "submitbtn") {
+                $customerdata[$key] = $value;
+            } elseif ($key == "username" || $key == "email") {
+                $userdata[$key] = $value;
+            }
+        }
+        if (isset($_POST["user_id"])) {
+            $userdata["id"] = $_POST["user_id"];
+        }
+
+        if ($customerdata != []) {
+            App::get("db")->insertUpdate("cms_customer_data", $customerdata);
+        }
+        if ($userdata != []) {
+            App::get("db")->insertUpdate("cms_users", $userdata);
+        }
+    }
+
     public function profile($username) {
         $currentUser = App::get("user");
 

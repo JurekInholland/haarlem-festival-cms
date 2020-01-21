@@ -23,6 +23,7 @@ class PaymentController extends Controller {
     public function complete($paymentId) {
         
         $status = PaymentService::getDbStatus($paymentId);
-        return self::view("partials/payment", ["status" => $status, "paymentid" => $paymentId]);
+        $invoiceId = PaymentService::getInvoiceId($paymentId);
+        return self::view("partials/payment", ["status" => $status, "paymentid" => $paymentId, "invoiceid" => $invoiceId]);
     }
 }

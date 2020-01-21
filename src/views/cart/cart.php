@@ -44,10 +44,7 @@ $user = App::get("user");
                                     <input type="number" min="0" max="10" onchange="calculateTotal()" value="<?=$item->quantity?>" class="quantity">
                                     <button onclick="deprecate(<?=$key?>)" class="btn btn-outline-dark">--</button>
                                 </div>
-                            <?php
-                                if ($item->type != 1) { $counter++; //hide quantity input field  ?> 
-                                    <input type="number" min="1" style="width: 70px;" value="1" id="quantity<?=$counter?>" class="item_quantity">
-                            <?php } ?>
+                           
                             </li>
                 <?php   } ?>
                 <input type="hidden" id="itemCounter" name="itemCounter" value="<?= $counter ?>">

@@ -124,7 +124,7 @@ a.active {
     .nav_links {
         flex-flow: column;
         align-items: center;
-        margin-top: -255px;
+        margin-top: -300px;
         transition: margin .5s ease;
 
     }
@@ -164,6 +164,7 @@ a.active {
 
 .menu_active {
     margin-top: -.5rem;
+    margin-bottom: .5rem;
     transition: margin .5s ease;
 }
 
@@ -203,13 +204,15 @@ a.active {
 
                 <?php
 
-                if (App::get("user")->isLoggedIn()) {
+                if (App::get("user")->getRole() >= 1) {
                     echo '<li class="admin-icon"><a href="/admin"></a></li>';
                     echo '<li class="logout-icon"><a href="/auth/logout"></a></li>';
+                } elseif (App::get("user")->getName() != "Guest") {
+                    echo '<li class="admin-icon"><a href="/users/profile"></a></li>'; 
+                    echo '<li class="logout-icon"><a href="/auth/logout"></a></li>';                   
                 } else {
-                    // echo '<li class="login-icon"><a href="/auth/login"></a></li>';
                     echo '<li class="login-icon"><a href="#" id="modal_toggle" data-toggle="modal" data-target="#login_modal"></a></li>';
-                    
+
                 }
                 ?>
 

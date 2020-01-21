@@ -20,9 +20,16 @@ class PaymentService {
         
     }
 
-    public function getDbStatus($orderId) {
+    public static function getInvoiceId($paymentId) {
+        $sql = "SELECT invoice_id FROM payments WHERE payment_id=:payment_id LIMIT 1";
+        $params = [":payment_id" => $paymentId];
+        $id = App::get("db")->query($sql, $params);
+        return $id;
+    }
+
+    public function getDbStatus($paymentId) {
         $sql = "SELECT status FROM payments WHERE payment_id=:payment_id LIMIT 1";
-        $params = [":payment_id" => $orderId];
+        $params = [":payment_id" => $paymentId];
         $status = App::get("db")->query($sql, $params);
         if (isset($status[0])) {
             return $status[0]["status"];

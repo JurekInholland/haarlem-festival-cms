@@ -42,5 +42,6 @@ $routes = [
         "food" => "FoodController",
         "cart" => "CartController",
         "payment" => "PaymentController",
+        "users" => "ProfileController"
     ]
 ];

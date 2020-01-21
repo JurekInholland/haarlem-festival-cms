@@ -14,7 +14,7 @@
 
     <section>
         <label for="name">Band</label>
-        <input class="form-control" name="name" type="text" value="<?=$event->getName();?>">
+        <input class="form-control" name="name" type="text" required value="<?=$event->getName();?>">
     </section>
 
     <section>
