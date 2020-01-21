@@ -27,13 +27,20 @@
 #ticketform input {
   max-height: 38px;
 }
+#scanner {
+  display: block;
+  position: absolute;
+  top: 340px;
+  max-width: 100%;
+  padding-right: 1.1rem;
+}
 </style>
 
 <h1>Scan tickets</h1>
 
 
 <p id="feedback">Please scan ticket QR code or enter ticket id manually.</p>
-
+<section id="scanarea">
 <form action="/admin/scanSubmit" method="POST" id="ticketform" class="form">
   <section>
       <input class="form-control" name="ticketid" type="text" id="ticketid" placeholder="Ticket ID">
@@ -43,7 +50,7 @@
 
 <div class="qrscanner" id="scanner">
 </div>
-
+</section>
 <script type="text/javascript" src="/js/jsQRScanner/jsqrscanner.nocache.js"></script>
 
 <script type="text/javascript">
