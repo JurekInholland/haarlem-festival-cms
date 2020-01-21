@@ -176,14 +176,14 @@ INSERT INTO `cms_users` (`id`, `username`, `email`, `password`, `role`, `registr
 INSERT INTO `cms_users` (`id`, `username`, `email`, `password`, `role`, `registration_date`) VALUES (3, 'superadmin', 'superadmin@mail.com', '$2y$10$0I/u/vzyURrucGwGcmp7DOrgxNSH7cqPp3i6cJ6uGwfp17554pVZu', 2, '2020-01-18 19:39:00');
 INSERT INTO `cms_users` (`id`, `username`, `email`, `password`, `role`, `registration_date`) VALUES (4, 'user', 'user@mail.com', '$2y$10$OO3f7uRoIfQ77mFqsQvAKOsIKeDQhCSjYF6lfkRzsMLqz4RZPQNU.', 0, '2020-01-18 20:09:21');
 
-INSERT INTO `cms_customer_data` (`user_id`, `firstname`, `lastname`, `customer_address`, `phone`) VALUES (1, 'Jurek', 'Baumann', 'Donkere Spaarne 44, 2e', '"6IeG2k""6IeG2k""6IeG2k"');
+INSERT INTO `cms_customer_data` (`user_id`, `firstname`, `lastname`, `customer_address`, `phone`) VALUES (1, 'Jurek', 'Baumann', 'Donkere Spaarne 44, 2e', '31234234');
 
 INSERT INTO `festival_info` (`start_date`, `end_date`) VALUES ('2020-08-26 08:00:00', '2020-08-30 22:00:00');
 
-INSERT INTO `invoices` (`id`, `user_id`, `invoice_date`) VALUES ("6IeG2k", 1, '2020-01-18 19:49:53');
+INSERT INTO `invoices` (`id`, `user_id`, `invoice_date`) VALUES (123, 1, '2020-01-18 19:49:53');
 
-INSERT INTO `tickets` (`ticket_id`, `user_id`, `event_id`, `amount`, `IS_PAID`, `TICKET_SCANNED`, `order_date`, `paid_date`, `invoice_id`) VALUES ('aP8aDAjivJxCanbdLG', 1, 18, 2, 0, 0, '2020-01-18 20:54:38', NULL, "6IeG2k");
-INSERT INTO `tickets` (`ticket_id`, `user_id`, `event_id`, `amount`, `IS_PAID`, `TICKET_SCANNED`, `order_date`, `paid_date`, `invoice_id`) VALUES ('yAvcCkwSEYO8YyLw2R', 1, 10, 1, 0, 0, '2020-01-18 20:54:32', NULL, "6IeG2k");
+INSERT INTO `tickets` (`ticket_id`, `user_id`, `event_id`, `amount`, `IS_PAID`, `TICKET_SCANNED`, `order_date`, `paid_date`, `invoice_id`) VALUES ('aP8aDAjivJxCanbdLG', 1, 18, 2, 0, 0, '2020-01-18 20:54:38', NULL, 123);
+INSERT INTO `tickets` (`ticket_id`, `user_id`, `event_id`, `amount`, `IS_PAID`, `TICKET_SCANNED`, `order_date`, `paid_date`, `invoice_id`) VALUES ('yAvcCkwSEYO8YyLw2R', 1, 10, 1, 0, 0, '2020-01-18 20:54:32', NULL, 123);
 
 
 INSERT INTO `festival_events` (`id`, `type`, `start_date`, `end_date`, `address`, `location_detail`, `name`, `tickets`, `price`, `description`, `rating`, `image`, `slug`)
