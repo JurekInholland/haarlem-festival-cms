@@ -171,12 +171,12 @@ VALUES
 	(24, 'faq', 'FAQ', 'Frequently asked questions:\r\n<h1>Q: What is the meaning of life? </h1>\r\n<h3>A: Programming PHP apps. </h3>', '2020-01-17 09:56:11', 1, NULL),
 	(27, 'about', 'About', 'about page', '2020-01-18 05:22:49', 1, NULL);
 
-INSERT INTO `cms_users` (`id`, `username`, `email`, `password`, `role`, `registration_date`) VALUES (1, 'jurek', 'jurekmail', '$2y$10$ygG9cZdRUjrFOnYa2X7iIujA4fkeaXCdEPkrAeH4zTl/Garkn2Xie', 1, '2020-01-11 23:34:35');
+INSERT INTO `cms_users` (`id`, `username`, `email`, `password`, `role`, `registration_date`) VALUES (1, 'jurek', 'jurek.baumann@gmail.com', '$2y$10$ygG9cZdRUjrFOnYa2X7iIujA4fkeaXCdEPkrAeH4zTl/Garkn2Xie', 1, '2020-01-11 23:34:35');
 INSERT INTO `cms_users` (`id`, `username`, `email`, `password`, `role`, `registration_date`) VALUES (2, 'admin', 'admin@mail.com', '$2y$10$jTf0H2Q9TRCPB6SSpVtpMOektMmhoesc6RixEk/c4knr/2N4jXZam', 1, '2020-01-18 19:38:59');
 INSERT INTO `cms_users` (`id`, `username`, `email`, `password`, `role`, `registration_date`) VALUES (3, 'superadmin', 'superadmin@mail.com', '$2y$10$0I/u/vzyURrucGwGcmp7DOrgxNSH7cqPp3i6cJ6uGwfp17554pVZu', 2, '2020-01-18 19:39:00');
 INSERT INTO `cms_users` (`id`, `username`, `email`, `password`, `role`, `registration_date`) VALUES (4, 'user', 'user@mail.com', '$2y$10$OO3f7uRoIfQ77mFqsQvAKOsIKeDQhCSjYF6lfkRzsMLqz4RZPQNU.', 0, '2020-01-18 20:09:21');
 
-INSERT INTO `cms_customer_data` (`user_id`, `firstname`, `lastname`, `customer_address`, `phone`) VALUES (1, 'Jurek', 'Baumann', 'Donkere Spaarne 44, 2e', '31224234');
+INSERT INTO `cms_customer_data` (`user_id`, `firstname`, `lastname`, `customer_address`, `phone`) VALUES (1, 'Jurek', 'Baumann', 'Donkere Spaarne 44, 2e', '03224234');
 
 INSERT INTO `festival_info` (`start_date`, `end_date`) VALUES ('2020-08-26 08:00:00', '2020-08-30 22:00:00');
 
