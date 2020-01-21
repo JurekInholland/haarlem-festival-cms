@@ -78,7 +78,11 @@ class Invoice {
     }
 
     public function getNumberTickets() {
-        return count($this->tickets);
+        $total = 0;
+        foreach($this->tickets as $ticket) {
+            $total += $ticket->getAmount();
+        }
+        return $total;
     }
 
 }
