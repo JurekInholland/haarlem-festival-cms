@@ -33,6 +33,8 @@
   top: 340px;
   max-width: 100%;
   padding-right: 1.1rem;
+  max-height: 400px;
+  overflow: hidden;
 }
 </style>
 
