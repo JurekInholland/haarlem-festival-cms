@@ -1,5 +1,5 @@
 DROP TABLE IF EXISTS new_events, festival_events, tickets, static_pages, event_categories,
-event_locations, cms_users, cms_login_tokens, festival_info, cms_customer_data, invoices, restaurants, payments;
+event_locations, cms_users, cms_login_tokens, festival_info, cms_customer_data, invoices, restaurants, payments, reservations;
 
 
 CREATE TABLE `festival_events` (
@@ -125,7 +125,7 @@ CREATE TABLE `restaurants` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
-CREATE TABLE IF `reservations` (
+CREATE TABLE `reservations` (
   `reservationID` int(11) NOT NULL AUTO_INCREMENT,
   `restaurantID` int(11) NOT NULL,
   `reservation_date` date NOT NULL,
@@ -154,37 +154,6 @@ VALUES
 	(5, 'Restaurant ML', 'Kleine Houtstraat 70, 2011 DR Haarlem, Nederland', 1),
 	(6, 'Club Stalker', 'Kromme Elleboogsteeg 20, 2011 TS Haarlem', 2),
 	(7, 'Caprera Openluchttheater ', 'Hoge Duin en Daalseweg 2, 2061 AG Bloemendaal', 2);
-
-INSERT INTO `festival_events` (`type`, `start_date`, `end_date`, `address`, `location_detail`, `name`, `tickets`, `price`, `description`, `rating`, `image`, `slug`)
-VALUES
-	(0, '2020-08-27 18:00:00', '2020-08-27 19:00:00', 'Patronaat', 'Main', 'Gumbo Kings', 300, 15, 'The Gumbo Kings are a five-piece band that combines the groove of new orleans with rough delta blues and the melody of soul from ancient Memphis.', NULL, NULL, 'gumbo-kings'),
-	(0, '2020-08-27 19:30:00', '2020-08-27 20:30:00', 'Patronaat', 'Main', 'Evolve', 300, 15, 'Frederieke kroone brings a new generation of music that gives a spherical and soulful yet rocking live show. Expects an enchanting show with exciting stories with great climax and right arrangement.', NULL, NULL, 'evolve'),
-	(0, '2020-08-27 21:00:00', '2020-08-27 22:00:00', 'Patronaat', 'Main', 'Ntjam Rosie', 300, 15, 'Dutch-Cameroonian singer/songwriter from Rotterdam, The Netherlands. Her style is a mix of pop music, jazz and soul.', NULL, NULL, 'ntjam-rosie'),
-	(0, '2020-08-27 18:00:00', '2020-08-27 19:00:00', 'Patronaat', 'Second', 'Wicked Jazz Sounds', 200, 10, 'The Wicked Jazz sounds is the live band of wicked jazz sounds project; a music platform that brings jazz and dance together. Wicked Jazz Sounds were created in 2002.', NULL, NULL, 'wicked-jazz-sounds'),
-	(0, '2020-08-27 19:30:00', '2020-08-27 20:30:00', 'Patronaat', 'Second', 'Tom Thomsom Assemble', 200, 10, 'Tom Thomsom is a Dj and producer from Haarlem. His music has RnB & HipHop tunes.', NULL, NULL, 'tom-thomsom-assemble'),
-	(0, '2020-08-27 21:00:00', '2020-08-27 22:00:00', 'Patronaat', 'Second', 'Jonna Frazer', 200, 10, 'Jonna Frazer, is a Dutch rapper of Surinamese descent. he has a broad Dutch hop-style that varies from ganster rap to sultry soul.', NULL, NULL, 'jonna-frazer'),
-	(0, '2020-08-28 18:00:00', '2020-08-28 19:00:00', 'Patronaat', 'Main', 'Fox & The Mayors', 300, 15, 'A band from britain, best known for their solo moment where they show every members skill with their instruments.', NULL, NULL, 'fox-and-the-mayors'),
-	(0, '2020-08-28 19:30:00', '2020-08-28 20:30:00', 'Patronaat', 'Main', 'Uncle Sue', 300, 15, 'Uncle Sue is a seven-member Funk and Soul Band from Haarlem with its own story and swinging bladder section.', NULL, NULL, 'uncle-sue'),
-	(0, '2020-08-28 21:00:00', '2020-08-28 22:00:00', 'Patronaat', 'Main', 'Chris Allen', 300, 15, 'Kristopher Neil Allen is an American musician, singer and songwriter from Conway, Arkansas, and the winner of the eighth season of American Idol.', NULL, NULL, 'chris-allen'),
-	(0, '2020-08-28 18:00:00', '2020-08-28 19:00:00', 'Patronaat', 'Second', 'Myles Sandko', 200, 10, 'Sanko, who grew up in a small town on the coast of Ghana, later emigrated with his family to Great Britain. He sang and rapped as a youngster in Cambridge.', NULL, NULL, 'myles-sandko'),
-	(0, '2020-08-28 19:30:00', '2020-08-28 20:30:00', 'Patronaat', 'Second', 'Ruis SoundSystem', 200, 10, 'Consist of five members that plays jazz and blues with a mix of modern pop culture music.', NULL, NULL, 'ruis-soundsystem'),
-	(0, '2020-08-28 21:00:00', '2020-08-28 22:00:00', 'Patronaat', 'Second', 'The Family XL', 200, 10, 'In 2015, Xander Hubrecht decided that he wanted to be on stage again with his own work. He started a project called \"The Family XL\" and performed with it every mont in the Jopenkerk in Haarlem.', NULL, NULL, 'the-family-xl'),
-	(0, '2020-08-29 18:00:00', '2020-08-29 19:00:00', 'Patronaat', 'Main', 'Gare Du Nord', 300, 15, 'Gare du Nord is a Dutch-Belgian jazz band, originally consisting of Doc (Ferdi Lancee) and Inca (Barend Fransen). Doc played guitar and Inca played saxophone.', NULL, NULL, 'gare-du-nord'),
-	(0, '2020-08-29 19:30:00', '2020-08-29 20:30:00', 'Patronaat', 'Main', 'Rilan & The Bombadiers', 300, 15, 'With a sold out first clubtour, a booming festival season and tracks that have already been featured in a number of big Hollywood productions, (Netflix / HULU / FOX: Shooter, Shut Eye and Rosewood) this band has certainly been keeping busy.', NULL, NULL, 'rilan-and-the-bombadiers'),
-	(0, '2020-08-29 21:00:00', '2020-08-29 22:00:00', 'Patronaat', 'Main', 'Soul Six', 300, 15, 'Soul Six is (Moshe Tamir) from Tel Aviv Israel . One of the mainstays industry of electronic music in Israel & Responsible for many successful events in our country.', NULL, NULL, 'soul-six'),
-	(0, '2020-08-29 18:00:00', '2020-08-29 19:00:00', 'Patronaat', 'Third', 'Han Bennink', 150, 10, 'Drummer and multi-instrumentalist Han Bennink was born in Zaandam near Amsterdam in 1942. His first percussion instrument was a kitchen chair.', NULL, NULL, 'han-bennink'),
-	(0, '2020-08-29 19:30:00', '2020-08-29 20:30:00', 'Patronaat', 'Third', 'The Nordanians', 150, 10, 'When Oene van Geel viola, Mark Tuinstra guitar and Niti Ranjan Biswas tabla virtuoso played together for the first time there where immediately fireworks.', NULL, NULL, 'the-nordanians'),
-	(0, '2020-08-29 21:00:00', '2020-08-29 22:00:00', 'Patronaat', 'Third', 'Lilith Merlot', 150, 10, 'With its first release in two years, the single \"Prepping Men,\" Haarlem-based Lilith Merlot has introduced the audience to her new sound.', NULL, NULL, 'lilith-merlot'),
-	(0, '2020-08-30 15:00:00', '2020-08-30 16:00:00', 'Grote Markt', NULL, 'Ruis Soundsystem', NULL, 0, 'Consist of five members that plays jazz and blues with a mix of modern pop culture music..', NULL, NULL, 'ruis-soundsystem'),
-	(0, '2020-08-30 16:00:00', '2020-08-30 17:00:00', 'Grote Markt', NULL, 'Wicked Jazz Sounds', NULL, 0, 'The Wicked Jazz sounds is the live band of wicked jazz sounds project; a music platform that brings jazz and dance together. Wicked Jazz Sounds were created in 2002.', NULL, NULL,'wicked-jazz-sounds'),
-	(0, '2020-08-30 17:00:00', '2020-08-30 18:00:00', 'Grote Markt', NULL, 'Evolve', NULL, 0, 'Frederieke kroone brings a new generation of music that gives a spherical and soulful yet rocking live show. Expects an enchanting show with exciting stories with great climax and right arrangement.', NULL, NULL, 'evolve'),
-	(0, '2020-08-30 18:00:00', '2020-08-30 19:00:00', 'Grote Markt', NULL, 'The Nordanians', NULL, 0, 'When Oene van Geel viola, Mark Tuinstra guitar and Niti Ranjan Biswas tabla virtuoso played together for the first time there where immediately fireworks.', NULL, NULL, 'the-nordanians'),
-	(0, '2020-08-30 19:00:00', '2020-08-30 20:00:00', 'Grote Markt', NULL, 'Gumbo Kings', NULL, 0, 'The Gumbo Kings are a five-piece band that combines the groove of new orleans with rough delta blues and the melody of soul from ancient Memphis.', NULL, NULL, 'gumbo-kings'),
-	(0, '2020-08-30 20:00:00', '2020-08-30 21:00:00', 'Grote Markt', NULL, 'Gare du Nord', NULL, 0, 'Gare du Nord is a Dutch-Belgian jazz band, originally consisting of Doc (Ferdi Lancee) and Inca (Barend Fransen). Doc played guitar and Inca played saxophone.', NULL, NULL, 'gare-du-nord'),
-	(0, '2020-08-27 18:00:00', '2020-08-27 22:00:00', 'Patronaat', 'Pass', 'Day pass Thursday', 300, 35, 'All-Access pass for Thursday.', NULL, NULL, 'thursday-day-pass'),
-	(0, '2020-08-28 18:00:00', '2020-08-28 22:00:00', 'Patronaat', 'Pass', 'Day pass Friday', 300, 35, 'All-Access pass for Friday.', NULL, NULL, 'friday-day-pass'),
-	(0, '2020-08-29 18:00:00', '2020-08-29 22:00:00', 'Patronaat', 'Pass', 'Day pass Saturday', 300, 35, 'All-Access pass for Saturday.', NULL, NULL, 'saturday-day-pass'),
-	(0, '2020-08-27 18:00:00', '2020-08-30 22:00:00', 'Patronaat', 'Pass', 'All Access Pass', 30, 80, 'All-Access for the whole event.', NULL, NULL, 'all-access-pass');
 
 
 INSERT INTO `restaurants` (`id`, `name`, `address`, `food_type`, `weekdays`)
@@ -216,46 +185,60 @@ INSERT INTO `invoices` (`id`, `user_id`, `invoice_date`) VALUES (123, 1, '2020-0
 INSERT INTO `tickets` (`ticket_id`, `user_id`, `event_id`, `amount`, `IS_PAID`, `TICKET_SCANNED`, `order_date`, `paid_date`, `invoice_id`) VALUES ('aP8aDAjivJxCanbdLG', 1, 18, 2, 0, 0, '2020-01-18 20:54:38', NULL, 123);
 INSERT INTO `tickets` (`ticket_id`, `user_id`, `event_id`, `amount`, `IS_PAID`, `TICKET_SCANNED`, `order_date`, `paid_date`, `invoice_id`) VALUES ('yAvcCkwSEYO8YyLw2R', 1, 10, 1, 0, 0, '2020-01-18 20:54:32', NULL, 123);
 
--- Food images
--- INSERT INTO `cms_images` (`image_id`, `image_name`) VALUES ('baZuFSLpFE77unSm', 'banner.png');
--- INSERT INTO `cms_images` (`image_id`, `image_name`) VALUES ('BF32DgzuB1yUOrbL', 'Mr-mrs-restaurant-Haarlem.jpg');
--- INSERT INTO `cms_images` (`image_id`, `image_name`) VALUES ('2YUXsYi53Xm11NqK', 'ratatouile.jpg');
--- INSERT INTO `cms_images` (`image_id`, `image_name`) VALUES ('V9QSLDwjnHSoaWGj', 'restaurant-ml.jpg');
--- INSERT INTO `cms_images` (`image_id`, `image_name`) VALUES ('jmE8vtwRAtB6txMi', 'restaurant-fris.jpg');
--- INSERT INTO `cms_images` (`image_id`, `image_name`) VALUES ('9F1u5TgNP1ONchv7', 'spektakel.jpg');
--- INSERT INTO `cms_images` (`image_id`, `image_name`) VALUES ('swIJ7MqHbBhH2GWQ', 'grand-cafe-brinkmann.jpg');
--- INSERT INTO `cms_images` (`image_id`, `image_name`) VALUES ('6YR8xNAfXCNkDTL3', 'urban frenchy.jpg');
--- INSERT INTO `cms_images` (`image_id`, `image_name`) VALUES ('yLklVCDYxwl4FlG4', 'golden bull.jpg');
 
-
-INSERT INTO `festival_events`(`type`,`end_date`, `start_date`, `address`, `location_detail`, `name`, `tickets`, `price`, `description`, `image`) 
-values 
-(1,'2020-08-28 00:00:00', '2020-08-27 00:00:00',  'pass', 'pass', 'Haarlem festival Dance Pass (Whole Day + Night)', 3000, 75, '+ Valid for the entire select day +Access to all conference tracks (Beats, Green,Sound Lab, etc).',null),
-(1,'2020-08-27 23:30:00', '2020-08-27 22:00:00',  'Club Stalker', 'Club', 'Tiesto', 200, 60, '+Get access to this concert',null),
-(1,'2020-08-27 23:30:00', '2020-08-27 22:00:00',  'XO the Club', 'Club', 'Armin van Buuren', 200, 60, '+Get access to this concert',null),
-(1,'2020-08-27 23:30:00', '2020-08-27 22:00:00',  'Club Ruis', 'Club', 'Martin Garrix', 200, 60, '+Get access to this concert',null),
-(1,'2020-08-29 00:00:00', '2020-08-28 00:00:00',  'pass', 'pass', 'Haarlem festival Dance Pass (Whole Day + Night)', 3000, 75, '+ Valid for the entire select day +Access to all conference tracks (Beats, Green,Sound Lab, etc).',null),
-(1,'2020-08-28 02:00:00', '2020-08-27 20:00:00',  'lichtfabrik', 'Back2Back', 'Nick Romero/ Afrojack', 1500, 75, '+Get access to this concert',null),
-(1,'2020-08-28 00:30:00', '2020-08-27 23:00:00',  'Jopenkerk', 'Club', 'Hardwell', 300, 60, '+Get access to this concert',null),
-(1,'2020-08-28 23:00:00', '2020-08-28 14:00:00',  'Caprera Openluchttheater ', 'Back2Back', 'Harwell / Martin Garrix / Armin van Buuren', 2000, 110, 'Enjoy',null),
-(1,'2020-08-28 23:30:00', '2020-08-28 22:00:00',  'Jopenkerk ', 'Club', 'Afrojack', 300, 60, '+Get access to this concert',null),
-(1,'2020-08-30 00:00:00', '2020-08-29 00:00:00',  'pass', 'pass', 'Haarlem festival Dance Pass (Whole Day + Night)', 3000, 75, '+ Valid for the entire select day +Access to all conference tracks (Beats, Green,Sound Lab, etc).',null),
-(1,'2020-08-29 01:30:00', '2020-08-28 21:00:00',  'Lichtfabriek ', 'TiëstoWorld', 'Tiësto', 1500, 75, '+Get access to this concert',null),
-(1,'2020-08-29 00:30:00', '2020-08-28 23:00:00',  'Club Stalker ', 'Club', 'Nicky Romero', 200, 60, '+Get access to this concert',null),
-(1,'2020-08-29 23:00:00', '2020-08-29 14:00:00',  'Caprera Openluchttheater', 'Back2Back', 'Afrojack / Tiësto / Nicky Romero', 2000, 110, 'Enjoy',null),
-(1,'2020-08-29 20:30:00', '2020-08-29 19:00:00',  'Jopenkerk', 'Club', 'Armin van Buuren', 300, 60, '+Get access to this concert',null),
-(1,'2020-08-29 22:30:00', '2020-08-29 21:00:00',  'XO the Club', 'Club', 'Hardwell', 1500, 90, '+Get access to this concert',null),
-(1,'2020-08-29 19:30:00', '2020-08-29 18:00:00',  'Club Stalker', 'Club', 'Martin Garrix', 200, 60, '+Get access to this concert',null);
-
--- FOOD EVENTS
-INSERT INTO `festival_events` (`type`, `start_date`, `end_date`, `address`, `location_detail`, `name`, `tickets`, `price`, `description`, `rating`, `image`, `slug`)
-VALUES 
-(2, '2020-08-27 18:00:00', '2020-08-30 18:00:00', 'Lange Veerstraat 4, 2011 DB Haarlem, Nederland', '3', 'Restaurant Mr. & Mrs.', 40, 45, 'Dutch, fish and seafood, European', 4, 'BF32DgzuB1yUOrbL.jpg', 'restaurant-mr-and-mrs'),
-(2, '2020-08-27 18:00:00', '2020-08-30 18:00:00', 'Spaarne 96, 2011 CL Haarlem, Nederland', '3', 'Ratatouille', 52, 45, 'French, fish and seafood, European', 4, '2YUXsYi53Xm11NqK.jpg', "ratatouille"),
-(2, '2020-08-27 18:00:00', '2020-08-30 18:00:00', 'Kleine Houtstraat 70, 2011 DR Haarlem, Nederland', '2', 'Restaurant ML', 60, 45, 'Dutch, fish and seafood, European', 4, 'V9QSLDwjnHSoaWGj.jpg', "restaurant-ml"),
-(2, '2020-08-27 18:00:00', '2020-08-30 18:00:00', 'Twijnderslaan 7, 2012 BG Haarlem, Nederland', '3', 'Restaurant Fris', 45, 45, 'Dutch, French, European', 4, 'jmE8vtwRAtB6txMi.jpg', "restaurant-fris"),
-(2, '2020-08-27 18:00:00', '2020-08-30 18:00:00', 'Spekstraat 4, 2011 HM Haarlem, Nederland', '3', 'Specktakel', 36, 35, 'Europees, Internationaal, Aziatisch', 3, '9F1u5TgNP1ONchv7.jpg', "specktakel"),
-(2, '2020-08-27 18:00:00', '2020-08-30 18:00:00', 'Grote Markt 13, 2011 RC Haarlem, Nederland', '3', 'Grand Cafe Brinkman', 100, 35, 'Dutch, European, Modern', 3, 'swIJ7MqHbBhH2GWQ.jpg', "grand-cafe-brinkman"),
-(2, '2020-08-27 18:00:00', '2020-08-30 18:00:00', 'Oude Groenmarkt 10-12, 2011 HL Haarlem, Nederland', '3', 'Urban Frenchy Bistro Toujours', 48, 35, 'Dutch, fish and seafood, European', 3, '6YR8xNAfXCNkDTL3.jpg', "urban-frenchy-bistro-toujours"),
-(2, '2020-08-27 18:00:00', '2020-08-30 18:00:00', 'Zijlstraat 39, 2011 TK Haarlem, Nederland', '3', 'The Golden Bull', 60, 35, 'Steakhouse, Argentinian, European', 3, 'yLklVCDYxwl4FlG4.jpg', "the-golden-bull"),
-(2, '2020-08-27 18:00:00', '2020-08-30 18:00:00', 'Kleine Houtstraat 70, 2011 DR Haarlem, Nederland', '2', 'Restaurant Speck', 45, 35, 'Europees, Internationaal, Aziatisch', 3, 'V9QSLDwjnHSoaWGj.jpg', "restaurant-speck");
+INSERT INTO `festival_events` (`id`, `type`, `start_date`, `end_date`, `address`, `location_detail`, `name`, `tickets`, `price`, `description`, `rating`, `image`, `slug`)
+VALUES
+	(1, 0, '2020-08-27 18:00:00', '2020-08-27 19:00:00', 'Patronaat', 'Main Hall', 'Gumbo Kings', 300, 15, 'The Gumbo Kings are a five-piece band that combines the groove of new orleans with rough delta blues and the melody of soul from ancient Memphis.', 0, NULL, 'gumbo-kings-at-patronaat'),
+	(2, 0, '2020-08-27 19:30:00', '2020-08-27 20:30:00', 'Patronaat', 'Main Hall', 'Evolve', 300, 15, 'Frederieke kroone brings a new generation of music that gives a spherical and soulful yet rocking live show. Expects an enchanting show with exciting stories with great climax and right arrangement.', 0, NULL, 'evolve-at-patronaat'),
+	(3, 0, '2020-08-27 21:00:00', '2020-08-27 22:00:00', 'Patronaat', 'Main Hall', 'Ntjam Rosie', 300, 15, 'Dutch-Cameroonian singer/songwriter from Rotterdam, The Netherlands. Her style is a mix of pop music, jazz and soul.', 0, NULL, 'ntjam-rosie-at-patronaat'),
+	(4, 0, '2020-08-27 18:00:00', '2020-08-27 19:00:00', 'Patronaat', 'Second Hall', 'Wicked Jazz Sounds', 200, 10, 'The Wicked Jazz sounds is the live band of wicked jazz sounds project; a music platform that brings jazz and dance together. Wicked Jazz Sounds were created in 2002.', 0, NULL, 'wicked-jazz-sounds-at-patronaat'),
+	(5, 0, '2020-08-27 19:30:00', '2020-08-27 20:30:00', 'Patronaat', 'Second Hall', 'Tom Thomsom Assemble', 200, 10, 'Tom Thomsom is a Dj and producer from Haarlem. His music has RnB & HipHop tunes.', 0, NULL, 'tom-thomsom-assemble-at-patronaat'),
+	(6, 0, '2020-08-27 21:00:00', '2020-08-27 22:00:00', 'Patronaat', 'Second Hall', 'Jonna Frazer', 200, 10, 'Jonna Frazer, is a Dutch rapper of Surinamese descent. he has a broad Dutch hop-style that varies from ganster rap to sultry soul.', 0, NULL, 'jonna-frazer-at-patronaat'),
+	(7, 0, '2020-08-28 18:00:00', '2020-08-28 19:00:00', 'Patronaat', 'Main Hall', 'Fox & The Mayors', 300, 15, 'A band from britain, best known for their solo moment where they show every members skill with their instruments.', 0, NULL, 'fox-and-the-mayors-at-patronaat'),
+	(8, 0, '2020-08-28 19:30:00', '2020-08-28 20:30:00', 'Patronaat', 'Main Hall', 'Uncle Sue', 300, 15, 'Uncle Sue is a seven-member Funk and Soul Band from Haarlem with its own story and swinging bladder section.', 0, NULL, 'uncle-sue-at-patronaat'),
+	(9, 0, '2020-08-28 21:00:00', '2020-08-28 22:00:00', 'Patronaat', 'Main Hall', 'Chris Allen', 300, 15, 'Kristopher Neil Allen is an American musician, singer and songwriter from Conway, Arkansas, and the winner of the eighth season of American Idol.', 0, NULL, 'chris-allen-at-patronaat'),
+	(10, 0, '2020-08-28 18:00:00', '2020-08-28 19:00:00', 'Patronaat', 'Second Hall', 'Myles Sandko', 200, 10, 'Sanko, who grew up in a small town on the coast of Ghana, later emigrated with his family to Great Britain. He sang and rapped as a youngster in Cambridge.', 0, NULL, 'myles-sandko-at-patronaat'),
+	(11, 0, '2020-08-28 19:30:00', '2020-08-28 20:30:00', 'Patronaat', 'Second Hall', 'Ruis SoundSystem', 200, 10, 'Consist of five members that plays jazz and blues with a mix of modern pop culture music.', 0, NULL, 'ruis-soundsystem-at-patronaat'),
+	(12, 0, '2020-08-28 21:00:00', '2020-08-28 22:00:00', 'Patronaat', 'Second Hall', 'The Family XL', 200, 10, 'In 2015, Xander Hubrecht decided that he wanted to be on stage again with his own work. He started a project called \"The Family XL\" and performed with it every mont in the Jopenkerk in Haarlem.', 0, NULL, 'the-family-xl-at-patronaat'),
+	(13, 0, '2020-08-29 18:00:00', '2020-08-29 19:00:00', 'Patronaat', 'Main Hall', 'Gare Du Nord', 300, 15, 'Gare du Nord is a Dutch-Belgian jazz band, originally consisting of Doc (Ferdi Lancee) and Inca (Barend Fransen). Doc played guitar and Inca played saxophone.', 0, NULL, 'gare-du-nord-at-patronaat'),
+	(14, 0, '2020-08-29 19:30:00', '2020-08-29 20:30:00', 'Patronaat', 'Main Hall', 'Rilan & The Bombadiers', 300, 15, 'With a sold out first clubtour, a booming festival season and tracks that have already been featured in a number of big Hollywood productions, (Netflix / HULU / FOX: Shooter, Shut Eye and Rosewood) this band has certainly been keeping busy.', 0, NULL, 'rilan-and-the-bombadiers-at-patronaat'),
+	(15, 0, '2020-08-29 21:00:00', '2020-08-29 22:00:00', 'Patronaat', 'Main Hall', 'Soul Six', 300, 15, 'Soul Six is (Moshe Tamir) from Tel Aviv Israel . One of the mainstays industry of electronic music in Israel & Responsible for many successful events in our country.', 0, NULL, 'soul-six-at-patronaat'),
+	(16, 0, '2020-08-29 18:00:00', '2020-08-29 19:00:00', 'Patronaat', 'Third Hall', 'Han Bennink', 150, 10, 'Drummer and multi-instrumentalist Han Bennink was born in Zaandam near Amsterdam in 1942. His first percussion instrument was a kitchen chair.', 0, NULL, 'han-bennink-at-patronaat'),
+	(17, 0, '2020-08-29 19:30:00', '2020-08-29 20:30:00', 'Patronaat', 'Third Hall', 'The Nordanians', 150, 10, 'When Oene van Geel viola, Mark Tuinstra guitar and Niti Ranjan Biswas tabla virtuoso played together for the first time there where immediately fireworks.', 0, NULL, 'the-nordanians-at-patronaat'),
+	(18, 0, '2020-08-29 21:00:00', '2020-08-29 22:00:00', 'Patronaat', 'Third Hall', 'Lilith Merlot', 150, 10, 'With its first release in two years, the single \"Prepping Men,\" Haarlem-based Lilith Merlot has introduced the audience to her new sound.', 0, NULL, 'lilith-merlot-at-patronaat'),
+	(19, 0, '2020-08-30 15:00:00', '2020-08-30 16:00:00', 'Grote Markt', '', 'Ruis Soundsystem', NULL, 0, 'Consist of five members that plays jazz and blues with a mix of modern pop culture music..', 0, NULL, 'ruis-soundsystem-at-grote-markt'),
+	(20, 0, '2020-08-30 16:00:00', '2020-08-30 17:00:00', 'Grote Markt', '', 'Wicked Jazz Sounds', NULL, 0, 'The Wicked Jazz sounds is the live band of wicked jazz sounds project; a music platform that brings jazz and dance together. Wicked Jazz Sounds were created in 2002.', 0, NULL, 'wicked-jazz-sounds-at-grote-markt'),
+	(21, 0, '2020-08-30 17:00:00', '2020-08-30 18:00:00', 'Grote Markt', '', 'Evolve', NULL, 0, 'Frederieke kroone brings a new generation of music that gives a spherical and soulful yet rocking live show. Expects an enchanting show with exciting stories with great climax and right arrangement.', 0, NULL, 'evolve-at-grote-markt'),
+	(22, 0, '2020-08-30 18:00:00', '2020-08-30 19:00:00', 'Grote Markt', '', 'The Nordanians', NULL, 0, 'When Oene van Geel viola, Mark Tuinstra guitar and Niti Ranjan Biswas tabla virtuoso played together for the first time there where immediately fireworks.', 0, NULL, 'the-nordanians-at-grote-markt'),
+	(23, 0, '2020-08-30 19:00:00', '2020-08-30 20:00:00', 'Grote Markt', '', 'Gumbo Kings', NULL, 0, 'The Gumbo Kings are a five-piece band that combines the groove of new orleans with rough delta blues and the melody of soul from ancient Memphis.', 0, NULL, 'gumbo-kings-at-grote-markt'),
+	(24, 0, '2020-08-30 20:00:00', '2020-08-30 21:00:00', 'Grote Markt', '', 'Gare du Nord', NULL, 0, 'Gare du Nord is a Dutch-Belgian jazz band, originally consisting of Doc (Ferdi Lancee) and Inca (Barend Fransen). Doc played guitar and Inca played saxophone.', 0, NULL, 'gare-du-nord-at-grote-markt'),
+	(25, 0, '2020-08-27 18:00:00', '2020-08-27 22:00:00', 'Patronaat', 'Pass', 'Day pass Thursday', 300, 35, 'All-Access pass for Thursday.', 0, NULL, 'day-pass-thursday-at-patronaat'),
+	(26, 0, '2020-08-28 18:00:00', '2020-08-28 22:00:00', 'Patronaat', 'Pass', 'Day pass Friday', 300, 35, 'All-Access pass for Friday.', 0, NULL, 'day-pass-friday-at-patronaat'),
+	(27, 0, '2020-08-29 18:00:00', '2020-08-29 22:00:00', 'Patronaat', 'Pass', 'Day pass Saturday', 300, 35, 'All-Access pass for Saturday.', 0, NULL, 'day-pass-saturday-at-patronaat'),
+	(28, 0, '2020-08-27 18:00:00', '2020-08-30 22:00:00', 'Patronaat', 'Pass', 'All Access Pass', 30, 80, 'All-Access for the whole event.', 0, NULL, 'all-access-pass-at-patronaat'),
+	(29, 1, '2020-08-28 00:00:00', '2020-08-27 00:00:00', 'pass', 'pass', 'Haarlem festival Dance Pass (Whole Day + Night)', 3000, 75, '+ Valid for the entire select day +Access to all conference tracks (Beats, Green,Sound Lab, etc).', 0, NULL, 'haarlem-festival-dance-pass-whole-day-night-at-pass'),
+	(30, 1, '2020-08-27 22:00:00', '2020-08-27 23:30:00', 'Club Stalker', 'Club', 'Tiesto', 200, 60, '+Get access to this concert', 0, NULL, 'tiesto-at-club-stalker'),
+	(31, 1, '2020-08-27 22:00:00', '2020-08-27 23:30:00', 'XO the Club', 'Club', 'Armin van Buuren', 200, 60, '+Get access to this concert', 0, NULL, 'armin-van-buuren-at-xo-the-club'),
+	(32, 1, '2020-08-27 22:00:00', '2020-08-27 23:30:00', 'Club Ruis', 'Club', 'Martin Garrix', 200, 60, '+Get access to this concert', 0, NULL, 'martin-garrix-at-club-ruis'),
+	(33, 1, '2020-08-28 00:00:00', '2020-08-29 00:00:00', 'pass', 'pass', 'Haarlem festival Dance Pass (Whole Day + Night)', 3000, 75, '+ Valid for the entire select day +Access to all conference tracks (Beats, Green,Sound Lab, etc).', 0, NULL, 'haarlem-festival-dance-pass-whole-day-night-at-pass'),
+	(34, 1, '2020-08-27 20:00:00', '2020-08-28 02:00:00', 'lichtfabrik', 'Back2Back', 'Nick Romero/ Afrojack', 1500, 75, '+Get access to this concert', 0, NULL, 'nick-romero-afrojack-at-lichtfabrik'),
+	(35, 1, '2020-08-27 23:00:00', '2020-08-28 00:30:00', 'Jopenkerk', 'Club', 'Hardwell', 300, 60, '+Get access to this concert', 0, NULL, 'hardwell-at-jopenkerk'),
+	(36, 1, '2020-08-28 14:00:00', '2020-08-28 23:00:00', 'Caprera Openluchttheater ', 'Back2Back', 'Harwell / Martin Garrix / Armin van Buuren', 2000, 110, 'Enjoy', 0, NULL, 'harwell-martin-garrix-armin-van-buuren-at-caprera-openluchttheater'),
+	(37, 1, '2020-08-28 22:00:00', '2020-08-28 23:30:00', 'Jopenkerk ', 'Club', 'Afrojack', 300, 60, '+Get access to this concert', 0, NULL, 'afrojack-at-jopenkerk'),
+	(38, 1, '2020-08-29 00:00:00', '2020-08-30 00:00:00', 'pass', 'pass', 'Haarlem festival Dance Pass (Whole Day + Night)', 3000, 75, '+ Valid for the entire select day +Access to all conference tracks (Beats, Green,Sound Lab, etc).', 0, NULL, 'haarlem-festival-dance-pass-whole-day-night-at-pass'),
+	(39, 1, '2020-08-28 21:00:00', '2020-08-29 01:30:00', 'Lichtfabriek ', 'TiÃ«stoWorld', 'TiÃ«sto', 1500, 75, '+Get access to this concert', 0, NULL, 'ti-sto-at-lichtfabriek'),
+	(40, 1, '2020-08-28 23:00:00', '2020-08-29 00:30:00', 'Club Stalker ', 'Club', 'Nicky Romero', 200, 60, '+Get access to this concert', 0, NULL, 'nicky-romero-at-club-stalker'),
+	(41, 1, '2020-08-29 14:00:00', '2020-08-29 23:00:00', 'Caprera Openluchttheater', 'Back2Back', 'Afrojack / TiÃ«sto / Nicky Romero', 2000, 110, 'Enjoy', 0, NULL, 'afrojack-ti-sto-nicky-romero-at-caprera-openluchttheater'),
+	(42, 1, '2020-08-29 19:00:00', '2020-08-29 20:30:00', 'Jopenkerk', 'Club', 'Armin van Buuren', 300, 60, '+Get access to this concert', 0, NULL, 'armin-van-buuren-at-jopenkerk'),
+	(43, 1, '2020-08-29 21:00:00', '2020-08-29 22:30:00', 'XO the Club', 'Club', 'Hardwell', 1500, 90, '+Get access to this concert', 0, NULL, 'hardwell-at-xo-the-club'),
+	(44, 1, '2020-08-29 18:00:00', '2020-08-29 19:30:00', 'Club Stalker', 'Club', 'Martin Garrix', 200, 60, '+Get access to this concert', 0, NULL, 'martin-garrix-at-club-stalker'),
+	(45, 2, '2020-08-25 18:00:00', '2020-08-25 22:30:00', 'Lange Veerstraat 4, 2011 DB Haarlem, Nederland', '3', 'Restaurant Mr. & Mrs.', 40, 45, 'Dutch, fish and seafood, European', 4, 'BF32DgzuB1yUOrbL.jpg', 'restaurant-mr-and-mrs'),
+	(46, 2, '2020-08-25 17:00:00', '2020-08-25 23:00:00', 'Spaarne 96, 2011 CL Haarlem, Nederland', '3', 'Ratatouille', 52, 45, 'French, fish and seafood, European', 4, '2YUXsYi53Xm11NqK.jpg', 'ratatouille'),
+	(47, 2, '2020-08-25 17:00:00', '2020-08-25 21:30:00', 'Kleine Houtstraat 70, 2011 DR Haarlem, Nederland', '2', 'Restaurant ML', 60, 45, 'Dutch, fish and seafood, European', 4, 'V9QSLDwjnHSoaWGj.jpg', 'restaurant-ml'),
+	(48, 2, '2020-08-25 17:30:00', '2020-08-25 22:00:00', 'Twijnderslaan 7, 2012 BG Haarlem, Nederland', '3', 'Restaurant Fris', 45, 45, 'Dutch, French, European', 4, 'jmE8vtwRAtB6txMi.jpg', 'restaurant-fris'),
+	(49, 2, '2020-08-25 17:30:00', '2020-08-25 21:30:00', 'Spekstraat 4, 2011 HM Haarlem, Nederland', '3', 'Specktakel', 36, 35, 'Europees, Internationaal, Aziatisch', 3, '9F1u5TgNP1ONchv7.jpg', 'specktakel'),
+	(50, 2, '2020-08-25 16:30:00', '2020-08-25 21:00:00', 'Grote Markt 13, 2011 RC Haarlem, Nederland', '3', 'Grand Cafe Brinkman', 100, 35, 'Dutch, European, Modern', 3, 'swIJ7MqHbBhH2GWQ.jpg', 'grand-cafe-brinkman'),
+	(51, 2, '2020-08-25 17:30:00', '2020-08-25 22:00:00', 'Oude Groenmarkt 10-12, 2011 HL Haarlem, Nederland', '3', 'Urban Frenchy Bistro Toujours', 48, 35, 'Dutch, fish and seafood, European', 3, '6YR8xNAfXCNkDTL3.jpg', 'urban-frenchy-bistro-toujours'),
+	(52, 2, '2020-08-25 17:30:00', '2020-08-25 22:30:00', 'Zijlstraat 39, 2011 TK Haarlem, Nederland', '3', 'The Golden Bull', 60, 35, 'Steakhouse, Argentinian, European', 3, 'yLklVCDYxwl4FlG4.jpg', 'the-golden-bull'),
+	(53, 2, '2020-08-25 16:30:00', '2020-08-25 21:00:00', 'Kleine Houtstraat 70, 2011 DR Haarlem, Nederland', '2', 'Restaurant Speck', 45, 35, 'Europees, Internationaal, Aziatisch', 4, 'V9QSLDwjnHSoaWGj.jpg', 'restaurant-speck'),
+	(54, 2, '2020-08-25 21:00:00', '2020-08-25 21:00:00', 'Grote Markt 13, 2011 RC Haarlem, Nederland', '3', 'Grand Cafe Brinkman', 100, 35, 'Dutch, European, Modern', 3, NULL, 'grand-cafe-brinkman');

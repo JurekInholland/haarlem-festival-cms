@@ -1,37 +1,4 @@
 <style>
-#event_form {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-left: -15px;
-    margin-right: -15px;
-}
-
-#event_form input, #event_form select {
-    min-width: 250px;
-}
-#event_form input[type="submit"] {
-    width: calc(50% - 10px);
-    min-width: 125px;
-}
-
-#event_form section {
-    flex:1 1 33%;
-    display: flex;
-    flex-direction: column;
-    padding: 10px 15px;
-    overflow: hidden;
-}
-#event_form .times{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: wrap;
-    /* padding: 10px 15px;
-    flex: auto; */
-    justify-content: space-between;
-}
 
 #event_form .stretch {
     flex-basis: 100%;
@@ -50,24 +17,46 @@
     min-height: 36px;
 }
 
-#event_form .buttons {
-    flex-direction: row;
-    justify-content: space-between;
-}
+
 
 #event_form input {
     width: unset;
 }
 </style>
 
+<?php
+$number_sessions = $event->getLocation();
+
+$start = new DateTime($event->getStartTime());
+$end = new DateTime($event->getEndTime());
+$interval = $end->diff($start);
+
+// Get total duration in seconds
+$hours = $interval->h;
+$minutes = $interval->i;
+$minutes += $hours*60;
+$seconds = $minutes*60;
+
+date_default_timezone_set ("UTC"); // makes sure there is no DST or timezone added to result
+$session_duration = date("h:i", $seconds / $number_sessions);
+
+?>
+
 
 <h1>Food event</h1>
 
-<form action="" class="form" id="event_form">
+<form action="/admin/submit" method="POST" class="form" id="event_form">
+    <input type="hidden" name="event_id" value="<?=$event->getId();?>">
+    <input type="hidden" name="type" value="2">
 
     <section>
         <label for="name">Restaurant</label>
         <input class="form-control" name="name" type="text" value="<?=$event->getName();?>">
+    </section>
+
+    <section>
+        <label for="address">Address</label>
+        <input class="form-control" name="address" type="text" value="<?=$event->getAddress();?>">
     </section>
 
     <!-- <section>
@@ -76,34 +65,36 @@
     </section> -->
 
         <section>
-            <label for="time">Session duration start</label>
-            <input class="form-control" type="time" name="from">
+            <label for="time">Number of sessions</label>
+            <input class="form-control" type="number" name="location" value="<?=$number_sessions?>">
         </section>
 
-        <section class="times">
-            <input class="form-control" type="time" name="to">
-            <input class="form-control" type="time" name="to">
+        <section class="times" id="times">
+            <section>
+                <label for="time">First session</label>
+                <input class="form-control" type="time" name="first_session" value="<?=$event->getStartTime()?>">  
+            </section>
+
+            <section>
+                <label for="time">Session duration</label>
+                <input class="form-control" id="start" type="time" name="session_duration" value="<?=$session_duration?>">
+            </section>
         </section>
 
-
-    <section>
-        <label for="address">Address</label>
-        <input class="form-control" name="address" type="text" value="<?=$event->getAddress();?>">
-    </section>
 
     <section>
         <label for="rating">Rating</label>
-        <input class="form-control" name="rating" type="number" value="<?=$event->getRating();?>">
+        <input class="form-control" name="rating" type="number" min=0 max=5 value="<?=$event->getRating();?>">
     </section>
 
 
 
 
 
-    <section>
+    <!-- <section>
         <label for="location">Location</label>
-        <input class="form-control" name="location" type="text" value="<?=$event->getLocation();?> Hall">
-    </section>
+        <input class="form-control" name="location" type="text" value="<?=$event->getLocation();?>">
+    </section> -->
 
     <section>
         <label for="seats">Seats</label>
@@ -121,7 +112,13 @@
     </section>
 
     <section class="buttons">
-        <input name="cancel" type="submit" value="Cancel">
-        <input name="submit" type="submit" value="Submit">
+        <?php
+            if ($event->getId() != "") {
+                echo "<input name='delete' class='btn btn-danger' type='submit' value='Delete'>";
+
+            }
+        ?>
+        <input name="cancel" class="btn btn-secondary" type="submit" value="Cancel">
+        <input name="submit" class="btn btn-primary" type="submit" value="Submit">
     </section>
 </form>

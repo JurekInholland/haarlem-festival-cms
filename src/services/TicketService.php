@@ -61,7 +61,17 @@ class TicketService {
 
         return $tickets;
     }
+    public static  function getUserTicketsPaid(string $username) {
+        $sql = "SELECT tickets.*, festival_events.*, cms_users.username FROM tickets JOIN festival_events ON tickets.event_id = festival_events.id
+                JOIN cms_users ON tickets.user_id = cms_users.id
+                WHERE username LIKE :username
+                AND IS_PAID=1";
+        $params = [":username" => $username];
 
+        $ticketdata = App::get("db")->query($sql, $params);
+        return self::parseTickets($ticketdata);
+
+    }
     public static  function getUserTickets(string $username) {
         $sql = "SELECT tickets.*, festival_events.*, cms_users.username FROM tickets JOIN festival_events ON tickets.event_id = festival_events.id
                 JOIN cms_users ON tickets.user_id = cms_users.id

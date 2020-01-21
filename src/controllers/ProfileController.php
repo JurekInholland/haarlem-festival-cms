@@ -30,7 +30,7 @@ class ProfileController extends Controller {
         $user = UserService::getUserByName($username);
         if ($user) {
             if ($user->getId() == $currentUser->getId() or $currentUser->getRole() > 0) {
-                return self::view("profile/viewProfile", ["user" => $user, "tickets" => TicketService::getUserTickets($user->getName()), "invoices" => InvoiceService::getByUserId($user->getId())]);
+                return self::view("profile/viewProfile", ["user" => $user, "tickets" => TicketService::getUserTicketsPaid($user->getName()), "invoices" => InvoiceService::getByUserId($user->getId())]);
             }
 
 

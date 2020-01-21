@@ -29,7 +29,7 @@ export async function getCategories() {
 }
 
 export async function getRestaurants() {
-    let url = "/api/restaurants";
+    let url = "/api/events";
     let result = await makeRequest("GET", url);
     return result;
 }

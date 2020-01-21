@@ -52,8 +52,12 @@ class ApiController extends Controller {
     }
 
     public function events() {
+        $eventdata = [];
         $events = EventService::getAll();
-        self::serveJson($events);
+        foreach ($events as $event) {
+            array_push($eventdata, $event->getData());
+        }
+        self::serveJson($eventdata);
     }
 
     public function days() {

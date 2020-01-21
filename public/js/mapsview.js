@@ -20,8 +20,10 @@ async function processRestaurants(map) {
 
     let restaurants = await getRestaurants();
     for (var i in restaurants) {
-        let latlang = await findLatLang(restaurants[i]["address"], geocoder, map);
-        latlangs[i] = {name: restaurants[i]["name"], address: restaurants[i]["address"], latlang: latlang};
+        if (restaurants[i]["type"] == 2) {
+            let latlang = await findLatLang(restaurants[i]["address"], geocoder, map);
+            latlangs[i] = {name: restaurants[i]["name"], address: restaurants[i]["address"], latlang: latlang, slug: restaurants[i]["slug"]};    
+        }
     }
     return latlangs;
 }
@@ -69,7 +71,7 @@ function generateInfo(restaurant) {
     `<h1 id="firstHeading" class="firstHeading">${restaurant["name"]}</h1>`+
     `<div id="bodyContent">`+
     `<p>${restaurant["address"]}</p>`+
-    `<a href="#">edit</a> | <a href="#">delete</a>`+
+    `<a href="/admin/event/${restaurant["slug"]}">edit</a> | <a href="/admin/event/${restaurant["slug"]}?delete">delete</a>`+
     `</div>`+
     `</div>`
     return info;

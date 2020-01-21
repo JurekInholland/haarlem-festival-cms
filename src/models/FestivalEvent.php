@@ -3,7 +3,7 @@
 class FestivalEvent {
 
     protected $id;
-    protected $tpye;
+    protected $type;
     protected $start_date;
     protected $end_date;
     protected $address;
@@ -32,9 +32,13 @@ class FestivalEvent {
         }
     }
 
+    public function getType() {
+        return $this->type;
+    }
 
     public function getSlug() {
-        return self::createSlug($this->getName());
+        return $this->slug;
+        // return self::createSlug($this->getName());
     }
 
     public function getName() {
@@ -49,25 +53,36 @@ class FestivalEvent {
         return $this->start_date;
     }
 
+    public function getEndDate() {
+        return $this->end_date;
+    } 
+
     public function getDayReadable() {
         $date = new DateTime($this->start_date);
         return $date->format('l, d.m.Y');
     }
 
     public function getStartDay() {
-        $date = new DateTime($this->start_date);
-        return $date->format('d.m.y');
+        if ($this->start_date != "") {
+            $date = new DateTime($this->start_date);
+            return $date->format('d.m.y');                
+        }
     }
 
     public function getStartTime() {
-        $date = new DateTime($this->start_date);
-        return $date->format('H:i');
+        if ($this->start_date != "") {
+            $date = new DateTime($this->start_date);
+            return $date->format('H:i');
+        }
     }
 
     public function getEndTime() {
-        $date = new DateTime($this->end_date);
-        return $date->format('H:i');
+        if ($this->start_date != "") {
+
+            $date = new DateTime($this->end_date);
+            return $date->format('H:i');
     }
+}
 
     public function getColor() {
         $categories = App::get("festival")->getCategories();
@@ -80,7 +95,7 @@ class FestivalEvent {
     }
 
     public function getCategoryId() {
-        if (isset($this->tpye)) {
+        if (isset($this->type)) {
             return (int)$this->type;
         }
         return 0;
@@ -99,7 +114,10 @@ class FestivalEvent {
     }
 
     public function getNumberTickets() {
-        return $this->tickets;
+        if ($this->tickets) {
+            return $this->tickets;
+        }
+        return NULL;
     }
 
     public function getPrice() {
@@ -111,12 +129,29 @@ class FestivalEvent {
     }
 
     public function getRating() {
-        return $this->rating;
+        if ($this->rating) {
+            return $this->rating;            
+        }
+        return 0;
     }
 
-    private static function createSlug($str, $delimiter = '-'){
-        $slug = strtolower(trim(preg_replace('/[\s-]+/', $delimiter, preg_replace('/[^A-Za-z0-9-]+/', $delimiter, preg_replace('/[&]/', 'and', preg_replace('/[\']/', '', iconv('UTF-8', 'ASCII//TRANSLIT', $str))))), $delimiter));
-        return $slug;
+    public function setSlug($slug) {
+        $this->slug = $slug;
+    }
+
+    public function getData() {
+        
+        return [
+            "id" => $this->getId(),
+            "name" => $this->getName(),
+            "address" => $this->getAddress(),
+            "type" => $this->getType(),
+            "start" => $this->getStartDate(),
+            "end" => $this->getEndDate(),
+            "price" => $this->getPrice(),
+            "tickets" => $this->getNumberTickets(),
+            "slug" => $this->getSlug()
+        ];
     }
 
 }

@@ -21,14 +21,8 @@ class PaymentController extends Controller {
     }
 
     public function complete($paymentId) {
-        echo "Payment complete! " . $paymentId;
+        
         $status = PaymentService::getDbStatus($paymentId);
-        if ($status) {
-            var_dump($status);
-        }
-    }
-
-    public function make() {
-        return PaymentService::createPayment(44.33);
+        return self::view("partials/payment", ["status" => $status, "paymentid" => $paymentId]);
     }
 }

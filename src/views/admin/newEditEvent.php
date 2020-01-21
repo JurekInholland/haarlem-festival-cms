@@ -4,7 +4,10 @@
     right: 20px;
 }
 </style>
+
+
 <?php
+// die(var_dump($event));
 $festival = App::get("festival");
 $categories = $festival->getCategories();
 
@@ -16,6 +19,7 @@ if (isset($_POST["category"])) {
     $id = $_POST["category"];
 } else {
     $id = $event->getCategoryId();
+    // die(var_dump($id));
 }
 
 foreach ($categories as $category) {
@@ -23,7 +27,8 @@ foreach ($categories as $category) {
 }
 
 ?>
-<form action="/admin/newedit" method="POST" class="category_form">
+<form action="" method="POST" class="category_form">
+<input type="hidden" name="event_id" value="<?= $event->getId(); ?>">
 <select name="category" onchange="this.form.submit()" value="<?= $id; ?>">
     <?php foreach ($categories as $key => $type) : 
     ?>

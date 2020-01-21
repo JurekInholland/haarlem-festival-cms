@@ -30,58 +30,38 @@ class AdminController extends Controller {
 	
     }
 
-
-    // public function tests() {
-    //     $events = EventService::getNew();
-    //     // die(var_dump($events));
-    //     var_dump($events[0]->getCategory());
-    // }
-
     public function setup() {
         echo "SETUP";
         $userArray = App::get("db")->query("SELECT * FROM users");
     }
 
-
-    public function newedit() {
-
-        $events = EventService::getAll();
-
-
-        if (isset($_GET["type"])) {
-            // TODO set event type
-        }
-
-        $events[0]->setCategoryId(2);
-        return self::view("admin/newEditEvent", ["event" => $events[0]]);
-    }
-
-    // TODO: refactor
     public function create($item) {
 
         $event = new FestivalEvent([]);
-        $days = App::get("festival")->festivalDays();
-        
-        $locations = App::get("festival")->getLocations();
-
-        $event_types = App::get("festival")->getCategories();
-
-        $template_vars = [
-            "event" => $event,
-            "festival_days" => $days,
-            "locations" => $locations,
-            "event_types" => $event_types
-        ];
-        return self::view("admin/newEditEvent", $template_vars);
+        return self::view("admin/newEditEvent", ["event" => $event]);
     }
 
     public function submit() {
-
-        if (isset($_POST["submit"])) {
+        if (isset($_POST["cancel"])) {
+            self::redirect("admin/events");
+        } elseif (isset($_POST["submit"])) {
             $event = EventService::fromPost($_POST);
-            EventService::store($event);   
+
+            if ($event->getId() == "") {
+                EventService::store($event);
+            } else {
+                EventService::update($event);
+            }
+        } elseif (isset($_POST["delete"])) {
+            EventService::deleteEvent($_POST["event_id"]);
         }
+
+
         return self::redirect("admin");
+    }
+
+    public function fixslugs() {
+        EventService::generateSlugs();
     }
 
     public function users($username) {
@@ -151,16 +131,23 @@ class AdminController extends Controller {
     }
 
 
-    public function event($para = "") {
+    public function event($slug) {
+        if (isset($_GET["delete"])) {
+            if (App::get("user")->getRole() >= 1) {
+                $event = EventService::fromSlug($slug);
+                EventService::deleteEvent($event->getId());
+                return self::view("partials/goback");
+            }
+        }
 
         // If no url parameter was passed, display all events
-        if ($para == "") {
+        if ($slug == "") {
             $events = EventService::getAll();
             return self::view("admin/events", ["events" => $events]); 
         
         
         } else {
-            $event = EventService::fromSlug($para);
+            $event = EventService::fromSlug($slug);
             if ($event->getId()) {
                 $template_vars = [
                     "event" => $event,

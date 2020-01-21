@@ -9,6 +9,19 @@
     /* flex-basis: 50%; */
     min-width: 300px;
 }
+
+
+.table .icon {
+    background-size: contain;
+    display: block;
+    width: 30px;
+    height: 30px;
+}
+
+.pdf-icon {
+    background-image: url("/img/pdf.svg");
+}
+
 </style>
 
 <?php

@@ -1,60 +1,25 @@
 <style>
-.form {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-left: -15px;
-    margin-right: -15px;
-}
 
-.form input, .form select {
-    min-width: 250px;
-    height: 2rem;
-}
-
-.form section {
-    flex:1 1 33%;
-    display: flex;
-    flex-direction: column;
-    padding: 10px 15px;
-}
-.form .times {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding: 0;
-    flex: auto;
-    justify-content: space-between;
-}
-
-.form .stretch {
-    flex-basis: 100%;
-}
-.form textarea {
-    min-height: 90px;
-}
-
-#times input {
-    width: calc(50% - 5px);
-    min-width: 54px;
-}
 
 </style>
 
-
+<?php
+// die(var_dump($event));
+?>
 <h1>Jazz event</h1>
 
-<form action="" class="form" id="event_form">
+<form action="/admin/submit" method="POST" class="form" id="event_form">
+    <input type="hidden" name="event_id" value="<?=$event->getId();?>">
+    <input type="hidden" name="type" value="0">
 
     <section>
         <label for="name">Band</label>
-        <input name="name" type="text" value="<?=$event->getName();?>">
+        <input class="form-control" name="name" type="text" value="<?=$event->getName();?>">
     </section>
 
     <section>
         <label for="date">Date</label>
-        <select name="date" >
+        <select class="form-control" name="day" >
             <?php foreach ($festival_days as $key => $day) : ?>
                 <?php if($day["string"] == $event->getDayReadable()) {$selected = "selected";} else {$selected = "";} ?>
 
@@ -68,38 +33,49 @@
 
         <section class="times" id="times">
             <section>
-                <label for="time">Time</label>
-                <input type="time" name="from" value="<?=$event->getStartTime()?>">
+                <label for="time">Start time</label>
+                <input class="form-control" id="start" type="time" name="start_time" value="<?=$event->getStartTime()?>">
             </section>
 
             <section>
-                <label for="time">Time</label>
-                <input type="time" name="from" value="<?=$event->getStartTime()?>">  
+                <label for="time">End time</label>
+                <input class="form-control" type="time" name="end_time" value="<?=$event->getEndTime()?>">  
             </section>
         </section>
 
     <section>
         <label for="address">Address</label>
-        <input name="address" type="text" value="<?=$event->getAddress();?>">
+        <input class="form-control" name="address" type="text" value="<?=$event->getAddress();?>">
     </section>
 
     <section>
         <label for="location">Location</label>
-        <input name="location" type="text" value="<?=$event->getLocation();?> Hall">
+        <input class="form-control" name="location" type="text" value="<?=$event->getLocation();?>">
     </section>
 
     <section>
         <label for="seats">Seats</label>
-        <input name="seats" type="number" value="<?=$event->getNumberTickets();?>">
+        <input class="form-control" name="seats" type="number" value="<?=$event->getNumberTickets();?>">
     </section>
 
     <section>
         <label for="price">Price (€)</label>
-        <input name="price" type="number" step="0.01" value="<?=$event->getPrice();?>">
+        <input class="form-control" name="price" type="number" step="0.01" value="<?=$event->getPrice();?>">
     </section>
 
     <section class="stretch">
         <label for="description">Description</label>
-        <textarea name="description"><?=$event->getDescription();?></textarea>
+        <textarea class="form-control" name="description"><?=$event->getDescription();?></textarea>
+    </section>
+
+    <section class="buttons">
+        <?php
+            if ($event->getId() != "") {
+                echo "<input name='delete' class='btn btn-danger' type='submit' value='Delete'>";
+
+            }
+        ?>
+        <input name="cancel" class="btn btn-secondary" type="submit" value="Cancel">
+        <input name="submit" class="btn btn-primary" type="submit" value="Submit">
     </section>
 </form>

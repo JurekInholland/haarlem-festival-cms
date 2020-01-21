@@ -83,9 +83,24 @@
                 <h2><?= $event->getName(); ?></h2>
                 <p><?= $event->getDescription(); ?></p>
                 <ul class="event-info">
-                    <li><?= $event->getStartDay(); ?></li>
+                    <?php
+                    if ($event->getType() == 2) {
+                        echo "<li>{$event->getLocation()} Sessions:</li>";
+                    } else {
+                        echo "<li>{$event->getStartDay()} </li>";
+
+                    }
+                    ?>
                     <li style="font-weight: bold;"><?= $event->getStartTime(); ?> - <?= $event->getEndTime(); ?></li>
-                    <li><?= $event->getLocation(); ?></li>
+                    <?php
+                    if ($event->getType() < 2) {
+                        echo "<li>{$event->getAddress()}</li>";
+                    }
+                    if ($event->getType() == 0) {
+                        echo "<li>{$event->getLocation()}</li>";
+                    }
+                    
+                    ?>
                     <li style="color: <?= $event->getColor(); ?>" class="category"><?= $event->getCategory(); ?></li>
                 </ul>
             </section>

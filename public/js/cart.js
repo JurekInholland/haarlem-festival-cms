@@ -11,32 +11,24 @@ function deprecate(idx) {
     if (quantities[idx].value >= 1) {
         quantities[idx].value = parseInt(quantities[idx].value) - 1;
         calculateTotal();
-    
     }
 }
 
 function updateCookie() {
-    console.log("COOKIE:");
-    console.log(getCookie("cart"));
     let cookie = JSON.parse(decodeURIComponent(getCookie("cart")));
-    console.log(cookie);
     let quantities = document.getElementsByClassName("quantity");
     for (var i = 0; i < cookie.length; i++) {
         cookie[i][4] = parseInt(quantities[i].value);
     }
     let encoded = JSON.stringify(cookie);
-    console.log(encoded);
     setCookie("cart", encoded, 30);
 }
 
 function calculateTotal() {
-    console.log("CLICK");
     var prices = document.getElementsByClassName("item_price");
     var quantities = document.getElementsByClassName("quantity");
     var totalprice = 0;
     for (var i = 0; i < prices.length; i++) {
-        console.log("PRICE", i);
-        console.log(prices[i].innerHTML, quantities[i].value);
         let total = prices[i].innerHTML * quantities[i].value;
         totalprice += total;
     }
