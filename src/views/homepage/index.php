@@ -57,10 +57,14 @@
 
 </style>
 
+<?php
+$start = App::get("festival")->festivalDays();
+$startdate = $start[0]["date"]->format('Y-m-d H:i:s');
+?>
+
 <section class="index">
 <figure class="circle">
 <h1 id="main_headline">Welcome to</h1>
-
 <img src="/img/logo.svg" alt="" id="festival_logo">
 
 <h3 id="second_headline">Countdown to main event</h3>
@@ -76,7 +80,7 @@
 
 <script>
 // Set the date we're counting down to
-var countDownDate = new Date("Jan 5, 2021 15:37:25").getTime();
+var countDownDate = new Date("<?=$startdate?>").getTime();
 
 // Update the count down every 1 second
 var x = setInterval(function() {
