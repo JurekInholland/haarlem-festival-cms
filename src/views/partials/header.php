@@ -82,7 +82,7 @@ $categories = App::get("festival")->getCategories();
     font-family: Rockwell, Georgia;
     padding: 5px 15px;
     border-radius: 2px;
-    /* padding-bottom: 1rem; */
+    padding-top: 12px;
 
 }
 

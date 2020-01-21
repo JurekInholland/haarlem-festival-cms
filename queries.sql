@@ -17,7 +17,7 @@ CREATE TABLE `festival_events` (
     `image` VARCHAR(25) NULL DEFAULT NULL,
     `slug` VARCHAR(100) DEFAULT NULL,
     PRIMARY KEY (`id`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARSET=utf8mb4;
 
 
 -- Tickets
@@ -32,7 +32,7 @@ CREATE TABLE `tickets` (
   `paid_date` datetime DEFAULT NULL,
   `invoice_id` varchar(8) DEFAULT NULL,
   PRIMARY KEY (`ticket_id`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARSET=utf8mb4;
 
 CREATE TABLE `payments` (
   `payment_id` varchar(100) NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE `payments` (
   `invoice_id` char(8) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`payment_id`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARSET=utf8mb4;
 
 -- Static pages
 CREATE TABLE `static_pages` (
@@ -54,7 +54,7 @@ CREATE TABLE `static_pages` (
   `image` char(16) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `slug` (`slug`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARSET=utf8mb4;
 
 -- Event Categories
 CREATE TABLE `event_categories` (
@@ -63,7 +63,7 @@ CREATE TABLE `event_categories` (
     `color` CHAR(6) NOT NULL DEFAULT '',
     `slug` VARCHAR(50) DEFAULT NULL,
 	PRIMARY KEY (`id`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARSET=utf8mb4;
 
 
 -- Event locations
@@ -73,13 +73,13 @@ CREATE TABLE `event_locations` (
     `address` VARCHAR(100) DEFAULT '',
     `category` INT(11) NOT NULL,
 	PRIMARY KEY (`id`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARSET=utf8mb4;
 
 
 CREATE TABLE `festival_info` (
 	`start_date` DATETIME NULL DEFAULT NULL,
 	`end_date` DATETIME NULL DEFAULT NULL
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARSET=utf8mb4;
 
 
 CREATE TABLE `cms_users` (
@@ -90,7 +90,7 @@ CREATE TABLE `cms_users` (
 	`role` TINYINT(4) NOT NULL DEFAULT '0',
 	`registration_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 	PRIMARY KEY (`id`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARSET=utf8mb4;
 
 CREATE TABLE `cms_login_tokens` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -98,7 +98,7 @@ CREATE TABLE `cms_login_tokens` (
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 --   UNIQUE KEY `user_id` (`user_id`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARSET=utf8mb4;
 
 CREATE TABLE `cms_customer_data` (
   `user_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -107,14 +107,14 @@ CREATE TABLE `cms_customer_data` (
   `customer_address` varchar(100) DEFAULT NULL,
   `phone` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARSET=utf8mb4;
 
 CREATE TABLE `invoices` (
   `id` char(8) NOT NULL DEFAULT '',
   `user_id` int(11) NOT NULL,
   `invoice_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARSET=utf8mb4;
 
 CREATE TABLE `restaurants` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -123,7 +123,7 @@ CREATE TABLE `restaurants` (
   `food_type` text,
   `weekdays` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARSET=utf8mb4;
 
 CREATE TABLE `reservations` (
   `reservationID` int(11) NOT NULL AUTO_INCREMENT,
@@ -136,7 +136,7 @@ CREATE TABLE `reservations` (
   `requests` text NOT NULL,
   `DateCreated` timestamp NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`reservationID`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARSET=utf8mb4;
 
 INSERT INTO `event_categories` (`id`, `category`, `color`, `slug`)
 VALUES

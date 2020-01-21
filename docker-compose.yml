@@ -17,7 +17,7 @@ services:
         - MYSQL_USER=dbuser
         - MYSQL_PASSWORD=userpw
       ports:
-        - "6798:3306"
+        - "3306:3306"
 
         
     webserver:

@@ -201,6 +201,15 @@ class EventService {
     }
 
     public static function update(FestivalEvent $event) {
+
+        if (! is_string($event->getStartDate())) {
+            $startdate = $event->getStartDate()->format("Y-m-d H:i:s");
+            $enddate = $event->getEndDate()->format("Y-m-d H:i:s");
+        } else {
+            $startdate = $event->getStartDate();
+            $enddate = $event->getEndDate();
+        }
+
         $sql = "UPDATE festival_events SET type=:type, name=:name, address=:address, tickets=:tickets, rating=:rating, description=:description, start_date=:start_date,
         end_date=:end_date, price=:price, location_detail=:location_detail, slug=:slug
         WHERE id=:id";
@@ -212,8 +221,8 @@ class EventService {
             ":tickets" => $event->getNumberTickets(),
             ":rating" => $event->getRating(),
             ":description" => $event->getDescription(), 
-            ":start_date" => $event->getStartDate(), 
-            ":end_date" => $event->getEndDate(), 
+            ":start_date" => $startdate, 
+            ":end_date" => $enddate, 
             ":price" => $event->getPrice(), 
             ":location_detail" => $event->getLocation(), 
             ":slug" => $event->getSlug(), 
