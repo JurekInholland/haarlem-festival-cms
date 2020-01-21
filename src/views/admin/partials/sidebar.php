@@ -18,7 +18,7 @@
             <hr>
             <!-- <li><a href="">Edit Restaurant</a></li> -->
             <li><a href="/admin/settings">Settings</a></li>
-            <li><a href="/admin/statistics">Statistics</a></li>
+            <!-- <li><a href="/admin/statistics">Statistics</a></li> -->
             <li><a href="/admin/users">Users</a></li>
             <li><a href="/api">Public API</a></li>
             <hr>
@@ -26,7 +26,7 @@
             <li><a href="/admin/scan">Scan Ticket</a></li>
             <li><a href="/admin/invoices">Invoices</a></li>
             <li><a href="/auth/logout">Logout</a></li>
-            <li><a href="/payment/make">Payment</a></li>
+            <!-- <li><a href="/payment/make">Payment</a></li> -->
 
 
 
