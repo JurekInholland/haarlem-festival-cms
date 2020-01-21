@@ -24,7 +24,7 @@ class PaymentService {
         $sql = "SELECT invoice_id FROM payments WHERE payment_id=:payment_id LIMIT 1";
         $params = [":payment_id" => $paymentId];
         $id = App::get("db")->query($sql, $params);
-        return $id;
+        return $id[0];
     }
 
     public function getDbStatus($paymentId) {
