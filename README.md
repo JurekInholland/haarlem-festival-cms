@@ -1,4 +1,5 @@
-# haarlem-festival-cms
+# Haarlem Festival website
+![](https://i.imgur.com/Hu2wzlF.png)
 
 ## MVC(S) implementation
 Partly based on: https://stackoverflow.com/a/5864000
