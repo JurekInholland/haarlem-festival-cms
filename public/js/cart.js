@@ -1,3 +1,7 @@
+$(function(){
+    checkDisable();
+});
+
 function add(idx) {
     let quantities = document.getElementsByClassName("quantity");
     if (parseInt(quantities[idx].value) < 10) {
@@ -24,6 +28,16 @@ function updateCookie() {
     setCookie("cart", encoded, 30);
 }
 
+function checkDisable() {
+    var prices = document.getElementsByClassName("item_price");
+    if (prices.length > 0) {
+        document.getElementById("submitbtn").disabled = false;
+    } else {
+        document.getElementById("submitbtn").disabled = true;
+    }
+}
+
+
 function calculateTotal() {
     var prices = document.getElementsByClassName("item_price");
     var quantities = document.getElementsByClassName("quantity");
@@ -34,7 +48,9 @@ function calculateTotal() {
     }
     var totalfield = document.getElementById("total_price");
     totalfield.innerHTML = "€"+totalprice;
+    
     updateCookie();
+    checkDisable();
 
 
 }  

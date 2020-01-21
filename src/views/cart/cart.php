@@ -64,29 +64,29 @@ $user = App::get("user");
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="firstName">First name</label>
-                        <input name="firstname" value="<?=$user->getFirstname()?>" type="text" class="form-control">
+                        <input required name="firstname" value="<?=$user->getFirstname()?>" type="text" class="form-control">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="lastName">Last name</label>
-                        <input name="lastname" type="text" class="form-control" value="<?=$user->getLastname()?>">
+                        <input required name="lastname" type="text" class="form-control" value="<?=$user->getLastname()?>">
                     </div>
                 </div>
 
                 <div class="mb-3">
                     <label for="address">Address</label>
-                    <input name="address" value="<?=$user->getAddress()?>" type="text" class="form-control">
+                    <input required name="address" value="<?=$user->getAddress()?>" type="text" class="form-control">
                 </div>
                 
                
 
                 <div class="mb-3">
                     <label for="email">Email <span class="text-muted"></span></label>
-                    <input name="email" value="<?=$user->getEmail()?>" type="email" class="form-control">
+                    <input required name="email" value="<?=$user->getEmail()?>" type="email" class="form-control">
                 </div>
 
                 <div class="mb-3">
                     <label for="phone">Phone Number <span class="text-muted"></span></label>
-                    <input name="phone" value="<?=$user->getPhone()?>" type="text" class="form-control">
+                    <input required name="phone" value="<?=$user->getPhone()?>" type="text" class="form-control">
                 </div>
 
                 <hr class="mb-4">
@@ -103,7 +103,7 @@ $user = App::get("user");
                 </div> -->
                 <!-- <input type="hidden" id="itemQuantity" name="itemQuantity" value="">
                 <input type="hidden" id="totalPrice" name="totalPrice" value=""> -->
-                <button onclick="calculateTotal()" class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+                <button onclick="calculateTotal()" class="btn btn-primary btn-lg btn-block" type="submit" id="submitbtn">Continue to checkout</button>
             </form>
         </div>
 
