@@ -24,6 +24,9 @@
 #ticketform section input[type="submit"] {
   width: 150px;
 }
+#ticketform input {
+  max-height: 38px;
+}
 </style>
 
 <h1>Scan tickets</h1>

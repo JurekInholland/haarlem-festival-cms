@@ -2,6 +2,10 @@
 .pdf-info {
     margin-top: 1rem;
 }
+
+.btn {
+max-width: 150px;
+}
 </style>
 
 <table class="table">
