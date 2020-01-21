@@ -281,6 +281,8 @@ class AdminController extends Controller {
             TicketService::setScanned($_POST["ticketid"]);
             return self::view("admin/scanSuccess", ["ticket" => $ticket[0]]);
         }
+        return self::view("admin/scannotfound", ["ticketid" => $_POST["ticketid"]]);
+        
         echo "NO TICKET FOUND";
     }
 

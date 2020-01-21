@@ -19,10 +19,7 @@ class CartController extends Controller {
 
     }
 
-    public static function index() {
-        
-        $cartData = json_decode($_COOKIE['cart'], JSON_PRETTY_PRINT); // store cart items in array
-        // die(var_dump($cartData));
+    public static function index() {       
 
         if(!isset($_COOKIE["cart"])) { // if cart doesn't exist then set default values
             $totalPrice = 0;

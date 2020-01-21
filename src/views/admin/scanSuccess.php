@@ -1,6 +1,6 @@
 <h1>Ticket scanned!</h1>
 
-<a href="/admin/scan">Scan another</a>?
+<a href="/admin/scan">Scan another?</a>
 
 <hr>
 
