@@ -71,7 +71,7 @@ $user = App::get("user");
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="lastName">Last name</label>
-                        <input name="lastname" type="text" class="form-control">
+                        <input name="lastname" type="text" class="form-control" value="<?=$user->getLastname()?>">
                     </div>
                 </div>
 

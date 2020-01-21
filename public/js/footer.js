@@ -15,7 +15,7 @@ async function setFooterColor() {
 async function setFooterLinks() {
     let links = await getPages();
     let parentNode = document.getElementById("footerlinks");
-    console.log(links);
+    // console.log(links);
     for (const link of links) {
         if (link["menu"] == 1) {
             let li = document.createElement("li");

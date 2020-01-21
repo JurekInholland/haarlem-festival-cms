@@ -44,7 +44,6 @@
     margin-right: 0px;
     font-weight: bold;
     font-size: 1.25rem;
-    line-height: 1.25rem;
 }
 .category {
     font-family: Rockwell, Georgia;
