@@ -60,7 +60,7 @@ class Invoice {
     public function getTotalVat() {
         $totalVat = 0;
         foreach ($this->tickets as $ticket) {
-            if ($ticket->getType() == 2) {
+            if ($ticket->getEventType() == 2) {
                 $totalVat += $ticket->getTotalPrice() * 0.09;
             } else {
                 $totalVat += $ticket->getTotalPrice() * 0.21;

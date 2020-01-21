@@ -72,6 +72,10 @@ class Ticket {
         return $this->event->getSlug();
     }
 
+    public function getEventType() {
+        return $this->event->getType();
+    }
+
     public function getEventDate() {
         $date = new DateTime($this->event->getStartDate());
         return $date->format('d.m.Y H:i');
