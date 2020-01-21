@@ -40,19 +40,34 @@
               <th scope="col">Restaurant</th>
               <th scope="col">Address</th>
               <th scope="col">Food type</th>
-              <th scope="col">Weekdays</th>
+              <th scope="col">Delete</th>
 
           </tr>
       </thead>
 
       <tbody id="table_body">
+      <tbody>
+        <?php foreach ($events as $idx => $event) :
+        ?>
+
+        <tr>
+       
+        <td><?=$idx?></td>
+        <td><?=$event->getName()?></td>
+        <td><?=$event->getAddress()?></td>
+        <td><?=$event->getDescription()?></td>
+        <td><a href="/admin/event/<?= $event->getSlug()?>?delete" class="icon delete-icon"></a></td>
+
+        </tr>
+        <?php endforeach; ?>
 
       </tbody>
     </table>
   </div>
 </div>
 
-<form class="form" action="" method="POST">
+<form class="form" action="/admin/create" method="POST">
+    <input type="hidden" name="category" value="2">
     <input type="submit" name="submit" value="Add Restaurant" class="btn btn-primary">
 </form>
 

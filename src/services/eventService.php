@@ -143,9 +143,23 @@ class EventService {
 
     } 
 
-    public static function fromSelect() {}
+    public static function getByType(string $type) {
 
-    // TODO: rename
+        $sql = "SELECT * FROM festival_events
+        WHERE type=:type
+        ORDER BY start_date, name";
+        $params = [":type" => $type];
+        $events = App::get("db")->query($sql, $params);
+
+        $eventList = [];
+
+        foreach ($events as $eventdata) {
+            $event = new FestivalEvent($eventdata);
+            array_push($eventList, $event);
+        }
+        return $eventList;
+    }
+
     public static function getAll() {
     
         $sql = "SELECT * FROM festival_events ORDER BY start_date, name";

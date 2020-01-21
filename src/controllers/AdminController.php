@@ -171,7 +171,8 @@ class AdminController extends Controller {
 
     
     public function restaurants() {
-        return self::view("admin/restaurants");
+        $events = EventService::getByType("2");
+        return self::view("admin/restaurants", ["events" => $events]);
     }
 
 

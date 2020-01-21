@@ -89,7 +89,7 @@ if ($user->getId() == App::get("user")->getId()) {
                 <th>Ticket id</th>
                 <th>Event</th>
                 <th>Event Date</th>
-                <th>Price</th>
+                <th>Price (excl. VAT)</th>
             </tr>
         </thead>
         <tbody>

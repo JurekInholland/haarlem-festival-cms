@@ -22,7 +22,7 @@ async function processRestaurants(map) {
     for (var i in restaurants) {
         if (restaurants[i]["type"] == 2) {
             let latlang = await findLatLang(restaurants[i]["address"], geocoder, map);
-            latlangs[i] = {name: restaurants[i]["name"], address: restaurants[i]["address"], latlang: latlang, slug: restaurants[i]["slug"]};    
+            latlangs.push({name: restaurants[i]["name"], address: restaurants[i]["address"], latlang: latlang, slug: restaurants[i]["slug"]});    
         }
     }
     return latlangs;
