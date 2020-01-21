@@ -24,6 +24,11 @@ class PaymentController extends Controller {
         
         $status = PaymentService::getDbStatus($paymentId);
         $invoiceId = PaymentService::getInvoiceId($paymentId);
+        
+        // Delete items from shopping cart if the payment has been confirmed.
+        // Note: It was not necessarily successful
+        CartService::deleteCookie();
+
         return self::view("partials/payment", ["status" => $status, "paymentid" => $paymentId, "invoiceid" => $invoiceId]);
     }
 }

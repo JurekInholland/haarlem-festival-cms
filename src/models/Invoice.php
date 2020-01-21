@@ -60,7 +60,7 @@ class Invoice {
     public function getTotalVat() {
         $totalVat = 0;
         foreach ($this->tickets as $ticket) {
-            $totalVat += $ticket->getPrice() * 0.19;
+            $totalVat += $ticket->getTotalPrice() * 0.19;
         }
         return  sprintf('%0.2f', $totalVat);
     }

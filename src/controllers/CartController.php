@@ -50,7 +50,6 @@ class CartController extends Controller {
         }
         $total = CartService::createTickets($invoiceId);
         PaymentService::createPayment($total, $invoiceId);
-        CartService::deleteCookie();
 
     }
 
