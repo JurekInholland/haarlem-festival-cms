@@ -32,7 +32,7 @@ class DanceService {
     
     public static function getAllDancePerDate($date)
     {
-        $sql = "SELECT * FROM festival_events WHERE start_date >= '2020-07-".$date." 00:00:00' AND start_date <= '2020-07-".$date." 23:00:00' AND type = :type";
+        $sql = "SELECT * FROM festival_events WHERE start_date >= '2020-08-".$date." 00:00:00' AND start_date <= '2020-08-".$date." 23:00:00' AND type = :type";
         $params = [":type" => "1"];
 
         $results = App::get("db")->query($sql, $params);
